@@ -1,19 +1,20 @@
 id,file,line,snippet
+269,uxm/core/runtime/services/runtime_statistics_services.bas,374,Case 269 ' STAT_MODE
 270,onceki_src/runtime/services/runtime_statistics_services.bas,439,"Case 270 ' STAT_QUARTILE: T-3=start, T-1=count, T=quartile(1..3) -> T+1 scaled"
-270,uxm/core/runtime/services/runtime_statistics_services.bas,374,Case 270 ' STAT_QUARTILE: option=1/2/3 -> quartile scaled
+270,uxm/core/runtime/services/runtime_statistics_services.bas,398,Case 270 ' STAT_QUARTILE: option=1/2/3 -> quartile scaled
 271,onceki_src/runtime/services/runtime_statistics_services.bas,443,"Case 271 ' STAT_PERCENTILE: T-3=start, T-1=count, T=percentile(0..100) -> T+1 scaled"
-271,uxm/core/runtime/services/runtime_statistics_services.bas,384,Case 271 ' STAT_PERCENTILE: option = percentile scaled 0..1000000
+271,uxm/core/runtime/services/runtime_statistics_services.bas,408,Case 271 ' STAT_PERCENTILE: option = percentile scaled 0..1000000
 272,onceki_src/runtime/services/runtime_statistics_services.bas,447,Case 272 ' STAT_SKEWNESS: population skewness scaled
-272,uxm/core/runtime/services/runtime_statistics_services.bas,388,Case 272 ' STAT_SKEWNESS
+272,uxm/core/runtime/services/runtime_statistics_services.bas,412,Case 272 ' STAT_SKEWNESS
 273,onceki_src/runtime/services/runtime_statistics_services.bas,451,Case 273 ' STAT_KURTOSIS: excess kurtosis scaled
-273,uxm/core/runtime/services/runtime_statistics_services.bas,392,Case 273 ' STAT_KURTOSIS
+273,uxm/core/runtime/services/runtime_statistics_services.bas,416,Case 273 ' STAT_KURTOSIS
 281,onceki_src/runtime/services/runtime_statistics_services.bas,472,Case 281 ' CORR_SPEARMAN: rank correlation scaled
-281,uxm/core/runtime/services/runtime_statistics_services.bas,396,Case 281 ' CORR_SPEARMAN
+281,uxm/core/runtime/services/runtime_statistics_services.bas,420,Case 281 ' CORR_SPEARMAN
 282,onceki_src/runtime/services/runtime_statistics_services.bas,476,Case 282 ' CORR_KENDALL: Kendall tau-b scaled
-282,uxm/core/runtime/services/runtime_statistics_services.bas,400,Case 282 ' CORR_KENDALL
-291,uxm/core/runtime/services/runtime_statistics_services.bas,404,"Case 291 ' REG_MULTIPLE: T-4=x,T-3=z,T-2=y,T-1=count,T0=out"
-292,uxm/core/runtime/services/runtime_statistics_services.bas,407,"Case 292 ' REG_POLYNOMIAL: quadratic simplified to linear fallback output b0,b1,b2=0"
-293,uxm/core/runtime/services/runtime_statistics_services.bas,411,Case 293 ' REG_LOGISTIC: one predictor probability at option x; writes scaled sigmoid(linear prediction)
+282,uxm/core/runtime/services/runtime_statistics_services.bas,424,Case 282 ' CORR_KENDALL
+291,uxm/core/runtime/services/runtime_statistics_services.bas,428,"Case 291 ' REG_MULTIPLE: T-4=x,T-3=z,T-2=y,T-1=count,T0=out"
+292,uxm/core/runtime/services/runtime_statistics_services.bas,431,"Case 292 ' REG_POLYNOMIAL: quadratic simplified to linear fallback output b0,b1,b2=0"
+293,uxm/core/runtime/services/runtime_statistics_services.bas,435,Case 293 ' REG_LOGISTIC: one predictor probability at option x; writes scaled sigmoid(linear prediction)
 300,uxm/core/runtime/services/runtime_string_services.bas,507,Case 300
 301,uxm/core/runtime/services/runtime_string_services.bas,509,Case 301
 302,uxm/core/runtime/services/runtime_string_services.bas,511,Case 302
@@ -24,15 +25,76 @@ id,file,line,snippet
 307,uxm/core/runtime/services/runtime_string_services.bas,521,Case 307
 308,uxm/core/runtime/services/runtime_string_services.bas,523,Case 308
 309,uxm/core/runtime/services/runtime_string_services.bas,525,Case 309
+320,uxm/core/runtime/hooks/runtime_hook_dispatch_ext.bas,13,"Case 320 To 325, 790 To 795"
+320,uxm/core/runtime/services/runtime_real_ext_services_v18.bas,144,"Case 790,791,792,793,794,795  # remapped from 790"
+321,uxm/core/runtime/hooks/runtime_hook_dispatch_ext.bas,13,"Case 320 To 325, 790 To 795"
+321,uxm/core/runtime/services/runtime_real_ext_services_v18.bas,144,"Case 790,791,792,793,794,795  # remapped from 791"
+322,uxm/core/runtime/hooks/runtime_hook_dispatch_ext.bas,13,"Case 320 To 325, 790 To 795"
+322,uxm/core/runtime/services/runtime_real_ext_services_v18.bas,144,"Case 790,791,792,793,794,795  # remapped from 792"
+323,uxm/core/runtime/hooks/runtime_hook_dispatch_ext.bas,13,"Case 320 To 325, 790 To 795"
+323,uxm/core/runtime/services/runtime_real_ext_services_v18.bas,144,"Case 790,791,792,793,794,795  # remapped from 793"
+324,uxm/core/runtime/hooks/runtime_hook_dispatch_ext.bas,13,"Case 320 To 325, 790 To 795"
+324,uxm/core/runtime/services/runtime_real_ext_services_v18.bas,144,"Case 790,791,792,793,794,795  # remapped from 794"
+325,uxm/core/runtime/hooks/runtime_hook_dispatch_ext.bas,13,"Case 320 To 325, 790 To 795"
+325,uxm/core/runtime/services/runtime_real_ext_services_v18.bas,144,"Case 790,791,792,793,794,795  # remapped from 795"
+340,uxm/core/runtime/hooks/runtime_hook_dispatch_ext.bas,16,"Case 340 To 356, 810 To 823"
+340,uxm/core/runtime/services/runtime_real_ext_services_v18.bas,165,Case 810 ' accuracy: predicted vs actual -> scaled  # remapped from 810
 340,uxm/core/runtime/services/runtime_string_ext_services.bas,282,Case 340
+341,uxm/core/runtime/hooks/runtime_hook_dispatch_ext.bas,16,"Case 340 To 356, 810 To 823"
+341,uxm/core/runtime/services/runtime_real_ext_services_v18.bas,171,"Case 811 ' binary confusion matrix -> data[out..out+3]=tp,tn,fp,fn  # remapped from 811"
 341,uxm/core/runtime/services/runtime_string_ext_services.bas,284,Case 341
+342,uxm/core/runtime/hooks/runtime_hook_dispatch_ext.bas,16,"Case 340 To 356, 810 To 823"
+342,uxm/core/runtime/services/runtime_real_ext_services_v18.bas,180,Case 812 ' precision scaled  # remapped from 812
 342,uxm/core/runtime/services/runtime_string_ext_services.bas,286,Case 342
+343,uxm/core/runtime/hooks/runtime_hook_dispatch_ext.bas,16,"Case 340 To 356, 810 To 823"
+343,uxm/core/runtime/services/runtime_real_ext_services_v18.bas,186,Case 813 ' recall scaled  # remapped from 813
+344,uxm/core/runtime/hooks/runtime_hook_dispatch_ext.bas,16,"Case 340 To 356, 810 To 823"
+344,uxm/core/runtime/services/runtime_real_ext_services_v18.bas,192,Case 814 ' F1 scaled  # remapped from 814
+345,uxm/core/runtime/hooks/runtime_hook_dispatch_ext.bas,16,"Case 340 To 356, 810 To 823"
+345,uxm/core/runtime/services/runtime_real_ext_services_v18.bas,201,Case 815 ' euclidean distance scaled  # remapped from 815
+346,uxm/core/runtime/hooks/runtime_hook_dispatch_ext.bas,16,"Case 340 To 356, 810 To 823"
+346,uxm/core/runtime/services/runtime_real_ext_services_v18.bas,206,Case 816 ' manhattan distance scaled  # remapped from 816
 346,uxm/core/runtime/services/runtime_string_ext_services.bas,288,Case 346
+347,uxm/core/runtime/hooks/runtime_hook_dispatch_ext.bas,16,"Case 340 To 356, 810 To 823"
+347,uxm/core/runtime/services/runtime_real_ext_services_v18.bas,211,Case 817 ' cosine similarity scaled  # remapped from 817
 347,uxm/core/runtime/services/runtime_string_ext_services.bas,290,Case 347
+348,uxm/core/runtime/hooks/runtime_hook_dispatch_ext.bas,16,"Case 340 To 356, 810 To 823"
+348,uxm/core/runtime/services/runtime_real_ext_services_v18.bas,217,"Case 818 ' onehot: aBase value, outBase class count -> one-hot data  # remapped from 818"
 348,uxm/core/runtime/services/runtime_string_ext_services.bas,292,Case 348
+349,uxm/core/runtime/hooks/runtime_hook_dispatch_ext.bas,16,"Case 340 To 356, 810 To 823"
+349,uxm/core/runtime/services/runtime_real_ext_services_v18.bas,222,Case 819 ' deterministic train count = floor(n*option_scaled)  # remapped from 819
+350,uxm/core/runtime/hooks/runtime_hook_dispatch_ext.bas,16,"Case 340 To 356, 810 To 823"
+350,uxm/core/runtime/services/runtime_real_ext_services_v18.bas,226,Case 820 ' deterministic reverse copy shuffle: data a->out  # remapped from 820
+351,uxm/core/runtime/hooks/runtime_hook_dispatch_ext.bas,16,"Case 340 To 356, 810 To 823"
+351,uxm/core/runtime/services/runtime_real_ext_services_v18.bas,230,"Case 821 ' 1D nearest neighbor: data a values, data b labels, opt=query -> label  # remapped from 821"
+352,uxm/core/runtime/hooks/runtime_hook_dispatch_ext.bas,16,"Case 340 To 356, 810 To 823"
+352,uxm/core/runtime/services/runtime_real_ext_services_v18.bas,236,Case 822 ' linear layer y=sum(x*w)+bias(opt)  # remapped from 822
+353,uxm/core/runtime/hooks/runtime_hook_dispatch_ext.bas,16,"Case 340 To 356, 810 To 823"
+353,uxm/core/runtime/services/runtime_real_ext_services_v18.bas,241,"Case 823 ' softmax: input a, out outBase, n; output scaled int probabilities, returns sum  # remapped from 823"
+354,uxm/core/runtime/hooks/runtime_hook_dispatch_ext.bas,16,"Case 340 To 356, 810 To 823"
 354,uxm/core/runtime/services/runtime_string_ext_services.bas,294,Case 354
+355,uxm/core/runtime/hooks/runtime_hook_dispatch_ext.bas,16,"Case 340 To 356, 810 To 823"
 355,uxm/core/runtime/services/runtime_string_ext_services.bas,296,Case 355
+356,uxm/core/runtime/hooks/runtime_hook_dispatch_ext.bas,16,"Case 340 To 356, 810 To 823"
 356,uxm/core/runtime/services/runtime_string_ext_services.bas,298,Case 356
+360,uxm/core/runtime/services/runtime_probability_services.bas,134,Case 380 ' RAND_SEED: T-1 seed  # remapped from 380
+361,uxm/core/runtime/services/runtime_probability_services.bas,138,Case 381 ' RAND_UNIFORM_01: T+1 scaled 0..999999  # remapped from 381
+362,uxm/core/runtime/services/runtime_probability_services.bas,142,"Case 382 ' RAND_INT_RANGE: T-2 min, T-1 max -> T+1  # remapped from 382"
+363,uxm/core/runtime/services/runtime_probability_services.bas,154,Case 383 ' RAND_BERNOULLI: T-1 probability_scaled -> T+1 0/1  # remapped from 383
+364,uxm/core/runtime/services/runtime_probability_services.bas,162,Case 384 ' RAND_POISSON: T-1 lambda_scaled -> T+1 count  # remapped from 384
+365,uxm/core/runtime/services/runtime_probability_services.bas,166,"Case 385 ' RAND_BINOMIAL: T-2 n, T-1 p_scaled -> T+1 count  # remapped from 385"
+366,uxm/core/runtime/services/runtime_probability_services.bas,170,"Case 386 ' RAND_WEIGHTED: T-2 data_start, T-1 count -> T+1 index  # remapped from 386"
+367,uxm/core/runtime/services/runtime_probability_services.bas,174,"Case 387 ' RAND_SHUFFLE_DATA: T-2 data_start, T-1 count -> T+1 status  # remapped from 387"
+368,uxm/core/runtime/services/runtime_probability_services.bas,178,"Case 388 ' RAND_NORMAL_SCALED: T-2 mean_scaled, T-1 sd_scaled -> T+1 scaled  # remapped from 388"
+369,uxm/core/runtime/services/runtime_probability_services.bas,182,Case 389 ' RAND_STATUS  # remapped from 389
+390,uxm/core/runtime/services/runtime_numeric_methods_services.bas,189,"Case 420 ' NUM_POLY_EVAL: T-2 polyBase, T-1 x_scaled -> T+1 y_scaled  # remapped from 420"
+391,uxm/core/runtime/services/runtime_numeric_methods_services.bas,193,"Case 421 ' NUM_NEWTON: T-4 polyBase,T-3 x0_scaled,T-2 maxIter,T-1 eps_scaled -> T+1 root_scaled  # remapped from 421"
+392,uxm/core/runtime/services/runtime_numeric_methods_services.bas,197,"Case 422 ' NUM_BISECTION: T-4 polyBase,T-3 a_scaled,T-2 b_scaled,T-1 maxIter -> T+1 root_scaled  # remapped from 422"
+393,uxm/core/runtime/services/runtime_numeric_methods_services.bas,201,"Case 423 ' NUM_TRAPEZOID_POLY: T-4 polyBase,T-3 a_scaled,T-2 b_scaled,T-1 n -> area_scaled  # remapped from 423"
+394,uxm/core/runtime/services/runtime_numeric_methods_services.bas,205,Case 424 ' NUM_SIMPSON_POLY  # remapped from 424
+395,uxm/core/runtime/services/runtime_numeric_methods_services.bas,209,"Case 425 ' NUM_INTERP_LINEAR: T-4 xBase,T-3 yBase,T-2 count,T-1 x_raw -> y_raw_scaled  # remapped from 425"
+396,uxm/core/runtime/services/runtime_numeric_methods_services.bas,213,"Case 426 ' NUM_BEZIER_QUADRATIC: T-4 p0,T-3 p1,T-2 p2,T-1 t_scaled -> result_scaled  # remapped from 426"
+397,uxm/core/runtime/services/runtime_numeric_methods_services.bas,217,"Case 427 ' NUM_RK4_LINEAR: T-4 y0,T-3 a_scaled,T-2 dt_scaled,T-1 steps -> y_scaled  # remapped from 427"
 400,onceki_src/runtime/services/runtime_file_services.bas,388,Case 400
 400,onceki_src/v17/uxm__core__runtime__services__runtime_file_services.bas,388,Case 400
 400,uxm/core/runtime/services/runtime_file_services.bas,434,Case 400
@@ -76,7 +138,10 @@ id,file,line,snippet
 415,onceki_src/v17/uxm__core__runtime__services__runtime_file_services.bas,412,Case 415
 415,uxm/core/runtime/services/runtime_file_services.bas,464,Case 415
 416,uxm/core/runtime/hooks/runtime_hook_dispatch_ext.bas,7,"Case 416,417,418,419"
-416,uxm/core/runtime/services/runtime_real_ext_services_v18.bas,252,Case 416 ' delete: T-1 pathZ -> T+1 1/0
-417,uxm/core/runtime/services/runtime_real_ext_services_v18.bas,256,"Case 417 ' rename: T-2 oldPathZ, T-1 newPathZ"
-418,uxm/core/runtime/services/runtime_real_ext_services_v18.bas,260,Case 418 ' mkdir: T-1 pathZ
-419,uxm/core/runtime/services/runtime_real_ext_services_v18.bas,264,Case 419 ' exists: T-1 pathZ -> 1/0
+416,uxm/core/runtime/services/runtime_real_ext_services_v18.bas,258,Case 416 ' delete: T-1 pathZ -> T+1 1/0
+417,uxm/core/runtime/hooks/runtime_hook_dispatch_ext.bas,7,"Case 416,417,418,419"
+417,uxm/core/runtime/services/runtime_real_ext_services_v18.bas,262,"Case 417 ' rename: T-2 oldPathZ, T-1 newPathZ"
+418,uxm/core/runtime/hooks/runtime_hook_dispatch_ext.bas,7,"Case 416,417,418,419"
+418,uxm/core/runtime/services/runtime_real_ext_services_v18.bas,266,Case 418 ' mkdir: T-1 pathZ
+419,uxm/core/runtime/hooks/runtime_hook_dispatch_ext.bas,7,"Case 416,417,418,419"
+419,uxm/core/runtime/services/runtime_real_ext_services_v18.bas,270,Case 419 ' exists: T-1 pathZ -> 1/0

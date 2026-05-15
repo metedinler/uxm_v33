@@ -1,0 +1,21 @@
+id,name,location,type,lines
+398,NUM_ODE_INFO,Emekliler/packages/20260510_185908/UXMv33.zip:config/uxm/service_registry_merged.csv,zip,463
+398,NUM_ODE_INFO,config/uxm/service_registry_merged - onceki  Kopya.csv,file,463
+398,NUM_ODE_INFO,config/uxm/service_registry_merged.csv,file,463
+398,NUM_ODE_INFO,reports/extension_final_summary.csv,file,85
+398,NUM_ODE_INFO,reports/extension_resolution.csv,file,85
+398,NUM_ODE_INFO,reports/meta_service_mapping.csv,file,428
+399,NUM_PDE_RESERVED,Emekliler/packages/20260510_185908/UXMv33.zip:config/uxm/service_registry_merged.csv,zip,463
+399,NUM_PDE_RESERVED,config/uxm/service_registry_merged - onceki  Kopya.csv,file,463
+399,NUM_PDE_RESERVED,config/uxm/service_registry_merged.csv,file,463
+399,NUM_PDE_RESERVED,placeholder_raporu/placeholder_taramasi.csv,file,397
+399,NUM_PDE_RESERVED,reports/extension_final_summary.csv,file,85
+399,NUM_PDE_RESERVED,reports/extension_resolution.csv,file,85
+399,NUM_PDE_RESERVED,reports/meta_service_mapping.csv,file,428
+450,CPLX_PRINT_RESERVED,Emekliler/packages/20260510_185908/UXMv33.zip:config/uxm/service_registry_merged.csv,zip,463
+450,CPLX_PRINT_RESERVED,config/uxm/service_registry_merged - onceki  Kopya.csv,file,463
+450,CPLX_PRINT_RESERVED,config/uxm/service_registry_merged.csv,file,463
+450,CPLX_PRINT_RESERVED,placeholder_raporu/placeholder_taramasi.csv,file,397
+450,CPLX_PRINT_RESERVED,reports/extension_final_summary.csv,file,85
+450,CPLX_PRINT_RESERVED,reports/extension_resolution.csv,file,85
+450,CPLX_PRINT_RESERVED,reports/meta_service_mapping.csv,file,428

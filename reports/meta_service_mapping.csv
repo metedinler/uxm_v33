@@ -1,0 +1,428 @@
+id,name,handler,enabled,status,source,notes,frame
+0,NOP_STATUS_OK,MetaCore,True,current,runtime_meta_dispatch.bas,Set status OK,
+1,CLS,MetaCore,True,current,runtime_meta_dispatch.bas,Clear screen,
+2,LOCATE_HOME,MetaCore,True,current,runtime_meta_dispatch.bas,"Locate 1,1",
+3,RANDOM_BYTE,MetaCore,True,current,runtime_meta_dispatch.bas,T+1=random byte,
+4,TIMER_MS,MetaCore,True,current,runtime_meta_dispatch.bas,T+1=timer ms masked,
+5,NEWLINE,MetaCore,True,current,runtime_meta_dispatch.bas,Print newline,
+6,PRINT_META_PREFIX,MetaCore,True,current,runtime_meta_dispatch.bas,Print [UXM META],
+7,CONST_7,MetaCore,True,current,runtime_meta_dispatch.bas,T+1=7,
+8,CONST_8,MetaCore,True,current,runtime_meta_dispatch.bas,T+1=8,
+9,GET_STATUS,MetaCore,True,current,runtime_meta_dispatch.bas,T+1=ux_status,
+10,STATUS_OK,MetaCore,True,current,runtime_meta_dispatch.bas,Set status OK,
+11,SET_STATUS_ARG1,MetaCore,True,current,runtime_meta_dispatch.bas,status=Arg1 low byte,
+12,PRINT_STATUS,MetaCore,True,current,runtime_meta_dispatch.bas,Print status message,
+13,STATUS_ASSERT_NONZERO,MetaCore,True,current,runtime_meta_dispatch.bas,If status OK set 1 else keep,
+14,CLEAR_STATUS,MetaCore,True,current,runtime_meta_dispatch.bas,Set status OK,
+15,GET_ERROR_FLAG,MetaCore,True,current,runtime_meta_dispatch.bas,T+1=1 if FLAG_ERR else 0,
+20,ADD,MetaArithmetic,True,current,runtime_meta_dispatch.bas,,"T-2=Arg1, T-1=Arg2, T=Arg0"
+21,SUB,MetaArithmetic,True,current,runtime_meta_dispatch.bas,,"T-2=Arg1, T-1=Arg2, T=Arg0"
+22,MUL,MetaArithmetic,True,current,runtime_meta_dispatch.bas,,"T-2=Arg1, T-1=Arg2, T=Arg0"
+23,DIV,MetaArithmetic,True,current,runtime_meta_dispatch.bas,,"T-2=Arg1, T-1=Arg2, T=Arg0"
+24,MOD,MetaArithmetic,True,current,runtime_meta_dispatch.bas,,"T-2=Arg1, T-1=Arg2, T=Arg0"
+25,MIN,MetaArithmetic,True,current,runtime_meta_dispatch.bas,,"T-2=Arg1, T-1=Arg2, T=Arg0"
+26,MAX,MetaArithmetic,True,current,runtime_meta_dispatch.bas,,"T-2=Arg1, T-1=Arg2, T=Arg0"
+27,ABS_ARG2,MetaArithmetic,True,current,runtime_meta_dispatch.bas,,"T-2=Arg1, T-1=Arg2, T=Arg0"
+28,NEG_ARG2,MetaArithmetic,True,current,runtime_meta_dispatch.bas,,"T-2=Arg1, T-1=Arg2, T=Arg0"
+29,CMP,MetaArithmetic,True,current,runtime_meta_dispatch.bas,,"T-2=Arg1, T-1=Arg2, T=Arg0"
+30,RANDOM_INT_RANGE,MetaArithmetic,True,current,runtime_meta_dispatch.bas,,"T-2=Arg1, T-1=Arg2, T=Arg0"
+31,RANDOM_SEED,MetaArithmetic,True,current,runtime_meta_dispatch.bas,,"T-2=Arg1, T-1=Arg2, T=Arg0"
+32,RANDOM_SCALED,MetaArithmetic,True,current,runtime_meta_dispatch.bas,,"T-2=Arg1, T-1=Arg2, T=Arg0"
+33,DIV_UNSIGNED_ALIAS,MetaArithmetic,True,current,runtime_meta_dispatch.bas,,"T-2=Arg1, T-1=Arg2, T=Arg0"
+34,DIV_SIGNED,MetaArithmetic,True,current,runtime_meta_dispatch.bas,,"T-2=Arg1, T-1=Arg2, T=Arg0"
+35,MOD_UNSIGNED_ALIAS,MetaArithmetic,True,current,runtime_meta_dispatch.bas,,"T-2=Arg1, T-1=Arg2, T=Arg0"
+36,MOD_SIGNED,MetaArithmetic,True,current,runtime_meta_dispatch.bas,,"T-2=Arg1, T-1=Arg2, T=Arg0"
+40,SIN_SCALED_DEG,MetaMath,True,current,runtime_meta_dispatch.bas,,Arg1/Arg2 depending service
+41,COS_SCALED_DEG,MetaMath,True,current,runtime_meta_dispatch.bas,,Arg1/Arg2 depending service
+42,TAN_SCALED_DEG,MetaMath,True,current,runtime_meta_dispatch.bas,,Arg1/Arg2 depending service
+43,HYPOTENUSE,MetaMath,True,current,runtime_meta_dispatch.bas,,Arg1/Arg2 depending service
+44,ASIN_DEG,MetaMath,True,current,runtime_meta_dispatch.bas,,Arg1/Arg2 depending service
+45,ACOS_DEG,MetaMath,True,current,runtime_meta_dispatch.bas,,Arg1/Arg2 depending service
+46,SQRT,MetaMath,True,current,runtime_meta_dispatch.bas,,Arg1/Arg2 depending service
+47,SINH_SCALED,MetaMath,True,current,runtime_meta_dispatch.bas,,Arg1/Arg2 depending service
+48,COSH_SCALED,MetaMath,True,current,runtime_meta_dispatch.bas,,Arg1/Arg2 depending service
+49,TANH_SCALED,MetaMath,True,current,runtime_meta_dispatch.bas,,Arg1/Arg2 depending service
+52,ASINH_SCALED,MetaMath,True,current,runtime_meta_dispatch.bas,,Arg1/Arg2 depending service
+53,ACOSH_SCALED,MetaMath,True,current,runtime_meta_dispatch.bas,,Arg1/Arg2 depending service
+54,ATANH_SCALED,MetaMath,True,current,runtime_meta_dispatch.bas,,Arg1/Arg2 depending service
+55,LN_SCALED,MetaMath,True,current,runtime_meta_dispatch.bas,,Arg1/Arg2 depending service
+56,EXP_SCALED,MetaMath,True,current,runtime_meta_dispatch.bas,,Arg1/Arg2 depending service
+57,POWER,MetaMath,True,current,runtime_meta_dispatch.bas,,Arg1/Arg2 depending service
+58,DEG_TO_RAD_SCALED,MetaMath,True,current,runtime_meta_dispatch.bas,,Arg1/Arg2 depending service
+59,RAD_TO_DEG,MetaMath,True,current,runtime_meta_dispatch.bas,,Arg1/Arg2 depending service
+60,PRINT_ARG2_DECIMAL,MetaIO,True,current,runtime_meta_dispatch.bas,,Arg2/result/stack depending service
+61,PRINT_RESULT_DECIMAL,MetaIO,True,current,runtime_meta_dispatch.bas,,Arg2/result/stack depending service
+62,PRINT_STACK_POP_DECIMAL,MetaIO,True,current,runtime_meta_dispatch.bas,,Arg2/result/stack depending service
+63,READ_DECIMAL,MetaIO,True,current,runtime_meta_dispatch.bas,,Arg2/result/stack depending service
+64,PRINT_SPACE,MetaIO,True,current,runtime_meta_dispatch.bas,,Arg2/result/stack depending service
+67,PRINT_ARG2_HEX,MetaIO,True,current,runtime_meta_dispatch.bas,,Arg2/result/stack depending service
+68,PRINT_ARG2_BIN,MetaIO,True,current,runtime_meta_dispatch.bas,,Arg2/result/stack depending service
+69,PRINT_ARG2_CHAR,MetaIO,True,current,runtime_meta_dispatch.bas,,Arg2/result/stack depending service
+80,PTR_SET,MetaPointerMemory,True,current,runtime_meta_dispatch.bas,,T-1=Arg2 mostly
+81,PTR_ADD,MetaPointerMemory,True,current,runtime_meta_dispatch.bas,,T-1=Arg2 mostly
+82,PTR_GET,MetaPointerMemory,True,current,runtime_meta_dispatch.bas,,T-1=Arg2 mostly
+83,PTR_VALID,MetaPointerMemory,True,current,runtime_meta_dispatch.bas,,T-1=Arg2 mostly
+84,LAYOUT_TAPE_CELLS,MetaPointerMemory,True,current,runtime_meta_dispatch.bas,,T-1=Arg2 mostly
+85,LAYOUT_DATA_CELLS,MetaPointerMemory,True,current,runtime_meta_dispatch.bas,,T-1=Arg2 mostly
+86,LAYOUT_STACK_CELLS,MetaPointerMemory,True,current,runtime_meta_dispatch.bas,,T-1=Arg2 mostly
+87,LAYOUT_CELL_BITS,MetaPointerMemory,True,current,runtime_meta_dispatch.bas,,T-1=Arg2 mostly
+88,LAYOUT_CELL_BYTES,MetaPointerMemory,True,current,runtime_meta_dispatch.bas,,T-1=Arg2 mostly
+89,LAYOUT_PRINT,MetaPointerMemory,True,current,runtime_meta_dispatch.bas,,T-1=Arg2 mostly
+90,FIFO_PUSH,MetaFifoDataSortWild,True,current,runtime_meta_dispatch.bas,,Arg0/Arg1/Arg2 depending service
+91,FIFO_POP,MetaFifoDataSortWild,True,current,runtime_meta_dispatch.bas,,Arg0/Arg1/Arg2 depending service
+92,FIFO_PEEK,MetaFifoDataSortWild,True,current,runtime_meta_dispatch.bas,,Arg0/Arg1/Arg2 depending service
+93,FIFO_COUNT,MetaFifoDataSortWild,True,current,runtime_meta_dispatch.bas,,Arg0/Arg1/Arg2 depending service
+94,FIFO_CLEAR,MetaFifoDataSortWild,True,current,runtime_meta_dispatch.bas,,Arg0/Arg1/Arg2 depending service
+95,DATA_READ,MetaFifoDataSortWild,True,current,runtime_meta_dispatch.bas,,Arg0/Arg1/Arg2 depending service
+96,DATA_WRITE,MetaFifoDataSortWild,True,current,runtime_meta_dispatch.bas,,Arg0/Arg1/Arg2 depending service
+97,DATA_DIGIT_ASCII_TO_NUMBER,MetaFifoDataSortWild,True,current,runtime_meta_dispatch.bas,,Arg0/Arg1/Arg2 depending service
+98,DATA_BLOCK_COPY,MetaFifoDataSortWild,True,current,runtime_meta_dispatch.bas,,Arg0/Arg1/Arg2 depending service
+99,DATA_BLOCK_CLEAR,MetaFifoDataSortWild,True,current,runtime_meta_dispatch.bas,,Arg0/Arg1/Arg2 depending service
+100,TAPE_SORT_ASC,MetaFifoDataSortWild,True,current,runtime_meta_dispatch.bas,,Arg0/Arg1/Arg2 depending service
+101,TAPE_SORT_DESC,MetaFifoDataSortWild,True,current,runtime_meta_dispatch.bas,,Arg0/Arg1/Arg2 depending service
+102,DATA_SORT_ASC,MetaFifoDataSortWild,True,current,runtime_meta_dispatch.bas,,Arg0/Arg1/Arg2 depending service
+103,DATA_SORT_DESC,MetaFifoDataSortWild,True,current,runtime_meta_dispatch.bas,,Arg0/Arg1/Arg2 depending service
+104,TAPE_LINEAR_SEARCH,MetaFifoDataSortWild,True,current,runtime_meta_dispatch.bas,,Arg0/Arg1/Arg2 depending service
+105,DATA_LINEAR_SEARCH,MetaFifoDataSortWild,True,current,runtime_meta_dispatch.bas,,Arg0/Arg1/Arg2 depending service
+106,TAPE_BLOCK_COPY,MetaFifoDataSortWild,True,current,runtime_meta_dispatch.bas,,Arg0/Arg1/Arg2 depending service
+107,TAPE_BLOCK_CLEAR,MetaFifoDataSortWild,True,current,runtime_meta_dispatch.bas,,Arg0/Arg1/Arg2 depending service
+120,SIGNED_MODE_OFF,MetaFifoDataSortWild,True,current,runtime_meta_dispatch.bas,,Arg0/Arg1/Arg2 depending service
+121,SIGNED_MODE_ON,MetaFifoDataSortWild,True,current,runtime_meta_dispatch.bas,,Arg0/Arg1/Arg2 depending service
+122,SIGNED_MODE_GET,MetaFifoDataSortWild,True,current,runtime_meta_dispatch.bas,,Arg0/Arg1/Arg2 depending service
+123,ENDIAN_LITTLE,MetaFifoDataSortWild,True,current,runtime_meta_dispatch.bas,,Arg0/Arg1/Arg2 depending service
+124,ENDIAN_BIG,MetaFifoDataSortWild,True,current,runtime_meta_dispatch.bas,,Arg0/Arg1/Arg2 depending service
+125,ENDIAN_GET_BIG,MetaFifoDataSortWild,True,current,runtime_meta_dispatch.bas,,Arg0/Arg1/Arg2 depending service
+126,FLAGS_GET,MetaFifoDataSortWild,True,current,runtime_meta_dispatch.bas,,Arg0/Arg1/Arg2 depending service
+127,WILD_LAYOUT_CHANGE,MetaFifoDataSortWild,True,current,runtime_meta_dispatch.bas,,Arg0/Arg1/Arg2 depending service
+130,CMP_EQ_UNSIGNED,MetaFlagsEndian,True,unreachable_current_bug,runtime_meta_dispatch.bas,Case exists in MetaFlagsEndian but dispatcher only sends 150..159 there; @130..149 currently invalid unless dispatch is fixed.,
+131,CMP_GT_UNSIGNED,MetaFlagsEndian,True,unreachable_current_bug,runtime_meta_dispatch.bas,Case exists in MetaFlagsEndian but dispatcher only sends 150..159 there; @130..149 currently invalid unless dispatch is fixed.,
+132,CMP_LT_UNSIGNED,MetaFlagsEndian,True,unreachable_current_bug,runtime_meta_dispatch.bas,Case exists in MetaFlagsEndian but dispatcher only sends 150..159 there; @130..149 currently invalid unless dispatch is fixed.,
+133,CMP_EQ_SIGNED,MetaFlagsEndian,True,unreachable_current_bug,runtime_meta_dispatch.bas,Case exists in MetaFlagsEndian but dispatcher only sends 150..159 there; @130..149 currently invalid unless dispatch is fixed.,
+134,CMP_GT_SIGNED,MetaFlagsEndian,True,unreachable_current_bug,runtime_meta_dispatch.bas,Case exists in MetaFlagsEndian but dispatcher only sends 150..159 there; @130..149 currently invalid unless dispatch is fixed.,
+135,CMP_LT_SIGNED,MetaFlagsEndian,True,unreachable_current_bug,runtime_meta_dispatch.bas,Case exists in MetaFlagsEndian but dispatcher only sends 150..159 there; @130..149 currently invalid unless dispatch is fixed.,
+140,GET_CARRY_FLAG,MetaFlagsEndian,True,unreachable_current_bug,runtime_meta_dispatch.bas,Case exists in MetaFlagsEndian but dispatcher only sends 150..159 there; @130..149 currently invalid unless dispatch is fixed.,
+141,SET_CARRY_FLAG,MetaFlagsEndian,True,unreachable_current_bug,runtime_meta_dispatch.bas,Case exists in MetaFlagsEndian but dispatcher only sends 150..159 there; @130..149 currently invalid unless dispatch is fixed.,
+142,CLEAR_CARRY_FLAG,MetaFlagsEndian,True,unreachable_current_bug,runtime_meta_dispatch.bas,Case exists in MetaFlagsEndian but dispatcher only sends 150..159 there; @130..149 currently invalid unless dispatch is fixed.,
+143,GET_OVERFLOW_FLAG,MetaFlagsEndian,True,unreachable_current_bug,runtime_meta_dispatch.bas,Case exists in MetaFlagsEndian but dispatcher only sends 150..159 there; @130..149 currently invalid unless dispatch is fixed.,
+144,SET_OVERFLOW_FLAG,MetaFlagsEndian,True,unreachable_current_bug,runtime_meta_dispatch.bas,Case exists in MetaFlagsEndian but dispatcher only sends 150..159 there; @130..149 currently invalid unless dispatch is fixed.,
+145,CLEAR_OVERFLOW_FLAG,MetaFlagsEndian,True,unreachable_current_bug,runtime_meta_dispatch.bas,Case exists in MetaFlagsEndian but dispatcher only sends 150..159 there; @130..149 currently invalid unless dispatch is fixed.,
+146,GET_ZERO_FLAG,MetaFlagsEndian,True,unreachable_current_bug,runtime_meta_dispatch.bas,Case exists in MetaFlagsEndian but dispatcher only sends 150..159 there; @130..149 currently invalid unless dispatch is fixed.,
+147,GET_SIGN_FLAG,MetaFlagsEndian,True,unreachable_current_bug,runtime_meta_dispatch.bas,Case exists in MetaFlagsEndian but dispatcher only sends 150..159 there; @130..149 currently invalid unless dispatch is fixed.,
+148,CLEAR_ZCOS_FLAGS,MetaFlagsEndian,True,unreachable_current_bug,runtime_meta_dispatch.bas,Case exists in MetaFlagsEndian but dispatcher only sends 150..159 there; @130..149 currently invalid unless dispatch is fixed.,
+149,FLAGS_GET_ALIAS,MetaFlagsEndian,True,unreachable_current_bug,runtime_meta_dispatch.bas,Case exists in MetaFlagsEndian but dispatcher only sends 150..159 there; @130..149 currently invalid unless dispatch is fixed.,
+150,ENDIAN_LITTLE_ALIAS,MetaFlagsEndian,True,current,runtime_meta_dispatch.bas,,T-1/relative tape cells depending service
+151,ENDIAN_BIG_ALIAS,MetaFlagsEndian,True,current,runtime_meta_dispatch.bas,,T-1/relative tape cells depending service
+152,ENDIAN_GET_BIG_ALIAS,MetaFlagsEndian,True,current,runtime_meta_dispatch.bas,,T-1/relative tape cells depending service
+153,WRITE_WORD_ENDIAN,MetaFlagsEndian,True,current,runtime_meta_dispatch.bas,,T-1/relative tape cells depending service
+154,READ_WORD_ENDIAN,MetaFlagsEndian,True,current,runtime_meta_dispatch.bas,,T-1/relative tape cells depending service
+155,WRITE_DWORD_ENDIAN,MetaFlagsEndian,True,current,runtime_meta_dispatch.bas,,T-1/relative tape cells depending service
+156,READ_DWORD_ENDIAN,MetaFlagsEndian,True,current,runtime_meta_dispatch.bas,,T-1/relative tape cells depending service
+160,MAT_INIT,MetaMatrix,True,current,runtime_matrix_services.bas,,"T-4=dst, T-3=a, T-2=b, T-1=p1, T=p2"
+161,MAT_CLEAR,MetaMatrix,True,current,runtime_matrix_services.bas,,"T-4=dst, T-3=a, T-2=b, T-1=p1, T=p2"
+162,MAT_SET,MetaMatrix,True,current,runtime_matrix_services.bas,,"T-4=dst, T-3=a, T-2=b, T-1=p1, T=p2"
+163,MAT_GET,MetaMatrix,True,current,runtime_matrix_services.bas,,"T-4=dst, T-3=a, T-2=b, T-1=p1, T=p2"
+164,MAT_FILL,MetaMatrix,True,current,runtime_matrix_services.bas,,"T-4=dst, T-3=a, T-2=b, T-1=p1, T=p2"
+165,MAT_COPY,MetaMatrix,True,current,runtime_matrix_services.bas,,"T-4=dst, T-3=a, T-2=b, T-1=p1, T=p2"
+166,MAT_PRINT,MetaMatrix,True,current,runtime_matrix_services.bas,,"T-4=dst, T-3=a, T-2=b, T-1=p1, T=p2"
+167,MAT_ADD,MetaMatrix,True,current,runtime_matrix_services.bas,,"T-4=dst, T-3=a, T-2=b, T-1=p1, T=p2"
+168,MAT_SUB,MetaMatrix,True,current,runtime_matrix_services.bas,,"T-4=dst, T-3=a, T-2=b, T-1=p1, T=p2"
+169,MAT_SCALAR_MUL,MetaMatrix,True,current,runtime_matrix_services.bas,,"T-4=dst, T-3=a, T-2=b, T-1=p1, T=p2"
+170,MAT_MUL,MetaMatrix,True,current,runtime_matrix_services.bas,,"T-4=dst, T-3=a, T-2=b, T-1=p1, T=p2"
+171,MAT_TRANSPOSE_COPY,MetaMatrix,True,current,runtime_matrix_services.bas,,"T-4=dst, T-3=a, T-2=b, T-1=p1, T=p2"
+172,MAT_IDENTITY,MetaMatrix,True,current,runtime_matrix_services.bas,,"T-4=dst, T-3=a, T-2=b, T-1=p1, T=p2"
+173,MAT_TRACE,MetaMatrix,True,current,runtime_matrix_services.bas,,"T-4=dst, T-3=a, T-2=b, T-1=p1, T=p2"
+174,MAT_SHAPE,MetaMatrix,True,current,runtime_matrix_services.bas,,"T-4=dst, T-3=a, T-2=b, T-1=p1, T=p2"
+175,MAT_DET2,MetaMatrix,True,current,runtime_matrix_services.bas,,"T-4=dst, T-3=a, T-2=b, T-1=p1, T=p2"
+176,MAT_PRINT_RAW,MetaMatrix,True,current,runtime_matrix_services.bas,,"T-4=dst, T-3=a, T-2=b, T-1=p1, T=p2"
+180,MAT_ND_INIT,UXMMatAdvancedDispatch,True,extension_patch_available,service_registry_matrix_v34.csv,Within matrix dispatcher range; add cases to MetaMatrix or subdispatch.,"T-4 rows, T-3 cols, T-2 outbase"
+181,MAT_ND_GET,UXMMatAdvancedDispatch,True,extension_patch_available,service_registry_matrix_v34.csv,Within matrix dispatcher range; add cases to MetaMatrix or subdispatch.,reserved
+182,MAT_ND_SET,UXMMatAdvancedDispatch,True,extension_patch_available,service_registry_matrix_v34.csv,Within matrix dispatcher range; add cases to MetaMatrix or subdispatch.,reserved
+183,MAT_DET,UXMMatAdvancedDispatch,True,extension_patch_available,service_registry_matrix_v34.csv,Within matrix dispatcher range; add cases to MetaMatrix or subdispatch.,"T-4 A, T+1 determinant"
+184,MAT_INVERSE,UXMMatAdvancedDispatch,True,extension_patch_available,service_registry_matrix_v34.csv,Within matrix dispatcher range; add cases to MetaMatrix or subdispatch.,"T-4 A, T-2 OUT"
+185,MAT_LU,UXMMatAdvancedDispatch,True,extension_patch_available,service_registry_matrix_v34.csv,Within matrix dispatcher range; add cases to MetaMatrix or subdispatch.,"T-4 A, T-2 L, T-3 U"
+186,MAT_QR,UXMMatAdvancedDispatch,True,extension_patch_available,service_registry_matrix_v34.csv,Within matrix dispatcher range; add cases to MetaMatrix or subdispatch.,"T-4 A, T-2 Q, T-3 R"
+187,MAT_RANK,UXMMatAdvancedDispatch,True,extension_patch_available,service_registry_matrix_v34.csv,Within matrix dispatcher range; add cases to MetaMatrix or subdispatch.,"T-4 A, T+1 rank"
+188,MAT_COND_EST,UXMMatAdvancedDispatch,True,extension_patch_available,service_registry_matrix_v34.csv,Within matrix dispatcher range; add cases to MetaMatrix or subdispatch.,"T-4 A, T-2 temp inverse, T+1 cond"
+189,MAT_EIG_POWER,UXMMatAdvancedDispatch,True,extension_patch_available,service_registry_matrix_v34.csv,Within matrix dispatcher range; add cases to MetaMatrix or subdispatch.,"T-4 A, T-2 vector out, T-1 iterations, T+1 lambda"
+190,MAT_EIG_JACOBI_SYM,UXMMatAdvancedDispatch,True,extension_patch_available,service_registry_matrix_v34.csv,Within matrix dispatcher range; add cases to MetaMatrix or subdispatch.,planned
+191,MAT_SVD_SYM_HELPER,UXMMatAdvancedDispatch,True,extension_patch_available,service_registry_matrix_v34.csv,Within matrix dispatcher range; add cases to MetaMatrix or subdispatch.,planned
+192,MAT_SPARSE_CSR_INIT,UXMMatAdvancedDispatch,True,extension_patch_available,service_registry_matrix_v34.csv,Within matrix dispatcher range; add cases to MetaMatrix or subdispatch.,"T-4 rows, T-3 cols, T-1 nnz, T-2 outbase"
+193,MAT_SPARSE_CSR_MV,UXMMatAdvancedDispatch,True,extension_patch_available,service_registry_matrix_v34.csv,Within matrix dispatcher range; add cases to MetaMatrix or subdispatch.,planned
+194,MAT_SPARSE_TO_DENSE,UXMMatAdvancedDispatch,True,extension_patch_available,service_registry_matrix_v34.csv,Within matrix dispatcher range; add cases to MetaMatrix or subdispatch.,planned
+195,MAT_DENSE_TO_SPARSE,UXMMatAdvancedDispatch,True,extension_patch_available,service_registry_matrix_v34.csv,Within matrix dispatcher range; add cases to MetaMatrix or subdispatch.,planned
+196,MAT_TRACE,UXMMatAdvancedDispatch,True,extension_patch_available,service_registry_matrix_v34.csv,Within matrix dispatcher range; add cases to MetaMatrix or subdispatch.,"T-4 A, T+1 trace"
+197,MAT_FROBENIUS,UXMMatAdvancedDispatch,True,extension_patch_available,service_registry_matrix_v34.csv,Within matrix dispatcher range; add cases to MetaMatrix or subdispatch.,"T-4 A, T+1 norm"
+198,MAT_NORM_INF,UXMMatAdvancedDispatch,True,extension_patch_available,service_registry_matrix_v34.csv,Within matrix dispatcher range; add cases to MetaMatrix or subdispatch.,"T-4 A, T+1 norm"
+199,MAT_ADV_INFO,UXMMatAdvancedDispatch,True,extension_patch_available,service_registry_matrix_v34.csv,Within matrix dispatcher range; add cases to MetaMatrix or subdispatch.,prints info
+200,FP_INIT16,MetaFloatingPoint,True,current,runtime_fp_services.bas,,"T-2=rBase, T-1=aBase, T=bBase pattern"
+201,FP_INIT32,MetaFloatingPoint,True,current,runtime_fp_services.bas,,"T-2=rBase, T-1=aBase, T=bBase pattern"
+202,FP_ZERO,MetaFloatingPoint,True,current,runtime_fp_services.bas,,"T-2=rBase, T-1=aBase, T=bBase pattern"
+203,FP_COPY,MetaFloatingPoint,True,current,runtime_fp_services.bas,,"T-2=rBase, T-1=aBase, T=bBase pattern"
+204,FP_NORMALIZE_STORE,MetaFloatingPoint,True,current,runtime_fp_services.bas,,"T-2=rBase, T-1=aBase, T=bBase pattern"
+205,FP_TO_INT,MetaFloatingPoint,True,current,runtime_fp_services.bas,,"T-2=rBase, T-1=aBase, T=bBase pattern"
+206,FP_IS_ZERO,MetaFloatingPoint,True,current,runtime_fp_services.bas,,"T-2=rBase, T-1=aBase, T=bBase pattern"
+207,FP_SIGN,MetaFloatingPoint,True,current,runtime_fp_services.bas,,"T-2=rBase, T-1=aBase, T=bBase pattern"
+208,FP_ABS_TO_INT,MetaFloatingPoint,True,current,runtime_fp_services.bas,,"T-2=rBase, T-1=aBase, T=bBase pattern"
+209,FP_PRINT_RAW,MetaFloatingPoint,True,current,runtime_fp_services.bas,,"T-2=rBase, T-1=aBase, T=bBase pattern"
+210,FP_ADD,MetaFloatingPoint,True,current,runtime_fp_services.bas,,"T-2=rBase, T-1=aBase, T=bBase pattern"
+211,FP_SUB,MetaFloatingPoint,True,current,runtime_fp_services.bas,,"T-2=rBase, T-1=aBase, T=bBase pattern"
+212,FP_MUL,MetaFloatingPoint,True,current,runtime_fp_services.bas,,"T-2=rBase, T-1=aBase, T=bBase pattern"
+213,FP_DIV,MetaFloatingPoint,True,current,runtime_fp_services.bas,,"T-2=rBase, T-1=aBase, T=bBase pattern"
+214,FP_COMPARE,MetaFloatingPoint,True,current,runtime_fp_services.bas,,"T-2=rBase, T-1=aBase, T=bBase pattern"
+215,FP_ABS,MetaFloatingPoint,True,current,runtime_fp_services.bas,,"T-2=rBase, T-1=aBase, T=bBase pattern"
+216,FP_NEG,MetaFloatingPoint,True,current,runtime_fp_services.bas,,"T-2=rBase, T-1=aBase, T=bBase pattern"
+217,FP_ROUND16,MetaFloatingPoint,True,current,runtime_fp_services.bas,,"T-2=rBase, T-1=aBase, T=bBase pattern"
+218,FP_ROUND32,MetaFloatingPoint,True,current,runtime_fp_services.bas,,"T-2=rBase, T-1=aBase, T=bBase pattern"
+219,FP_TRUNC,MetaFloatingPoint,True,current,runtime_fp_services.bas,,"T-2=rBase, T-1=aBase, T=bBase pattern"
+220,FP_FROM_INT,MetaFloatingPoint,True,current,runtime_fp_services.bas,,"T-2=rBase, T-1=aBase, T=bBase pattern"
+221,FP_FROM_DEC_STRING,MetaFloatingPoint,True,current,runtime_fp_services.bas,,"T-2=rBase, T-1=aBase, T=bBase pattern"
+222,FP_TO_DEC_STRING,MetaFloatingPoint,True,current,runtime_fp_services.bas,,"T-2=rBase, T-1=aBase, T=bBase pattern"
+223,FP_PRINT_DECIMAL,MetaFloatingPoint,True,current,runtime_fp_services.bas,,"T-2=rBase, T-1=aBase, T=bBase pattern"
+224,FP_SCALE10,MetaFloatingPoint,True,current,runtime_fp_services.bas,,"T-2=rBase, T-1=aBase, T=bBase pattern"
+230,FP_RESERVED_230,MetaFloatingPoint,False,reserved,runtime_fp_services.bas,Reserved/invalid in current source.,
+231,FP_RESERVED_231,MetaFloatingPoint,False,reserved,runtime_fp_services.bas,Reserved/invalid in current source.,
+232,FP_RESERVED_232,MetaFloatingPoint,False,reserved,runtime_fp_services.bas,Reserved/invalid in current source.,
+233,FP_RESERVED_233,MetaFloatingPoint,False,reserved,runtime_fp_services.bas,Reserved/invalid in current source.,
+234,FP_RESERVED_234,MetaFloatingPoint,False,reserved,runtime_fp_services.bas,Reserved/invalid in current source.,
+240,POLY_DERIVATIVE,MetaMathExtra,True,current,runtime_math_services.bas,,T-frame/data object depending service
+241,POLY_INTEGRAL,MetaMathExtra,True,current,runtime_math_services.bas,,T-frame/data object depending service
+242,POLY_EVAL,MetaMathExtra,True,current,runtime_math_services.bas,,T-frame/data object depending service
+243,POLY_PRINT,MetaMathExtra,True,current,runtime_math_services.bas,,T-frame/data object depending service
+244,POLY_CLEAR,MetaMathExtra,True,current,runtime_math_services.bas,,T-frame/data object depending service
+250,EXPR_RPN_EVAL,MetaMathExtra,True,current,runtime_math_services.bas,,T-frame/data object depending service
+251,NUM_DERIV,MetaMathExtra,True,current,runtime_math_services.bas,,T-frame/data object depending service
+252,INTEGRAL_TRAPEZOID,MetaMathExtra,True,current,runtime_math_services.bas,,T-frame/data object depending service
+253,INTEGRAL_SIMPSON,MetaMathExtra,True,current,runtime_math_services.bas,,T-frame/data object depending service
+254,EXPR_RPN_PRINT,MetaMathExtra,True,current,runtime_math_services.bas,,T-frame/data object depending service
+260,STAT_COUNT,MetaStatistics,True,extension_requires_meta_id_range_patch,service_registry_v33.csv,count values,
+261,STAT_SUM,MetaStatistics,True,extension_requires_meta_id_range_patch,service_registry_v33.csv,sum values,
+262,STAT_MEAN,MetaStatistics,True,extension_requires_meta_id_range_patch,service_registry_v33.csv,mean,
+263,STAT_MIN,MetaStatistics,True,extension_requires_meta_id_range_patch,service_registry_v33.csv,min,
+264,STAT_MAX,MetaStatistics,True,extension_requires_meta_id_range_patch,service_registry_v33.csv,max,
+265,STAT_RANGE,MetaStatistics,True,extension_requires_meta_id_range_patch,service_registry_v33.csv,max-min,
+266,STAT_VARIANCE,MetaStatistics,True,extension_requires_meta_id_range_patch,service_registry_v33.csv,sample variance,
+267,STAT_STDDEV,MetaStatistics,True,extension_requires_meta_id_range_patch,service_registry_v33.csv,sample stddev,
+268,STAT_MEDIAN,MetaStatistics,True,extension_requires_meta_id_range_patch,service_registry_v33.csv,median,
+269,STAT_MODE,MetaStatistics,True,extension_requires_meta_id_range_patch,service_registry_v33.csv,mode first,
+270,STAT_QUARTILE,MetaStatistics,True,extension_requires_meta_id_range_patch,service_registry_v33.csv,quartile placeholder,
+271,STAT_PERCENTILE,MetaStatistics,True,extension_requires_meta_id_range_patch,service_registry_v33.csv,percentile placeholder,
+272,STAT_SKEWNESS,MetaStatistics,True,extension_requires_meta_id_range_patch,service_registry_v33.csv,skewness placeholder,
+273,STAT_KURTOSIS,MetaStatistics,True,extension_requires_meta_id_range_patch,service_registry_v33.csv,kurtosis placeholder,
+274,STAT_COVARIANCE,MetaStatistics,True,extension_requires_meta_id_range_patch,service_registry_v33.csv,covariance,
+275,STAT_ZSCORE,MetaStatistics,True,extension_requires_meta_id_range_patch,service_registry_v33.csv,z score,
+280,CORR_PEARSON,MetaStatistics,True,extension_requires_meta_id_range_patch,service_registry_v33.csv,pearson r scaled,
+281,CORR_SPEARMAN,MetaStatistics,True,extension_requires_meta_id_range_patch,service_registry_v33.csv,spearman placeholder,
+282,CORR_KENDALL,MetaStatistics,True,extension_requires_meta_id_range_patch,service_registry_v33.csv,kendall placeholder,
+290,REG_LINEAR,MetaRegression,True,extension_requires_meta_id_range_patch,service_registry_v33.csv,simple linear regression,
+291,REG_MULTIPLE,MetaRegression,False,extension_requires_meta_id_range_patch,service_registry_v33.csv,reserved,
+292,REG_POLYNOMIAL,MetaRegression,False,extension_requires_meta_id_range_patch,service_registry_v33.csv,reserved,
+293,REG_LOGISTIC,MetaRegression,False,extension_requires_meta_id_range_patch,service_registry_v33.csv,reserved,
+298,REG_PREDICT,MetaRegression,True,extension_requires_meta_id_range_patch,service_registry_v33.csv,predict y,
+299,REG_R2,MetaRegression,True,extension_requires_meta_id_range_patch,service_registry_v33.csv,r squared,
+300,TTEST_ONE,MetaHypothesis,True,extension_requires_meta_id_range_patch,service_registry_v33.csv,one sample t placeholder,
+301,TTEST_INDEPENDENT,MetaHypothesis,True,extension_requires_meta_id_range_patch,service_registry_v33.csv,independent t placeholder,
+302,TTEST_PAIRED,MetaHypothesis,True,extension_requires_meta_id_range_patch,service_registry_v33.csv,paired t placeholder,
+303,ZTEST_ONE,MetaHypothesis,True,extension_requires_meta_id_range_patch,service_registry_v33.csv,one sample z placeholder,
+304,ZTEST_TWO,MetaHypothesis,True,extension_requires_meta_id_range_patch,service_registry_v33.csv,two sample z placeholder,
+305,FTEST_VARIANCE,MetaHypothesis,True,extension_requires_meta_id_range_patch,service_registry_v33.csv,f variance placeholder,
+306,ANOVA_ONEWAY,MetaHypothesis,True,extension_requires_meta_id_range_patch,service_registry_v33.csv,oneway anova placeholder,
+307,ANOVA_TWOWAY,MetaHypothesis,False,extension_requires_meta_id_range_patch,service_registry_v33.csv,reserved,
+308,CHI_SQUARE,MetaHypothesis,True,extension_requires_meta_id_range_patch,service_registry_v33.csv,chi square placeholder,
+309,CHI_GOODNESS,MetaHypothesis,True,extension_requires_meta_id_range_patch,service_registry_v33.csv,goodness placeholder,
+310,STR_TRIM_SPACES,MetaString,,current_v33_stage4,,,
+311,STR_CONCAT,MetaString,,current_v33_stage4,,,
+312,STR_SUBSTR,MetaString,,current_v33_stage4,,,
+313,STR_PRINT,MetaString,,current_v33_stage4,,,
+314,STR_READ_CONSOLE,MetaString,,current_v33_stage4,,,
+315,STR_FROM_INT,MetaString,,current_v33_stage4,,,
+316,STR_TO_INT,MetaString,,current_v33_stage4,,,
+317,STR_APPEND_CHAR,MetaString,,current_v33_stage4,,,
+318,STR_REVERSE,MetaString,,current_v33_stage4,,,
+319,STR_STATUS,MetaString,,current_v33_stage4,,,
+320,POSTHOC_TUKEY,MetaPosthoc,True,extension_requires_meta_id_range_patch,service_registry_v33.csv,tukey placeholder,
+321,POSTHOC_DUNCAN,MetaPosthoc,True,extension_requires_meta_id_range_patch,service_registry_v33.csv,duncan placeholder,
+322,POSTHOC_DUNNETT,MetaPosthoc,True,extension_requires_meta_id_range_patch,service_registry_v33.csv,dunnett placeholder,
+323,POSTHOC_BONFERRONI,MetaPosthoc,True,extension_requires_meta_id_range_patch,service_registry_v33.csv,bonferroni placeholder,
+324,POSTHOC_SCHEFFE,MetaPosthoc,True,extension_requires_meta_id_range_patch,service_registry_v33.csv,scheffe placeholder,
+325,POSTHOC_LSD,MetaPosthoc,True,extension_requires_meta_id_range_patch,service_registry_v33.csv,lsd placeholder,
+340,AI_NORMALIZE_MINMAX,MetaAI,True,extension_requires_meta_id_range_patch,service_registry_v33.csv,minmax normalize,
+341,AI_NORMALIZE_ZSCORE,MetaAI,True,extension_requires_meta_id_range_patch,service_registry_v33.csv,zscore normalize,
+342,AI_ONEHOT,MetaAI,False,extension_requires_meta_id_range_patch,service_registry_v33.csv,reserved,
+343,AI_TRAIN_TEST_SPLIT,MetaAI,False,extension_requires_meta_id_range_patch,service_registry_v33.csv,reserved,
+344,AI_SHUFFLE,MetaAI,False,extension_requires_meta_id_range_patch,service_registry_v33.csv,reserved,
+345,AI_CONFUSION_MATRIX,MetaAI,True,extension_requires_meta_id_range_patch,service_registry_v33.csv,confusion matrix placeholder,
+346,AI_ACCURACY,MetaAI,True,extension_requires_meta_id_range_patch,service_registry_v33.csv,accuracy,
+347,AI_PRECISION,MetaAI,True,extension_requires_meta_id_range_patch,service_registry_v33.csv,precision,
+348,AI_RECALL,MetaAI,True,extension_requires_meta_id_range_patch,service_registry_v33.csv,recall,
+349,AI_F1,MetaAI,True,extension_requires_meta_id_range_patch,service_registry_v33.csv,f1 score,
+350,AI_DISTANCE_EUCLIDEAN,MetaAI,True,extension_requires_meta_id_range_patch,service_registry_v33.csv,euclidean distance,
+351,AI_DISTANCE_COSINE,MetaAI,True,extension_requires_meta_id_range_patch,service_registry_v33.csv,cosine distance placeholder,
+352,AI_KNN_BASIC,MetaAI,False,extension_requires_meta_id_range_patch,service_registry_v33.csv,reserved,
+353,AI_LINEAR_LAYER,MetaAI,False,extension_requires_meta_id_range_patch,service_registry_v33.csv,reserved,
+354,AI_SIGMOID,MetaAI,True,extension_requires_meta_id_range_patch,service_registry_v33.csv,sigmoid scaled,
+355,AI_RELU,MetaAI,True,extension_requires_meta_id_range_patch,service_registry_v33.csv,relu,
+356,AI_SOFTMAX,MetaAI,False,extension_requires_meta_id_range_patch,service_registry_v33.csv,reserved,
+357,STR_FORMAT_INT,MetaStringExt,True,stage9,runtime_string_ext_services.bas,Format integer to data string,uses T-relative argument frame
+358,STR_HASH8,MetaStringExt,True,stage9,runtime_string_ext_services.bas,8-bit additive hash,uses T-relative argument frame
+359,STR_HASH32,MetaStringExt,True,stage9,runtime_string_ext_services.bas,FNV-1a 32-bit hash masked to cell,uses T-relative argument frame
+360,RAND_SEED,MetaProbability,True,extension_requires_meta_id_range_patch,service_registry_v35.csv,,
+361,RAND_UNIFORM_01,MetaProbability,True,extension_requires_meta_id_range_patch,service_registry_v35.csv,,
+362,RAND_INT_RANGE,MetaProbability,True,extension_requires_meta_id_range_patch,service_registry_v35.csv,,
+363,RAND_NORMAL,MetaProbability,True,extension_requires_meta_id_range_patch,service_registry_v35.csv,,
+364,RAND_POISSON,MetaProbability,True,extension_requires_meta_id_range_patch,service_registry_v35.csv,,
+365,RAND_BINOMIAL,MetaProbability,True,extension_requires_meta_id_range_patch,service_registry_v35.csv,,
+366,RAND_WEIGHTED,MetaProbability,True,extension_requires_meta_id_range_patch,service_registry_v35.csv,,
+367,RAND_SECURE_BYTE,MetaProbability,True,extension_requires_meta_id_range_patch,service_registry_v35.csv,,
+368,RAND_BERNOULLI,MetaProbability,True,extension_requires_meta_id_range_patch,service_registry_v35.csv,,
+369,RAND_SHUFFLE_DATA,MetaProbability,True,extension_requires_meta_id_range_patch,service_registry_v35.csv,,
+370,STR_HEX_ENCODE,MetaStringExt,True,stage9,runtime_string_ext_services.bas,Encode bytes to hex ASCII,uses T-relative argument frame
+371,STR_HEX_DECODE,MetaStringExt,True,stage9,runtime_string_ext_services.bas,Decode hex ASCII to bytes,uses T-relative argument frame
+372,STR_URL_ENCODE,MetaStringExt,True,stage9,runtime_string_ext_services.bas,Percent-encode URL text,uses T-relative argument frame
+373,STR_URL_DECODE,MetaStringExt,True,stage9,runtime_string_ext_services.bas,Percent-decode URL text,uses T-relative argument frame
+379,STR_TEXT_STATUS,MetaStringExt,True,stage9,runtime_string_ext_services.bas,Return last string/text status,uses T-relative argument frame
+390,NUM_NEWTON_RAPHSON,MetaNumericMethods,True,extension_requires_meta_id_range_patch,service_registry_v35.csv,,
+391,NUM_BISECTION,MetaNumericMethods,True,extension_requires_meta_id_range_patch,service_registry_v35.csv,,
+392,NUM_SECANT,MetaNumericMethods,True,extension_requires_meta_id_range_patch,service_registry_v35.csv,,
+393,NUM_INTEGRAL_TRAPEZOID,MetaNumericMethods,True,extension_requires_meta_id_range_patch,service_registry_v35.csv,,
+394,NUM_INTEGRAL_SIMPSON,MetaNumericMethods,True,extension_requires_meta_id_range_patch,service_registry_v35.csv,,
+395,NUM_INTERPOLATE_LINEAR,MetaNumericMethods,True,extension_requires_meta_id_range_patch,service_registry_v35.csv,,
+396,NUM_BEZIER_QUADRATIC,MetaNumericMethods,True,extension_requires_meta_id_range_patch,service_registry_v35.csv,,
+397,NUM_RUNGE_KUTTA4_LINEAR,MetaNumericMethods,True,extension_requires_meta_id_range_patch,service_registry_v35.csv,,
+398,NUM_ODE_INFO,MetaNumericMethods,True,extension_requires_meta_id_range_patch,service_registry_v35.csv,,
+399,NUM_PDE_RESERVED,MetaNumericMethods,True,extension_requires_meta_id_range_patch,service_registry_v35.csv,,
+400,FILE_OPEN_READ_TEXT,MetaFileServices,True,extension_requires_meta_id_range_patch,UXM_FILE_IO_SERVICES.md,Full UXM_FILE_V1 file service set. Smaller v32 file patch also uses @400..@406 with different frame; use this full version as canonical.,"T-3=name_start, T-2=name_len, T-1=reserved"
+400,NUM_SPLINE_RESERVED,MetaNumericMethods,True,extension_requires_meta_id_range_patch,service_registry_v35.csv,,
+401,FILE_OPEN_WRITE_TEXT,MetaFileServices,True,extension_requires_meta_id_range_patch,UXM_FILE_IO_SERVICES.md,Full UXM_FILE_V1 file service set. Smaller v32 file patch also uses @400..@406 with different frame; use this full version as canonical.,"T-3=name_start, T-2=name_len, T-1=reserved"
+401,NUM_ADAPTIVE_INTEGRAL_RESERVED,MetaNumericMethods,True,extension_requires_meta_id_range_patch,service_registry_v35.csv,,
+402,FILE_OPEN_APPEND_TEXT,MetaFileServices,True,extension_requires_meta_id_range_patch,UXM_FILE_IO_SERVICES.md,Full UXM_FILE_V1 file service set. Smaller v32 file patch also uses @400..@406 with different frame; use this full version as canonical.,"T-3=name_start, T-2=name_len, T-1=reserved"
+403,FILE_OPEN_BINARY_READ,MetaFileServices,True,extension_requires_meta_id_range_patch,UXM_FILE_IO_SERVICES.md,Full UXM_FILE_V1 file service set. Smaller v32 file patch also uses @400..@406 with different frame; use this full version as canonical.,"T-3=name_start, T-2=name_len, T-1=reserved"
+404,FILE_OPEN_BINARY_WRITE,MetaFileServices,True,extension_requires_meta_id_range_patch,UXM_FILE_IO_SERVICES.md,Full UXM_FILE_V1 file service set. Smaller v32 file patch also uses @400..@406 with different frame; use this full version as canonical.,"T-3=name_start, T-2=name_len, T-1=reserved"
+405,FILE_CLOSE,MetaFileServices,True,extension_requires_meta_id_range_patch,UXM_FILE_IO_SERVICES.md,Full UXM_FILE_V1 file service set. Smaller v32 file patch also uses @400..@406 with different frame; use this full version as canonical.,T-1=handle
+406,FILE_READ_BYTE,MetaFileServices,True,extension_requires_meta_id_range_patch,UXM_FILE_IO_SERVICES.md,Full UXM_FILE_V1 file service set. Smaller v32 file patch also uses @400..@406 with different frame; use this full version as canonical.,T-1=handle
+407,FILE_WRITE_BYTE,MetaFileServices,True,extension_requires_meta_id_range_patch,UXM_FILE_IO_SERVICES.md,Full UXM_FILE_V1 file service set. Smaller v32 file patch also uses @400..@406 with different frame; use this full version as canonical.,"T-2=handle, T-1=byte"
+408,FILE_READ_LINE,MetaFileServices,True,extension_requires_meta_id_range_patch,UXM_FILE_IO_SERVICES.md,Full UXM_FILE_V1 file service set. Smaller v32 file patch also uses @400..@406 with different frame; use this full version as canonical.,"T-3=handle, T-2=dst_data_start, T-1=max_len"
+409,FILE_WRITE_LINE,MetaFileServices,True,extension_requires_meta_id_range_patch,UXM_FILE_IO_SERVICES.md,Full UXM_FILE_V1 file service set. Smaller v32 file patch also uses @400..@406 with different frame; use this full version as canonical.,"T-3=handle, T-2=src_data_start, T-1=len"
+410,FILE_READ_BLOCK,MetaFileServices,True,extension_requires_meta_id_range_patch,UXM_FILE_IO_SERVICES.md,Full UXM_FILE_V1 file service set. Smaller v32 file patch also uses @400..@406 with different frame; use this full version as canonical.,"T-4=handle, T-3=space, T-2=dst_start, T-1=max_count"
+411,FILE_WRITE_BLOCK,MetaFileServices,True,extension_requires_meta_id_range_patch,UXM_FILE_IO_SERVICES.md,Full UXM_FILE_V1 file service set. Smaller v32 file patch also uses @400..@406 with different frame; use this full version as canonical.,"T-4=handle, T-3=space, T-2=src_start, T-1=count"
+412,FILE_SEEK,MetaFileServices,True,extension_requires_meta_id_range_patch,UXM_FILE_IO_SERVICES.md,Full UXM_FILE_V1 file service set. Smaller v32 file patch also uses @400..@406 with different frame; use this full version as canonical.,"T-2=handle, T-1=position_zero_based"
+413,FILE_TELL,MetaFileServices,True,extension_requires_meta_id_range_patch,UXM_FILE_IO_SERVICES.md,Full UXM_FILE_V1 file service set. Smaller v32 file patch also uses @400..@406 with different frame; use this full version as canonical.,T-1=handle
+414,FILE_SIZE,MetaFileServices,True,extension_requires_meta_id_range_patch,UXM_FILE_IO_SERVICES.md,Full UXM_FILE_V1 file service set. Smaller v32 file patch also uses @400..@406 with different frame; use this full version as canonical.,T-1=handle
+415,FILE_EXISTS,MetaFileServices,True,extension_requires_meta_id_range_patch,UXM_FILE_IO_SERVICES.md,Full UXM_FILE_V1 file service set. Smaller v32 file patch also uses @400..@406 with different frame; use this full version as canonical.,"T-2=name_start, T-1=name_len"
+416,FILE_DELETE_RESERVED,MetaFileServices,True,extension_requires_meta_id_range_patch,UXM_FILE_IO_SERVICES.md,Full UXM_FILE_V1 file service set. Smaller v32 file patch also uses @400..@406 with different frame; use this full version as canonical.,
+417,FILE_RENAME_RESERVED,MetaFileServices,True,extension_requires_meta_id_range_patch,UXM_FILE_IO_SERVICES.md,Full UXM_FILE_V1 file service set. Smaller v32 file patch also uses @400..@406 with different frame; use this full version as canonical.,
+418,FILE_MKDIR_RESERVED,MetaFileServices,True,extension_requires_meta_id_range_patch,UXM_FILE_IO_SERVICES.md,Full UXM_FILE_V1 file service set. Smaller v32 file patch also uses @400..@406 with different frame; use this full version as canonical.,
+419,FILE_STATUS,MetaFileServices,True,extension_requires_meta_id_range_patch,UXM_FILE_IO_SERVICES.md,Full UXM_FILE_V1 file service set. Smaller v32 file patch also uses @400..@406 with different frame; use this full version as canonical.,none
+420,FILE_FLUSH,MetaFileServices,True,extension_requires_meta_id_range_patch,UXM_FILE_IO_SERVICES.md,Full UXM_FILE_V1 file service set. Smaller v32 file patch also uses @400..@406 with different frame; use this full version as canonical.,T-1=handle
+421,FILE_OPEN_BINARY_APPEND,MetaFileServices,True,extension_requires_meta_id_range_patch,UXM_FILE_IO_SERVICES.md,Full UXM_FILE_V1 file service set. Smaller v32 file patch also uses @400..@406 with different frame; use this full version as canonical.,"T-3=name_start, T-2=name_len, T-1=reserved"
+440,CPLX_INIT,MetaComplex,True,extension_requires_meta_id_range_patch,service_registry_v35.csv,,
+441,CPLX_ADD,MetaComplex,True,extension_requires_meta_id_range_patch,service_registry_v35.csv,,
+442,CPLX_SUB,MetaComplex,True,extension_requires_meta_id_range_patch,service_registry_v35.csv,,
+443,CPLX_MUL,MetaComplex,True,extension_requires_meta_id_range_patch,service_registry_v35.csv,,
+444,CPLX_DIV,MetaComplex,True,extension_requires_meta_id_range_patch,service_registry_v35.csv,,
+445,CPLX_CONJ,MetaComplex,True,extension_requires_meta_id_range_patch,service_registry_v35.csv,,
+446,CPLX_ABS,MetaComplex,True,extension_requires_meta_id_range_patch,service_registry_v35.csv,,
+447,CPLX_ARG,MetaComplex,True,extension_requires_meta_id_range_patch,service_registry_v35.csv,,
+448,CPLX_EXP,MetaComplex,True,extension_requires_meta_id_range_patch,service_registry_v35.csv,,
+449,CPLX_FROM_POLAR,MetaComplex,True,extension_requires_meta_id_range_patch,service_registry_v35.csv,,
+450,CPLX_PRINT_RESERVED,MetaComplex,True,extension_requires_meta_id_range_patch,service_registry_v35.csv,,
+480,BIO_BASE_ENCODE,MetaBio,True,v3.3-stage9-active,runtime_bio_services.bas,"Stage-8 BIO/codon/protein numeric service. Base order A=0,C=1,G=2,T/U=3.",T-1=ASCII base
+481,BIO_CODON_ENCODE,MetaBio,True,v3.3-stage9-active,runtime_bio_services.bas,"Stage-8 BIO/codon/protein numeric service. Base order A=0,C=1,G=2,T/U=3.",T-3/T-2/T-1=ASCII bases
+482,BIO_CODON_TO_AA,MetaBio,True,v3.3-stage9-active,runtime_bio_services.bas,"Stage-8 BIO/codon/protein numeric service. Base order A=0,C=1,G=2,T/U=3.",T-1=codon id 0..63
+483,BIO_TRANSLATE,MetaBio,True,v3.3-stage9-active,runtime_bio_services.bas,"Stage-8 BIO/codon/protein numeric service. Base order A=0,C=1,G=2,T/U=3.","T-4=src,T-3=len,T-2=dst,T-1=dstMax"
+484,BIO_GC_CONTENT,MetaBio,True,v3.3-stage9-active,runtime_bio_services.bas,"Stage-8 BIO/codon/protein numeric service. Base order A=0,C=1,G=2,T/U=3.","T-2=src,T-1=len"
+485,BIO_ORF_FIND,MetaBio,True,v3.3-stage9-active,runtime_bio_services.bas,"Stage-8 BIO/codon/protein numeric service. Base order A=0,C=1,G=2,T/U=3.","T-2=src,T-1=len"
+486,BIO_AA_COUNT,MetaBio,True,v3.3-stage9-active,runtime_bio_services.bas,"Stage-8 BIO/codon/protein numeric service. Base order A=0,C=1,G=2,T/U=3.","T-3=aaSrc,T-2=len,T-1=AA ASCII"
+487,BIO_MOTIF_FIND,MetaBio,True,v3.3-stage9-active,runtime_bio_services.bas,"Stage-8 BIO/codon/protein numeric service. Base order A=0,C=1,G=2,T/U=3.","T-4=src,T-3=len,T-2=motif,T-1=motifLen"
+511,BIO_STATUS,MetaBio,True,v3.3-stage9-active,runtime_bio_services.bas,"Stage-8 BIO/codon/protein numeric service. Base order A=0,C=1,G=2,T/U=3.",
+512,MAT_ADV_DET_N,MetaMatrixAdvancedTensor,,v3.3-stage10-active,,,T-3=A
+513,MAT_ADV_INVERSE_2,MetaMatrixAdvancedTensor,,v3.3-stage10-active,,,"T-4=dst,T-3=A"
+514,MAT_ADV_RANK,MetaMatrixAdvancedTensor,,v3.3-stage10-active,,,T-3=A
+516,MAT_ADV_NORM_INF,MetaMatrixAdvancedTensor,,v3.3-stage10-active,,,T-3=A
+517,MAT_ADV_FROBENIUS2,MetaMatrixAdvancedTensor,,v3.3-stage10-active,,,T-3=A
+518,MAT_ADV_LU2,MetaMatrixAdvancedTensor,,v3.3-stage10-active,,,"T-4=L,T-2=U,T-3=A"
+519,MAT_ADV_INFO,MetaMatrixAdvancedTensor,,v3.3-stage10-active,,,none
+540,TENSOR_INIT2D,MetaMatrixAdvancedTensor,,v3.3-stage10-active,,,"T-4=base,T-3=dim0,T-2=dim1"
+541,TENSOR_SET2D,MetaMatrixAdvancedTensor,,v3.3-stage10-active,,,"T-4=base,T-3=row,T-2=col,T-1=value"
+542,TENSOR_GET2D,MetaMatrixAdvancedTensor,,v3.3-stage10-active,,,"T-4=base,T-3=row,T-2=col"
+543,TENSOR_FILL,MetaMatrixAdvancedTensor,,v3.3-stage10-active,,,"T-4=base,T-3=value"
+544,TENSOR_SUM,MetaMatrixAdvancedTensor,,v3.3-stage10-active,,,T-4=base
+545,TENSOR_SHAPE,MetaMatrixAdvancedTensor,,v3.3-stage10-active,,,T-4=base
+559,TENSOR_INFO,MetaMatrixAdvancedTensor,,v3.3-stage10-active,,,none
+575,TENSOR_RESHAPE,,,,,,
+576,TENSOR_FLATTEN_TO_2D,,,,,,
+577,TENSOR_SLICE3D_AXIS1_TO_2D,,,,,,
+578,TENSOR_SLICE3D_AXIS2_TO_2D,,,,,,
+581,TENSOR_BROADCAST_ADD,,,,,,
+582,TENSOR_BROADCAST_SHAPE,,,,,,
+583,TENSOR_RESHAPE_INFER,,,,,,
+584,TENSOR_FLATTEN_TO_1D,,,,,,
+600,VEC_INIT,,,,,,
+601,VEC_SET,,,,,,
+602,VEC_GET,,,,,,
+603,VEC_FILL,,,,,,
+604,VEC_SUM,,,,,,
+605,VEC_DOT,,,,,,
+606,VEC_NORM1,,,,,,
+607,VEC_NORM2_SQ,,,,,,
+608,VEC_ADD,,,,,,
+609,VEC_SCALE,,,,,,
+610,VEC_FROM_DATA,,,,,,
+611,VEC_TO_DATA,,,,,,
+619,VEC_INFO,,,,,,
+640,SPARSE_INIT,,,,,,
+641,SPARSE_SET_NNZ,,,,,,
+642,SPARSE_SET_ENTRY,,,,,,
+643,SPARSE_GET_ENTRY_VALUE,,,,,,
+644,SPARSE_MATVEC,,,,,,
+645,SPARSE_TO_DENSE,,,,,,
+646,SPARSE_NNZ,,,,,,
+647,SPARSE_SUM_VALUES,,,,,,
+648,SPARSE_TRACE,,,,,,
+649,SPARSE_INFO,,,,,,
+520,LINALG_DET_N,MetaLinalgAdvanced,,v3.3-stage14-active,,,
+521,LINALG_RANK,MetaLinalgAdvanced,,v3.3-stage14-active,,,
+522,LINALG_UPPER_TRIANGULAR,MetaLinalgAdvanced,,v3.3-stage14-active,,,
+523,LINALG_DIAG_PRODUCT,MetaLinalgAdvanced,,v3.3-stage14-active,,,
+524,LINALG_INVERSE_NXN,MetaLinalgAdvanced,,v3.3-stage14-active,,,
+525,LINALG_SOLVE_NXN,MetaLinalgAdvanced,,v3.3-stage14-active,,,
+526,LINALG_MATVEC,MetaLinalgAdvanced,,v3.3-stage14-active,,,
+527,LINALG_IS_IDENTITY,MetaLinalgAdvanced,,v3.3-stage14-active,,,
+528,LINALG_IS_SYMMETRIC,MetaLinalgAdvanced,,v3.3-stage14-active,,,
+529,LINALG_ROW_SUM,MetaLinalgAdvanced,,v3.3-stage14-active,,,
+530,LINALG_COL_SUM,MetaLinalgAdvanced,,v3.3-stage14-active,,,
+531,LINALG_SWAP_ROWS,MetaLinalgAdvanced,,v3.3-stage14-active,,,
+532,LINALG_SCALE_ROW,MetaLinalgAdvanced,,v3.3-stage14-active,,,
+533,LINALG_ADD_ROW_MULTIPLE,MetaLinalgAdvanced,,v3.3-stage14-active,,,
+539,LINALG_INFO,MetaLinalgAdvanced,,v3.3-stage14-active,,,
+700,ML_RELU,MetaMLDataPipeline,,active,,,
+701,ML_STEP,MetaMLDataPipeline,,active,,,
+702,ML_SIGMOID_FAST1000,MetaMLDataPipeline,,active,,,
+703,ML_DOT_BIAS,MetaMLDataPipeline,,active,,,
+704,ML_PERCEPTRON_PREDICT,MetaMLDataPipeline,,active,,,
+705,ML_MSE,MetaMLDataPipeline,,active,,,
+706,ML_MAE,MetaMLDataPipeline,,active,,,
+707,ML_ARGMAX,MetaMLDataPipeline,,active,,,
+708,ML_PERCEPTRON_UPDATE,MetaMLDataPipeline,,active,,,
+709,ML_LINEAR_GRAD_STEP,MetaMLDataPipeline,,active,,,
+710,ML_CLAMP,MetaMLDataPipeline,,active,,,
+719,ML_INFO,MetaMLDataPipeline,,active,,,
+730,DATASET_INIT,MetaMLDataPipeline,,active,,,
+731,DATASET_SET_X,MetaMLDataPipeline,,active,,,
+732,DATASET_GET_X,MetaMLDataPipeline,,active,,,
+733,DATASET_SET_Y,MetaMLDataPipeline,,active,,,
+734,DATASET_GET_Y,MetaMLDataPipeline,,active,,,
+735,DATASET_ROW_TO_VEC,MetaMLDataPipeline,,active,,,
+736,DATASET_ROW_DOT_VEC,MetaMLDataPipeline,,active,,,
+737,DATASET_COL_SUM,MetaMLDataPipeline,,active,,,
+738,DATASET_Y_SUM,MetaMLDataPipeline,,active,,,
+739,DATASET_INFO,MetaMLDataPipeline,,active,,,
+740,PIPE_DATA_TO_VEC,MetaMLDataPipeline,,active,,,
+741,PIPE_VEC_TO_DATA,MetaMLDataPipeline,,active,,,
+742,PIPE_LINEAR_PREDICT_DATA,MetaMLDataPipeline,,active,,,
+743,PIPE_EVAL_MSE_DATASET,MetaMLDataPipeline,,active,,,
+744,PIPE_BATCH_Y_SUM,MetaMLDataPipeline,,active,,,
+745,PIPE_BATCH_ROW_TO_VEC,MetaMLDataPipeline,,active,,,
+746,PIPE_FEATURE_SCALE_CONST,MetaMLDataPipeline,,active,,,
+747,PIPE_DATASET_TO_DENSE,MetaMLDataPipeline,,active,,,
+748,PIPE_STATUS,MetaMLDataPipeline,,active,,,
+759,PIPE_INFO,MetaMLDataPipeline,,active,,,
