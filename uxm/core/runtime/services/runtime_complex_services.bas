@@ -142,12 +142,17 @@ Sub MetaComplex(ByVal metaId As ULongInt)
         CplxStore ToSignedValue(ReadTapeRel(-2)), CDbl(ToSignedValue(ReadTapeRel(-1))) / UXM_CPLX_SCALE * Cos(CDbl(ToSignedValue(ReadTapeRel(0))) / UXM_CPLX_SCALE), CDbl(ToSignedValue(ReadTapeRel(-1))) / UXM_CPLX_SCALE * Sin(CDbl(ToSignedValue(ReadTapeRel(0))) / UXM_CPLX_SCALE)
         SetResult ux_cplx_status
         CplxSetLocalStatus ux_cplx_status
-    Case 450 ' CPLX_PRINT_RESERVED: placeholder for reserved print functionality
-        ' TODO: implement complex print/output
+    Case 450 ' CPLX_PRINT_RESERVED: print complex value to console
         aBase = ToSignedValue(ReadTapeRel(-1))
         CplxGet aBase, ar, ai
-        ' Placeholder: return status 0
-        SetResult 0
+        If ai >= 0 Then
+            Print "[UXM CPLX] ("; ar; " + "; ai; "i)"
+        Else
+            Print "[UXM CPLX] ("; ar; " - "; Abs(ai); "i)"
+        End If
+        Print
+        SetStatus STATUS_OK
+        SetResult STATUS_OK
         CplxSetLocalStatus 0
     Case 459 ' CPLX_STATUS
         SetResult ux_cplx_status
