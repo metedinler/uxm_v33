@@ -218,6 +218,14 @@ Sub MetaNumericMethods(ByVal metaId As ULongInt)
         SetResult FromSignedValue(CLngInt(NumRK4Linear(CDbl(ToSignedValue(ReadTapeRel(-4))), CDbl(ToSignedValue(ReadTapeRel(-3))) / UXM_NUM_SCALE, CDbl(ToSignedValue(ReadTapeRel(-2))) / UXM_NUM_SCALE, ToSignedValue(ReadTapeRel(-1))) * UXM_NUM_SCALE))
         SetLogicFlags ResultValue()
         NumSetLocalStatus 0
+    Case 428 ' NUM_ODE_INFO: placeholder for ODE info (remapped from 398)
+        ' TODO: implement NUM_ODE_INFO - placeholder returns status 0
+        SetResult 0
+        NumSetLocalStatus 0
+    Case 429 ' NUM_PDE_RESERVED: placeholder for PDE reserved (remapped from 399)
+        ' TODO: implement NUM_PDE_RESERVED - reserved placeholder
+        SetResult 0
+        NumSetLocalStatus 0
     Case 439 ' NUM_STATUS
         SetResult ux_num_status
         SetLogicFlags ResultValue()

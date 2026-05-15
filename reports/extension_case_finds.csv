@@ -95,6 +95,8 @@ id,file,line,snippet
 395,uxm/core/runtime/services/runtime_numeric_methods_services.bas,209,"Case 425 ' NUM_INTERP_LINEAR: T-4 xBase,T-3 yBase,T-2 count,T-1 x_raw -> y_raw_scaled  # remapped from 425"
 396,uxm/core/runtime/services/runtime_numeric_methods_services.bas,213,"Case 426 ' NUM_BEZIER_QUADRATIC: T-4 p0,T-3 p1,T-2 p2,T-1 t_scaled -> result_scaled  # remapped from 426"
 397,uxm/core/runtime/services/runtime_numeric_methods_services.bas,217,"Case 427 ' NUM_RK4_LINEAR: T-4 y0,T-3 a_scaled,T-2 dt_scaled,T-1 steps -> y_scaled  # remapped from 427"
+398,uxm/core/runtime/services/runtime_numeric_methods_services.bas,221,Case 428 ' NUM_ODE_INFO: placeholder for ODE info (remapped from 398)  # remapped from 428
+399,uxm/core/runtime/services/runtime_numeric_methods_services.bas,225,Case 429 ' NUM_PDE_RESERVED: placeholder for PDE reserved (remapped from 399)  # remapped from 429
 400,onceki_src/runtime/services/runtime_file_services.bas,388,Case 400
 400,onceki_src/v17/uxm__core__runtime__services__runtime_file_services.bas,388,Case 400
 400,uxm/core/runtime/services/runtime_file_services.bas,434,Case 400
