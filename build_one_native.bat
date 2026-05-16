@@ -27,14 +27,14 @@ if %errorlevel%==0 set LINK=1
 REM Locate FreeBASIC compilers (prefer tools/ copies if present)
 set FBC64=
 set FBC32=
-if exist "tools\FreeBASIC-1.10.1-win64\fbc.exe" set FBC64=tools\FreeBASIC-1.10.1-win64\fbc.exe
-if exist "C:\Program Files\FreeBASIC\fbc.exe" set FBC64=C:\Program Files\FreeBASIC\fbc.exe
-if exist "C:\Program Files (x86)\FreeBASIC\fbc.exe" set FBC32=C:\Program Files (x86)\FreeBASIC\fbc.exe
+if exist "tools\FreeBASIC-1.10.1-win64\fbc.exe" set "FBC64=tools\FreeBASIC-1.10.1-win64\fbc.exe"
+if exist "C:\Program Files\FreeBASIC\fbc.exe" set "FBC64=C:\Program Files\FreeBASIC\fbc.exe"
+if exist "C:\Program Files (x86)\FreeBASIC\fbc.exe" set "FBC32=C:\Program Files (x86)\FreeBASIC\fbc.exe"
 
 if "%ARCH%"=="x64" (
-  if defined FBC64 (set FBC=%FBC64%) else (set FBC=fbc)
+  if defined FBC64 (set "FBC=!FBC64!") else (set "FBC=fbc")
 ) else (
-  if defined FBC32 (set FBC=%FBC32%) else if defined FBC64 (set FBC=%FBC64%) else (set FBC=fbc)
+  if defined FBC32 (set "FBC=!FBC32!") else if defined FBC64 (set "FBC=!FBC64!") else (set "FBC=fbc")
 )
 
 if not exist build\exe mkdir build\exe
