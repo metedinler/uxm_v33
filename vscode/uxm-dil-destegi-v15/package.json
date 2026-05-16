@@ -1,20 +1,13 @@
 {
   "name": "uxm-dil-destegi-v15",
   "displayName": "UXM Dil Desteği / UXM Language Support",
-  "description": "UXM Türkçe ana dil, English command aliases, snippets and diagnostics task hooks.",
-  "version": "0.15.0",
+  "description": "UXM icin tek sayfa kontrol merkezi, trace izleme ve not yonetimi.",
+  "version": "0.16.0",
   "publisher": "mete",
   "engines": {
     "vscode": "^1.80.0"
   },
   "main": "./extension.js",
-  "activationEvents": [
-    "onCommand:uxm.openControlPanel",
-    "onCommand:uxm.compile",
-    "onCommand:uxm.runTests",
-    "onCommand:uxm.bellekTest",
-    "onCommand:uxm.hizliTara"
-  ],
   "categories": [
     "Programming Languages"
   ],
@@ -46,8 +39,12 @@
     ],
     "commands": [
       {
+        "command": "uxm.controlCenter",
+        "title": "UXM: Kontrol Merkezi"
+      },
+      {
         "command": "uxm.openControlPanel",
-        "title": "UXM: Open Control Panel"
+        "title": "UXM: Kontrol Merkezi (Uyumluluk)"
       },
       {
         "command": "uxm.compile",
@@ -87,19 +84,19 @@
       },
       {
         "command": "uxm.stage17",
-        "title": "UXM: Stage-17 Test Altyapısını Kontrol Et / Check Stage-17"
+        "title": "UXM: Stage-17 Kontrol"
       },
       {
         "command": "uxm.stage18",
-        "title": "UXM: Stage-18 Native Bridge Raporu / Native Bridge Report"
+        "title": "UXM: Stage-18 Rapor"
       },
       {
         "command": "uxm.stage19",
-        "title": "UXM: Stage-19 VSCode Temizliği / VSCode Cleanup"
+        "title": "UXM: Stage-19 Temizlik"
       },
       {
         "command": "uxm.stage20",
-        "title": "UXM: Stage-20 Release Raporu / Release Report"
+        "title": "UXM: Stage-20 Release"
       }
     ]
   }
