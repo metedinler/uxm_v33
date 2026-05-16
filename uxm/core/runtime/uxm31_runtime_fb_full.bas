@@ -1,10 +1,15 @@
 #Lang "fb"
-Declare Sub uxm_entry()
+Extern "C"
+Declare Sub uxm_entry Alias "uxm_entry"()
+End Extern
 Declare Sub ux_putc(ByVal ch As ULongInt)
 Declare Function ux_getc() As ULongInt
 Declare Sub ux_print_data_string(ByVal startCell As ULongInt, ByVal cellBits As ULongInt)
-Declare Sub ux_meta_call_ex(ByVal metaId As ULongInt, ByVal memPtr As UByte Ptr)
+Extern "C"
+Declare Sub ux_meta_call_ex Alias "ux_meta_call_ex" (ByVal metaId As ULongInt, ByVal memPtr As UByte Ptr)
 Declare Sub ux_runtime_error(ByVal code As ULongInt)
+End Extern
+Extern "C"
 Extern ux_mem As UByte
 Extern ux_status As UByte
 Extern ux_flags As UShort
@@ -18,6 +23,7 @@ Extern ux_data_cells As ULong
 Extern ux_queue_cells As ULong
 Extern ux_stack_offset As ULong
 Extern ux_data_offset As ULong
+End Extern
 Const FLAG_Z As UShort=&H0001
 Const FLAG_C As UShort=&H0002
 Const FLAG_O As UShort=&H0004
