@@ -1,0 +1,9 @@
+{
+  "created_at": "2026-05-10T01:10:59.049536",
+  "source_archive_folder": "/mnt/data/UXM_ALL_TEST_FILES_ARCHIVE/01_all_tests_by_package",
+  "source_uxm_count": 1685,
+  "runnable_with_expected_count": 1054,
+  "excluded_without_expected_count": 631,
+  "unique_names_enforced": true,
+  "note": "Runner only includes tests with sibling .expect or embedded # EXPECT_OUTPUT. Excluded tests are intentionally not run."
+}

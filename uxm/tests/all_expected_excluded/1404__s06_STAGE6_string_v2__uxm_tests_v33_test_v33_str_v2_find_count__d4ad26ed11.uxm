@@ -1,0 +1,19 @@
+# V3.3 Stage-6 STR V2: find/count text
+# Expected output: 1 2
+#memory tape=64,stack=8,data=32,queue=4
+#cell byte
+s1=0,{BANANA}
+s2=16,{ANA}
+>>>>>>
+0(T-4)+k0
+0(T-3)+k6
+0(T-2)+k16
+0(T-1)+k3
+@340
+@61
+0(T-4)+k0
+0(T-3)+k6
+0(T-2)+k16
+0(T-1)+k3
+@341
+@61

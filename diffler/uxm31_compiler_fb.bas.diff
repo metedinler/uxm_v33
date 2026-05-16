@@ -1,0 +1,26 @@
+--- onceki_src/uxm/core/compiler/native/uxm31_compiler_fb.bas
++++ guncel/uxm/core/compiler/native/uxm31_compiler_fb.bas
+@@ -1,5 +1,5 @@
+ #Lang "fb"
+-Const UXM_VERSION As String="3.3-stage15-16-ml-data"
++Const UXM_VERSION As String="3.3-stage15-16-ml-data-mem16m"
+ Const MAX_SRC As Long=2000000
+ Const MAX_INSTR As Long=200000
+ Const MAX_STRINGS As Long=1024
+@@ -10,11 +10,11 @@
+ Const UXM_DEFAULT_STACK_KB As Long=4
+ Const UXM_DEFAULT_DATA_KB As Long=16
+ Const UXM_DEFAULT_QUEUE_KB As Long=4
+-Const UXM_MAX_TAPE_KB As Long=512
+-Const UXM_MAX_STACK_KB As Long=256
+-Const UXM_MAX_DATA_KB As Long=256
+-Const UXM_MAX_QUEUE_KB As Long=256
+-Const UXM_MAX_TOTAL_KB As Long=1536
++Const UXM_MAX_TAPE_KB As Long=16384
++Const UXM_MAX_STACK_KB As Long=16384
++Const UXM_MAX_DATA_KB As Long=16384
++Const UXM_MAX_QUEUE_KB As Long=16384
++Const UXM_MAX_TOTAL_KB As Long=16384
+ Const UXM_MEMORY_POLICY_BOUNDED As Long=0
+ Const UXM_MEMORY_POLICY_TOTAL As Long=1
+ Const OP_NOP As Long=0

@@ -1,0 +1,9 @@
+﻿test_path,expect_path
+uxm\tests\stage17\test_s17_01_expect_inline_prefix.uxm,uxm\tests\stage17\test_s17_01_expect_inline_prefix.expect
+uxm\tests\stage17\test_s17_02_expect_header_exact.uxm,uxm\tests\stage17\test_s17_02_expect_header_exact.expect
+uxm\tests\stage17\test_s17_03_expect_contains.uxm,uxm\tests\stage17\test_s17_03_expect_contains.expect
+uxm\tests\stage17\test_s17_04_status_div_zero.uxm,uxm\tests\stage17\test_s17_04_status_div_zero.expect
+uxm\tests\stage17\test_s17_05_error_flag_set_reset.uxm,uxm\tests\stage17\test_s17_05_error_flag_set_reset.expect
+uxm\tests\stage17\test_s17_06_data_write_read_char.uxm,uxm\tests\stage17\test_s17_06_data_write_read_char.expect
+uxm\tests\stage17\test_s17_07_fifo_order.uxm,uxm\tests\stage17\test_s17_07_fifo_order.expect
+uxm\tests\stage17\test_s17_08_tape_sort_ascending.uxm,uxm\tests\stage17\test_s17_08_tape_sort_ascending.expect

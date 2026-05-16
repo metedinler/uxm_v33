@@ -1,0 +1,4 @@
+﻿test_path,expect_path
+uxm\tests\stage19\test_s19_01_vscode_snippet_memory.uxm,uxm\tests\stage19\test_s19_01_vscode_snippet_memory.expect
+uxm\tests\stage19\test_s19_02_trace_data_roundtrip.uxm,uxm\tests\stage19\test_s19_02_trace_data_roundtrip.expect
+uxm\tests\stage19\test_s19_03_diagnostic_contains.uxm,uxm\tests\stage19\test_s19_03_diagnostic_contains.expect

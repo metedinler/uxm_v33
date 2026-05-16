@@ -1,0 +1,31 @@
+# V3.3 Stage-5 FILE V1: text write/read line smoke test
+# Expected output: HELLO
+#memory tape=64,stack=8,data=128,queue=4
+#cell byte
+#mode normal
+s1=0,{uxm_stage5_line.tmp}
+s2=32,{HELLO}
+s3=64,{EMPTY}
+>>>>
+0(T-1)+k0
+@401
+$(T+1)
+%(T-2)
+0(T-1)+k32
+@409
+$(T-2)
+%(T-1)
+@405
+0(T-1)+k0
+@400
+$(T+1)
+%(T-3)
+0(T-2)+k64
+0(T-1)+k32
+@408
+0(T-1)+k64
+@313
+@!5
+$(T-3)
+%(T-1)
+@405

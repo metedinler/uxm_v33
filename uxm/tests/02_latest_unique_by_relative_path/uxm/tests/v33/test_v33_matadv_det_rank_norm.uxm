@@ -1,0 +1,21 @@
+# V3.3 Stage-10 Matrix Advanced: det/rank/norms
+# Matrix A=diag(2,3,4), det=24, rank=3, normInf=4, frobenius2=29
+# EXPECT_OUTPUT: 24 3 4 29
+#memory tape=64,stack=8,data=256,queue=4
+#cell dword
+#mode normal
+#compare signed
+>>>>>
+#matrix-signed 100 3 3 = 2,0,0,0,3,0,0,0,4
+0(T-3)+k100
+@512
+@61
+0(T-3)+k100
+@514
+@61
+0(T-3)+k100
+@516
+@61
+0(T-3)+k100
+@517
+@61

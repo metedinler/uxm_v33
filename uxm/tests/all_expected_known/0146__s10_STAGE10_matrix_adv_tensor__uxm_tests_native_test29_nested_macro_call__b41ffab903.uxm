@@ -1,0 +1,5 @@
+# TEST: nested macro call
+# EXPECT_OUTPUT: HI!
+m128={0+k72. @129 0+k33.}
+m129={0+k73.}
+@128

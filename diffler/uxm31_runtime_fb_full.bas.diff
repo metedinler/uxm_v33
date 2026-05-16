@@ -1,0 +1,12 @@
+--- onceki_src/uxm/core/runtime/uxm31_runtime_fb_full.bas
++++ guncel/uxm/core/runtime/uxm31_runtime_fb_full.bas
+@@ -46,7 +46,8 @@
+ Const STATUS_PROTECTED_META As UByte=24
+ Const STATUS_EOF As UByte=26
+ Const PI_D As Double=3.1415926535897932384626433832795
+-Const FIFO_STORAGE_BYTES As ULongInt=262144  ' 256 KB fiziksel FIFO/queue deposu
++Const UXM_RUNTIME_MAX_TOTAL_KB As ULongInt=16384  ' 16 MB toplam UXM bellek ust siniri
++Const FIFO_STORAGE_BYTES As ULongInt=16777216  ' 16 MB fiziksel FIFO/queue deposu
+ Dim Shared fifoMem(0 To FIFO_STORAGE_BYTES-1) As UByte
+ Dim Shared fifoHead As ULongInt
+ Dim Shared fifoTail As ULongInt

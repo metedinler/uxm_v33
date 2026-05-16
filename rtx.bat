@@ -1,0 +1,80 @@
+@echo off
+setlocal enabledelayedexpansion
+
+:: --- [STAGE SAYACI VE DOSYA ADI AYARI] ---
+set "STAGE_NO=1"
+:countLoop
+if exist "sonuc!STAGE_NO!.txt" (
+    set /a STAGE_NO+=1
+    goto countLoop
+)
+set "LOG_FILE=sonuc!STAGE_NO!.txt"
+:: -----------------------------------------
+
+echo ========================================
+echo "TOPLAM CALISMA ZAMANI BASLANGICI: %date% %time%"
+echo ========================================
+
+:: Arka plan log başlığı
+echo START_SESSION@%date%@%time% > "%LOG_FILE%"
+echo. >> "%LOG_FILE%"
+
+echo [1/2] Derleyici hazirlaniyor...
+echo START_BUILD@%time% >> "%LOG_FILE%"
+
+:: Derleyiciyi build et (Ekran çıktısını temiz tutmak için call build_native çağrılır)
+call build_native.bat >> "%LOG_FILE%" 2>&1
+
+echo END_BUILD@%time% >> "%LOG_FILE%"
+
+echo.
+echo [2/2] Testler kosturuluyor...
+
+set "TEST_DIRS=uxm\tests\fp uxm\tests\math uxm\tests\matrix uxm\tests\native uxm\tests\v33"
+
+for %%D in (%TEST_DIRS%) do (
+    echo.
+    echo Klasor Test Ediliyor: %%D
+    echo ----------------------------------------
+    echo ----------------------------------------
+    
+    echo. >> "%LOG_FILE%"
+    echo KLASOR@%%D >> "%LOG_FILE%"
+    echo. >> "%LOG_FILE%"
+
+    if exist "%%D\*.uxm" (
+        for %%F in (%%D\*.uxm) do (
+            :: Python verisi (Arka planda toplanıyor)
+            echo --------------------------------------- >> "%LOG_FILE%"
+            echo .T..E..S..T....B..A..S..I.............. >> "%LOG_FILE%"
+            echo DATA_START@%%F@!time! >> "%LOG_FILE%"
+            
+            :: Derleme ve Linkleme işlemini çağır
+            call build_one_native.bat "%%F" >> "%LOG_FILE%" 2>&1
+            
+            :: Hata kontrolü ve Ekran çıktısı (Senin istediğin düzen)
+            if errorlevel 1 (
+                echo Calistirildi: [BASARISIZ] %%F
+                echo RESULT@[BASARISIZ]@%%F >> "%LOG_FILE%"
+            ) else (
+                echo Calistirildi: [..BASARILI..] %%F
+                echo RESULT@[..BASARILI..]@%%F >> "%LOG_FILE%"
+            ) 
+            
+            echo DATA_END@%%F@!time! >> "%LOG_FILE%"
+            echo ....................................... >> "%LOG_FILE%"
+            echo -T--E--S--T----S--O--N--U-------------- >> "%LOG_FILE%"
+            ECHO. >> "%LOG_FILE%"
+            ECHO. >> "%LOG_FILE%"
+        )
+    ) else (
+        echo Uyari: %%D klasoru icinde .uxm dosyasi bulunamadi.
+    )
+)
+
+echo.
+echo "TOPLAM CALISMA ZAMANI SONU: %date% %time%"
+echo END_SESSION@%date%@%time% >> "%LOG_FILE%"
+echo.
+echo Rapor Olusturuldu: %LOG_FILE%
+pause

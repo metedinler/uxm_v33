@@ -1,0 +1,10 @@
+# TEST: #poly ile polinom integral
+# EXPECT_OUTPUT: 0 + 2x + 2x^2 + 2x^3 + 2x^4
+#poly 100 = 2,4,6,8
+>>
+0(T-2)+k180
+0(T-1)+k100
+0(T)
+@241
+0(T-1)+k180
+@243

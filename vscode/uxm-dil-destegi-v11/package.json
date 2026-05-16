@@ -1,0 +1,83 @@
+{
+  "name": "uxm-dil-destegi-v11",
+  "displayName": "UXM Dil Desteği / UXM Language Support",
+  "description": "UXM için Türkçe ve İngilizce komut bağlantıları, sözdizimi renklendirme ve snippet desteği.",
+  "version": "0.11.0",
+  "publisher": "mete-local",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "activationEvents": [
+    "onLanguage:uxm"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "languages": [
+      {
+        "id": "uxm",
+        "aliases": [
+          "UXM",
+          "uXBasic Macro"
+        ],
+        "extensions": [
+          ".uxm"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "uxm",
+        "scopeName": "source.uxm",
+        "path": "./syntaxes/uxm.tmLanguage.json"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "uxm",
+        "path": "./snippets/uxm.json"
+      }
+    ],
+    "commands": [
+      {
+        "command": "uxm.bellekTest",
+        "title": "UXM: Bellek Testi / Memory Test"
+      },
+      {
+        "command": "uxm.hizliTara",
+        "title": "UXM: Hızlı Tara / Fast Scan"
+      },
+      {
+        "command": "uxm.hataliTest",
+        "title": "UXM: Hatalı Testleri Koş / Run Failed Tests"
+      },
+      {
+        "command": "uxm.tumTest",
+        "title": "UXM: Tüm Testleri Koş / Run All Tests"
+      },
+      {
+        "command": "uxm.derleyiciDerle",
+        "title": "UXM: Derleyiciyi Derle / Build Compiler"
+      },
+      {
+        "command": "uxm.alanTopla",
+        "title": "UXM: Alanı Toparla / Clean Workspace"
+      },
+      {
+        "command": "uxm.raporGoster",
+        "title": "UXM: Rapor Göster / Show Report"
+      },
+      {
+        "command": "uxm.stage18Finish",
+        "title": "UXM: Stage 18 Tamamla / Finish Stage 18"
+      },
+      {
+        "command": "uxm.stage19Finish",
+        "title": "UXM: Stage 19 Tamamla / Finish Stage 19"
+      }
+    ]
+  }
+}

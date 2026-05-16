@@ -1,0 +1,46 @@
+# V3.3 Stage-8 Statistics V1: Pearson + linear regression
+# X=1,2,3 Y=2,4,6 -> r=1.000000, slope=2.000000, R2=1.000000
+# EXPECT_OUTPUT: 1000000 2000000 1000000
+#memory tape=96,stack=8,data=96,queue=4
+#cell dword
+#mode normal
+>>>>>
+# X data 0..2
+0(T-2)+k0
+0(T-1)+k1
+@96
+0(T-2)+k1
+0(T-1)+k2
+@96
+0(T-2)+k2
+0(T-1)+k3
+@96
+# Y data 10..12
+0(T-2)+k10
+0(T-1)+k2
+@96
+0(T-2)+k11
+0(T-1)+k4
+@96
+0(T-2)+k12
+0(T-1)+k6
+@96
+# Pearson
+0(T-3)+k0
+0(T-2)+k10
+0(T-1)+k3
+0(T)
+@280
+@61
+# Regression model at data[20..22]
+0(T-3)+k0
+0(T-2)+k10
+0(T-1)+k3
+0(T)+k20
+@290
+0(T-1)+k21
+@95
+@61
+0(T)+k20
+@299
+@61

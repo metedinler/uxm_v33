@@ -1,0 +1,6 @@
+#memory tape=32,stack=4,data=4096,queue=4
+#cell byte
+#mode normal
+>>>>>
+@85
+@61

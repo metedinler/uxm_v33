@@ -1,0 +1,13 @@
+#memory total=16mb,tape=64kb,stack=64kb,data=1mb,fifo=64kb
+#cell dword
+#mode normal
+>>>>>
+0(T-2)+k9
+0(T-1)+k30
+@96
+0(T-1)+k9
+@95
+0(T-2)+k12
+0(T-1)+k3
+@20
+@61

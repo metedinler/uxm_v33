@@ -1,0 +1,12 @@
+#memory tape=128,stack=16,data=4096,queue=16
+#cell dword
+#mode normal
+>>>>>
+#matrix 100 2 2 = 1,0,0,1
+0(T-4)+k300
+0(T-3)+k100
+0(T-2)+k200
+0(T-1)+k0
+0(T)+k0
+@513
+@61

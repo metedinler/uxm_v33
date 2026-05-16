@@ -1,0 +1,73 @@
+# V3.3 Stage-12 Tensor Advanced-2: broadcast shape + broadcast add
+# EXPECT_OUTPUT_COMPACT: 223127225
+#memory tape=64,stack=8,data=256,queue=4
+#cell dword
+#mode normal
+>>>>>
+# A D:1600 shape 1x2x3, values [0,0,0]=1 and [0,1,2]=5
+0(T-4)+k1600
+0(T-3)+k1
+0(T-2)+k2
+0(T-1)+k3
+@560
+0(T-4)+k1600
+0(T-3)+k0
+0(T-2)+k0
+0(T-1)+k0
+0(T)+k1
+@561
+0(T-4)+k1600
+0(T-3)+k0
+0(T-2)+k1
+0(T-1)+k2
+0(T)+k5
+@561
+# B D:1700 shape 2x1x3, values [0,0,0]=10 and [1,0,2]=20
+0(T-4)+k1700
+0(T-3)+k2
+0(T-2)+k1
+0(T-1)+k3
+@560
+0(T-4)+k1700
+0(T-3)+k0
+0(T-2)+k0
+0(T-1)+k0
+0(T)+k10
+@561
+0(T-4)+k1700
+0(T-3)+k1
+0(T-2)+k0
+0(T-1)+k2
+0(T)+k20
+@561
+# broadcast shape to data[60..64]: nd=3, dims=2,2,3,total=12; print dims and total compact => 22312
+0(T-4)+k60
+0(T-3)+k1600
+0(T-2)+k1700
+@582
+0(T-1)+k61
+@95
+@61
+0(T-1)+k62
+@95
+@61
+0(T-1)+k63
+@95
+@61
+0(T-1)+k64
+@95
+@61
+# broadcast add D:1800, sum=>72; get [1,1,2]=>25
+0(T-4)+k1800
+0(T-3)+k1600
+0(T-2)+k1700
+@581
+0(T-4)+k1800
+@573
+@61
+0(T-4)+k1800
+0(T-3)+k1
+0(T-2)+k1
+0(T-1)+k2
+@562
+@61

@@ -1,0 +1,146 @@
+--- onceki/runtime_file_services.bas
++++ guncel/runtime_file_services.bas
+@@ -11,9 +11,16 @@
+ '   @407: (T-2)=handle, (T-1)=byte -> (T+1)=1/0
+ '   @408: (T-3)=handle, (T-2)=dst data start, (T-1)=max -> (T+1)=count
+ '   @409: (T-2)=handle, (T-1)=src data start -> (T+1)=count
++'   @410: (T-3)=handle, (T-2)=dst data start, (T-1)=count -> (T+1)=bytes read
++'   @411: (T-3)=handle, (T-2)=src data start, (T-1)=count -> (T+1)=bytes written
++'   @412: (T-2)=handle, (T-1)=1-based byte position -> (T+1)=position
+ '   @413: (T-1)=handle -> (T+1)=file position
+ '   @414: (T-1)=handle -> (T+1)=1 if EOF else 0
+ '   @415: -> (T+1)=last file status
++'   @416: (T-1)=pathZ data start -> delete, (T+1)=1/0
++'   @417: (T-2)=oldPathZ, (T-1)=newPathZ -> rename, (T+1)=1/0
++'   @418: (T-1)=pathZ -> mkdir, (T+1)=1/0
++'   @419: (T-1)=pathZ -> exists, (T+1)=1/0
+ 
+ Const UXM_FILE_MAX_HANDLES As Integer = 16
+ Const UXM_FILE_STATUS_OK As UByte = 0
+@@ -381,6 +388,99 @@
+     FileWriteResultRel 1, ux_file_last_status
+     SetLogicFlags ux_file_last_status
+     SetStatus UXM_FILE_STATUS_OK
++End Sub
++
++
++' UXM V17 FILE GERCEK KOD EKLERI
++Sub UX_FILE_READ_BLOCK()
++    Dim h As LongInt, dst As LongInt, countValue As LongInt, i As LongInt
++    Dim b As UByte
++    h = FileReadArgRel(-3)
++    dst = FileReadArgRel(-2)
++    countValue = FileReadArgRel(-1)
++    If FileHandleValid(h) = 0 Then FileWriteResultRel 1, 0: FileSetStatus UXM_FILE_STATUS_BAD_HANDLE: Exit Sub
++    If dst < 0 Or countValue < 0 Or dst + countValue > CLngInt(ux_data_cells) Then FileWriteResultRel 1, 0: FileSetStatus UXM_FILE_STATUS_BOUNDS: Exit Sub
++    Dim ff As Integer: ff = ux_file_num(h)
++    For i = 0 To countValue - 1
++        If Eof(ff) Then Exit For
++        Get #ff, , b
++        FilePutCell8 dst + i, b
++    Next
++    FileWriteResultRel 1, CULngInt(i)
++    If i < countValue Then FileSetStatus UXM_FILE_STATUS_EOF Else FileSetStatus UXM_FILE_STATUS_OK
++End Sub
++
++Sub UX_FILE_WRITE_BLOCK()
++    Dim h As LongInt, src As LongInt, countValue As LongInt, i As LongInt
++    Dim b As UByte
++    h = FileReadArgRel(-3)
++    src = FileReadArgRel(-2)
++    countValue = FileReadArgRel(-1)
++    If FileHandleValid(h) = 0 Then FileWriteResultRel 1, 0: FileSetStatus UXM_FILE_STATUS_BAD_HANDLE: Exit Sub
++    If src < 0 Or countValue < 0 Or src + countValue > CLngInt(ux_data_cells) Then FileWriteResultRel 1, 0: FileSetStatus UXM_FILE_STATUS_BOUNDS: Exit Sub
++    Dim ff As Integer: ff = ux_file_num(h)
++    For i = 0 To countValue - 1
++        b = CUByte(FileCell8(src + i) And &HFF)
++        Put #ff, , b
++    Next
++    FileWriteResultRel 1, CULngInt(countValue)
++    FileSetStatus UXM_FILE_STATUS_OK
++End Sub
++
++Sub UX_FILE_SEEK()
++    Dim h As LongInt, posValue As LongInt
++    h = FileReadArgRel(-2)
++    posValue = FileReadArgRel(-1)
++    If FileHandleValid(h) = 0 Then FileWriteResultRel 1, 0: FileSetStatus UXM_FILE_STATUS_BAD_HANDLE: Exit Sub
++    If posValue < 1 Then posValue = 1
++    Dim ff As Integer: ff = ux_file_num(h)
++    Seek #ff, posValue
++    FileWriteResultRel 1, CULngInt(posValue)
++    FileSetStatus UXM_FILE_STATUS_OK
++End Sub
++
++Sub UX_FILE_DELETE()
++    Dim pathStart As LongInt, path As String
++    pathStart = FileReadArgRel(-1)
++    path = FileDataZToString(pathStart)
++    If ux_file_last_status <> UXM_FILE_STATUS_OK Then FileWriteResultRel 1, 0: Exit Sub
++    If Len(Dir(path)) = 0 Then FileWriteResultRel 1, 0: FileSetStatus UXM_FILE_STATUS_IO_ERROR: Exit Sub
++    If Kill(path) <> 0 Then FileWriteResultRel 1, 0: FileSetStatus UXM_FILE_STATUS_IO_ERROR: Exit Sub
++    FileWriteResultRel 1, 1
++    FileSetStatus UXM_FILE_STATUS_OK
++End Sub
++
++Sub UX_FILE_RENAME()
++    Dim oldStart As LongInt, newStart As LongInt, oldPath As String, newPath As String
++    oldStart = FileReadArgRel(-2)
++    newStart = FileReadArgRel(-1)
++    oldPath = FileDataZToString(oldStart)
++    If ux_file_last_status <> UXM_FILE_STATUS_OK Then FileWriteResultRel 1, 0: Exit Sub
++    newPath = FileDataZToString(newStart)
++    If ux_file_last_status <> UXM_FILE_STATUS_OK Then FileWriteResultRel 1, 0: Exit Sub
++    If Name(oldPath, newPath) <> 0 Then FileWriteResultRel 1, 0: FileSetStatus UXM_FILE_STATUS_IO_ERROR: Exit Sub
++    FileWriteResultRel 1, 1
++    FileSetStatus UXM_FILE_STATUS_OK
++End Sub
++
++Sub UX_FILE_MKDIR()
++    Dim pathStart As LongInt, path As String
++    pathStart = FileReadArgRel(-1)
++    path = FileDataZToString(pathStart)
++    If ux_file_last_status <> UXM_FILE_STATUS_OK Then FileWriteResultRel 1, 0: Exit Sub
++    If Len(Dir(path, fbDirectory)) <> 0 Then FileWriteResultRel 1, 1: FileSetStatus UXM_FILE_STATUS_OK: Exit Sub
++    If MkDir(path) <> 0 Then FileWriteResultRel 1, 0: FileSetStatus UXM_FILE_STATUS_IO_ERROR: Exit Sub
++    FileWriteResultRel 1, 1
++    FileSetStatus UXM_FILE_STATUS_OK
++End Sub
++
++Sub UX_FILE_EXISTS()
++    Dim pathStart As LongInt, path As String
++    pathStart = FileReadArgRel(-1)
++    path = FileDataZToString(pathStart)
++    If ux_file_last_status <> UXM_FILE_STATUS_OK Then FileWriteResultRel 1, 0: Exit Sub
++    If Len(Dir(path)) <> 0 Or Len(Dir(path, fbDirectory)) <> 0 Then FileWriteResultRel 1, 1 Else FileWriteResultRel 1, 0
++    FileSetStatus UXM_FILE_STATUS_OK
+ End Sub
+ 
+ Sub MetaFile(ByVal metaId As ULongInt)
+@@ -405,12 +505,26 @@
+         UX_FILE_READ_LINE()
+     Case 409
+         UX_FILE_WRITE_LINE()
++    Case 410
++        UX_FILE_READ_BLOCK()
++    Case 411
++        UX_FILE_WRITE_BLOCK()
++    Case 412
++        UX_FILE_SEEK()
+     Case 413
+         UX_FILE_TELL()
+     Case 414
+         UX_FILE_EOF()
+     Case 415
+         UX_FILE_STATUS()
++    Case 416
++        UX_FILE_DELETE()
++    Case 417
++        UX_FILE_RENAME()
++    Case 418
++        UX_FILE_MKDIR()
++    Case 419
++        UX_FILE_EXISTS()
+     Case Else
+         SetStatus STATUS_INVALID_META
+     End Select

@@ -1,0 +1,9 @@
+# TEST: @# ile dinamik meta çağrı
+# EXPECT_OUTPUT: A
+>>
+0(T-1)+k65
+0(T)+k90
+@#
+0(T)+k91
+@#
+.(T+1)

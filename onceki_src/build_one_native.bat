@@ -1,0 +1,25 @@
+@echo off
+setlocal
+if "%~1"=="" (echo Kullanim: build_one_native.bat kaynak.uxm [-x] & exit /b 1)
+set FBC64=C:\Users\mete\Downloads\BasicOyunSource\uXBasic_repo\tools\FreeBASIC-1.10.1-win64\fbc.exe
+if exist "%FBC64%" (set FBC=%FBC64%) else (set FBC=fbc)
+set NASM=nasm
+if not exist build\exe\uxm_native.exe call build_native.bat
+if errorlevel 1 exit /b 1
+if not exist build\asm mkdir build\asm
+if not exist build\obj mkdir build\obj
+if not exist build\exe mkdir build\exe
+set NAME=%~n1
+if /I "%~2"=="-x" set NAME=program
+build\exe\uxm_native.exe "%~1" "build\asm\%NAME%.asm"
+if errorlevel 1 exit /b 1
+echo NASM:
+echo %NASM% -f win64 "build\asm\%NAME%.asm" -o "build\obj\%NAME%.o"
+%NASM% -f win64 "build\asm\%NAME%.asm" -o "build\obj\%NAME%.o"
+if errorlevel 1 exit /b 1
+echo FreeBASIC runtime ile link:
+echo %FBC% uxm\core\runtime\uxm31_runtime_fb_full.bas "build\obj\%NAME%.o" -x "build\exe\%NAME%.exe"
+%FBC% uxm\core\runtime\uxm31_runtime_fb_full.bas "build\obj\%NAME%.o" -x "build\exe\%NAME%.exe"
+if errorlevel 1 exit /b 1
+"build\exe\%NAME%.exe"
+endlocal

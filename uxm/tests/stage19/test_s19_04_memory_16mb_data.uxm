@@ -1,0 +1,6 @@
+#memory total=16mb,tape=64kb,stack=64kb,data=4mb,fifo=64kb
+#cell dword
+#mode normal
+>>>>>
+@85
+@61

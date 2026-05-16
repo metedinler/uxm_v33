@@ -1,0 +1,10 @@
+# TEST: V19 NORMAL_CDF_SCALED @284
+# EXPECT_OUTPUT: 500000
+#cell dword
+#memory data=1mb,tape=64kb,stack=16kb,queue=64kb
+>>
+0(T-2)+k0
+0(T-1)+k0
+0(T)+k1000
+@284
+@61

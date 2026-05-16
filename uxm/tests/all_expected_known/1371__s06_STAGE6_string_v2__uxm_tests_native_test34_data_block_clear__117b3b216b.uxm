@@ -1,0 +1,16 @@
+# TEST: data block clear
+# EXPECT_OUTPUT: AC
+s1=0,{ABC}
+>>
+0(T-2)+k1
+0(T-1)+k1
+@99
+0(T-1)
+@95
+.(T+1)
+0(T-1)+k1
+@95
+.(T+1)
+0(T-1)+k2
+@95
+.(T+1)

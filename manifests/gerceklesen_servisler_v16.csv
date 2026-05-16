@@ -1,0 +1,30 @@
+id,name,family,dispatcher,implemented,status,frame,result
+270,STAT_QUARTILE,statistics,MetaStatistics,True,implemented_v16,"T-3=start,T-1=count,T=quartile",T+1 scaled quartile
+271,STAT_PERCENTILE,statistics,MetaStatistics,True,implemented_v16,"T-3=start,T-1=count,T=percentile",T+1 scaled percentile
+272,STAT_SKEWNESS,statistics,MetaStatistics,True,implemented_v16,"T-3=start,T-1=count",T+1 scaled skewness
+273,STAT_KURTOSIS,statistics,MetaStatistics,True,implemented_v16,"T-3=start,T-1=count",T+1 scaled excess kurtosis
+281,CORR_SPEARMAN,statistics,MetaStatistics,True,implemented_v16,"T-3=xStart,T-2=yStart,T-1=count",T+1 scaled rho
+282,CORR_KENDALL,statistics,MetaStatistics,True,implemented_v16,"T-3=xStart,T-2=yStart,T-1=count",T+1 scaled tau-b
+760,HYP_TTEST_ONE,hypothesis,RuntimeHookDispatchExt,True,implemented_v16,"T-4=xBase,T-2=n,T-1=mu0",RESULT t*1e6
+761,HYP_TTEST_INDEPENDENT,hypothesis,RuntimeHookDispatchExt,True,implemented_v16,"T-4=xBase,T-3=yBase,T-2=n1,T-1=n2",RESULT t*1e6
+762,HYP_TTEST_PAIRED,hypothesis,RuntimeHookDispatchExt,True,implemented_v16,"T-4=xBase,T-3=yBase,T-2=n,T=diffBase",RESULT paired t*1e6
+763,HYP_ZTEST_ONE,hypothesis,RuntimeHookDispatchExt,True,implemented_v16,"T-4=xBase,T-2=n,T-1=mu0,T=sigma",RESULT z*1e6
+764,HYP_ZTEST_TWO_APPROX,hypothesis,RuntimeHookDispatchExt,True,implemented_v16,"T-4=xBase,T-3=yBase,T-2=n1,T-1=n2",RESULT z*1e6
+765,HYP_FTEST_VARIANCE,hypothesis,RuntimeHookDispatchExt,True,implemented_v16,"T-4=xBase,T-3=yBase,T-2=n1,T-1=n2",RESULT ratio*1e6
+766,HYP_ANOVA_ONEWAY_SIMPLE,hypothesis,RuntimeHookDispatchExt,True,implemented_v16,two-group ANOVA frame,RESULT F*1e6
+768,HYP_CHI_SQUARE,hypothesis,RuntimeHookDispatchExt,True,implemented_v16,"obsBase,expBase,n",RESULT chi2*1e6
+769,HYP_CHI_GOODNESS_EQUAL,hypothesis,RuntimeHookDispatchExt,True,implemented_v16,"obsBase,n",RESULT chi2*1e6
+790,POSTHOC_TUKEY_2GROUP,posthoc,RuntimeHookDispatchExt,True,implemented_v16,"xBase,yBase,n1,n2,outBase","out diff,se,decision"
+791,POSTHOC_DUNCAN_2GROUP,posthoc,RuntimeHookDispatchExt,True,implemented_v16,"xBase,yBase,n1,n2,outBase","out diff,se,decision"
+792,POSTHOC_DUNNETT_2GROUP,posthoc,RuntimeHookDispatchExt,True,implemented_v16,"xBase,yBase,n1,n2,outBase","out diff,se,decision"
+793,POSTHOC_BONFERRONI_2GROUP,posthoc,RuntimeHookDispatchExt,True,implemented_v16,"xBase,yBase,n1,n2,outBase","out diff,se,decision"
+794,POSTHOC_SCHEFFE_2GROUP,posthoc,RuntimeHookDispatchExt,True,implemented_v16,"xBase,yBase,n1,n2,outBase","out diff,se,decision"
+795,POSTHOC_LSD_2GROUP,posthoc,RuntimeHookDispatchExt,True,implemented_v16,"xBase,yBase,n1,n2,outBase","out diff,se,decision"
+810,AI_ACCURACY,ai_metrics,RuntimeHookDispatchExt,True,implemented_v16,"predBase,trueBase,count",RESULT accuracy*1e6
+811,AI_CONFUSION_BINARY,ai_metrics,RuntimeHookDispatchExt,True,implemented_v16,"predBase,trueBase,count,outBase","out TP,TN,FP,FN"
+812,AI_PRECISION_BINARY,ai_metrics,RuntimeHookDispatchExt,True,implemented_v16,"predBase,trueBase,count,outBase",RESULT precision*1e6
+813,AI_RECALL_BINARY,ai_metrics,RuntimeHookDispatchExt,True,implemented_v16,"predBase,trueBase,count,outBase",RESULT recall*1e6
+814,AI_F1_BINARY,ai_metrics,RuntimeHookDispatchExt,True,implemented_v16,"predBase,trueBase,count",RESULT f1*1e6
+815,AI_DISTANCE_EUCLIDEAN_SQ,ai_metrics,RuntimeHookDispatchExt,True,implemented_v16,"vecA,vecB,count",RESULT squared distance
+816,AI_DISTANCE_MANHATTAN,ai_metrics,RuntimeHookDispatchExt,True,implemented_v16,"vecA,vecB,count",RESULT manhattan
+817,AI_DISTANCE_COSINE,ai_metrics,RuntimeHookDispatchExt,True,implemented_v16,"vecA,vecB,count",RESULT cosine distance*1e6

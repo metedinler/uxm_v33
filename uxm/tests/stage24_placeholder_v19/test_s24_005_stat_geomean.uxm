@@ -1,0 +1,15 @@
+# TEST: V19 STAT_GEOMEAN @278
+# EXPECT_OUTPUT: 4
+#cell dword
+#memory data=1mb,tape=64kb,stack=16kb,queue=64kb
+>>
+0(T-2)+k140
+0(T-1)+k2
+@96
+0(T-2)+k141
+0(T-1)+k8
+@96
+0(T-2)+k140
+0(T-1)+k2
+@278
+@61

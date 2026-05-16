@@ -1,0 +1,9 @@
+# TEST: #expr-rpn ile expression eval
+# expression: x^2 + 3*x + 2, x=2, result=12
+# EXPECT_OUTPUT: 12
+#expr-rpn 300 = x 2 pow 3 x mul add 2 add
+>>
+0(T-2)+k300
+0(T-1)+k2
+@250
+@61

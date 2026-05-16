@@ -1,0 +1,25 @@
+# V3.3 Stage-5 FILE V1: binary write/read byte smoke test
+# Expected output: 90
+#memory tape=64,stack=8,data=96,queue=4
+#cell byte
+#mode normal
+s1=0,{uxm_stage5_byte.tmp}
+>>>>
+0(T-1)+k0
+@404
+$(T+1)
+%(T-2)
+0(T-1)+k90
+@407
+$(T-2)
+%(T-1)
+@405
+0(T-1)+k0
+@403
+$(T+1)
+%(T-1)
+@406
+@61
+$(T-1)
+%(T-1)
+@405

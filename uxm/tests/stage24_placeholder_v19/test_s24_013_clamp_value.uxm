@@ -1,0 +1,10 @@
+# TEST: V19 CLAMP_VALUE @288
+# EXPECT_OUTPUT: 10
+#cell dword
+#memory data=1mb,tape=64kb,stack=16kb,queue=64kb
+>>
+0(T-2)+k5
+0(T-1)+k10
+0(T)+k12
+@288
+@61

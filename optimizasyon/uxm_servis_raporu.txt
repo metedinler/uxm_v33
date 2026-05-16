@@ -1,0 +1,588 @@
+UX-MINIMA SERVIS ANALIZ RAPORU
+Tarih: Cmt 09.05.2026 13:43
+================================================================================
+
+
+[DOSYA]: C:\Users\mete\Downloads\1\UXMv33\uxm\core\compiler\extensions\arge_parse_math_additions.bas
+--------------------------------------------------------------------------------
+
+[DOSYA]: C:\Users\mete\Downloads\1\UXMv33\uxm\core\compiler\extensions\arge_parse_matrix_additions.bas
+--------------------------------------------------------------------------------
+
+[DOSYA]: C:\Users\mete\Downloads\1\UXMv33\uxm\core\compiler\native\native_addressing.bas
+--------------------------------------------------------------------------------
+
+[DOSYA]: C:\Users\mete\Downloads\1\UXMv33\uxm\core\compiler\native\native_asm_emit.bas
+--------------------------------------------------------------------------------
+Satir 4    | ID: @8   | Bilgi: Açıklama yok
+Satir 6    | ID: @16  | Bilgi: Açıklama yok
+Satir 8    | ID: @32  | Bilgi: Açıklama yok
+Satir 17   | ID: @8   | Bilgi: Açıklama yok
+Satir 19   | ID: @16  | Bilgi: Açıklama yok
+Satir 21   | ID: @32  | Bilgi: Açıklama yok
+Satir 296  | ID: @8   | Bilgi: Açıklama yok
+Satir 298  | ID: @16  | Bilgi: Açıklama yok
+Satir 300  | ID: @32  | Bilgi: Açıklama yok
+Satir 310  | ID: @8   | Bilgi: Açıklama yok
+Satir 312  | ID: @16  | Bilgi: Açıklama yok
+Satir 314  | ID: @32  | Bilgi: Açıklama yok
+Satir 325  | ID: @8   | Bilgi: Açıklama yok
+Satir 327  | ID: @16  | Bilgi: Açıklama yok
+Satir 329  | ID: @32  | Bilgi: Açıklama yok
+Satir 400  | ID: @8   | Bilgi: Açıklama yok
+Satir 402  | ID: @16  | Bilgi: Açıklama yok
+Satir 404  | ID: @32  | Bilgi: Açıklama yok
+Satir 412  | ID: @8   | Bilgi: Açıklama yok
+Satir 414  | ID: @16  | Bilgi: Açıklama yok
+Satir 416  | ID: @32  | Bilgi: Açıklama yok
+Satir 425  | ID: @8   | Bilgi: Açıklama yok
+Satir 427  | ID: @16  | Bilgi: Açıklama yok
+Satir 429  | ID: @32  | Bilgi: Açıklama yok
+Satir 439  | ID: @8   | Bilgi: Açıklama yok
+Satir 441  | ID: @16  | Bilgi: Açıklama yok
+Satir 443  | ID: @32  | Bilgi: Açıklama yok
+Satir 448  | ID: @8   | Bilgi: Açıklama yok
+Satir 450  | ID: @16  | Bilgi: Açıklama yok
+Satir 452  | ID: @32  | Bilgi: Açıklama yok
+Satir 475  | ID: @8   | Bilgi: Açıklama yok
+Satir 477  | ID: @16  | Bilgi: Açıklama yok
+Satir 479  | ID: @32  | Bilgi: Açıklama yok
+Satir 491  | ID: @8   | Bilgi: Açıklama yok
+Satir 493  | ID: @16  | Bilgi: Açıklama yok
+Satir 495  | ID: @32  | Bilgi: Açıklama yok
+Satir 503  | ID: @8   | Bilgi: Açıklama yok
+Satir 505  | ID: @16  | Bilgi: Açıklama yok
+Satir 507  | ID: @32  | Bilgi: Açıklama yok
+Satir 515  | ID: @8   | Bilgi: Açıklama yok
+Satir 517  | ID: @16  | Bilgi: Açıklama yok
+Satir 519  | ID: @32  | Bilgi: Açıklama yok
+Satir 526  | ID: @8   | Bilgi: Açıklama yok
+Satir 528  | ID: @16  | Bilgi: Açıklama yok
+Satir 530  | ID: @32  | Bilgi: Açıklama yok
+Satir 537  | ID: @8   | Bilgi: Açıklama yok
+Satir 539  | ID: @16  | Bilgi: Açıklama yok
+Satir 541  | ID: @32  | Bilgi: Açıklama yok
+Satir 555  | ID: @8   | Bilgi: Açıklama yok
+Satir 557  | ID: @16  | Bilgi: Açıklama yok
+Satir 559  | ID: @32  | Bilgi: Açıklama yok
+Satir 570  | ID: @8   | Bilgi: Açıklama yok
+Satir 572  | ID: @16  | Bilgi: Açıklama yok
+Satir 574  | ID: @32  | Bilgi: Açıklama yok
+Satir 587  | ID: @8   | Bilgi: Açıklama yok
+Satir 589  | ID: @16  | Bilgi: Açıklama yok
+Satir 591  | ID: @32  | Bilgi: Açıklama yok
+Satir 598  | ID: @8   | Bilgi: Açıklama yok
+Satir 600  | ID: @16  | Bilgi: Açıklama yok
+Satir 602  | ID: @32  | Bilgi: Açıklama yok
+Satir 621  | ID: @8   | Bilgi: Açıklama yok
+Satir 623  | ID: @16  | Bilgi: Açıklama yok
+Satir 625  | ID: @32  | Bilgi: Açıklama yok
+
+[DOSYA]: C:\Users\mete\Downloads\1\UXMv33\uxm\core\compiler\native\native_cli.bas
+--------------------------------------------------------------------------------
+
+[DOSYA]: C:\Users\mete\Downloads\1\UXMv33\uxm\core\compiler\native\native_lexer_parser.bas
+--------------------------------------------------------------------------------
+
+[DOSYA]: C:\Users\mete\Downloads\1\UXMv33\uxm\core\compiler\native\native_main.bas
+--------------------------------------------------------------------------------
+
+[DOSYA]: C:\Users\mete\Downloads\1\UXMv33\uxm\core\compiler\native\native_meta_parse.bas
+--------------------------------------------------------------------------------
+
+[DOSYA]: C:\Users\mete\Downloads\1\UXMv33\uxm\core\compiler\native\native_validation.bas
+--------------------------------------------------------------------------------
+
+[DOSYA]: C:\Users\mete\Downloads\1\UXMv33\uxm\core\compiler\native\uxm31_compiler_fb.bas
+--------------------------------------------------------------------------------
+
+[DOSYA]: C:\Users\mete\Downloads\1\UXMv33\uxm\core\hooks\hook_parser_ext.bas
+--------------------------------------------------------------------------------
+
+[DOSYA]: C:\Users\mete\Downloads\1\UXMv33\uxm\core\runtime\runtime_host.bas
+--------------------------------------------------------------------------------
+
+[DOSYA]: C:\Users\mete\Downloads\1\UXMv33\uxm\core\runtime\runtime_io.bas
+--------------------------------------------------------------------------------
+Satir 106  | ID: @0   | Bilgi: Açıklama yok
+Satir 108  | ID: @5   | Bilgi: Açıklama yok
+Satir 110  | ID: @10  | Bilgi: Açıklama yok
+Satir 112  | ID: @11  | Bilgi: Açıklama yok
+Satir 114  | ID: @12  | Bilgi: Açıklama yok
+Satir 116  | ID: @13  | Bilgi: Açıklama yok
+Satir 118  | ID: @14  | Bilgi: Açıklama yok
+Satir 120  | ID: @15  | Bilgi: Açıklama yok
+Satir 122  | ID: @16  | Bilgi: Açıklama yok
+Satir 124  | ID: @23  | Bilgi: Açıklama yok
+Satir 126  | ID: @24  | Bilgi: Açıklama yok
+Satir 128  | ID: @26  | Bilgi: Açıklama yok
+Satir 137  | ID: @8   | Bilgi: Açıklama yok
+Satir 139  | ID: @16  | Bilgi: Açıklama yok
+Satir 141  | ID: @32  | Bilgi: Açıklama yok
+
+[DOSYA]: C:\Users\mete\Downloads\1\UXMv33\uxm\core\runtime\runtime_memory.bas
+--------------------------------------------------------------------------------
+Satir 20   | ID: @8   | Bilgi: Açıklama yok
+Satir 22   | ID: @16  | Bilgi: Açıklama yok
+Satir 24   | ID: @32  | Bilgi: Açıklama yok
+Satir 33   | ID: @8   | Bilgi: Açıklama yok
+Satir 35   | ID: @16  | Bilgi: Açıklama yok
+Satir 37   | ID: @32  | Bilgi: Açıklama yok
+Satir 46   | ID: @8   | Bilgi: Açıklama yok
+Satir 48   | ID: @16  | Bilgi: Açıklama yok
+Satir 50   | ID: @32  | Bilgi: Açıklama yok
+Satir 59   | ID: @8   | Bilgi: Açıklama yok
+Satir 61   | ID: @16  | Bilgi: Açıklama yok
+Satir 63   | ID: @32  | Bilgi: Açıklama yok
+Satir 72   | ID: @8   | Bilgi: Açıklama yok
+Satir 74   | ID: @16  | Bilgi: Açıklama yok
+Satir 76   | ID: @32  | Bilgi: Açıklama yok
+Satir 85   | ID: @8   | Bilgi: Açıklama yok
+Satir 87   | ID: @16  | Bilgi: Açıklama yok
+Satir 89   | ID: @32  | Bilgi: Açıklama yok
+Satir 99   | ID: @8   | Bilgi: Açıklama yok
+Satir 101  | ID: @16  | Bilgi: Açıklama yok
+Satir 103  | ID: @32  | Bilgi: Açıklama yok
+
+[DOSYA]: C:\Users\mete\Downloads\1\UXMv33\uxm\core\runtime\runtime_meta_dispatch.bas
+--------------------------------------------------------------------------------
+Satir 53   | ID: @0   | Bilgi: Açıklama yok
+Satir 55   | ID: @1   | Bilgi: Açıklama yok
+Satir 58   | ID: @2   | Bilgi: Açıklama yok
+Satir 61   | ID: @3   | Bilgi: Açıklama yok
+Satir 65   | ID: @4   | Bilgi: Açıklama yok
+Satir 69   | ID: @5   | Bilgi: Açıklama yok
+Satir 72   | ID: @6   | Bilgi: Açıklama yok
+Satir 75   | ID: @7   | Bilgi: Açıklama yok
+Satir 79   | ID: @8   | Bilgi: Açıklama yok
+Satir 83   | ID: @9   | Bilgi: Açıklama yok
+Satir 86   | ID: @10  | Bilgi: Açıklama yok
+Satir 88   | ID: @11  | Bilgi: Açıklama yok
+Satir 90   | ID: @12  | Bilgi: Açıklama yok
+Satir 92   | ID: @13  | Bilgi: Açıklama yok
+Satir 94   | ID: @14  | Bilgi: Açıklama yok
+Satir 96   | ID: @15  | Bilgi: Açıklama yok
+Satir 119  | ID: @20  | Bilgi: Açıklama yok
+Satir 125  | ID: @21  | Bilgi: Açıklama yok
+Satir 130  | ID: @22  | Bilgi: Açıklama yok
+Satir 136  | ID: @23  | Bilgi: Açıklama yok
+Satir 161  | ID: @24  | Bilgi: Açıklama yok
+Satir 186  | ID: @25  | Bilgi: Açıklama yok
+Satir 191  | ID: @26  | Bilgi: Açıklama yok
+Satir 196  | ID: @27  | Bilgi: Açıklama yok
+Satir 207  | ID: @28  | Bilgi: Açıklama yok
+Satir 213  | ID: @29  | Bilgi: Açıklama yok
+Satir 224  | ID: @30  | Bilgi: Açıklama yok
+Satir 234  | ID: @31  | Bilgi: Açıklama yok
+Satir 237  | ID: @32  | Bilgi: Açıklama yok
+Satir 241  | ID: @33  | Bilgi: Açıklama yok
+Satir 243  | ID: @34  | Bilgi: Açıklama yok
+Satir 245  | ID: @35  | Bilgi: Açıklama yok
+Satir 247  | ID: @36  | Bilgi: Açıklama yok
+Satir 261  | ID: @40  | Bilgi: Açıklama yok
+Satir 265  | ID: @41  | Bilgi: Açıklama yok
+Satir 269  | ID: @42  | Bilgi: Açıklama yok
+Satir 279  | ID: @43  | Bilgi: Açıklama yok
+Satir 283  | ID: @44  | Bilgi: Açıklama yok
+Satir 288  | ID: @45  | Bilgi: Açıklama yok
+Satir 293  | ID: @46  | Bilgi: Açıklama yok
+Satir 297  | ID: @47  | Bilgi: Açıklama yok
+Satir 301  | ID: @48  | Bilgi: Açıklama yok
+Satir 305  | ID: @49  | Bilgi: Açıklama yok
+Satir 309  | ID: @52  | Bilgi: Açıklama yok
+Satir 314  | ID: @53  | Bilgi: Açıklama yok
+Satir 324  | ID: @54  | Bilgi: Açıklama yok
+Satir 334  | ID: @55  | Bilgi: Açıklama yok
+Satir 343  | ID: @56  | Bilgi: Açıklama yok
+Satir 347  | ID: @57  | Bilgi: Açıklama yok
+Satir 351  | ID: @58  | Bilgi: Açıklama yok
+Satir 355  | ID: @59  | Bilgi: Açıklama yok
+Satir 366  | ID: @60  | Bilgi: Açıklama yok
+Satir 369  | ID: @61  | Bilgi: Açıklama yok
+Satir 372  | ID: @62  | Bilgi: Açıklama yok
+Satir 374  | ID: @63  | Bilgi: Açıklama yok
+Satir 378  | ID: @64  | Bilgi: Açıklama yok
+Satir 381  | ID: @67  | Bilgi: Açıklama yok
+Satir 384  | ID: @68  | Bilgi: Açıklama yok
+Satir 387  | ID: @69  | Bilgi: Açıklama yok
+Satir 399  | ID: @80  | Bilgi: Açıklama yok
+Satir 407  | ID: @81  | Bilgi: Açıklama yok
+Satir 415  | ID: @82  | Bilgi: Açıklama yok
+Satir 419  | ID: @83  | Bilgi: Açıklama yok
+Satir 423  | ID: @84  | Bilgi: Açıklama yok
+Satir 427  | ID: @85  | Bilgi: Açıklama yok
+Satir 431  | ID: @86  | Bilgi: Açıklama yok
+Satir 435  | ID: @87  | Bilgi: Açıklama yok
+Satir 439  | ID: @88  | Bilgi: Açıklama yok
+Satir 443  | ID: @89  | Bilgi: Açıklama yok
+Satir 460  | ID: @90  | Bilgi: Açıklama yok
+Satir 462  | ID: @91  | Bilgi: Açıklama yok
+Satir 465  | ID: @92  | Bilgi: Açıklama yok
+Satir 468  | ID: @93  | Bilgi: Açıklama yok
+Satir 472  | ID: @94  | Bilgi: Açıklama yok
+Satir 474  | ID: @95  | Bilgi: Açıklama yok
+Satir 477  | ID: @96  | Bilgi: Açıklama yok
+Satir 480  | ID: @97  | Bilgi: Açıklama yok
+Satir 490  | ID: @98  | Bilgi: Açıklama yok
+Satir 492  | ID: @99  | Bilgi: Açıklama yok
+Satir 494  | ID: @100 | Bilgi: Açıklama yok
+Satir 496  | ID: @101 | Bilgi: Açıklama yok
+Satir 498  | ID: @102 | Bilgi: Açıklama yok
+Satir 500  | ID: @103 | Bilgi: Açıklama yok
+Satir 502  | ID: @104 | Bilgi: Açıklama yok
+Satir 507  | ID: @105 | Bilgi: Açıklama yok
+Satir 512  | ID: @106 | Bilgi: Açıklama yok
+Satir 514  | ID: @107 | Bilgi: Açıklama yok
+Satir 516  | ID: @120 | Bilgi: Açıklama yok
+Satir 519  | ID: @121 | Bilgi: Açıklama yok
+Satir 522  | ID: @122 | Bilgi: Açıklama yok
+Satir 526  | ID: @123 | Bilgi: Açıklama yok
+Satir 529  | ID: @124 | Bilgi: Açıklama yok
+Satir 532  | ID: @125 | Bilgi: Açıklama yok
+Satir 536  | ID: @126 | Bilgi: Açıklama yok
+Satir 540  | ID: @127 | Bilgi: Açıklama yok
+Satir 554  | ID: @120 | Bilgi: Açıklama yok
+Satir 557  | ID: @121 | Bilgi: Açıklama yok
+Satir 560  | ID: @122 | Bilgi: Açıklama yok
+Satir 564  | ID: @130 | Bilgi: Açıklama yok
+Satir 569  | ID: @131 | Bilgi: Açıklama yok
+Satir 574  | ID: @132 | Bilgi: Açıklama yok
+Satir 579  | ID: @133 | Bilgi: Açıklama yok
+Satir 584  | ID: @134 | Bilgi: Açıklama yok
+Satir 589  | ID: @135 | Bilgi: Açıklama yok
+Satir 594  | ID: @140 | Bilgi: Açıklama yok
+Satir 598  | ID: @141 | Bilgi: Açıklama yok
+Satir 601  | ID: @142 | Bilgi: Açıklama yok
+Satir 604  | ID: @143 | Bilgi: Açıklama yok
+Satir 608  | ID: @144 | Bilgi: Açıklama yok
+Satir 611  | ID: @145 | Bilgi: Açıklama yok
+Satir 614  | ID: @146 | Bilgi: Açıklama yok
+Satir 618  | ID: @147 | Bilgi: Açıklama yok
+Satir 622  | ID: @148 | Bilgi: Açıklama yok
+Satir 625  | ID: @149 | Bilgi: Açıklama yok
+Satir 629  | ID: @150 | Bilgi: Açıklama yok
+Satir 632  | ID: @151 | Bilgi: Açıklama yok
+Satir 635  | ID: @152 | Bilgi: Açıklama yok
+Satir 639  | ID: @153 | Bilgi: Açıklama yok
+Satir 648  | ID: @154 | Bilgi: Açıklama yok
+Satir 657  | ID: @155 | Bilgi: Açıklama yok
+Satir 670  | ID: @156 | Bilgi: Açıklama yok
+
+[DOSYA]: C:\Users\mete\Downloads\1\UXMv33\uxm\core\runtime\runtime_status_flags.bas
+--------------------------------------------------------------------------------
+
+[DOSYA]: C:\Users\mete\Downloads\1\UXMv33\uxm\core\runtime\uxm31_runtime_fb_full.bas
+--------------------------------------------------------------------------------
+
+[DOSYA]: C:\Users\mete\Downloads\1\UXMv33\uxm\core\runtime\hooks\runtime_hook_dispatch_ext.bas
+--------------------------------------------------------------------------------
+
+[DOSYA]: C:\Users\mete\Downloads\1\UXMv33\uxm\core\runtime\services\runtime_bio_services.bas
+--------------------------------------------------------------------------------
+Satir 57   | ID: @0   | Bilgi: Açıklama yok
+Satir 59   | ID: @1   | Bilgi: Açıklama yok
+Satir 61   | ID: @2   | Bilgi: Açıklama yok
+Satir 86   | ID: @0   | Bilgi: Axx
+Satir 88   | ID: @0   | Bilgi: AAU/AAC Asn, AAA/AAG Lys
+Satir 90   | ID: @1   | Bilgi: ACx Thr
+Satir 92   | ID: @2   | Bilgi: AGU/AGC Ser, AGA/AGG Arg
+Satir 94   | ID: @3   | Bilgi: AUU/AUC/AUA Ile, AUG Met
+Satir 97   | ID: @1   | Bilgi: Cxx
+Satir 99   | ID: @0   | Bilgi: CAU/CAC His, CAA/CAG Gln
+Satir 101  | ID: @1   | Bilgi: CCx Pro
+Satir 103  | ID: @2   | Bilgi: CGx Arg
+Satir 105  | ID: @3   | Bilgi: CUx Leu
+Satir 108  | ID: @2   | Bilgi: Gxx
+Satir 110  | ID: @0   | Bilgi: GAU/GAC Asp, GAA/GAG Glu
+Satir 112  | ID: @1   | Bilgi: GCx Ala
+Satir 114  | ID: @2   | Bilgi: GGx Gly
+Satir 116  | ID: @3   | Bilgi: GUx Val
+Satir 119  | ID: @3   | Bilgi: T/Uxx
+Satir 121  | ID: @0   | Bilgi: UAU/UAC Tyr, UAA/UAG Stop
+Satir 123  | ID: @1   | Bilgi: UCx Ser
+Satir 125  | ID: @2   | Bilgi: UGU/UGC Cys, UGA Stop, UGG Trp
+Satir 129  | ID: @3   | Bilgi: UUU/UUC Phe, UUA/UUG Leu
+Satir 309  | ID: @480 | Bilgi: Açıklama yok
+Satir 311  | ID: @481 | Bilgi: Açıklama yok
+Satir 313  | ID: @482 | Bilgi: Açıklama yok
+Satir 315  | ID: @483 | Bilgi: Açıklama yok
+Satir 317  | ID: @484 | Bilgi: Açıklama yok
+Satir 319  | ID: @485 | Bilgi: Açıklama yok
+Satir 321  | ID: @486 | Bilgi: Açıklama yok
+Satir 323  | ID: @487 | Bilgi: Açıklama yok
+Satir 325  | ID: @511 | Bilgi: Açıklama yok
+
+[DOSYA]: C:\Users\mete\Downloads\1\UXMv33\uxm\core\runtime\services\runtime_complex_services.bas
+--------------------------------------------------------------------------------
+Satir 69   | ID: @440 | Bilgi: CPLX_INIT: T-2 out, T-1 real_scaled, T imag_scaled
+Satir 73   | ID: @441 | Bilgi: CPLX_ADD: T-2 out, T-1 aBase, T bBase
+Satir 82   | ID: @442 | Bilgi: CPLX_SUB
+Satir 91   | ID: @443 | Bilgi: CPLX_MUL
+Satir 100  | ID: @444 | Bilgi: CPLX_DIV
+Satir 115  | ID: @445 | Bilgi: CPLX_CONJ: T-2 out, T-1 aBase
+Satir 122  | ID: @446 | Bilgi: CPLX_ABS: T-1 aBase -> T+1 scaled magnitude
+Satir 128  | ID: @447 | Bilgi: CPLX_ARG: T-1 aBase -> T+1 scaled radians
+Satir 134  | ID: @448 | Bilgi: CPLX_EXP: T-2 out, T-1 aBase
+Satir 141  | ID: @449 | Bilgi: CPLX_FROM_POLAR: T-2 out, T-1 radius_scaled, T theta_scaled
+Satir 145  | ID: @459 | Bilgi: CPLX_STATUS
+
+[DOSYA]: C:\Users\mete\Downloads\1\UXMv33\uxm\core\runtime\services\runtime_file_services.bas
+--------------------------------------------------------------------------------
+Satir 388  | ID: @400 | Bilgi: Açıklama yok
+Satir 390  | ID: @401 | Bilgi: Açıklama yok
+Satir 392  | ID: @402 | Bilgi: Açıklama yok
+Satir 394  | ID: @403 | Bilgi: Açıklama yok
+Satir 396  | ID: @404 | Bilgi: Açıklama yok
+Satir 398  | ID: @405 | Bilgi: Açıklama yok
+Satir 400  | ID: @406 | Bilgi: Açıklama yok
+Satir 402  | ID: @407 | Bilgi: Açıklama yok
+Satir 404  | ID: @408 | Bilgi: Açıklama yok
+Satir 406  | ID: @409 | Bilgi: Açıklama yok
+Satir 408  | ID: @413 | Bilgi: Açıklama yok
+Satir 410  | ID: @414 | Bilgi: Açıklama yok
+Satir 412  | ID: @415 | Bilgi: Açıklama yok
+
+[DOSYA]: C:\Users\mete\Downloads\1\UXMv33\uxm\core\runtime\services\runtime_fp_services.bas
+--------------------------------------------------------------------------------
+Satir 48   | ID: @200 | Bilgi: Açıklama yok
+Satir 51   | ID: @201 | Bilgi: Açıklama yok
+Satir 54   | ID: @202 | Bilgi: Açıklama yok
+Satir 57   | ID: @203 | Bilgi: Açıklama yok
+Satir 60   | ID: @204 | Bilgi: Açıklama yok
+Satir 63   | ID: @205 | Bilgi: Açıklama yok
+Satir 66   | ID: @206 | Bilgi: Açıklama yok
+Satir 73   | ID: @207 | Bilgi: Açıklama yok
+Satir 82   | ID: @208 | Bilgi: Açıklama yok
+Satir 85   | ID: @209 | Bilgi: Açıklama yok
+Satir 88   | ID: @210 | Bilgi: Açıklama yok
+Satir 123  | ID: @211 | Bilgi: Açıklama yok
+Satir 158  | ID: @212 | Bilgi: Açıklama yok
+Satir 170  | ID: @213 | Bilgi: Açıklama yok
+Satir 198  | ID: @214 | Bilgi: Açıklama yok
+Satir 208  | ID: @215 | Bilgi: Açıklama yok
+Satir 212  | ID: @216 | Bilgi: Açıklama yok
+Satir 216  | ID: @217 | Bilgi: Açıklama yok
+Satir 219  | ID: @218 | Bilgi: Açıklama yok
+Satir 222  | ID: @219 | Bilgi: Açıklama yok
+Satir 225  | ID: @220 | Bilgi: Açıklama yok
+Satir 228  | ID: @221 | Bilgi: Açıklama yok
+Satir 231  | ID: @222 | Bilgi: Açıklama yok
+Satir 234  | ID: @223 | Bilgi: Açıklama yok
+Satir 237  | ID: @224 | Bilgi: Açıklama yok
+Satir 240  | ID: @230 | Bilgi: Açıklama yok
+
+[DOSYA]: C:\Users\mete\Downloads\1\UXMv33\uxm\core\runtime\services\runtime_math_services.bas
+--------------------------------------------------------------------------------
+Satir 39   | ID: @240 | Bilgi: Açıklama yok
+Satir 42   | ID: @241 | Bilgi: Açıklama yok
+Satir 45   | ID: @242 | Bilgi: Açıklama yok
+Satir 49   | ID: @243 | Bilgi: Açıklama yok
+Satir 52   | ID: @244 | Bilgi: Açıklama yok
+Satir 170  | ID: @250 | Bilgi: Açıklama yok
+Satir 176  | ID: @251 | Bilgi: Açıklama yok
+Satir 183  | ID: @252 | Bilgi: Açıklama yok
+Satir 191  | ID: @253 | Bilgi: Açıklama yok
+Satir 199  | ID: @254 | Bilgi: Açıklama yok
+Satir 241  | ID: @1   | Bilgi: Açıklama yok
+Satir 244  | ID: @2   | Bilgi: Açıklama yok
+Satir 246  | ID: @10  | Bilgi: Açıklama yok
+Satir 248  | ID: @11  | Bilgi: Açıklama yok
+Satir 250  | ID: @12  | Bilgi: Açıklama yok
+Satir 252  | ID: @13  | Bilgi: Açıklama yok
+Satir 255  | ID: @14  | Bilgi: Açıklama yok
+Satir 262  | ID: @20  | Bilgi: Açıklama yok
+Satir 264  | ID: @21  | Bilgi: Açıklama yok
+Satir 266  | ID: @22  | Bilgi: Açıklama yok
+Satir 268  | ID: @23  | Bilgi: Açıklama yok
+Satir 270  | ID: @24  | Bilgi: Açıklama yok
+Satir 272  | ID: @25  | Bilgi: Açıklama yok
+Satir 274  | ID: @30  | Bilgi: Açıklama yok
+Satir 276  | ID: @31  | Bilgi: Açıklama yok
+Satir 279  | ID: @99  | Bilgi: Açıklama yok
+Satir 347  | ID: @1   | Bilgi: Açıklama yok
+Satir 350  | ID: @2   | Bilgi: Açıklama yok
+Satir 351  | ID: @10  | Bilgi: Açıklama yok
+Satir 352  | ID: @11  | Bilgi: Açıklama yok
+Satir 353  | ID: @12  | Bilgi: Açıklama yok
+Satir 354  | ID: @13  | Bilgi: Açıklama yok
+Satir 355  | ID: @14  | Bilgi: Açıklama yok
+Satir 356  | ID: @20  | Bilgi: Açıklama yok
+Satir 357  | ID: @21  | Bilgi: Açıklama yok
+Satir 358  | ID: @22  | Bilgi: Açıklama yok
+Satir 359  | ID: @23  | Bilgi: Açıklama yok
+Satir 360  | ID: @24  | Bilgi: Açıklama yok
+Satir 361  | ID: @25  | Bilgi: Açıklama yok
+Satir 362  | ID: @30  | Bilgi: Açıklama yok
+Satir 363  | ID: @31  | Bilgi: Açıklama yok
+Satir 364  | ID: @99  | Bilgi: Açıklama yok
+
+[DOSYA]: C:\Users\mete\Downloads\1\UXMv33\uxm\core\runtime\services\runtime_matrix_advanced_tensor_services.bas
+--------------------------------------------------------------------------------
+Satir 1119 | ID: @512 | Bilgi: Açıklama yok
+Satir 1123 | ID: @513 | Bilgi: Açıklama yok
+Satir 1126 | ID: @514 | Bilgi: Açıklama yok
+Satir 1130 | ID: @516 | Bilgi: Açıklama yok
+Satir 1134 | ID: @517 | Bilgi: Açıklama yok
+Satir 1138 | ID: @518 | Bilgi: Açıklama yok
+Satir 1141 | ID: @519 | Bilgi: Açıklama yok
+Satir 1145 | ID: @540 | Bilgi: Açıklama yok
+Satir 1148 | ID: @541 | Bilgi: Açıklama yok
+Satir 1151 | ID: @542 | Bilgi: Açıklama yok
+Satir 1155 | ID: @543 | Bilgi: Açıklama yok
+Satir 1158 | ID: @544 | Bilgi: Açıklama yok
+Satir 1162 | ID: @545 | Bilgi: Açıklama yok
+Satir 1165 | ID: @559 | Bilgi: Açıklama yok
+Satir 1169 | ID: @560 | Bilgi: Açıklama yok
+Satir 1172 | ID: @561 | Bilgi: Açıklama yok
+Satir 1175 | ID: @562 | Bilgi: Açıklama yok
+Satir 1179 | ID: @563 | Bilgi: Açıklama yok
+Satir 1182 | ID: @564 | Bilgi: Açıklama yok
+Satir 1185 | ID: @565 | Bilgi: Açıklama yok
+Satir 1189 | ID: @566 | Bilgi: Açıklama yok
+Satir 1199 | ID: @567 | Bilgi: Açıklama yok
+Satir 1202 | ID: @568 | Bilgi: Açıklama yok
+Satir 1210 | ID: @570 | Bilgi: Açıklama yok
+Satir 1213 | ID: @571 | Bilgi: Açıklama yok
+Satir 1216 | ID: @573 | Bilgi: Açıklama yok
+Satir 1220 | ID: @574 | Bilgi: Açıklama yok
+Satir 1223 | ID: @575 | Bilgi: Açıklama yok
+Satir 1226 | ID: @576 | Bilgi: Açıklama yok
+Satir 1229 | ID: @577 | Bilgi: Açıklama yok
+Satir 1232 | ID: @578 | Bilgi: Açıklama yok
+Satir 1235 | ID: @581 | Bilgi: Açıklama yok
+Satir 1238 | ID: @582 | Bilgi: Açıklama yok
+Satir 1241 | ID: @583 | Bilgi: Açıklama yok
+Satir 1244 | ID: @584 | Bilgi: Açıklama yok
+Satir 1247 | ID: @599 | Bilgi: Açıklama yok
+
+[DOSYA]: C:\Users\mete\Downloads\1\UXMv33\uxm\core\runtime\services\runtime_matrix_services.bas
+--------------------------------------------------------------------------------
+Satir 522  | ID: @160 | Bilgi: Açıklama yok
+Satir 525  | ID: @161 | Bilgi: Açıklama yok
+Satir 528  | ID: @162 | Bilgi: Açıklama yok
+Satir 531  | ID: @163 | Bilgi: Açıklama yok
+Satir 534  | ID: @164 | Bilgi: Açıklama yok
+Satir 537  | ID: @165 | Bilgi: Açıklama yok
+Satir 540  | ID: @166 | Bilgi: Açıklama yok
+Satir 543  | ID: @167 | Bilgi: Açıklama yok
+Satir 546  | ID: @168 | Bilgi: Açıklama yok
+Satir 549  | ID: @169 | Bilgi: Açıklama yok
+Satir 552  | ID: @170 | Bilgi: Açıklama yok
+Satir 555  | ID: @171 | Bilgi: Açıklama yok
+Satir 558  | ID: @172 | Bilgi: Açıklama yok
+Satir 561  | ID: @173 | Bilgi: Açıklama yok
+Satir 565  | ID: @174 | Bilgi: Açıklama yok
+Satir 568  | ID: @175 | Bilgi: Açıklama yok
+Satir 572  | ID: @176 | Bilgi: Açıklama yok
+
+[DOSYA]: C:\Users\mete\Downloads\1\UXMv33\uxm\core\runtime\services\runtime_numeric_methods_services.bas
+--------------------------------------------------------------------------------
+Satir 186  | ID: @420 | Bilgi: NUM_POLY_EVAL: T-2 polyBase, T-1 x_scaled -> T+1 y_scaled
+Satir 190  | ID: @421 | Bilgi: NUM_NEWTON: T-4 polyBase,T-3 x0_scaled,T-2 maxIter,T-1 eps_scaled -> T+1 root_scaled
+Satir 194  | ID: @422 | Bilgi: NUM_BISECTION: T-4 polyBase,T-3 a_scaled,T-2 b_scaled,T-1 maxIter -> T+1 root_scaled
+Satir 198  | ID: @423 | Bilgi: NUM_TRAPEZOID_POLY: T-4 polyBase,T-3 a_scaled,T-2 b_scaled,T-1 n -> area_scaled
+Satir 202  | ID: @424 | Bilgi: NUM_SIMPSON_POLY
+Satir 206  | ID: @425 | Bilgi: NUM_INTERP_LINEAR: T-4 xBase,T-3 yBase,T-2 count,T-1 x_raw -> y_raw_scaled
+Satir 210  | ID: @426 | Bilgi: NUM_BEZIER_QUADRATIC: T-4 p0,T-3 p1,T-2 p2,T-1 t_scaled -> result_scaled
+Satir 214  | ID: @427 | Bilgi: NUM_RK4_LINEAR: T-4 y0,T-3 a_scaled,T-2 dt_scaled,T-1 steps -> y_scaled
+Satir 218  | ID: @439 | Bilgi: NUM_STATUS
+
+[DOSYA]: C:\Users\mete\Downloads\1\UXMv33\uxm\core\runtime\services\runtime_probability_services.bas
+--------------------------------------------------------------------------------
+Satir 131  | ID: @380 | Bilgi: RAND_SEED: T-1 seed
+Satir 135  | ID: @381 | Bilgi: RAND_UNIFORM_01: T+1 scaled 0..999999
+Satir 139  | ID: @382 | Bilgi: RAND_INT_RANGE: T-2 min, T-1 max -> T+1
+Satir 151  | ID: @383 | Bilgi: RAND_BERNOULLI: T-1 probability_scaled -> T+1 0/1
+Satir 159  | ID: @384 | Bilgi: RAND_POISSON: T-1 lambda_scaled -> T+1 count
+Satir 163  | ID: @385 | Bilgi: RAND_BINOMIAL: T-2 n, T-1 p_scaled -> T+1 count
+Satir 167  | ID: @386 | Bilgi: RAND_WEIGHTED: T-2 data_start, T-1 count -> T+1 index
+Satir 171  | ID: @387 | Bilgi: RAND_SHUFFLE_DATA: T-2 data_start, T-1 count -> T+1 status
+Satir 175  | ID: @388 | Bilgi: RAND_NORMAL_SCALED: T-2 mean_scaled, T-1 sd_scaled -> T+1 scaled
+Satir 179  | ID: @389 | Bilgi: RAND_STATUS
+
+[DOSYA]: C:\Users\mete\Downloads\1\UXMv33\uxm\core\runtime\services\runtime_sparse_vector_services.bas
+--------------------------------------------------------------------------------
+Satir 506  | ID: @600 | Bilgi: Açıklama yok
+Satir 509  | ID: @601 | Bilgi: Açıklama yok
+Satir 512  | ID: @602 | Bilgi: Açıklama yok
+Satir 516  | ID: @603 | Bilgi: Açıklama yok
+Satir 519  | ID: @604 | Bilgi: Açıklama yok
+Satir 523  | ID: @605 | Bilgi: Açıklama yok
+Satir 527  | ID: @606 | Bilgi: Açıklama yok
+Satir 531  | ID: @607 | Bilgi: Açıklama yok
+Satir 535  | ID: @608 | Bilgi: Açıklama yok
+Satir 538  | ID: @609 | Bilgi: Açıklama yok
+Satir 541  | ID: @610 | Bilgi: Açıklama yok
+Satir 544  | ID: @611 | Bilgi: Açıklama yok
+Satir 547  | ID: @619 | Bilgi: Açıklama yok
+Satir 551  | ID: @640 | Bilgi: Açıklama yok
+Satir 554  | ID: @641 | Bilgi: Açıklama yok
+Satir 557  | ID: @642 | Bilgi: Açıklama yok
+Satir 560  | ID: @643 | Bilgi: Açıklama yok
+Satir 564  | ID: @644 | Bilgi: Açıklama yok
+Satir 567  | ID: @645 | Bilgi: Açıklama yok
+Satir 570  | ID: @646 | Bilgi: Açıklama yok
+Satir 574  | ID: @647 | Bilgi: Açıklama yok
+Satir 578  | ID: @648 | Bilgi: Açıklama yok
+Satir 582  | ID: @649 | Bilgi: Açıklama yok
+
+[DOSYA]: C:\Users\mete\Downloads\1\UXMv33\uxm\core\runtime\services\runtime_statistics_services.bas
+--------------------------------------------------------------------------------
+Satir 225  | ID: @260 | Bilgi: STAT_COUNT
+Satir 228  | ID: @261 | Bilgi: STAT_SUM
+Satir 232  | ID: @262 | Bilgi: STAT_MEAN
+Satir 236  | ID: @263 | Bilgi: STAT_MIN
+Satir 240  | ID: @264 | Bilgi: STAT_MAX
+Satir 244  | ID: @265 | Bilgi: STAT_RANGE
+Satir 250  | ID: @266 | Bilgi: STAT_VARIANCE
+Satir 254  | ID: @267 | Bilgi: STAT_STDDEV
+Satir 258  | ID: @268 | Bilgi: STAT_MEDIAN
+Satir 262  | ID: @274 | Bilgi: STAT_COVARIANCE
+Satir 265  | ID: @275 | Bilgi: STAT_ZSCORE
+Satir 276  | ID: @280 | Bilgi: CORR_PEARSON
+Satir 279  | ID: @290 | Bilgi: REG_LINEAR
+Satir 282  | ID: @298 | Bilgi: REG_PREDICT: T-1=x, T=modelStart -> T+1=y_scaled
+Satir 289  | ID: @299 | Bilgi: REG_R2: T=modelStart -> T+1=r2_scaled
+
+[DOSYA]: C:\Users\mete\Downloads\1\UXMv33\uxm\core\runtime\services\runtime_string_ext_services.bas
+--------------------------------------------------------------------------------
+Satir 282  | ID: @340 | Bilgi: Açıklama yok
+Satir 284  | ID: @341 | Bilgi: Açıklama yok
+Satir 286  | ID: @342 | Bilgi: Açıklama yok
+Satir 288  | ID: @346 | Bilgi: Açıklama yok
+Satir 290  | ID: @347 | Bilgi: Açıklama yok
+Satir 292  | ID: @348 | Bilgi: Açıklama yok
+Satir 294  | ID: @354 | Bilgi: Açıklama yok
+Satir 296  | ID: @355 | Bilgi: Açıklama yok
+Satir 298  | ID: @356 | Bilgi: Açıklama yok
+Satir 300  | ID: @357 | Bilgi: Açıklama yok
+Satir 302  | ID: @358 | Bilgi: Açıklama yok
+Satir 304  | ID: @359 | Bilgi: Açıklama yok
+Satir 306  | ID: @370 | Bilgi: Açıklama yok
+Satir 308  | ID: @371 | Bilgi: Açıklama yok
+Satir 310  | ID: @372 | Bilgi: Açıklama yok
+Satir 312  | ID: @373 | Bilgi: Açıklama yok
+Satir 314  | ID: @379 | Bilgi: Açıklama yok
+
+[DOSYA]: C:\Users\mete\Downloads\1\UXMv33\uxm\core\runtime\services\runtime_string_services.bas
+--------------------------------------------------------------------------------
+Satir 507  | ID: @300 | Bilgi: Açıklama yok
+Satir 509  | ID: @301 | Bilgi: Açıklama yok
+Satir 511  | ID: @302 | Bilgi: Açıklama yok
+Satir 513  | ID: @303 | Bilgi: Açıklama yok
+Satir 515  | ID: @304 | Bilgi: Açıklama yok
+Satir 517  | ID: @305 | Bilgi: Açıklama yok
+Satir 519  | ID: @306 | Bilgi: Açıklama yok
+Satir 521  | ID: @307 | Bilgi: Açıklama yok
+Satir 523  | ID: @308 | Bilgi: Açıklama yok
+Satir 525  | ID: @309 | Bilgi: Açıklama yok
+Satir 527  | ID: @310 | Bilgi: Açıklama yok
+Satir 529  | ID: @311 | Bilgi: Açıklama yok
+Satir 531  | ID: @312 | Bilgi: Açıklama yok
+Satir 533  | ID: @313 | Bilgi: Açıklama yok
+Satir 535  | ID: @314 | Bilgi: Açıklama yok
+Satir 537  | ID: @315 | Bilgi: Açıklama yok
+Satir 539  | ID: @316 | Bilgi: Açıklama yok
+Satir 541  | ID: @317 | Bilgi: Açıklama yok
+Satir 543  | ID: @318 | Bilgi: Açıklama yok
+Satir 545  | ID: @319 | Bilgi: Açıklama yok

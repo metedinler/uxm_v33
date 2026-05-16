@@ -1,0 +1,9 @@
+# TEST: data alanına yaz ve oku
+# EXPECT_OUTPUT: X
+>>
+0(T-2)+k5
+0(T-1)+k88
+@96
+0(T-1)+k5
+@95
+.(T+1)

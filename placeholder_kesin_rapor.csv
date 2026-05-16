@@ -1,0 +1,95 @@
+﻿tur,dosya,satir,metin
+NOT_IMPLEMENTED,uxm\core\runtime\services\runtime_matrix_services.bas,629,' Sparse CSR MV bu dosyada uygulanmadi; sparse gercek servisleri @600+ bandindadir.
+PLACEHOLDER,uxm\core\runtime\services\runtime_real_ext_services_v18.bas,6,' These services are intentionally not placeholders. They compute deterministic numeric results.
+PLACEHOLDER,uxm\core\runtime\services\runtime_statistics_services.bas,206,' --- V18 real statistical extensions: not placeholders ---
+PLACEHOLDER,araclar\placeholder_kesin_tara.py,3,"""""""UXM kesin placeholder denetimi."
+PLACEHOLDER,araclar\placeholder_kesin_tara.py,4,"Kaynak kodda yalandan işlev, TODO, dummy, placeholder veya yanlışlıkla geçerli görünen reserved izlerini bulur."
+TODO,araclar\placeholder_kesin_tara.py,4,"Kaynak kodda yalandan işlev, TODO, dummy, placeholder veya yanlışlıkla geçerli görünen reserved izlerini bulur."
+DUMMY,araclar\placeholder_kesin_tara.py,4,"Kaynak kodda yalandan işlev, TODO, dummy, placeholder veya yanlışlıkla geçerli görünen reserved izlerini bulur."
+FAKE,araclar\placeholder_kesin_tara.py,4,"Kaynak kodda yalandan işlev, TODO, dummy, placeholder veya yanlışlıkla geçerli görünen reserved izlerini bulur."
+PLACEHOLDER,araclar\placeholder_kesin_tara.py,12,"(""PLACEHOLDER"", re.compile(r""placeholder"", re.I)),"
+TODO,araclar\placeholder_kesin_tara.py,13,"(""TODO"", re.compile(r""\bTODO\b"", re.I)),"
+DUMMY,araclar\placeholder_kesin_tara.py,14,"(""DUMMY"", re.compile(r""\bdummy\b"", re.I)),"
+STUB,araclar\placeholder_kesin_tara.py,15,"(""STUB"", re.compile(r""\bstub\b"", re.I)),"
+FAKE,araclar\placeholder_kesin_tara.py,16,"(""FAKE"", re.compile(r""\bfake\b|sahte|yalandan"", re.I)),"
+NOT_IMPLEMENTED,araclar\placeholder_kesin_tara.py,17,"(""NOT_IMPLEMENTED"", re.compile(r""not implemented|notimplemented|uygulanmad"", re.I)),"
+PLACEHOLDER,araclar\placeholder_kesin_tara.py,30,ap=argparse.ArgumentParser(description='UXM kesin placeholder/dummy/TODO denetimi')
+TODO,araclar\placeholder_kesin_tara.py,30,ap=argparse.ArgumentParser(description='UXM kesin placeholder/dummy/TODO denetimi')
+DUMMY,araclar\placeholder_kesin_tara.py,30,ap=argparse.ArgumentParser(description='UXM kesin placeholder/dummy/TODO denetimi')
+PLACEHOLDER,araclar\placeholder_kesin_tara.py,32,"ap.add_argument('--cikti','--out',dest='out',default='placeholder_kesin_rapor.csv',help='CSV çıktı')"
+PLACEHOLDER,araclar\placeholder_kesin_tara.py,53,print(f'[PLACEHOLDER_DENETIM] bulgu={len(rows)} rapor={out}')
+PLACEHOLDER,araclar\placeholder_tara.py,3,"""""""UXM placeholder/TODO/dummy denetleyici."
+TODO,araclar\placeholder_tara.py,3,"""""""UXM placeholder/TODO/dummy denetleyici."
+DUMMY,araclar\placeholder_tara.py,3,"""""""UXM placeholder/TODO/dummy denetleyici."
+PLACEHOLDER,araclar\placeholder_tara.py,5,placeholder/TODO/dummy/stub/reserved/planned izlerini CSV ve Markdown olarak raporlar.
+TODO,araclar\placeholder_tara.py,5,placeholder/TODO/dummy/stub/reserved/planned izlerini CSV ve Markdown olarak raporlar.
+DUMMY,araclar\placeholder_tara.py,5,placeholder/TODO/dummy/stub/reserved/planned izlerini CSV ve Markdown olarak raporlar.
+STUB,araclar\placeholder_tara.py,5,placeholder/TODO/dummy/stub/reserved/planned izlerini CSV ve Markdown olarak raporlar.
+PLACEHOLDER,araclar\placeholder_tara.py,9,"PATTERNS=[r'placeholder',r'TODO',r'dummy',r'stub',r'not implemented',r'planned',r'reserved',r'taslak',r'planlandı',r'geçici']"
+TODO,araclar\placeholder_tara.py,9,"PATTERNS=[r'placeholder',r'TODO',r'dummy',r'stub',r'not implemented',r'planned',r'reserved',r'taslak',r'planlandı',r'geçici']"
+DUMMY,araclar\placeholder_tara.py,9,"PATTERNS=[r'placeholder',r'TODO',r'dummy',r'stub',r'not implemented',r'planned',r'reserved',r'taslak',r'planlandı',r'geçici']"
+STUB,araclar\placeholder_tara.py,9,"PATTERNS=[r'placeholder',r'TODO',r'dummy',r'stub',r'not implemented',r'planned',r'reserved',r'taslak',r'planlandı',r'geçici']"
+NOT_IMPLEMENTED,araclar\placeholder_tara.py,9,"PATTERNS=[r'placeholder',r'TODO',r'dummy',r'stub',r'not implemented',r'planned',r'reserved',r'taslak',r'planlandı',r'geçici']"
+PLACEHOLDER,araclar\placeholder_tara.py,13,ap=argparse.ArgumentParser(description='UXM placeholder/TODO/dummy taraması')
+TODO,araclar\placeholder_tara.py,13,ap=argparse.ArgumentParser(description='UXM placeholder/TODO/dummy taraması')
+DUMMY,araclar\placeholder_tara.py,13,ap=argparse.ArgumentParser(description='UXM placeholder/TODO/dummy taraması')
+PLACEHOLDER,araclar\placeholder_tara.py,15,"ap.add_argument('--cikti','--out',default='placeholder_raporu',dest='out')"
+PLACEHOLDER,araclar\placeholder_tara.py,34,csvp=out/'placeholder_taramasi.csv'
+PLACEHOLDER,araclar\placeholder_tara.py,38,md=out/'PLACEHOLDER_RAPORU.md'
+PLACEHOLDER,araclar\placeholder_tara.py,39,"md.write_text(f'# UXM Placeholder/TODO/Dummy Raporu\n\nToplam bulgu: {len(rows)}\n\nCSV: `{csvp}`\n', encoding='utf-8')"
+TODO,araclar\placeholder_tara.py,39,"md.write_text(f'# UXM Placeholder/TODO/Dummy Raporu\n\nToplam bulgu: {len(rows)}\n\nCSV: `{csvp}`\n', encoding='utf-8')"
+DUMMY,araclar\placeholder_tara.py,39,"md.write_text(f'# UXM Placeholder/TODO/Dummy Raporu\n\nToplam bulgu: {len(rows)}\n\nCSV: `{csvp}`\n', encoding='utf-8')"
+PLACEHOLDER,araclar\placeholder_tara.py,40,print(f'[PLACEHOLDER_TARA] bulgu={len(rows)} rapor={md}')
+PLACEHOLDER,araclar\placeholder_v19_uygula.py,76,"ap = argparse.ArgumentParser(description=""UXM V19 placeholder gerçek kod uygulayıcı"")"
+PLACEHOLDER,araclar\placeholder_v19_uygula.py,90,"print(""[V19] Sonraki adım: derleyici_derle.bat ve stage24_placeholder_test.bat -k"")"
+PLACEHOLDER,tool_en\apply_placeholder_v19.bat,2,python tool_en\apply_placeholder_v19.py --root . %*
+PLACEHOLDER,tool_en\apply_placeholder_v19.py,76,"ap = argparse.ArgumentParser(description=""UXM V19 placeholder real-code applier"")"
+PLACEHOLDER,tool_en\apply_placeholder_v19.py,90,"print(""[V19] Sonraki adım: derleyici_derle.bat ve stage24_placeholder_test.bat -k"")"
+PLACEHOLDER,tool_en\placeholder_audit.bat,2,python tool_en\placeholder_audit.py --root . --out placeholder_report %*
+PLACEHOLDER,tool_en\placeholder_audit.py,3,"""""""UXM placeholder/TODO/dummy denetleyici."
+TODO,tool_en\placeholder_audit.py,3,"""""""UXM placeholder/TODO/dummy denetleyici."
+DUMMY,tool_en\placeholder_audit.py,3,"""""""UXM placeholder/TODO/dummy denetleyici."
+PLACEHOLDER,tool_en\placeholder_audit.py,5,placeholder/TODO/dummy/stub/reserved/planned izlerini CSV ve Markdown olarak raporlar.
+TODO,tool_en\placeholder_audit.py,5,placeholder/TODO/dummy/stub/reserved/planned izlerini CSV ve Markdown olarak raporlar.
+DUMMY,tool_en\placeholder_audit.py,5,placeholder/TODO/dummy/stub/reserved/planned izlerini CSV ve Markdown olarak raporlar.
+STUB,tool_en\placeholder_audit.py,5,placeholder/TODO/dummy/stub/reserved/planned izlerini CSV ve Markdown olarak raporlar.
+PLACEHOLDER,tool_en\placeholder_audit.py,9,"PATTERNS=[r'placeholder',r'TODO',r'dummy',r'stub',r'not implemented',r'planned',r'reserved',r'taslak',r'planlandı',r'geçici']"
+TODO,tool_en\placeholder_audit.py,9,"PATTERNS=[r'placeholder',r'TODO',r'dummy',r'stub',r'not implemented',r'planned',r'reserved',r'taslak',r'planlandı',r'geçici']"
+DUMMY,tool_en\placeholder_audit.py,9,"PATTERNS=[r'placeholder',r'TODO',r'dummy',r'stub',r'not implemented',r'planned',r'reserved',r'taslak',r'planlandı',r'geçici']"
+STUB,tool_en\placeholder_audit.py,9,"PATTERNS=[r'placeholder',r'TODO',r'dummy',r'stub',r'not implemented',r'planned',r'reserved',r'taslak',r'planlandı',r'geçici']"
+NOT_IMPLEMENTED,tool_en\placeholder_audit.py,9,"PATTERNS=[r'placeholder',r'TODO',r'dummy',r'stub',r'not implemented',r'planned',r'reserved',r'taslak',r'planlandı',r'geçici']"
+PLACEHOLDER,tool_en\placeholder_audit.py,13,ap=argparse.ArgumentParser(description='UXM placeholder/TODO/dummy taraması')
+TODO,tool_en\placeholder_audit.py,13,ap=argparse.ArgumentParser(description='UXM placeholder/TODO/dummy taraması')
+DUMMY,tool_en\placeholder_audit.py,13,ap=argparse.ArgumentParser(description='UXM placeholder/TODO/dummy taraması')
+PLACEHOLDER,tool_en\placeholder_audit.py,15,"ap.add_argument('--cikti','--out',default='placeholder_raporu',dest='out')"
+PLACEHOLDER,tool_en\placeholder_audit.py,34,csvp=out/'placeholder_taramasi.csv'
+PLACEHOLDER,tool_en\placeholder_audit.py,38,md=out/'PLACEHOLDER_RAPORU.md'
+PLACEHOLDER,tool_en\placeholder_audit.py,39,"md.write_text(f'# UXM Placeholder/TODO/Dummy Raporu\n\nToplam bulgu: {len(rows)}\n\nCSV: `{csvp}`\n', encoding='utf-8')"
+TODO,tool_en\placeholder_audit.py,39,"md.write_text(f'# UXM Placeholder/TODO/Dummy Raporu\n\nToplam bulgu: {len(rows)}\n\nCSV: `{csvp}`\n', encoding='utf-8')"
+DUMMY,tool_en\placeholder_audit.py,39,"md.write_text(f'# UXM Placeholder/TODO/Dummy Raporu\n\nToplam bulgu: {len(rows)}\n\nCSV: `{csvp}`\n', encoding='utf-8')"
+PLACEHOLDER,tool_en\placeholder_audit.py,40,print(f'[PLACEHOLDER_TARA] bulgu={len(rows)} rapor={md}')
+PLACEHOLDER,tool_en\placeholder_strict_scan.bat,2,python tool_en\placeholder_strict_scan.py --root . --out placeholder_strict_report.csv %*
+PLACEHOLDER,tool_en\placeholder_strict_scan.py,3,"""""""UXM strict placeholder scan."
+PLACEHOLDER,tool_en\placeholder_strict_scan.py,4,"Kaynak kodda yalandan işlev, TODO, dummy, placeholder veya yanlışlıkla geçerli görünen reserved izlerini bulur."
+TODO,tool_en\placeholder_strict_scan.py,4,"Kaynak kodda yalandan işlev, TODO, dummy, placeholder veya yanlışlıkla geçerli görünen reserved izlerini bulur."
+DUMMY,tool_en\placeholder_strict_scan.py,4,"Kaynak kodda yalandan işlev, TODO, dummy, placeholder veya yanlışlıkla geçerli görünen reserved izlerini bulur."
+FAKE,tool_en\placeholder_strict_scan.py,4,"Kaynak kodda yalandan işlev, TODO, dummy, placeholder veya yanlışlıkla geçerli görünen reserved izlerini bulur."
+PLACEHOLDER,tool_en\placeholder_strict_scan.py,12,"(""PLACEHOLDER"", re.compile(r""placeholder"", re.I)),"
+TODO,tool_en\placeholder_strict_scan.py,13,"(""TODO"", re.compile(r""\bTODO\b"", re.I)),"
+DUMMY,tool_en\placeholder_strict_scan.py,14,"(""DUMMY"", re.compile(r""\bdummy\b"", re.I)),"
+STUB,tool_en\placeholder_strict_scan.py,15,"(""STUB"", re.compile(r""\bstub\b"", re.I)),"
+FAKE,tool_en\placeholder_strict_scan.py,16,"(""FAKE"", re.compile(r""\bfake\b|sahte|yalandan"", re.I)),"
+NOT_IMPLEMENTED,tool_en\placeholder_strict_scan.py,17,"(""NOT_IMPLEMENTED"", re.compile(r""not implemented|notimplemented|uygulanmad"", re.I)),"
+PLACEHOLDER,tool_en\placeholder_strict_scan.py,30,ap=argparse.ArgumentParser(description='UXM kesin placeholder/dummy/TODO denetimi')
+TODO,tool_en\placeholder_strict_scan.py,30,ap=argparse.ArgumentParser(description='UXM kesin placeholder/dummy/TODO denetimi')
+DUMMY,tool_en\placeholder_strict_scan.py,30,ap=argparse.ArgumentParser(description='UXM kesin placeholder/dummy/TODO denetimi')
+PLACEHOLDER,tool_en\placeholder_strict_scan.py,32,"ap.add_argument('--cikti','--out',dest='out',default='placeholder_kesin_rapor.csv',help='CSV çıktı')"
+PLACEHOLDER,tool_en\placeholder_strict_scan.py,53,print(f'[PLACEHOLDER_DENETIM] bulgu={len(rows)} rapor={out}')
+PLACEHOLDER,tool_en\placeholder_test.bat,2,python ..\araclar\uxm_kosucu_tr.py --kok .. --test-klasoru uxm\tests\stage21_placeholder_real --cikti results_stage21 %*
+PLACEHOLDER,tool_en\README_V19_EN.md,1,# UXM V19 Placeholder Continuation
+PLACEHOLDER,tool_en\README_V19_EN.md,3,"Status: 8-step placeholder cleanup plan, currently step 7/8."
+PLACEHOLDER,tool_en\README_V19_EN.md,10,apply_placeholder_v19.bat
+PLACEHOLDER,tool_en\README_V19_EN.md,11,stage24_placeholder_test.bat -k
+PLACEHOLDER,tool_en\stage22_placeholder_test.bat,2,python ..\araclar\uxm_kosucu_tr.py --test-dir uxm\tests\stage22_placeholder_real --out-root results_stage22 %*
+PLACEHOLDER,tool_en\stage24_placeholder_test.bat,3,python ..\araclar\uxm_kosucu.py --root .. --test-dir uxm\tests\stage24_placeholder_v19 --out-root sonuclar_stage24 %*
+PLACEHOLDER,tool_en\stage24_placeholder_test.bat,5,python ..\tools\UXM_EXPECT_RUNNER_V6.py --root .. --test-dir uxm\tests\stage24_placeholder_v19 --out-root sonuclar_stage24 %*

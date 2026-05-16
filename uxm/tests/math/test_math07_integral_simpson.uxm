@@ -1,0 +1,11 @@
+# TEST: Simpson integral
+# expression: x^2, integral 0..6, n=6, result=72
+# EXPECT_OUTPUT: 72
+#expr-rpn 300 = x 2 pow
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+0(T-4)+k300
+0(T-3)
+0(T-2)+k6
+0(T-1)+k6
+@253
+@61

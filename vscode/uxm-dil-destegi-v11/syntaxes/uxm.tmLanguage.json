@@ -1,0 +1,27 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "UXM",
+  "scopeName": "source.uxm",
+  "patterns": [
+    {
+      "name": "comment.line.number-sign.uxm",
+      "match": "#.*$"
+    },
+    {
+      "name": "keyword.control.uxm",
+      "match": "\\b(mode|memory|cell|normal|safe|wild|policy|total|tape|stack|data|fifo|queue)\\b"
+    },
+    {
+      "name": "constant.numeric.uxm",
+      "match": "\\b[0-9]+(kb|mb|b)?\\b"
+    },
+    {
+      "name": "support.function.meta.uxm",
+      "match": "@!?[#0-9]+"
+    },
+    {
+      "name": "variable.other.address.uxm",
+      "match": "\\([A-Za-z@:0-9+\\-*]+\\)"
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+--- onceki_src/uxm/core/runtime/runtime_memory.bas
++++ guncel/uxm/core/runtime/runtime_memory.bas
+@@ -329,18 +329,24 @@
+ Dim t As ULongInt
+ Dim s As ULongInt
+ Dim d As ULongInt
++Dim q As ULongInt
++Dim totalKB As ULongInt
+ If IsWildMode()=0 Then
+ SetStatus STATUS_SAFE_DENY
+ Exit Sub
+ End If
++
++' Legacy runtime layout service: Arg1=tapeKB, Arg2=stackKB, Arg0=dataKB.
++' UXM V7: eski 64 KB zorunlulugu kaldirildi; toplam 16 MB sinir uygulanir.
++' FIFO/queue compile-time #memory fifo=/queue= ile ayarlanir; runtime servis mevcut queue alanini korur.
+ t=Arg1()
+ s=Arg2()
+ d=Arg0()
+-If t+s+d<>64 Then
+-SetStatus STATUS_DATA_BOUNDS
+-Exit Sub
+-End If
+-If t=0 Or s=0 Or d=0 Then
++q=(ux_queue_cells*CellBytes())\1024
++If q<1 Then q=1
++
++totalKB=t+s+d+q
++If t=0 Or s=0 Or d=0 Or totalKB>UXM_RUNTIME_MAX_TOTAL_KB Then
+ SetStatus STATUS_DATA_BOUNDS
+ Exit Sub
+ End If
+@@ -351,6 +357,7 @@
+ ux_data_offset=(t+s)*1024
+ If ux_ptr>=ux_tape_cells Then ux_ptr=0
+ If ux_sp>=ux_stack_cells Then ux_sp=0
++If fifoHead>=FifoLimit() Or fifoTail>=FifoLimit() Or fifoCount>FifoLimit() Then FifoClear
+ ux_flags=ux_flags Or FLAG_PCHG
+ SetStatus STATUS_OK
+ End Sub

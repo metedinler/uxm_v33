@@ -1,0 +1,5 @@
+# TEST: META 68 bin print
+# EXPECT_OUTPUT: 101
+>>
+0(T-1)+k5
+@68

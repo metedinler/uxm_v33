@@ -1,0 +1,9 @@
+# TEST: V19 POISSON_PMF_SCALED @286
+# EXPECT_OUTPUT: 270671
+#cell dword
+#memory data=1mb,tape=64kb,stack=16kb,queue=64kb
+>>
+0(T-2)+k2
+0(T-1)+k2000
+@286
+@61

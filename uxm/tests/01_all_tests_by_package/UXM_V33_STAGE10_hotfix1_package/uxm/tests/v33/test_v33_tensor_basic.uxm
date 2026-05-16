@@ -1,0 +1,30 @@
+# V3.3 Stage-10 Tensor Basic: init/set/get/fill/sum
+# EXPECT_OUTPUT: 99 30
+#memory tape=64,stack=8,data=256,queue=4
+#cell dword
+#mode normal
+>>>>>
+# init tensor D:500 shape 2x3
+0(T-4)+k500
+0(T-3)+k2
+0(T-2)+k3
+@540
+# set [1,2]=99
+0(T-4)+k500
+0(T-3)+k1
+0(T-2)+k2
+0(T-1)+k99
+@541
+# get [1,2]
+0(T-4)+k500
+0(T-3)+k1
+0(T-2)+k2
+@542
+@61
+# fill all six cells with 5 and sum=30
+0(T-4)+k500
+0(T-3)+k5
+@543
+0(T-4)+k500
+@544
+@61

@@ -1,0 +1,12 @@
+>>
+0(T-2)+k20
+0(T-1)+k6
+@23
+@61
+@5
+@24
+@61
+
+# EXPECT_OUTPUT: 3
+# EXPECT_OUTPUT: 2
+# [UXM program finished]

@@ -1,0 +1,58 @@
+{
+  "name": "uxm-dil-destegi-v15",
+  "displayName": "UXM Dil Desteği / UXM Language Support",
+  "description": "UXM Türkçe ana dil, English command aliases, snippets and diagnostics task hooks.",
+  "version": "0.15.0",
+  "publisher": "mete",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "uxm",
+        "aliases": [
+          "UXM",
+          "uXBasic Mini"
+        ],
+        "extensions": [
+          ".uxm"
+        ]
+      }
+    ],
+    "grammars": [
+      {
+        "language": "uxm",
+        "scopeName": "source.uxm",
+        "path": "./syntaxes/uxm.tmLanguage.json"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "uxm",
+        "path": "./snippets/uxm.json"
+      }
+    ],
+    "commands": [
+      {
+        "command": "uxm.stage17",
+        "title": "UXM: Stage-17 Test Altyapısını Kontrol Et / Check Stage-17"
+      },
+      {
+        "command": "uxm.stage18",
+        "title": "UXM: Stage-18 Native Bridge Raporu / Native Bridge Report"
+      },
+      {
+        "command": "uxm.stage19",
+        "title": "UXM: Stage-19 VSCode Temizliği / VSCode Cleanup"
+      },
+      {
+        "command": "uxm.stage20",
+        "title": "UXM: Stage-20 Release Raporu / Release Report"
+      }
+    ]
+  }
+}

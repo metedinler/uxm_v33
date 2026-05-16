@@ -1,0 +1,69 @@
+# V3.3 Stage-11 Tensor Advanced: sum/add scalar/add same-shape
+# EXPECT_OUTPUT_COMPACT: 218142
+#memory tape=64,stack=8,data=256,queue=4
+#cell dword
+#mode normal
+>>>>>
+# init 3D tensor D:900 shape 1x2x3
+0(T-4)+k900
+0(T-3)+k1
+0(T-2)+k2
+0(T-1)+k3
+@560
+# values: 1,2,3,4,5,6
+0(T-4)+k900
+0(T-3)+k0
+0(T-2)+k0
+0(T-1)+k0
+0(T)+k1
+@561
+0(T-4)+k900
+0(T-3)+k0
+0(T-2)+k0
+0(T-1)+k1
+0(T)+k2
+@561
+0(T-4)+k900
+0(T-3)+k0
+0(T-2)+k0
+0(T-1)+k2
+0(T)+k3
+@561
+0(T-4)+k900
+0(T-3)+k0
+0(T-2)+k1
+0(T-1)+k0
+0(T)+k4
+@561
+0(T-4)+k900
+0(T-3)+k0
+0(T-2)+k1
+0(T-1)+k1
+0(T)+k5
+@561
+0(T-4)+k900
+0(T-3)+k0
+0(T-2)+k1
+0(T-1)+k2
+0(T)+k6
+@561
+# sum => 21
+0(T-4)+k900
+@573
+@61
+# add scalar +10 to D:950; sum => 81
+0(T-4)+k950
+0(T-3)+k900
+0(T-2)+k10
+@570
+0(T-4)+k950
+@573
+@61
+# add same D:900 + D:900 to D:1000; sum => 42
+0(T-4)+k1000
+0(T-3)+k900
+0(T-2)+k900
+@571
+0(T-4)+k1000
+@573
+@61

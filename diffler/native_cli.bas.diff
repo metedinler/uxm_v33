@@ -1,0 +1,74 @@
+--- onceki_src/uxm/core/compiler/native/native_cli.bas
++++ guncel/uxm/core/compiler/native/native_cli.bas
+@@ -45,22 +45,22 @@
+     If MemoryPolicy=UXM_MEMORY_POLICY_BOUNDED Then
+         If TapeKB>UXM_MAX_TAPE_KB Then
+             HadError=1
+-            ErrMsg="HATA: tape bellek ust siniri " + Str(UXM_MAX_TAPE_KB) + " KB. Verilen="+Str(TapeKB)+" KB. Toplam-politika icin #memory policy=total kullan."
++            ErrMsg="HATA: tape bellek ust siniri " + Str(UXM_MAX_TAPE_KB) + " KB. Verilen="+Str(TapeKB)+" KB. UXM V7 toplam bellek siniri 16 MB; alanlari byte/kb/mb olarak ayarlayabilirsin."
+             Exit Sub
+         End If
+         If StackKB>UXM_MAX_STACK_KB Then
+             HadError=1
+-            ErrMsg="HATA: stack bellek ust siniri " + Str(UXM_MAX_STACK_KB) + " KB. Verilen="+Str(StackKB)+" KB. Toplam-politika icin #memory policy=total kullan."
++            ErrMsg="HATA: stack bellek ust siniri " + Str(UXM_MAX_STACK_KB) + " KB. Verilen="+Str(StackKB)+" KB. UXM V7 toplam bellek siniri 16 MB; alanlari byte/kb/mb olarak ayarlayabilirsin."
+             Exit Sub
+         End If
+         If DataKB>UXM_MAX_DATA_KB Then
+             HadError=1
+-            ErrMsg="HATA: data bellek ust siniri " + Str(UXM_MAX_DATA_KB) + " KB. Verilen="+Str(DataKB)+" KB. Toplam-politika icin #memory policy=total kullan."
++            ErrMsg="HATA: data bellek ust siniri " + Str(UXM_MAX_DATA_KB) + " KB. Verilen="+Str(DataKB)+" KB. UXM V7 toplam bellek siniri 16 MB; alanlari byte/kb/mb olarak ayarlayabilirsin."
+             Exit Sub
+         End If
+         If QueueKB>UXM_MAX_QUEUE_KB Then
+             HadError=1
+-            ErrMsg="HATA: queue/fifo bellek ust siniri " + Str(UXM_MAX_QUEUE_KB) + " KB. Verilen="+Str(QueueKB)+" KB. Toplam-politika icin #memory policy=total kullan."
++            ErrMsg="HATA: queue/fifo bellek ust siniri " + Str(UXM_MAX_QUEUE_KB) + " KB. Verilen="+Str(QueueKB)+" KB. UXM V7 toplam bellek siniri 16 MB; alanlari byte/kb/mb olarak ayarlayabilirsin."
+             Exit Sub
+         End If
+     End If
+@@ -236,8 +236,10 @@
+ End Function
+ 
+ Function ParseSizeKB(ByVal s As String, ByVal defaultKB As Long) As Long
+-    Dim n As Long
++    Dim n As Double
+     Dim raw As String
++    Dim kb As Long
++    Dim bytesVal As LongInt
+     raw=LCase(TrimAll(s))
+     If raw="" Then ParseSizeKB=defaultKB:Exit Function
+     n=Val(raw)
+@@ -245,11 +247,26 @@
+         ParseSizeKB=defaultKB
+         Exit Function
+     End If
+-    If InStr(raw,"mb")>0 Or InStr(raw,"m")=Len(raw) Then
+-        ParseSizeKB=n*1024
++
++    ' UXM V7 memory unit parser:
++    '   bare number => KB (legacy compatible)
++    '   b / byte / bytes => byte, KB'ye yukari yuvarlanir
++    '   k / kb / kbyte => KB
++    '   m / mb / mbyte => MB
++    If InStr(raw,"mb")>0 Or InStr(raw,"mbyte")>0 Or Right(raw,1)="m" Then
++        kb=CLng(n*1024.0)
++    ElseIf InStr(raw,"kb")>0 Or InStr(raw,"kbyte")>0 Or Right(raw,1)="k" Then
++        kb=CLng(n)
++    ElseIf InStr(raw,"byte")>0 Or (Right(raw,1)="b" And InStr(raw,"kb")=0 And InStr(raw,"mb")=0) Then
++        bytesVal=CLngInt(n)
++        kb=CLng((bytesVal+1023) \ 1024)
++        If kb<1 Then kb=1
+     Else
+         ' Sayilar varsayilan olarak KB kabul edilir: tape=32 => 32 KB
+-        ParseSizeKB=n
+-    End If
+-End Function
+-
++        kb=CLng(n)
++    End If
++
++    If kb<1 Then kb=1
++    ParseSizeKB=kb
++End Function
++

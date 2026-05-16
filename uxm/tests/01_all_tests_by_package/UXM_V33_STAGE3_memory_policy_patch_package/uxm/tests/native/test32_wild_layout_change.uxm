@@ -1,0 +1,10 @@
+# TEST: wild mode memory layout change
+# EXPECT_OUTPUT: 0
+#mode wild
+>>
+0(T-2)+k48
+0(T-1)+k4
+0(T)+k12
+@127
+@84
+@61

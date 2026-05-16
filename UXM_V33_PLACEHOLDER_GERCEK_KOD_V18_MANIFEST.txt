@@ -1,0 +1,26 @@
+# UXM V33 Placeholder Gerçek Kod V18 Manifest
+
+Bu paket V17 sonrası devam paketidir.
+
+Dürüst not: Burada üretilen testlerin Windows/FreeBASIC koşusunu bu ortamda çalıştıramadım. Bu yüzden "PASS geçti" demiyorum. Paket, gerçek hesap kodu + sert placeholder kapısı sağlar.
+
+Eklenen/düzeltilen alanlar:
+- @270..@273 istatistik uzantıları: quartile, percentile, skewness, kurtosis
+- @281..@282 korelasyon: Spearman, Kendall
+- @291..@293 regresyon: multiple, polynomial fallback, logistic probability
+- @410..@412 dosya blok/seek
+- @416..@419 delete/rename/mkdir/exists
+- @760..@769 hipotez testleri yeni banda
+- @790..@795 posthoc etki/karar hattı
+- @810..@823 AI metrikleri yeni banda
+- @181/@182/@190/@191 matrix/ND temel gerçek hesap
+- List/dict/set eklenmedi; kılavuz örneği olarak bırakılmalı.
+
+Çalıştırma:
+```
+placeholder_kesin_tara.bat
+stage23_placeholder_test.bat -k
+placeholder_kapi_sert.bat
+```
+
+Henüz "BİTTİ" değildir. placeholder_kapi_sert temiz çıkmadan bitti denmemeli.

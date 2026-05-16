@@ -1,0 +1,50 @@
+# V3.3 Stage-11 Tensor Advanced: 4D init/set/get/flat
+# EXPECT_OUTPUT_COMPACT: 8811
+#memory tape=64,stack=8,data=256,queue=4
+#cell dword
+#mode normal
+>>>>>
+# dims at data[20..23] = 2,2,2,2
+0(T-2)+k20
+0(T-1)+k2
+@96
+0(T-2)+k21
+0(T-1)+k2
+@96
+0(T-2)+k22
+0(T-1)+k2
+@96
+0(T-2)+k23
+0(T-1)+k2
+@96
+# init 4D tensor at D:800 from dimsBase=20
+0(T-4)+k800
+0(T-3)+k20
+@563
+# index at data[30..33] = 1,0,1,1
+0(T-2)+k30
+0(T-1)+k1
+@96
+0(T-2)+k31
+0(T-1)+k0
+@96
+0(T-2)+k32
+0(T-1)+k1
+@96
+0(T-2)+k33
+0(T-1)+k1
+@96
+# set/get [1,0,1,1] = 88
+0(T-4)+k800
+0(T-3)+k30
+0(T-2)+k88
+@564
+0(T-4)+k800
+0(T-3)+k30
+@565
+@61
+# flat index for 2x2x2x2 at [1,0,1,1] => 11
+0(T-4)+k800
+0(T-3)+k30
+@566
+@61

@@ -1,0 +1,26 @@
+=== UXM STAGE-11 ASM OPTIMIZASYON STRATEJI KITABI ===
+Durum: Orijinal kodlar korunarak öneriler üretilmiştir.
+
+[KRITIK ÖNERİ #1] Bayrak İşlemlerini Register'a Taşı
+Tespit: 'ux_flags' bellek erişimi döngü içinde çok fazla.
+Çözüm: Döngü başında 'mov r15w, word [ux_flags]' yapın,
+      işlemleri r15 üzerinde bitirip döngü sonunda bir kez yazın.
+Tahmini Kazanç: %15 CPU hızı.
+
+[KRITIK ÖNERİ #2] Sınır Kontrolünü (Hoisting) Dışarı Çıkar
+Tespit: Her hücre erişiminde 'jae __ux_err_ptr' kontrolü yapılıyor.
+Çözüm: Tensor operasyonlarında toplam boyutu döngü öncesi tek seferde
+      kontrol edin. İçerideki 'cmp/jae' bloklarını temizleyin.
+Tahmini Kazanç: %20 döngü performansı.
+
+[KRITIK ÖNERİ #3] Register Gölgeleme (Shadowing)
+Tespit: 'push rax' ve 'pop rax' ikilisi gereksiz yere stack kullanıyor.
+Çözüm: r8-r11 arasındaki boş registerları 'geçici depo' olarak kullanın.
+Tahmini Kazanç: Bellek gecikmesinde azalma.
+
+=== OTOMATIK DEGISIM REHBERI (SEARCH & REPLACE) ===
+Bul: mov rax, 0      -> Değiştir: xor rax, rax
+Bul: add rax, 1      -> Değiştir: inc rax
+Bul: sub rax, 1      -> Değiştir: dec rax
+Bul: mul (.*), 8     -> Değiştir: shl \1, 3
+Bul: div (.*), 4     -> Değiştir: shr \1, 2

@@ -1,0 +1,11 @@
+# TEST: tape linear search
+# EXPECT_OUTPUT: 2
+0(T:20)+k7
+0(T:21)+k8
+0(T:22)+k9
+>>
+0(T-2)+k20
+0(T-1)+k3
+0(T)+k9
+@104
+@61

@@ -1,0 +1,12 @@
+#memory tape=32,stack=4,data=16,queue=4
+#cell byte
+s1=0,{abc}
+>>>>>>>
+0(T-4)+k0
+0(T-3)+k3
+0(T-2)+k32
+0(T-1)+k8
+@308
+0(T-1)+k32
+@313
+@5

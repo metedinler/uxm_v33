@@ -1,0 +1,5 @@
+# mode: compact
+# exit_code: 0
+# source: embedded_EXPECT_OUTPUT
+
+30000000 250000000 40

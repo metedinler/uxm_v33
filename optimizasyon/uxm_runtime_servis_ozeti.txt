@@ -1,0 +1,275 @@
+UX-MINIMA RUNTIME SERVIS OZETI
+====================================================================================================
+ID     | Dosya                               | Açıklama
+----------------------------------------------------------------------------------------------------
+@0     | runtime_bio_services.bas            | 
+@0     | runtime_bio_services.bas            | Axx
+@0     | runtime_bio_services.bas            | AAU/AAC Asn, AAA/AAG Lys
+@0     | runtime_bio_services.bas            | CAU/CAC His, CAA/CAG Gln
+@0     | runtime_bio_services.bas            | GAU/GAC Asp, GAA/GAG Glu
+@0     | runtime_bio_services.bas            | UAU/UAC Tyr, UAA/UAG Stop
+@1     | runtime_bio_services.bas            | 
+@1     | runtime_bio_services.bas            | ACx Thr
+@1     | runtime_bio_services.bas            | Cxx
+@1     | runtime_bio_services.bas            | CCx Pro
+@1     | runtime_bio_services.bas            | GCx Ala
+@1     | runtime_bio_services.bas            | UCx Ser
+@1     | runtime_math_services.bas           | 
+@1     | runtime_math_services.bas           | 
+@2     | runtime_bio_services.bas            | 
+@2     | runtime_bio_services.bas            | AGU/AGC Ser, AGA/AGG Arg
+@2     | runtime_bio_services.bas            | CGx Arg
+@2     | runtime_bio_services.bas            | Gxx
+@2     | runtime_bio_services.bas            | GGx Gly
+@2     | runtime_bio_services.bas            | UGU/UGC Cys, UGA Stop, UGG Trp
+@2     | runtime_math_services.bas           | 
+@2     | runtime_math_services.bas           | 
+@3     | runtime_bio_services.bas            | AUU/AUC/AUA Ile, AUG Met
+@3     | runtime_bio_services.bas            | CUx Leu
+@3     | runtime_bio_services.bas            | GUx Val
+@3     | runtime_bio_services.bas            | T/Uxx
+@3     | runtime_bio_services.bas            | UUU/UUC Phe, UUA/UUG Leu
+@10    | runtime_math_services.bas           | 
+@10    | runtime_math_services.bas           | 
+@11    | runtime_math_services.bas           | 
+@11    | runtime_math_services.bas           | 
+@12    | runtime_math_services.bas           | 
+@12    | runtime_math_services.bas           | 
+@13    | runtime_math_services.bas           | 
+@13    | runtime_math_services.bas           | 
+@14    | runtime_math_services.bas           | 
+@14    | runtime_math_services.bas           | 
+@20    | runtime_math_services.bas           | 
+@20    | runtime_math_services.bas           | 
+@21    | runtime_math_services.bas           | 
+@21    | runtime_math_services.bas           | 
+@22    | runtime_math_services.bas           | 
+@22    | runtime_math_services.bas           | 
+@23    | runtime_math_services.bas           | 
+@23    | runtime_math_services.bas           | 
+@24    | runtime_math_services.bas           | 
+@24    | runtime_math_services.bas           | 
+@25    | runtime_math_services.bas           | 
+@25    | runtime_math_services.bas           | 
+@30    | runtime_math_services.bas           | 
+@30    | runtime_math_services.bas           | 
+@31    | runtime_math_services.bas           | 
+@31    | runtime_math_services.bas           | 
+@99    | runtime_math_services.bas           | 
+@99    | runtime_math_services.bas           | 
+@160   | runtime_matrix_services.bas         | 
+@161   | runtime_matrix_services.bas         | 
+@162   | runtime_matrix_services.bas         | 
+@163   | runtime_matrix_services.bas         | 
+@164   | runtime_matrix_services.bas         | 
+@165   | runtime_matrix_services.bas         | 
+@166   | runtime_matrix_services.bas         | 
+@167   | runtime_matrix_services.bas         | 
+@168   | runtime_matrix_services.bas         | 
+@169   | runtime_matrix_services.bas         | 
+@170   | runtime_matrix_services.bas         | 
+@171   | runtime_matrix_services.bas         | 
+@172   | runtime_matrix_services.bas         | 
+@173   | runtime_matrix_services.bas         | 
+@174   | runtime_matrix_services.bas         | 
+@175   | runtime_matrix_services.bas         | 
+@176   | runtime_matrix_services.bas         | 
+@200   | runtime_fp_services.bas             | 
+@201   | runtime_fp_services.bas             | 
+@202   | runtime_fp_services.bas             | 
+@203   | runtime_fp_services.bas             | 
+@204   | runtime_fp_services.bas             | 
+@205   | runtime_fp_services.bas             | 
+@206   | runtime_fp_services.bas             | 
+@207   | runtime_fp_services.bas             | 
+@208   | runtime_fp_services.bas             | 
+@209   | runtime_fp_services.bas             | 
+@210   | runtime_fp_services.bas             | 
+@211   | runtime_fp_services.bas             | 
+@212   | runtime_fp_services.bas             | 
+@213   | runtime_fp_services.bas             | 
+@214   | runtime_fp_services.bas             | 
+@215   | runtime_fp_services.bas             | 
+@216   | runtime_fp_services.bas             | 
+@217   | runtime_fp_services.bas             | 
+@218   | runtime_fp_services.bas             | 
+@219   | runtime_fp_services.bas             | 
+@220   | runtime_fp_services.bas             | 
+@221   | runtime_fp_services.bas             | 
+@222   | runtime_fp_services.bas             | 
+@223   | runtime_fp_services.bas             | 
+@224   | runtime_fp_services.bas             | 
+@230   | runtime_fp_services.bas             | 
+@240   | runtime_math_services.bas           | 
+@241   | runtime_math_services.bas           | 
+@242   | runtime_math_services.bas           | 
+@243   | runtime_math_services.bas           | 
+@244   | runtime_math_services.bas           | 
+@250   | runtime_math_services.bas           | 
+@251   | runtime_math_services.bas           | 
+@252   | runtime_math_services.bas           | 
+@253   | runtime_math_services.bas           | 
+@254   | runtime_math_services.bas           | 
+@260   | runtime_statistics_services.bas     | STAT_COUNT
+@261   | runtime_statistics_services.bas     | STAT_SUM
+@262   | runtime_statistics_services.bas     | STAT_MEAN
+@263   | runtime_statistics_services.bas     | STAT_MIN
+@264   | runtime_statistics_services.bas     | STAT_MAX
+@265   | runtime_statistics_services.bas     | STAT_RANGE
+@266   | runtime_statistics_services.bas     | STAT_VARIANCE
+@267   | runtime_statistics_services.bas     | STAT_STDDEV
+@268   | runtime_statistics_services.bas     | STAT_MEDIAN
+@274   | runtime_statistics_services.bas     | STAT_COVARIANCE
+@275   | runtime_statistics_services.bas     | STAT_ZSCORE
+@280   | runtime_statistics_services.bas     | CORR_PEARSON
+@290   | runtime_statistics_services.bas     | REG_LINEAR
+@298   | runtime_statistics_services.bas     | REG_PREDICT: T-1=x, T=modelStart -> T+1=y_scaled
+@299   | runtime_statistics_services.bas     | REG_R2: T=modelStart -> T+1=r2_scaled
+@300   | runtime_string_services.bas         | 
+@301   | runtime_string_services.bas         | 
+@302   | runtime_string_services.bas         | 
+@303   | runtime_string_services.bas         | 
+@304   | runtime_string_services.bas         | 
+@305   | runtime_string_services.bas         | 
+@306   | runtime_string_services.bas         | 
+@307   | runtime_string_services.bas         | 
+@308   | runtime_string_services.bas         | 
+@309   | runtime_string_services.bas         | 
+@310   | runtime_string_services.bas         | 
+@311   | runtime_string_services.bas         | 
+@312   | runtime_string_services.bas         | 
+@313   | runtime_string_services.bas         | 
+@314   | runtime_string_services.bas         | 
+@315   | runtime_string_services.bas         | 
+@316   | runtime_string_services.bas         | 
+@317   | runtime_string_services.bas         | 
+@318   | runtime_string_services.bas         | 
+@319   | runtime_string_services.bas         | 
+@340   | runtime_string_ext_services.bas     | 
+@341   | runtime_string_ext_services.bas     | 
+@342   | runtime_string_ext_services.bas     | 
+@346   | runtime_string_ext_services.bas     | 
+@347   | runtime_string_ext_services.bas     | 
+@348   | runtime_string_ext_services.bas     | 
+@354   | runtime_string_ext_services.bas     | 
+@355   | runtime_string_ext_services.bas     | 
+@356   | runtime_string_ext_services.bas     | 
+@357   | runtime_string_ext_services.bas     | 
+@358   | runtime_string_ext_services.bas     | 
+@359   | runtime_string_ext_services.bas     | 
+@370   | runtime_string_ext_services.bas     | 
+@371   | runtime_string_ext_services.bas     | 
+@372   | runtime_string_ext_services.bas     | 
+@373   | runtime_string_ext_services.bas     | 
+@379   | runtime_string_ext_services.bas     | 
+@380   | runtime_probability_services.bas    | RAND_SEED: T-1 seed
+@381   | runtime_probability_services.bas    | RAND_UNIFORM_01: T+1 scaled 0..999999
+@382   | runtime_probability_services.bas    | RAND_INT_RANGE: T-2 min, T-1 max -> T+1
+@383   | runtime_probability_services.bas    | RAND_BERNOULLI: T-1 probability_scaled -> T+1 0/1
+@384   | runtime_probability_services.bas    | RAND_POISSON: T-1 lambda_scaled -> T+1 count
+@385   | runtime_probability_services.bas    | RAND_BINOMIAL: T-2 n, T-1 p_scaled -> T+1 count
+@386   | runtime_probability_services.bas    | RAND_WEIGHTED: T-2 data_start, T-1 count -> T+1 index
+@387   | runtime_probability_services.bas    | RAND_SHUFFLE_DATA: T-2 data_start, T-1 count -> T+1 status
+@388   | runtime_probability_services.bas    | RAND_NORMAL_SCALED: T-2 mean_scaled, T-1 sd_scaled -> T+1 scaled
+@389   | runtime_probability_services.bas    | RAND_STATUS
+@400   | runtime_file_services.bas           | 
+@401   | runtime_file_services.bas           | 
+@402   | runtime_file_services.bas           | 
+@403   | runtime_file_services.bas           | 
+@404   | runtime_file_services.bas           | 
+@405   | runtime_file_services.bas           | 
+@406   | runtime_file_services.bas           | 
+@407   | runtime_file_services.bas           | 
+@408   | runtime_file_services.bas           | 
+@409   | runtime_file_services.bas           | 
+@413   | runtime_file_services.bas           | 
+@414   | runtime_file_services.bas           | 
+@415   | runtime_file_services.bas           | 
+@420   | runtime_numeric_methods_services.bas | NUM_POLY_EVAL: T-2 polyBase, T-1 x_scaled -> T+1 y_scaled
+@421   | runtime_numeric_methods_services.bas | NUM_NEWTON: T-4 polyBase,T-3 x0_scaled,T-2 maxIter,T-1 eps_scaled -> T+1 root_scaled
+@422   | runtime_numeric_methods_services.bas | NUM_BISECTION: T-4 polyBase,T-3 a_scaled,T-2 b_scaled,T-1 maxIter -> T+1 root_scaled
+@423   | runtime_numeric_methods_services.bas | NUM_TRAPEZOID_POLY: T-4 polyBase,T-3 a_scaled,T-2 b_scaled,T-1 n -> area_scaled
+@424   | runtime_numeric_methods_services.bas | NUM_SIMPSON_POLY
+@425   | runtime_numeric_methods_services.bas | NUM_INTERP_LINEAR: T-4 xBase,T-3 yBase,T-2 count,T-1 x_raw -> y_raw_scaled
+@426   | runtime_numeric_methods_services.bas | NUM_BEZIER_QUADRATIC: T-4 p0,T-3 p1,T-2 p2,T-1 t_scaled -> result_scaled
+@427   | runtime_numeric_methods_services.bas | NUM_RK4_LINEAR: T-4 y0,T-3 a_scaled,T-2 dt_scaled,T-1 steps -> y_scaled
+@439   | runtime_numeric_methods_services.bas | NUM_STATUS
+@440   | runtime_complex_services.bas        | CPLX_INIT: T-2 out, T-1 real_scaled, T imag_scaled
+@441   | runtime_complex_services.bas        | CPLX_ADD: T-2 out, T-1 aBase, T bBase
+@442   | runtime_complex_services.bas        | CPLX_SUB
+@443   | runtime_complex_services.bas        | CPLX_MUL
+@444   | runtime_complex_services.bas        | CPLX_DIV
+@445   | runtime_complex_services.bas        | CPLX_CONJ: T-2 out, T-1 aBase
+@446   | runtime_complex_services.bas        | CPLX_ABS: T-1 aBase -> T+1 scaled magnitude
+@447   | runtime_complex_services.bas        | CPLX_ARG: T-1 aBase -> T+1 scaled radians
+@448   | runtime_complex_services.bas        | CPLX_EXP: T-2 out, T-1 aBase
+@449   | runtime_complex_services.bas        | CPLX_FROM_POLAR: T-2 out, T-1 radius_scaled, T theta_scaled
+@459   | runtime_complex_services.bas        | CPLX_STATUS
+@480   | runtime_bio_services.bas            | 
+@481   | runtime_bio_services.bas            | 
+@482   | runtime_bio_services.bas            | 
+@483   | runtime_bio_services.bas            | 
+@484   | runtime_bio_services.bas            | 
+@485   | runtime_bio_services.bas            | 
+@486   | runtime_bio_services.bas            | 
+@487   | runtime_bio_services.bas            | 
+@511   | runtime_bio_services.bas            | 
+@512   | runtime_matrix_advanced_tensor_services.bas | 
+@513   | runtime_matrix_advanced_tensor_services.bas | 
+@514   | runtime_matrix_advanced_tensor_services.bas | 
+@516   | runtime_matrix_advanced_tensor_services.bas | 
+@517   | runtime_matrix_advanced_tensor_services.bas | 
+@518   | runtime_matrix_advanced_tensor_services.bas | 
+@519   | runtime_matrix_advanced_tensor_services.bas | 
+@540   | runtime_matrix_advanced_tensor_services.bas | 
+@541   | runtime_matrix_advanced_tensor_services.bas | 
+@542   | runtime_matrix_advanced_tensor_services.bas | 
+@543   | runtime_matrix_advanced_tensor_services.bas | 
+@544   | runtime_matrix_advanced_tensor_services.bas | 
+@545   | runtime_matrix_advanced_tensor_services.bas | 
+@559   | runtime_matrix_advanced_tensor_services.bas | 
+@560   | runtime_matrix_advanced_tensor_services.bas | 
+@561   | runtime_matrix_advanced_tensor_services.bas | 
+@562   | runtime_matrix_advanced_tensor_services.bas | 
+@563   | runtime_matrix_advanced_tensor_services.bas | 
+@564   | runtime_matrix_advanced_tensor_services.bas | 
+@565   | runtime_matrix_advanced_tensor_services.bas | 
+@566   | runtime_matrix_advanced_tensor_services.bas | 
+@567   | runtime_matrix_advanced_tensor_services.bas | 
+@568   | runtime_matrix_advanced_tensor_services.bas | 
+@570   | runtime_matrix_advanced_tensor_services.bas | 
+@571   | runtime_matrix_advanced_tensor_services.bas | 
+@573   | runtime_matrix_advanced_tensor_services.bas | 
+@574   | runtime_matrix_advanced_tensor_services.bas | 
+@575   | runtime_matrix_advanced_tensor_services.bas | 
+@576   | runtime_matrix_advanced_tensor_services.bas | 
+@577   | runtime_matrix_advanced_tensor_services.bas | 
+@578   | runtime_matrix_advanced_tensor_services.bas | 
+@581   | runtime_matrix_advanced_tensor_services.bas | 
+@582   | runtime_matrix_advanced_tensor_services.bas | 
+@583   | runtime_matrix_advanced_tensor_services.bas | 
+@584   | runtime_matrix_advanced_tensor_services.bas | 
+@599   | runtime_matrix_advanced_tensor_services.bas | 
+@600   | runtime_sparse_vector_services.bas  | 
+@601   | runtime_sparse_vector_services.bas  | 
+@602   | runtime_sparse_vector_services.bas  | 
+@603   | runtime_sparse_vector_services.bas  | 
+@604   | runtime_sparse_vector_services.bas  | 
+@605   | runtime_sparse_vector_services.bas  | 
+@606   | runtime_sparse_vector_services.bas  | 
+@607   | runtime_sparse_vector_services.bas  | 
+@608   | runtime_sparse_vector_services.bas  | 
+@609   | runtime_sparse_vector_services.bas  | 
+@610   | runtime_sparse_vector_services.bas  | 
+@611   | runtime_sparse_vector_services.bas  | 
+@619   | runtime_sparse_vector_services.bas  | 
+@640   | runtime_sparse_vector_services.bas  | 
+@641   | runtime_sparse_vector_services.bas  | 
+@642   | runtime_sparse_vector_services.bas  | 
+@643   | runtime_sparse_vector_services.bas  | 
+@644   | runtime_sparse_vector_services.bas  | 
+@645   | runtime_sparse_vector_services.bas  | 
+@646   | runtime_sparse_vector_services.bas  | 
+@647   | runtime_sparse_vector_services.bas  | 
+@648   | runtime_sparse_vector_services.bas  | 
+@649   | runtime_sparse_vector_services.bas  | 

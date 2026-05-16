@@ -1,0 +1,13 @@
+#memory tape=128,stack=16,data=4096,queue=16
+#cell dword
+#mode normal
+>>>>>
+s1=0,{mega_file_test.tmp}
+s2=64,{HELLO}
+0(T-4)+k1
+0(T-3)+k0
+0(T-2)+k0
+0(T-1)+k0
+0(T)+k0
+@402
+@61

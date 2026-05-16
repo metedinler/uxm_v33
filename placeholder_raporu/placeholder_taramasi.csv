@@ -1,0 +1,397 @@
+dosya,satir,metin
+placeholder_kapi.bat,2,python araclar\placeholder_tara.py --root . --fail-on-findings %*
+placeholder_kapi_sert.bat,2,python araclar\placeholder_kesin_tara.py --kok . --cikti placeholder_kesin_rapor.csv --kapi %*
+placeholder_kesin_tara.bat,2,python araclar\placeholder_kesin_tara.py --kok . --cikti placeholder_kesin_rapor.csv %*
+placeholder_tara.bat,2,python araclar\placeholder_tara.py --root . %*
+placeholder_test.bat,3,REM Stage21: placeholder/dummy servisleri gerçek kod testleri
+placeholder_test.bat,4,python araclar\uxm_kosucu_tr.py --kok . --test-klasoru uxm\tests\stage21_placeholder_real --cikti sonuclar_stage21 %*
+placeholder_v19_uygula.bat,2,python araclar\placeholder_v19_uygula.py --root . %*
+PLAN_DURUMU_V19.md,1,# UXM Placeholder Gerçek Kod Planı — V19 Durum
+PLAN_DURUMU_V19.md,12,| 4 | İstatistik/hipotez/AI ilk placeholder dalgasının gerçek koda çevrilmesi | V16 ile başlatıldı |
+PLAN_DURUMU_V19.md,13,| 5 | File/matrix/AI ikinci dalga ve reserved alan ayrımı | V17/V18 ile başlatıldı |
+PLAN_DURUMU_V19.md,14,| 6 | Reserved/dummy/TODO kapısının sertleştirilmesi | V18 ile başlatıldı |
+PLAN_DURUMU_V19.md,15,| 7 | Kalan ileri istatistik + olasılık/numeric helper placeholderlarının gerçek koda çevrilmesi | **V19: Şu an bu adımdayız** |
+PLAN_DURUMU_V19.md,42,placeholder_v19_uygula.bat
+PLAN_DURUMU_V19.md,43,stage24_placeholder_test.bat -k
+PLAN_DURUMU_V19.md,44,placeholder_kesin_tara.bat
+PLAN_DURUMU_V19.md,45,placeholder_kapi_sert.bat
+README_V19.md,1,# UXM Placeholder Gerçek Kod Planı — V19 Durum
+README_V19.md,12,| 4 | İstatistik/hipotez/AI ilk placeholder dalgasının gerçek koda çevrilmesi | V16 ile başlatıldı |
+README_V19.md,13,| 5 | File/matrix/AI ikinci dalga ve reserved alan ayrımı | V17/V18 ile başlatıldı |
+README_V19.md,14,| 6 | Reserved/dummy/TODO kapısının sertleştirilmesi | V18 ile başlatıldı |
+README_V19.md,15,| 7 | Kalan ileri istatistik + olasılık/numeric helper placeholderlarının gerçek koda çevrilmesi | **V19: Şu an bu adımdayız** |
+README_V19.md,42,placeholder_v19_uygula.bat
+README_V19.md,43,stage24_placeholder_test.bat -k
+README_V19.md,44,placeholder_kesin_tara.bat
+README_V19.md,45,placeholder_kapi_sert.bat
+stage21_placeholder_test.bat,3,REM Stage21: placeholder/dummy servisleri gerçek kod testleri
+stage21_placeholder_test.bat,4,python araclar\uxm_kosucu_tr.py --kok . --test-klasoru uxm\tests\stage21_placeholder_real --cikti sonuclar_stage21 %*
+stage22_gercek_servis_test.bat,2,python araclar\uxm_kosucu_tr.py --test-dir uxm\tests\stage22_placeholder_real --out-root sonuclar_stage22 %*
+stage22_placeholder_test.bat,2,python araclar\uxm_kosucu_tr.py --test-dir uxm\tests\stage22_placeholder_real --out-root sonuclar_stage22 %*
+stage23_placeholder_test.bat,3,python araclar\uxm_test_kosucu.py --kok . --test-dir uxm\tests\stage23_placeholder_real --out-root sonuclar_stage23 %*
+stage24_placeholder_test.bat,4,python araclar\uxm_kosucu.py --root . --test-dir uxm\tests\stage24_placeholder_v19 --out-root sonuclar_stage24 %*
+stage24_placeholder_test.bat,6,python tools\UXM_EXPECT_RUNNER_V6.py --root . --test-dir uxm\tests\stage24_placeholder_v19 --out-root sonuclar_stage24 %*
+UXM_Heavy_Asm_Optimizer.py,45,"suggestions.append(""Çözüm: r8-r11 arasındaki boş registerları 'geçici depo' olarak kullanın."")"
+UXM_V33_EXISTING_FLOW_MANAGER.py,676,# Geçici dosyalar.
+UXM_V33_EXISTING_FLOW_MANAGER.py,679,"moves.append((p, base / ""tmp"" / stamp / relpath(p, root), ""geçici dosya""))"
+UXM_V33_PLACEHOLDER_GERCEK_KOD_V16_MANIFEST.txt,1,UXM_V33_PLACEHOLDER_GERCEK_KOD_V16_MANIFEST.txt
+UXM_V33_PLACEHOLDER_GERCEK_KOD_V16_MANIFEST.txt,2,araclar/__pycache__/placeholder_tara.cpython-313.pyc
+UXM_V33_PLACEHOLDER_GERCEK_KOD_V16_MANIFEST.txt,4,araclar/placeholder_tara.py
+UXM_V33_PLACEHOLDER_GERCEK_KOD_V16_MANIFEST.txt,8,docs/UXM_PLACEHOLDER_GERCEK_KOD_V16.md
+UXM_V33_PLACEHOLDER_GERCEK_KOD_V16_MANIFEST.txt,12,placeholder_kapi.bat
+UXM_V33_PLACEHOLDER_GERCEK_KOD_V16_MANIFEST.txt,13,placeholder_tara.bat
+UXM_V33_PLACEHOLDER_GERCEK_KOD_V16_MANIFEST.txt,14,placeholder_test.bat
+UXM_V33_PLACEHOLDER_GERCEK_KOD_V16_MANIFEST.txt,15,stage21_placeholder_test.bat
+UXM_V33_PLACEHOLDER_GERCEK_KOD_V16_MANIFEST.txt,16,tool_en/__pycache__/placeholder_audit.cpython-313.pyc
+UXM_V33_PLACEHOLDER_GERCEK_KOD_V16_MANIFEST.txt,17,tool_en/placeholder_audit.bat
+UXM_V33_PLACEHOLDER_GERCEK_KOD_V16_MANIFEST.txt,18,tool_en/placeholder_audit.py
+UXM_V33_PLACEHOLDER_GERCEK_KOD_V16_MANIFEST.txt,19,tool_en/placeholder_test.bat
+UXM_V33_PLACEHOLDER_GERCEK_KOD_V16_MANIFEST.txt,22,uxm/tests/stage21_placeholder_real/test_v16_ai_accuracy_f1.expect
+UXM_V33_PLACEHOLDER_GERCEK_KOD_V16_MANIFEST.txt,23,uxm/tests/stage21_placeholder_real/test_v16_ai_accuracy_f1.uxm
+UXM_V33_PLACEHOLDER_GERCEK_KOD_V16_MANIFEST.txt,24,uxm/tests/stage21_placeholder_real/test_v16_ai_distance.expect
+UXM_V33_PLACEHOLDER_GERCEK_KOD_V16_MANIFEST.txt,25,uxm/tests/stage21_placeholder_real/test_v16_ai_distance.uxm
+UXM_V33_PLACEHOLDER_GERCEK_KOD_V16_MANIFEST.txt,26,uxm/tests/stage21_placeholder_real/test_v16_hypothesis_ttest_one.expect
+UXM_V33_PLACEHOLDER_GERCEK_KOD_V16_MANIFEST.txt,27,uxm/tests/stage21_placeholder_real/test_v16_hypothesis_ttest_one.uxm
+UXM_V33_PLACEHOLDER_GERCEK_KOD_V16_MANIFEST.txt,28,uxm/tests/stage21_placeholder_real/test_v16_stat_quartile_percentile.expect
+UXM_V33_PLACEHOLDER_GERCEK_KOD_V16_MANIFEST.txt,29,uxm/tests/stage21_placeholder_real/test_v16_stat_quartile_percentile.uxm
+UXM_V33_PLACEHOLDER_GERCEK_KOD_V16_MANIFEST.txt,30,uxm/tests/stage21_placeholder_real/test_v16_stat_spearman_kendall.expect
+UXM_V33_PLACEHOLDER_GERCEK_KOD_V16_MANIFEST.txt,31,uxm/tests/stage21_placeholder_real/test_v16_stat_spearman_kendall.uxm
+UXM_V33_PLACEHOLDER_GERCEK_KOD_V17_MANIFEST.txt,1,UXM V33 PLACEHOLDER GERCEK KOD V17
+UXM_V33_PLACEHOLDER_GERCEK_KOD_V17_MANIFEST.txt,11,- uxm/tests/stage22_placeholder_real/*.uxm
+UXM_V33_PLACEHOLDER_GERCEK_KOD_V17_MANIFEST.txt,15,stage22_placeholder_test.bat -k
+UXM_V33_PLACEHOLDER_GERCEK_KOD_V17_MANIFEST.txt,16,placeholder_tara.bat
+UXM_V33_PLACEHOLDER_GERCEK_KOD_V17_MANIFEST.txt,17,placeholder_kapi.bat
+UXM_V33_PLACEHOLDER_GERCEK_KOD_V18_MANIFEST.txt,1,# UXM V33 Placeholder Gerçek Kod V18 Manifest
+UXM_V33_PLACEHOLDER_GERCEK_KOD_V18_MANIFEST.txt,5,"Dürüst not: Burada üretilen testlerin Windows/FreeBASIC koşusunu bu ortamda çalıştıramadım. Bu yüzden ""PASS geçti"" demiyorum. Paket, gerçek hesap kodu + sert placeholder kapısı sağlar."
+UXM_V33_PLACEHOLDER_GERCEK_KOD_V18_MANIFEST.txt,21,placeholder_kesin_tara.bat
+UXM_V33_PLACEHOLDER_GERCEK_KOD_V18_MANIFEST.txt,22,stage23_placeholder_test.bat -k
+UXM_V33_PLACEHOLDER_GERCEK_KOD_V18_MANIFEST.txt,23,placeholder_kapi_sert.bat
+UXM_V33_PLACEHOLDER_GERCEK_KOD_V18_MANIFEST.txt,26,"Henüz ""BİTTİ"" değildir. placeholder_kapi_sert temiz çıkmadan bitti denmemeli."
+UXM_V33_PLACEHOLDER_GERCEK_KOD_V19_MANIFEST.txt,3,araclar/placeholder_v19_uygula.py
+UXM_V33_PLACEHOLDER_GERCEK_KOD_V19_MANIFEST.txt,6,placeholder_v19_uygula.bat
+UXM_V33_PLACEHOLDER_GERCEK_KOD_V19_MANIFEST.txt,8,stage24_placeholder_test.bat
+UXM_V33_PLACEHOLDER_GERCEK_KOD_V19_MANIFEST.txt,10,tool_en/apply_placeholder_v19.bat
+UXM_V33_PLACEHOLDER_GERCEK_KOD_V19_MANIFEST.txt,11,tool_en/apply_placeholder_v19.py
+UXM_V33_PLACEHOLDER_GERCEK_KOD_V19_MANIFEST.txt,13,tool_en/stage24_placeholder_test.bat
+UXM_V33_PLACEHOLDER_GERCEK_KOD_V19_MANIFEST.txt,15,uxm/tests/stage24_placeholder_v19/README.md
+UXM_V33_PLACEHOLDER_GERCEK_KOD_V19_MANIFEST.txt,16,uxm/tests/stage24_placeholder_v19/test_s24_001_stat_mode.expect
+UXM_V33_PLACEHOLDER_GERCEK_KOD_V19_MANIFEST.txt,17,uxm/tests/stage24_placeholder_v19/test_s24_001_stat_mode.uxm
+UXM_V33_PLACEHOLDER_GERCEK_KOD_V19_MANIFEST.txt,18,uxm/tests/stage24_placeholder_v19/test_s24_002_stat_range.expect
+UXM_V33_PLACEHOLDER_GERCEK_KOD_V19_MANIFEST.txt,19,uxm/tests/stage24_placeholder_v19/test_s24_002_stat_range.uxm
+UXM_V33_PLACEHOLDER_GERCEK_KOD_V19_MANIFEST.txt,20,uxm/tests/stage24_placeholder_v19/test_s24_003_stat_iqr.expect
+UXM_V33_PLACEHOLDER_GERCEK_KOD_V19_MANIFEST.txt,21,uxm/tests/stage24_placeholder_v19/test_s24_003_stat_iqr.uxm
+UXM_V33_PLACEHOLDER_GERCEK_KOD_V19_MANIFEST.txt,22,uxm/tests/stage24_placeholder_v19/test_s24_004_stat_mad.expect
+UXM_V33_PLACEHOLDER_GERCEK_KOD_V19_MANIFEST.txt,23,uxm/tests/stage24_placeholder_v19/test_s24_004_stat_mad.uxm
+UXM_V33_PLACEHOLDER_GERCEK_KOD_V19_MANIFEST.txt,24,uxm/tests/stage24_placeholder_v19/test_s24_005_stat_geomean.expect
+UXM_V33_PLACEHOLDER_GERCEK_KOD_V19_MANIFEST.txt,25,uxm/tests/stage24_placeholder_v19/test_s24_005_stat_geomean.uxm
+UXM_V33_PLACEHOLDER_GERCEK_KOD_V19_MANIFEST.txt,26,uxm/tests/stage24_placeholder_v19/test_s24_006_stat_harmean.expect
+UXM_V33_PLACEHOLDER_GERCEK_KOD_V19_MANIFEST.txt,27,uxm/tests/stage24_placeholder_v19/test_s24_006_stat_harmean.uxm
+UXM_V33_PLACEHOLDER_GERCEK_KOD_V19_MANIFEST.txt,28,uxm/tests/stage24_placeholder_v19/test_s24_007_stat_covariance.expect
+UXM_V33_PLACEHOLDER_GERCEK_KOD_V19_MANIFEST.txt,29,uxm/tests/stage24_placeholder_v19/test_s24_007_stat_covariance.uxm
+UXM_V33_PLACEHOLDER_GERCEK_KOD_V19_MANIFEST.txt,30,uxm/tests/stage24_placeholder_v19/test_s24_008_normal_pdf_scaled.expect
+UXM_V33_PLACEHOLDER_GERCEK_KOD_V19_MANIFEST.txt,31,uxm/tests/stage24_placeholder_v19/test_s24_008_normal_pdf_scaled.uxm
+UXM_V33_PLACEHOLDER_GERCEK_KOD_V19_MANIFEST.txt,32,uxm/tests/stage24_placeholder_v19/test_s24_009_normal_cdf_scaled.expect
+UXM_V33_PLACEHOLDER_GERCEK_KOD_V19_MANIFEST.txt,33,uxm/tests/stage24_placeholder_v19/test_s24_009_normal_cdf_scaled.uxm
+UXM_V33_PLACEHOLDER_GERCEK_KOD_V19_MANIFEST.txt,34,uxm/tests/stage24_placeholder_v19/test_s24_010_binom_pmf_scaled.expect
+UXM_V33_PLACEHOLDER_GERCEK_KOD_V19_MANIFEST.txt,35,uxm/tests/stage24_placeholder_v19/test_s24_010_binom_pmf_scaled.uxm
+UXM_V33_PLACEHOLDER_GERCEK_KOD_V19_MANIFEST.txt,36,uxm/tests/stage24_placeholder_v19/test_s24_011_poisson_pmf_scaled.expect
+UXM_V33_PLACEHOLDER_GERCEK_KOD_V19_MANIFEST.txt,37,uxm/tests/stage24_placeholder_v19/test_s24_011_poisson_pmf_scaled.uxm
+UXM_V33_PLACEHOLDER_GERCEK_KOD_V19_MANIFEST.txt,38,uxm/tests/stage24_placeholder_v19/test_s24_012_lerp_permille.expect
+UXM_V33_PLACEHOLDER_GERCEK_KOD_V19_MANIFEST.txt,39,uxm/tests/stage24_placeholder_v19/test_s24_012_lerp_permille.uxm
+UXM_V33_PLACEHOLDER_GERCEK_KOD_V19_MANIFEST.txt,40,uxm/tests/stage24_placeholder_v19/test_s24_013_clamp_value.expect
+UXM_V33_PLACEHOLDER_GERCEK_KOD_V19_MANIFEST.txt,41,uxm/tests/stage24_placeholder_v19/test_s24_013_clamp_value.uxm
+UXM_V33_PLACEHOLDER_GERCEK_KOD_V19_MANIFEST.txt,42,uxm/tests/stage24_placeholder_v19/test_s24_014_map_range_data.expect
+UXM_V33_PLACEHOLDER_GERCEK_KOD_V19_MANIFEST.txt,43,uxm/tests/stage24_placeholder_v19/test_s24_014_map_range_data.uxm
+UXM_V33_PLACEHOLDER_GERCEK_KOD_V19_MANIFEST.txt,44,uxm/tests/stage24_placeholder_v19/test_s24_015_integration_stats.expect
+UXM_V33_PLACEHOLDER_GERCEK_KOD_V19_MANIFEST.txt,45,uxm/tests/stage24_placeholder_v19/test_s24_015_integration_stats.uxm
+UXM_V33_PLACEHOLDER_GERCEK_KOD_V19_MANIFEST.txt,46,uxm/tests/stage24_placeholder_v19/test_s24_016_integration_probability_numeric.expect
+UXM_V33_PLACEHOLDER_GERCEK_KOD_V19_MANIFEST.txt,47,uxm/tests/stage24_placeholder_v19/test_s24_016_integration_probability_numeric.uxm
+araclar\placeholder_kesin_tara.py,3,"""""""UXM kesin placeholder denetimi."
+araclar\placeholder_kesin_tara.py,4,"Kaynak kodda yalandan işlev, TODO, dummy, placeholder veya yanlışlıkla geçerli görünen reserved izlerini bulur."
+araclar\placeholder_kesin_tara.py,12,"(""PLACEHOLDER"", re.compile(r""placeholder"", re.I)),"
+araclar\placeholder_kesin_tara.py,13,"(""TODO"", re.compile(r""\bTODO\b"", re.I)),"
+araclar\placeholder_kesin_tara.py,14,"(""DUMMY"", re.compile(r""\bdummy\b"", re.I)),"
+araclar\placeholder_kesin_tara.py,15,"(""STUB"", re.compile(r""\bstub\b"", re.I)),"
+araclar\placeholder_kesin_tara.py,17,"(""NOT_IMPLEMENTED"", re.compile(r""not implemented|notimplemented|uygulanmad"", re.I)),"
+araclar\placeholder_kesin_tara.py,20,"re.compile(r""intentionally keeps host-level placeholders"", re.I),"
+araclar\placeholder_kesin_tara.py,21,"re.compile(r""Fractional inverse is reserved"", re.I),"
+araclar\placeholder_kesin_tara.py,22,"re.compile(r""reserved alan"", re.I),"
+araclar\placeholder_kesin_tara.py,30,ap=argparse.ArgumentParser(description='UXM kesin placeholder/dummy/TODO denetimi')
+araclar\placeholder_kesin_tara.py,32,"ap.add_argument('--cikti','--out',dest='out',default='placeholder_kesin_rapor.csv',help='CSV çıktı')"
+araclar\placeholder_kesin_tara.py,53,print(f'[PLACEHOLDER_DENETIM] bulgu={len(rows)} rapor={out}')
+araclar\placeholder_tara.py,3,"""""""UXM placeholder/TODO/dummy denetleyici."
+araclar\placeholder_tara.py,5,placeholder/TODO/dummy/stub/reserved/planned izlerini CSV ve Markdown olarak raporlar.
+araclar\placeholder_tara.py,9,"PATTERNS=[r'placeholder',r'TODO',r'dummy',r'stub',r'not implemented',r'planned',r'reserved',r'taslak',r'planlandı',r'geçici']"
+araclar\placeholder_tara.py,13,ap=argparse.ArgumentParser(description='UXM placeholder/TODO/dummy taraması')
+araclar\placeholder_tara.py,15,"ap.add_argument('--cikti','--out',default='placeholder_raporu',dest='out')"
+araclar\placeholder_tara.py,34,csvp=out/'placeholder_taramasi.csv'
+araclar\placeholder_tara.py,38,md=out/'PLACEHOLDER_RAPORU.md'
+araclar\placeholder_tara.py,39,"md.write_text(f'# UXM Placeholder/TODO/Dummy Raporu\n\nToplam bulgu: {len(rows)}\n\nCSV: `{csvp}`\n', encoding='utf-8')"
+araclar\placeholder_tara.py,40,print(f'[PLACEHOLDER_TARA] bulgu={len(rows)} rapor={md}')
+araclar\placeholder_v19_uygula.py,76,"ap = argparse.ArgumentParser(description=""UXM V19 placeholder gerçek kod uygulayıcı"")"
+araclar\placeholder_v19_uygula.py,90,"print(""[V19] Sonraki adım: derleyici_derle.bat ve stage24_placeholder_test.bat -k"")"
+diffler\runtime_hook_dispatch_ext.bas.diff,8,+' UXM V17 AI GERCEK KOD EKLERI - eski AI placeholderlerinin yeni @818..@823 bandı
+diffler\runtime_statistics_services.bas.diff,8,+' UXM V17 GERCEK KOD EKLERI - regresyon placeholder kalanları
+docs\UXM_PLACEHOLDER_GERCEK_KOD_V16.md,1,# UXM V16 Placeholder -> Gerçek Kod Paketi
+docs\UXM_PLACEHOLDER_GERCEK_KOD_V16.md,3,"Mete abi, bu paket kılavuzda **var** yazılıp önceki registry/kodda placeholder, planned, reserved veya no-op kalan ilk kritik servis grubunu gerçek runtime koduna bağlar."
+docs\UXM_PLACEHOLDER_GERCEK_KOD_V16.md,12,- `placeholder_tara.bat`: kalan TODO/dummy/placeholder izlerini CSV/MD raporlar
+docs\UXM_PLACEHOLDER_GERCEK_KOD_V16.md,13,- `placeholder_kapi.bat`: bulgu varsa release kapısını başarısız döndürür
+docs\UXM_PLACEHOLDER_GERCEK_KOD_V16.md,14,- `stage21_placeholder_test.bat`: yeni gerçek servislerin regression testi
+docs\UXM_PLACEHOLDER_GERCEK_KOD_V16.md,18,Bu paket tüm UXM evrenindeki her planlanmış ileri matematik fonksiyonunu bitirdim iddiası değildir. Ama kılavuzda var gibi görünen ve doğrudan yalan/placeholder durumuna düşen ana servisleri gerçek hesap yapan runtime case'lerine dönüştürür. Kalanlar `placeholder_tara.bat` ile görünür hale getirilir
+docs\UXM_PLACEHOLDER_GERCEK_KOD_V16.md,25,placeholder_tara.bat
+docs\UXM_PLACEHOLDER_GERCEK_KOD_V16.md,26,stage21_placeholder_test.bat -k
+docs\UXM_PLACEHOLDER_GERCEK_KOD_V16.md,27,placeholder_kapi.bat
+docs\UXM_PLACEHOLDER_GERCEK_KOD_V16.md,30,Eğer `placeholder_kapi.bat` hata verirse rapora bak: `placeholder_raporu/PLACEHOLDER_RAPORU.md`.
+docs\UXM_PLACEHOLDER_GERCEK_KOD_V17.md,1,# UXM V33 Placeholder Gerçek Kod V17
+docs\UXM_PLACEHOLDER_GERCEK_KOD_V17.md,3,Bu paket V16’dan sonra kalan placeholder/reserved gruplarının ikinci dalgasını gerçek servis koduna çevirir.
+docs\UXM_PLACEHOLDER_GERCEK_KOD_V17.md,18,stage22_placeholder_test.bat -k
+docs\UXM_PLACEHOLDER_GERCEK_KOD_V17.md,19,placeholder_tara.bat
+docs\UXM_PLACEHOLDER_GERCEK_KOD_V17.md,20,placeholder_kapi.bat
+docs\UXM_PLACEHOLDER_GERCEK_KOD_V17.md,25,Bu paket eski belgelerdeki **disabled/reserved** FP boşluklarını gerçek servis diye açmaz. Onlar kılavuzda “yok/ayrılmış” diye yazılmalıdır. Bu paket yalnız kılavuzda var gibi geçen ve gerçek hesap isteyen ikinci öncelik grubunu kodlar.
+docs\UXM_STAGE12_ISLEM_SIRASI_VE_DOSYA_RAPORU.md,117,| `UXMPerformansAnalizatoru.py` | Çalışıyor ama CSV sütunlarını isim yerine pozisyonla okuyor. Eski header/headersız CSV sorunundan doğmuş geçici çözüm. | Yeni CSV formatı oturunca sadeleştirilmeli. |
+docs\UXM_STAGE12_ISLEM_SIRASI_VE_DOSYA_RAPORUx.md,117,| `UXMPerformansAnalizatoru.py` | Çalışıyor ama CSV sütunlarını isim yerine pozisyonla okuyor. Eski header/headersız CSV sorunundan doğmuş geçici çözüm. | Yeni CSV formatı oturunca sadeleştirilmeli. |
+optimizasyon\sihirli_asm_onerileri.txt,18,Çözüm: r8-r11 arasındaki boş registerları 'geçici depo' olarak kullanın.
+ortak\uxm_arac_cekirdek.py,21,"'clean':'TOPARLA', 'apply':'uygula', 'planned':'planlanan_taşıma', 'dry':'deneme',"
+ortak\uxm_arac_cekirdek.py,33,"'clean':'CLEAN', 'apply':'apply', 'planned':'planned_moves', 'dry':'dry-run',"
+ortak\uxm_arac_cekirdek.py,335,"ap.add_argument('-u','--uygula','--apply', dest='uygula', action='store_true', help=('Gerçek taşıma yap' if lang=='tr' else 'Apply planned moves'))"
+ortak\uxm_arac_cekirdek.py,365,"print(f""[{T['clean']}] {T['apply']}={args.uygula} {T['planned']}={len(moves)} {T['report']}={report}"")"
+tools\uxm_c64basic_to_uxm.py,18,self.out.append('# TODO_C64_SYS_IGNORED: '+line); return
+tools\uxm_c64basic_to_uxm.py,20,self.out.append('# TODO_C64_FLOW_UNSUPPORTED: '+line); return
+tools\UXM_FAST_KEY_SCAN_V6.py,167,"return ""math_arge_expected_or_stub_review"""
+tools\uxm_qbasic_to_uxm.py,69,"self.out.append(""# TODO_QBASIC_UNSUPPORTED: "" + line)"
+tool_en\apply_placeholder_v19.bat,2,python tool_en\apply_placeholder_v19.py --root . %*
+tool_en\apply_placeholder_v19.py,76,"ap = argparse.ArgumentParser(description=""UXM V19 placeholder real-code applier"")"
+tool_en\apply_placeholder_v19.py,90,"print(""[V19] Sonraki adım: derleyici_derle.bat ve stage24_placeholder_test.bat -k"")"
+tool_en\placeholder_audit.bat,2,python tool_en\placeholder_audit.py --root . --out placeholder_report %*
+tool_en\placeholder_audit.py,3,"""""""UXM placeholder/TODO/dummy denetleyici."
+tool_en\placeholder_audit.py,5,placeholder/TODO/dummy/stub/reserved/planned izlerini CSV ve Markdown olarak raporlar.
+tool_en\placeholder_audit.py,9,"PATTERNS=[r'placeholder',r'TODO',r'dummy',r'stub',r'not implemented',r'planned',r'reserved',r'taslak',r'planlandı',r'geçici']"
+tool_en\placeholder_audit.py,13,ap=argparse.ArgumentParser(description='UXM placeholder/TODO/dummy taraması')
+tool_en\placeholder_audit.py,15,"ap.add_argument('--cikti','--out',default='placeholder_raporu',dest='out')"
+tool_en\placeholder_audit.py,34,csvp=out/'placeholder_taramasi.csv'
+tool_en\placeholder_audit.py,38,md=out/'PLACEHOLDER_RAPORU.md'
+tool_en\placeholder_audit.py,39,"md.write_text(f'# UXM Placeholder/TODO/Dummy Raporu\n\nToplam bulgu: {len(rows)}\n\nCSV: `{csvp}`\n', encoding='utf-8')"
+tool_en\placeholder_audit.py,40,print(f'[PLACEHOLDER_TARA] bulgu={len(rows)} rapor={md}')
+tool_en\placeholder_strict_scan.bat,2,python tool_en\placeholder_strict_scan.py --root . --out placeholder_strict_report.csv %*
+tool_en\placeholder_strict_scan.py,3,"""""""UXM strict placeholder scan."
+tool_en\placeholder_strict_scan.py,4,"Kaynak kodda yalandan işlev, TODO, dummy, placeholder veya yanlışlıkla geçerli görünen reserved izlerini bulur."
+tool_en\placeholder_strict_scan.py,12,"(""PLACEHOLDER"", re.compile(r""placeholder"", re.I)),"
+tool_en\placeholder_strict_scan.py,13,"(""TODO"", re.compile(r""\bTODO\b"", re.I)),"
+tool_en\placeholder_strict_scan.py,14,"(""DUMMY"", re.compile(r""\bdummy\b"", re.I)),"
+tool_en\placeholder_strict_scan.py,15,"(""STUB"", re.compile(r""\bstub\b"", re.I)),"
+tool_en\placeholder_strict_scan.py,17,"(""NOT_IMPLEMENTED"", re.compile(r""not implemented|notimplemented|uygulanmad"", re.I)),"
+tool_en\placeholder_strict_scan.py,20,"re.compile(r""intentionally keeps host-level placeholders"", re.I),"
+tool_en\placeholder_strict_scan.py,21,"re.compile(r""Fractional inverse is reserved"", re.I),"
+tool_en\placeholder_strict_scan.py,22,"re.compile(r""reserved alan"", re.I),"
+tool_en\placeholder_strict_scan.py,30,ap=argparse.ArgumentParser(description='UXM kesin placeholder/dummy/TODO denetimi')
+tool_en\placeholder_strict_scan.py,32,"ap.add_argument('--cikti','--out',dest='out',default='placeholder_kesin_rapor.csv',help='CSV çıktı')"
+tool_en\placeholder_strict_scan.py,53,print(f'[PLACEHOLDER_DENETIM] bulgu={len(rows)} rapor={out}')
+tool_en\placeholder_test.bat,2,python ..\araclar\uxm_kosucu_tr.py --kok .. --test-klasoru uxm\tests\stage21_placeholder_real --cikti results_stage21 %*
+tool_en\README_V19_EN.md,1,# UXM V19 Placeholder Continuation
+tool_en\README_V19_EN.md,3,"Status: 8-step placeholder cleanup plan, currently step 7/8."
+tool_en\README_V19_EN.md,10,apply_placeholder_v19.bat
+tool_en\README_V19_EN.md,11,stage24_placeholder_test.bat -k
+tool_en\stage22_placeholder_test.bat,2,python ..\araclar\uxm_kosucu_tr.py --test-dir uxm\tests\stage22_placeholder_real --out-root results_stage22 %*
+tool_en\stage24_placeholder_test.bat,3,python ..\araclar\uxm_kosucu.py --root .. --test-dir uxm\tests\stage24_placeholder_v19 --out-root sonuclar_stage24 %*
+tool_en\stage24_placeholder_test.bat,5,python ..\tools\UXM_EXPECT_RUNNER_V6.py --root .. --test-dir uxm\tests\stage24_placeholder_v19 --out-root sonuclar_stage24 %*
+araclar\__pycache__\placeholder_kesin_tara.cpython-313.pyc,13,"  \"" \"" 5       5      eg)u�   UXM kesin placeholder denetimi."
+araclar\__pycache__\placeholder_kesin_tara.cpython-313.pyc,14,"Kaynak kodda yalandan işlev, TODO, dummy, placeholder veya yanlışlıkla geçerli görünen reserved izlerini bulur."
+araclar\__pycache__\placeholder_kesin_tara.cpython-313.pyc,18,PLACEHOLDER�
+araclar\__pycache__\placeholder_kesin_tara.cpython-313.pyc,19,placeholder�TODOz\bTODO\b�DUMMYz	\bdummy\b�STUBz\bstub\b�FAKEz\bfake\b|sahte|yalandan�NOT_IMPLEMENTEDz)not implemented|notimplemented|uygulanmadz+intentionally keeps host-level placeholdersz
+araclar\__pycache__\placeholder_kesin_tara.cpython-313.pyc,20,Fractional inverse is reservedz
+araclar\__pycache__\placeholder_kesin_tara.cpython-313.pyc,21,reserved alan>   �.bi�.md�.py�.bas�.bat�.csv�.incc                �6   ^ � [        U 4S j[         5       5      $ )Nc              3  �D   >#   � U  H  oR                  T5      v �  M  
+araclar\__pycache__\placeholder_kesin_tara.cpython-313.pyc,22,   g 7f)N)�search)�.0�p�lines     ��N/mnt/data/UXM_V33_PLACEHOLDER_GERCEK_KOD_V18/araclar/placeholder_kesin_tara.py�	<genexpr>�allowed.<locals>.<genexpr>   s   �� � �-�u�!�x�x��~�~�u�s   �
+araclar\__pycache__\placeholder_kesin_tara.cpython-313.pyc,60,"         a     GM�  f = f! , (       d  f       NT= f))Nz)UXM kesin placeholder/dummy/TODO denetimi)�"
+araclar\__pycache__\placeholder_kesin_tara.cpython-313.pyc,62,   Proje kökü)�dest�default�helpz--ciktiz--out�outzplaceholder_kesin_rapor.csvu
+araclar\__pycache__\placeholder_kesin_tara.cpython-313.pyc,66,[PLACEHOLDER_DENETIM] bulgu=z rapor=�   r   )$�argparse�ArgumentParser�
+araclar\__pycache__\placeholder_tara.cpython-313.pyc,8,""" 5       5        gg)	u�   UXM placeholder/TODO/dummy denetleyici."
+araclar\__pycache__\placeholder_tara.cpython-313.pyc,10,placeholder/TODO/dummy/stub/reserved/planned izlerini CSV ve Markdown olarak raporlar.
+araclar\__pycache__\placeholder_tara.cpython-313.pyc,13,placeholder�TODO�dummy�stubznot implemented�planned�reserved�taslaku
+araclar\__pycache__\placeholder_tara.cpython-313.pyc,14,   planlandıu   geçici�|>   �.o�.dll�.exe�.jpg�.obj�.png�.zip�.xlsxc            	      ��  ^
+araclar\__pycache__\placeholder_tara.cpython-313.pyc,40," 35        URB                  (       a  U(       a  gg(! [          a     GM�  f = f! , (       d  f       Ny= f))Nu$   UXM placeholder/TODO/dummy taraması)�"
+araclar\__pycache__\placeholder_tara.cpython-313.pyc,41,descriptionz--kokz--root�.�root)�default�destz--ciktiz--out�placeholder_raporu�outz
+araclar\__pycache__\placeholder_tara.cpython-313.pyc,47,"ignored_dirss     ��H/mnt/data/UXM_V33_PLACEHOLDER_GERCEK_KOD_V17/araclar/placeholder_tara.py�	<genexpr>�main.<locals>.<genexpr>   s   �� � �8���|�#��s   �zutf-8�replace)�encoding�errors�   i,  )�dosya�satir�metinzplaceholder_taramasi.csv�w� )�newliner3   )�"
+araclar\__pycache__\placeholder_tara.cpython-313.pyc,48,fieldnameszPLACEHOLDER_RAPORU.mdz3# UXM Placeholder/TODO/Dummy Raporu
+araclar\__pycache__\placeholder_tara.cpython-313.pyc,53,")r3   z[PLACEHOLDER_TARA] bulgu=z rapor=r   )""�argparse�ArgumentParser�"
+araclar\__pycache__\uxm_kosucu_tr.cpython-313.pyc,43,"SystemExit�call�print�stderr�exit� �    �E/mnt/data/UXM_V33_PLACEHOLDER_GERCEK_KOD_V17/araclar/uxm_kosucu_tr.py�<module>r,      sg  �� )� )�"
+config\uxm\meta_services.json,91,"""family"": ""reserved"","
+config\uxm\meta_services.json,93,"""status"": ""reserved"""
+config\uxm\meta_services.json,1848,"""frame"": ""reserved"","
+config\uxm\meta_services.json,1860,"""frame"": ""reserved"","
+config\uxm\meta_services.json,1956,"""frame"": ""planned"","
+config\uxm\meta_services.json,1968,"""frame"": ""planned"","
+config\uxm\meta_services.json,1992,"""frame"": ""planned"","
+config\uxm\meta_services.json,2004,"""frame"": ""planned"","
+config\uxm\meta_services.json,2016,"""frame"": ""planned"","
+config\uxm\meta_services.json,2371,"""name"": ""FP_RESERVED_230"","
+config\uxm\meta_services.json,2375,"""status"": ""reserved"","
+config\uxm\meta_services.json,2378,"""notes"": ""Reserved/invalid in current source."","
+config\uxm\meta_services.json,2383,"""name"": ""FP_RESERVED_231"","
+config\uxm\meta_services.json,2387,"""status"": ""reserved"","
+config\uxm\meta_services.json,2390,"""notes"": ""Reserved/invalid in current source."","
+config\uxm\meta_services.json,2395,"""name"": ""FP_RESERVED_232"","
+config\uxm\meta_services.json,2399,"""status"": ""reserved"","
+config\uxm\meta_services.json,2402,"""notes"": ""Reserved/invalid in current source."","
+config\uxm\meta_services.json,2407,"""name"": ""FP_RESERVED_233"","
+config\uxm\meta_services.json,2411,"""status"": ""reserved"","
+config\uxm\meta_services.json,2414,"""notes"": ""Reserved/invalid in current source."","
+config\uxm\meta_services.json,2419,"""name"": ""FP_RESERVED_234"","
+config\uxm\meta_services.json,2423,"""status"": ""reserved"","
+config\uxm\meta_services.json,2426,"""notes"": ""Reserved/invalid in current source."","
+config\uxm\meta_services.json,2678,"""notes"": ""quartile placeholder"","
+config\uxm\meta_services.json,2690,"""notes"": ""percentile placeholder"","
+config\uxm\meta_services.json,2702,"""notes"": ""skewness placeholder"","
+config\uxm\meta_services.json,2714,"""notes"": ""kurtosis placeholder"","
+config\uxm\meta_services.json,2762,"""notes"": ""spearman placeholder"","
+config\uxm\meta_services.json,2774,"""notes"": ""kendall placeholder"","
+config\uxm\meta_services.json,2798,"""notes"": ""reserved"","
+config\uxm\meta_services.json,2810,"""notes"": ""reserved"","
+config\uxm\meta_services.json,2822,"""notes"": ""reserved"","
+config\uxm\meta_services.json,2858,"""notes"": ""one sample t placeholder"","
+config\uxm\meta_services.json,2870,"""notes"": ""independent t placeholder"","
+config\uxm\meta_services.json,2882,"""notes"": ""paired t placeholder"","
+config\uxm\meta_services.json,2894,"""notes"": ""one sample z placeholder"","
+config\uxm\meta_services.json,2906,"""notes"": ""two sample z placeholder"","
+config\uxm\meta_services.json,2918,"""notes"": ""f variance placeholder"","
+config\uxm\meta_services.json,2930,"""notes"": ""oneway anova placeholder"","
+config\uxm\meta_services.json,2942,"""notes"": ""reserved"","
+config\uxm\meta_services.json,2954,"""notes"": ""chi square placeholder"","
+config\uxm\meta_services.json,2966,"""notes"": ""goodness placeholder"","
+config\uxm\meta_services.json,3048,"""notes"": ""tukey placeholder"","
+config\uxm\meta_services.json,3060,"""notes"": ""duncan placeholder"","
+config\uxm\meta_services.json,3072,"""notes"": ""dunnett placeholder"","
+config\uxm\meta_services.json,3084,"""notes"": ""bonferroni placeholder"","
+config\uxm\meta_services.json,3096,"""notes"": ""scheffe placeholder"","
+config\uxm\meta_services.json,3108,"""notes"": ""lsd placeholder"","
+config\uxm\meta_services.json,3144,"""notes"": ""reserved"","
+config\uxm\meta_services.json,3156,"""notes"": ""reserved"","
+config\uxm\meta_services.json,3168,"""notes"": ""reserved"","
+config\uxm\meta_services.json,3180,"""notes"": ""confusion matrix placeholder"","
+config\uxm\meta_services.json,3252,"""notes"": ""cosine distance placeholder"","
+config\uxm\meta_services.json,3264,"""notes"": ""reserved"","
+config\uxm\meta_services.json,3276,"""notes"": ""reserved"","
+config\uxm\meta_services.json,3312,"""notes"": ""reserved"","
+config\uxm\meta_services.json,3641,"""name"": ""NUM_PDE_RESERVED"","
+config\uxm\meta_services.json,3658,"""frame"": ""T-3=name_start, T-2=name_len, T-1=reserved"","
+config\uxm\meta_services.json,3665,"""name"": ""NUM_SPLINE_RESERVED"","
+config\uxm\meta_services.json,3682,"""frame"": ""T-3=name_start, T-2=name_len, T-1=reserved"","
+config\uxm\meta_services.json,3689,"""name"": ""NUM_ADAPTIVE_INTEGRAL_RESERVED"","
+config\uxm\meta_services.json,3706,"""frame"": ""T-3=name_start, T-2=name_len, T-1=reserved"","
+config\uxm\meta_services.json,3718,"""frame"": ""T-3=name_start, T-2=name_len, T-1=reserved"","
+config\uxm\meta_services.json,3730,"""frame"": ""T-3=name_start, T-2=name_len, T-1=reserved"","
+config\uxm\meta_services.json,3869,"""name"": ""FILE_DELETE_RESERVED"","
+config\uxm\meta_services.json,3875,"""result"": ""reserved"","
+config\uxm\meta_services.json,3881,"""name"": ""FILE_RENAME_RESERVED"","
+config\uxm\meta_services.json,3887,"""result"": ""reserved"","
+config\uxm\meta_services.json,3893,"""name"": ""FILE_MKDIR_RESERVED"","
+config\uxm\meta_services.json,3899,"""result"": ""reserved"","
+config\uxm\meta_services.json,3934,"""frame"": ""T-3=name_start, T-2=name_len, T-1=reserved"","
+config\uxm\meta_services.json,4061,"""name"": ""CPLX_PRINT_RESERVED"","
+config\uxm\service_registry_merged.csv,138,"181,MAT_ND_GET,matrix_adv,UXMMatAdvancedDispatch,True,extension_patch_available,reserved,T+1/status,Within matrix dispatcher range; add cases to MetaMatrix or subdispatch.,service_registry_matrix_v34.csv"
+config\uxm\service_registry_merged.csv,139,"182,MAT_ND_SET,matrix_adv,UXMMatAdvancedDispatch,True,extension_patch_available,reserved,T+1/status,Within matrix dispatcher range; add cases to MetaMatrix or subdispatch.,service_registry_matrix_v34.csv"
+config\uxm\service_registry_merged.csv,147,"190,MAT_EIG_JACOBI_SYM,matrix_adv,UXMMatAdvancedDispatch,True,extension_patch_available,planned,T+1/status,Within matrix dispatcher range; add cases to MetaMatrix or subdispatch.,service_registry_matrix_v34.csv"
+config\uxm\service_registry_merged.csv,148,"191,MAT_SVD_SYM_HELPER,matrix_adv,UXMMatAdvancedDispatch,True,extension_patch_available,planned,T+1/status,Within matrix dispatcher range; add cases to MetaMatrix or subdispatch.,service_registry_matrix_v34.csv"
+config\uxm\service_registry_merged.csv,150,"193,MAT_SPARSE_CSR_MV,matrix_adv,UXMMatAdvancedDispatch,True,extension_patch_available,planned,T+1/status,Within matrix dispatcher range; add cases to MetaMatrix or subdispatch.,service_registry_matrix_v34.csv"
+config\uxm\service_registry_merged.csv,151,"194,MAT_SPARSE_TO_DENSE,matrix_adv,UXMMatAdvancedDispatch,True,extension_patch_available,planned,T+1/status,Within matrix dispatcher range; add cases to MetaMatrix or subdispatch.,service_registry_matrix_v34.csv"
+config\uxm\service_registry_merged.csv,152,"195,MAT_DENSE_TO_SPARSE,matrix_adv,UXMMatAdvancedDispatch,True,extension_patch_available,planned,T+1/status,Within matrix dispatcher range; add cases to MetaMatrix or subdispatch.,service_registry_matrix_v34.csv"
+config\uxm\service_registry_merged.csv,182,"230,FP_RESERVED_230,floating_point,MetaFloatingPoint,False,reserved,,,Reserved/invalid in current source.,runtime_fp_services.bas"
+config\uxm\service_registry_merged.csv,183,"231,FP_RESERVED_231,floating_point,MetaFloatingPoint,False,reserved,,,Reserved/invalid in current source.,runtime_fp_services.bas"
+config\uxm\service_registry_merged.csv,184,"232,FP_RESERVED_232,floating_point,MetaFloatingPoint,False,reserved,,,Reserved/invalid in current source.,runtime_fp_services.bas"
+config\uxm\service_registry_merged.csv,185,"233,FP_RESERVED_233,floating_point,MetaFloatingPoint,False,reserved,,,Reserved/invalid in current source.,runtime_fp_services.bas"
+config\uxm\service_registry_merged.csv,186,"234,FP_RESERVED_234,floating_point,MetaFloatingPoint,False,reserved,,,Reserved/invalid in current source.,runtime_fp_services.bas"
+config\uxm\service_registry_merged.csv,207,"270,STAT_QUARTILE,statistics,MetaStatistics,True,extension_requires_meta_id_range_patch,,T+1/status,quartile placeholder,service_registry_v33.csv"
+config\uxm\service_registry_merged.csv,208,"271,STAT_PERCENTILE,statistics,MetaStatistics,True,extension_requires_meta_id_range_patch,,T+1/status,percentile placeholder,service_registry_v33.csv"
+config\uxm\service_registry_merged.csv,209,"272,STAT_SKEWNESS,statistics,MetaStatistics,True,extension_requires_meta_id_range_patch,,T+1/status,skewness placeholder,service_registry_v33.csv"
+config\uxm\service_registry_merged.csv,210,"273,STAT_KURTOSIS,statistics,MetaStatistics,True,extension_requires_meta_id_range_patch,,T+1/status,kurtosis placeholder,service_registry_v33.csv"
+config\uxm\service_registry_merged.csv,214,"281,CORR_SPEARMAN,correlation,MetaStatistics,True,extension_requires_meta_id_range_patch,,T+1/status,spearman placeholder,service_registry_v33.csv"
+config\uxm\service_registry_merged.csv,215,"282,CORR_KENDALL,correlation,MetaStatistics,True,extension_requires_meta_id_range_patch,,T+1/status,kendall placeholder,service_registry_v33.csv"
+config\uxm\service_registry_merged.csv,217,"291,REG_MULTIPLE,regression,MetaRegression,False,extension_requires_meta_id_range_patch,,T+1/status,reserved,service_registry_v33.csv"
+config\uxm\service_registry_merged.csv,218,"292,REG_POLYNOMIAL,regression,MetaRegression,False,extension_requires_meta_id_range_patch,,T+1/status,reserved,service_registry_v33.csv"
+config\uxm\service_registry_merged.csv,219,"293,REG_LOGISTIC,regression,MetaRegression,False,extension_requires_meta_id_range_patch,,T+1/status,reserved,service_registry_v33.csv"
+config\uxm\service_registry_merged.csv,222,"300,TTEST_ONE,hypothesis,MetaHypothesis,True,extension_requires_meta_id_range_patch,,T+1/status,one sample t placeholder,service_registry_v33.csv"
+config\uxm\service_registry_merged.csv,223,"301,TTEST_INDEPENDENT,hypothesis,MetaHypothesis,True,extension_requires_meta_id_range_patch,,T+1/status,independent t placeholder,service_registry_v33.csv"
+config\uxm\service_registry_merged.csv,224,"302,TTEST_PAIRED,hypothesis,MetaHypothesis,True,extension_requires_meta_id_range_patch,,T+1/status,paired t placeholder,service_registry_v33.csv"
+config\uxm\service_registry_merged.csv,225,"303,ZTEST_ONE,hypothesis,MetaHypothesis,True,extension_requires_meta_id_range_patch,,T+1/status,one sample z placeholder,service_registry_v33.csv"
+config\uxm\service_registry_merged.csv,226,"304,ZTEST_TWO,hypothesis,MetaHypothesis,True,extension_requires_meta_id_range_patch,,T+1/status,two sample z placeholder,service_registry_v33.csv"
+config\uxm\service_registry_merged.csv,227,"305,FTEST_VARIANCE,hypothesis,MetaHypothesis,True,extension_requires_meta_id_range_patch,,T+1/status,f variance placeholder,service_registry_v33.csv"
+config\uxm\service_registry_merged.csv,228,"306,ANOVA_ONEWAY,hypothesis,MetaHypothesis,True,extension_requires_meta_id_range_patch,,T+1/status,oneway anova placeholder,service_registry_v33.csv"
+config\uxm\service_registry_merged.csv,229,"307,ANOVA_TWOWAY,hypothesis,MetaHypothesis,False,extension_requires_meta_id_range_patch,,T+1/status,reserved,service_registry_v33.csv"
+config\uxm\service_registry_merged.csv,230,"308,CHI_SQUARE,hypothesis,MetaHypothesis,True,extension_requires_meta_id_range_patch,,T+1/status,chi square placeholder,service_registry_v33.csv"
+config\uxm\service_registry_merged.csv,231,"309,CHI_GOODNESS,hypothesis,MetaHypothesis,True,extension_requires_meta_id_range_patch,,T+1/status,goodness placeholder,service_registry_v33.csv"
+config\uxm\service_registry_merged.csv,232,"320,POSTHOC_TUKEY,posthoc,MetaPosthoc,True,extension_requires_meta_id_range_patch,,T+1/status,tukey placeholder,service_registry_v33.csv"
+config\uxm\service_registry_merged.csv,233,"321,POSTHOC_DUNCAN,posthoc,MetaPosthoc,True,extension_requires_meta_id_range_patch,,T+1/status,duncan placeholder,service_registry_v33.csv"
+config\uxm\service_registry_merged.csv,234,"322,POSTHOC_DUNNETT,posthoc,MetaPosthoc,True,extension_requires_meta_id_range_patch,,T+1/status,dunnett placeholder,service_registry_v33.csv"
+config\uxm\service_registry_merged.csv,235,"323,POSTHOC_BONFERRONI,posthoc,MetaPosthoc,True,extension_requires_meta_id_range_patch,,T+1/status,bonferroni placeholder,service_registry_v33.csv"
+config\uxm\service_registry_merged.csv,236,"324,POSTHOC_SCHEFFE,posthoc,MetaPosthoc,True,extension_requires_meta_id_range_patch,,T+1/status,scheffe placeholder,service_registry_v33.csv"
+config\uxm\service_registry_merged.csv,237,"325,POSTHOC_LSD,posthoc,MetaPosthoc,True,extension_requires_meta_id_range_patch,,T+1/status,lsd placeholder,service_registry_v33.csv"
+config\uxm\service_registry_merged.csv,240,"342,AI_ONEHOT,ai,MetaAI,False,extension_requires_meta_id_range_patch,,T+1/status,reserved,service_registry_v33.csv"
+config\uxm\service_registry_merged.csv,241,"343,AI_TRAIN_TEST_SPLIT,ai,MetaAI,False,extension_requires_meta_id_range_patch,,T+1/status,reserved,service_registry_v33.csv"
+config\uxm\service_registry_merged.csv,242,"344,AI_SHUFFLE,ai,MetaAI,False,extension_requires_meta_id_range_patch,,T+1/status,reserved,service_registry_v33.csv"
+config\uxm\service_registry_merged.csv,243,"345,AI_CONFUSION_MATRIX,ai,MetaAI,True,extension_requires_meta_id_range_patch,,T+1/status,confusion matrix placeholder,service_registry_v33.csv"
+config\uxm\service_registry_merged.csv,249,"351,AI_DISTANCE_COSINE,ai,MetaAI,True,extension_requires_meta_id_range_patch,,T+1/status,cosine distance placeholder,service_registry_v33.csv"
+config\uxm\service_registry_merged.csv,250,"352,AI_KNN_BASIC,ai,MetaAI,False,extension_requires_meta_id_range_patch,,T+1/status,reserved,service_registry_v33.csv"
+config\uxm\service_registry_merged.csv,251,"353,AI_LINEAR_LAYER,ai,MetaAI,False,extension_requires_meta_id_range_patch,,T+1/status,reserved,service_registry_v33.csv"
+config\uxm\service_registry_merged.csv,254,"356,AI_SOFTMAX,ai,MetaAI,False,extension_requires_meta_id_range_patch,,T+1/status,reserved,service_registry_v33.csv"
+config\uxm\service_registry_merged.csv,274,"399,NUM_PDE_RESERVED,numeric,MetaNumericMethods,True,extension_requires_meta_id_range_patch,,T+1/status,,service_registry_v35.csv"
+config\uxm\service_registry_merged.csv,275,"400,FILE_OPEN_READ_TEXT,file_io,MetaFileServices,True,extension_requires_meta_id_range_patch,""T-3=name_start, T-2=name_len, T-1=reserved"",T+1=handle,Full UXM_FILE_V1 file service set. Smaller v32 file patch also uses @400..@406 with different frame; use this full version as canonical.,UXM_FILE_IO_SE"
+config\uxm\service_registry_merged.csv,276,"400,NUM_SPLINE_RESERVED,numeric,MetaNumericMethods,True,extension_requires_meta_id_range_patch,,T+1/status,,service_registry_v35.csv"
+config\uxm\service_registry_merged.csv,277,"401,FILE_OPEN_WRITE_TEXT,file_io,MetaFileServices,True,extension_requires_meta_id_range_patch,""T-3=name_start, T-2=name_len, T-1=reserved"",T+1=handle,Full UXM_FILE_V1 file service set. Smaller v32 file patch also uses @400..@406 with different frame; use this full version as canonical.,UXM_FILE_IO_S"
+config\uxm\service_registry_merged.csv,278,"401,NUM_ADAPTIVE_INTEGRAL_RESERVED,numeric,MetaNumericMethods,True,extension_requires_meta_id_range_patch,,T+1/status,,service_registry_v35.csv"
+config\uxm\service_registry_merged.csv,279,"402,FILE_OPEN_APPEND_TEXT,file_io,MetaFileServices,True,extension_requires_meta_id_range_patch,""T-3=name_start, T-2=name_len, T-1=reserved"",T+1=handle,Full UXM_FILE_V1 file service set. Smaller v32 file patch also uses @400..@406 with different frame; use this full version as canonical.,UXM_FILE_IO_"
+config\uxm\service_registry_merged.csv,280,"403,FILE_OPEN_BINARY_READ,file_io,MetaFileServices,True,extension_requires_meta_id_range_patch,""T-3=name_start, T-2=name_len, T-1=reserved"",T+1=handle,Full UXM_FILE_V1 file service set. Smaller v32 file patch also uses @400..@406 with different frame; use this full version as canonical.,UXM_FILE_IO_"
+config\uxm\service_registry_merged.csv,281,"404,FILE_OPEN_BINARY_WRITE,file_io,MetaFileServices,True,extension_requires_meta_id_range_patch,""T-3=name_start, T-2=name_len, T-1=reserved"",T+1=handle,Full UXM_FILE_V1 file service set. Smaller v32 file patch also uses @400..@406 with different frame; use this full version as canonical.,UXM_FILE_IO"
+config\uxm\service_registry_merged.csv,293,"416,FILE_DELETE_RESERVED,file_io,MetaFileServices,True,extension_requires_meta_id_range_patch,,reserved,Full UXM_FILE_V1 file service set. Smaller v32 file patch also uses @400..@406 with different frame; use this full version as canonical.,UXM_FILE_IO_SERVICES.md"
+config\uxm\service_registry_merged.csv,294,"417,FILE_RENAME_RESERVED,file_io,MetaFileServices,True,extension_requires_meta_id_range_patch,,reserved,Full UXM_FILE_V1 file service set. Smaller v32 file patch also uses @400..@406 with different frame; use this full version as canonical.,UXM_FILE_IO_SERVICES.md"
+config\uxm\service_registry_merged.csv,295,"418,FILE_MKDIR_RESERVED,file_io,MetaFileServices,True,extension_requires_meta_id_range_patch,,reserved,Full UXM_FILE_V1 file service set. Smaller v32 file patch also uses @400..@406 with different frame; use this full version as canonical.,UXM_FILE_IO_SERVICES.md"
+config\uxm\service_registry_merged.csv,298,"421,FILE_OPEN_BINARY_APPEND,file_io,MetaFileServices,True,extension_requires_meta_id_range_patch,""T-3=name_start, T-2=name_len, T-1=reserved"",T+1=handle,Full UXM_FILE_V1 file service set. Smaller v32 file patch also uses @400..@406 with different frame; use this full version as canonical.,UXM_FILE_I"
+config\uxm\service_registry_merged.csv,309,"450,CPLX_PRINT_RESERVED,complex,MetaComplex,True,extension_requires_meta_id_range_patch,,T+1/status,,service_registry_v35.csv"
+docs\v33\V33_STAGE4_STRING_V1.md,50,Native compiler artık NASM/FBC için `<ad>` placeholder satırlarını basmaz. Link işlemi build script tarafında kalır.
+onceki_src\stage17_runner_v11\uxm_arac_cekirdek_v11.py,21,"'clean':'TOPARLA', 'apply':'uygula', 'planned':'planlanan_taşıma', 'dry':'deneme',"
+onceki_src\stage17_runner_v11\uxm_arac_cekirdek_v11.py,33,"'clean':'CLEAN', 'apply':'apply', 'planned':'planned_moves', 'dry':'dry-run',"
+onceki_src\stage17_runner_v11\uxm_arac_cekirdek_v11.py,279,"ap.add_argument('-u','--uygula','--apply', dest='uygula', action='store_true', help=('Gerçek taşıma yap' if lang=='tr' else 'Apply planned moves'))"
+onceki_src\stage17_runner_v11\uxm_arac_cekirdek_v11.py,309,"print(f""[{T['clean']}] {T['apply']}={args.uygula} {T['planned']}={len(moves)} {T['report']}={report}"")"
+onceki_src\runtime\hooks\runtime_hook_dispatch_ext.bas,5,"' Bu dosya eski ""default no-op"" hook yerine, kılavuzda var yazılıp registry'de placeholder kalan"
+onceki_src\runtime\services\runtime_statistics_services.bas,206,"' Kılavuzda ""var"" görünen ama önceki registry'de placeholder kalan istatistik servislerini"
+onceki_src\v12\ortak\uxm_arac_cekirdek.py,21,"'clean':'TOPARLA', 'apply':'uygula', 'planned':'planlanan_taşıma', 'dry':'deneme',"
+onceki_src\v12\ortak\uxm_arac_cekirdek.py,33,"'clean':'CLEAN', 'apply':'apply', 'planned':'planned_moves', 'dry':'dry-run',"
+onceki_src\v12\ortak\uxm_arac_cekirdek.py,308,"ap.add_argument('-u','--uygula','--apply', dest='uygula', action='store_true', help=('Gerçek taşıma yap' if lang=='tr' else 'Apply planned moves'))"
+onceki_src\v12\ortak\uxm_arac_cekirdek.py,338,"print(f""[{T['clean']}] {T['apply']}={args.uygula} {T['planned']}={len(moves)} {T['report']}={report}"")"
+onceki_src\v13\ortak\uxm_arac_cekirdek.py,21,"'clean':'TOPARLA', 'apply':'uygula', 'planned':'planlanan_taşıma', 'dry':'deneme',"
+onceki_src\v13\ortak\uxm_arac_cekirdek.py,33,"'clean':'CLEAN', 'apply':'apply', 'planned':'planned_moves', 'dry':'dry-run',"
+onceki_src\v13\ortak\uxm_arac_cekirdek.py,335,"ap.add_argument('-u','--uygula','--apply', dest='uygula', action='store_true', help=('Gerçek taşıma yap' if lang=='tr' else 'Apply planned moves'))"
+onceki_src\v13\ortak\uxm_arac_cekirdek.py,365,"print(f""[{T['clean']}] {T['apply']}={args.uygula} {T['planned']}={len(moves)} {T['report']}={report}"")"
+ortak\__pycache__\uxm_arac_cekirdek.cpython-312.pyc,35,   bulunamadı)�uniquer   �clean�apply�planned�dry�	installed�notfoundzUXM expected/actual test runnerz
+ortak\__pycache__\uxm_arac_cekirdek.cpython-312.pyc,38,planned_moveszdry-runzVSCode extension installedz	not foundc                �$   � | dk(  rt         S t        S )N�tr)�TR�EN)�langs    �;C:\Users\mete\Downloads\1\UXMv33\ortak\uxm_arac_cekirdek.py�Sr4   %   s   � �$��*�B�
+ortak\__pycache__\uxm_arac_cekirdek.cpython-312.pyc,722,   r�   r/   u   Gerçek taşıma yapzApply planned movesr�   z-bz--build-emekliz--retire-build�
+ortak\__pycache__\uxm_arac_cekirdek.cpython-313.pyc,36,   bulunamadı)�uniquer   �clean�apply�planned�dry�	installed�notfoundzUXM expected/actual test runnerz
+ortak\__pycache__\uxm_arac_cekirdek.cpython-313.pyc,39,planned_moveszdry-runzVSCode extension installedz	not foundc                �&   � U S:X  a  [         $ [        $ )N�tr)�TR�EN)�langs    �8/mnt/data/uxm_v15_real_stages/ortak/uxm_arac_cekirdek.py�Sr4   %   s   � �$��*�B�
+ortak\__pycache__\uxm_arac_cekirdek.cpython-313.pyc,802,   r�   r/   u   Gerçek taşıma yapzApply planned movesr�   z-bz--build-emekliz--retire-build�
+tools\uxm_ops\UXM_TOOL_LAUNCHER.py,3,Kök klasörü kalabalıklaştırmadan tools/uxm_ops altındaki aracı geçici kopya ile çalıştırır.
+tool_en\__pycache__\placeholder_audit.cpython-313.pyc,8,""" 5       5        gg)	u�   UXM placeholder/TODO/dummy denetleyici."
+tool_en\__pycache__\placeholder_audit.cpython-313.pyc,10,placeholder/TODO/dummy/stub/reserved/planned izlerini CSV ve Markdown olarak raporlar.
+tool_en\__pycache__\placeholder_audit.cpython-313.pyc,13,placeholder�TODO�dummy�stubznot implemented�planned�reserved�taslaku
+tool_en\__pycache__\placeholder_audit.cpython-313.pyc,14,   planlandıu   geçici�|>   �.o�.dll�.exe�.jpg�.obj�.png�.zip�.xlsxc            	      ��  ^
+tool_en\__pycache__\placeholder_audit.cpython-313.pyc,40," 35        URB                  (       a  U(       a  gg(! [          a     GM�  f = f! , (       d  f       Ny= f))Nu$   UXM placeholder/TODO/dummy taraması)�"
+tool_en\__pycache__\placeholder_audit.cpython-313.pyc,41,descriptionz--kokz--root�.�root)�default�destz--ciktiz--out�placeholder_raporu�outz
+tool_en\__pycache__\placeholder_audit.cpython-313.pyc,47,"ignored_dirss     ��I/mnt/data/UXM_V33_PLACEHOLDER_GERCEK_KOD_V16/tool_en/placeholder_audit.py�	<genexpr>�main.<locals>.<genexpr>   s   �� � �8���|�#��s   �zutf-8�replace)�encoding�errors�   i,  )�dosya�satir�metinzplaceholder_taramasi.csv�w� )�newliner3   )�"
+tool_en\__pycache__\placeholder_audit.cpython-313.pyc,48,fieldnameszPLACEHOLDER_RAPORU.mdz3# UXM Placeholder/TODO/Dummy Raporu
+tool_en\__pycache__\placeholder_audit.cpython-313.pyc,53,")r3   z[PLACEHOLDER_TARA] bulgu=z rapor=r   )""�argparse�ArgumentParser�"
+tool_en\__pycache__\placeholder_strict_scan.cpython-313.pyc,13,"  \"" \"" 5       5      eg)u�   UXM strict placeholder scan."
+tool_en\__pycache__\placeholder_strict_scan.cpython-313.pyc,14,"Kaynak kodda yalandan işlev, TODO, dummy, placeholder veya yanlışlıkla geçerli görünen reserved izlerini bulur."
+tool_en\__pycache__\placeholder_strict_scan.cpython-313.pyc,18,PLACEHOLDER�
+tool_en\__pycache__\placeholder_strict_scan.cpython-313.pyc,19,placeholder�TODOz\bTODO\b�DUMMYz	\bdummy\b�STUBz\bstub\b�FAKEz\bfake\b|sahte|yalandan�NOT_IMPLEMENTEDz)not implemented|notimplemented|uygulanmadz+intentionally keeps host-level placeholdersz
+tool_en\__pycache__\placeholder_strict_scan.cpython-313.pyc,20,Fractional inverse is reservedz
+tool_en\__pycache__\placeholder_strict_scan.cpython-313.pyc,21,reserved alan>   �.bi�.md�.py�.bas�.bat�.csv�.incc                �6   ^ � [        U 4S j[         5       5      $ )Nc              3  �D   >#   � U  H  oR                  T5      v �  M  
+tool_en\__pycache__\placeholder_strict_scan.cpython-313.pyc,22,   g 7f)N)�search)�.0�p�lines     ��O/mnt/data/UXM_V33_PLACEHOLDER_GERCEK_KOD_V18/tool_en/placeholder_strict_scan.py�	<genexpr>�allowed.<locals>.<genexpr>   s   �� � �-�u�!�x�x��~�~�u�s   �
+tool_en\__pycache__\placeholder_strict_scan.cpython-313.pyc,60,"         a     GM�  f = f! , (       d  f       NT= f))Nz)UXM kesin placeholder/dummy/TODO denetimi)�"
+tool_en\__pycache__\placeholder_strict_scan.cpython-313.pyc,62,   Proje kökü)�dest�default�helpz--ciktiz--out�outzplaceholder_kesin_rapor.csvu
+tool_en\__pycache__\placeholder_strict_scan.cpython-313.pyc,66,[PLACEHOLDER_DENETIM] bulgu=z rapor=�   r   )$�argparse�ArgumentParser�
+uxm\core\runtime\runtime_host.bas,2,' runtime_host.bas intentionally keeps host-level placeholders for future entry wiring
+uxm\core\runtime\services\runtime_file_services.bas,389,"' @410: T-4=handle, T-3=dst data start, T-2=max bytes, T-1=reserved -> T+1=count"
+uxm\core\runtime\services\runtime_file_services.bas,406,"' @411: T-4=handle, T-3=src data start, T-2=count, T-1=reserved -> T+1=count"
+uxm\core\runtime\services\runtime_matrix_advanced_tensor_services.bas,277,' Exact integer inverse for unimodular/simple matrices. Fractional inverse is reserved for fixed-point matrix type.
+uxm\core\runtime\services\runtime_real_ext_services_v18.bas,6,' These services are intentionally not placeholders. They compute deterministic numeric results.
+uxm\core\runtime\services\runtime_statistics_services.bas,206,' --- V18 real statistical extensions: not placeholders ---
+uxm\tests\stage24_placeholder_v19\README.md,1,# Stage 24 Placeholder V19 Testleri
+uxm\tests\stage24_placeholder_v19\README.md,12,placeholder_v19_uygula.bat
+uxm\tests\stage24_placeholder_v19\README.md,13,stage24_placeholder_test.bat -k

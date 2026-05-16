@@ -1,0 +1,11 @@
+# V3.3: @(ADDR) dinamik meta çağrı testi
+# T+1 içine 5 koy, @(T+1) ile newline host servisini çağır.
+# Ardından A bas.
+# EXPECT_OUTPUT: A
+#memory tape=8,stack=4,data=4
+#cell byte
+#mode normal
+0(T+1)+k5
+@(T+1)
+0+k65.
+@!5

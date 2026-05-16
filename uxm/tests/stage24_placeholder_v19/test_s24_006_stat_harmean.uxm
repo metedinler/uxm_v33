@@ -1,0 +1,15 @@
+# TEST: V19 STAT_HARMEAN @279
+# EXPECT_OUTPUT: 3
+#cell dword
+#memory data=1mb,tape=64kb,stack=16kb,queue=64kb
+>>
+0(T-2)+k150
+0(T-1)+k2
+@96
+0(T-2)+k151
+0(T-1)+k6
+@96
+0(T-2)+k150
+0(T-1)+k2
+@279
+@61

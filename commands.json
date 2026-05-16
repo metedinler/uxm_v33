@@ -1,0 +1,435 @@
+{
+  "schema_version": "1.0",
+  "language": "ux-minima",
+  "version_target": "v3.1/v3.2/v3.5 consolidated",
+  "generated_for": "VSCode syntax/autocomplete/lint and compiler registry alignment",
+  "parser_current_limits": {
+    "meta_id_max_current_native": 255,
+    "user_macro_range_current": "128..255",
+    "important": "@260+/@400+ extension services require parser and dispatch meta-id range patch."
+  },
+  "directives": [
+    {
+      "name": "#memory",
+      "syntax": "#memory tape=<KB>,stack=<KB>,data=<KB>",
+      "example": "#memory tape=96,stack=32,data=256",
+      "status": "current"
+    },
+    {
+      "name": "#cell",
+      "syntax": "#cell byte|word|dword",
+      "example": "#cell word",
+      "status": "current"
+    },
+    {
+      "name": "#mode",
+      "syntax": "#mode safe|normal|wild",
+      "example": "#mode normal",
+      "status": "current"
+    },
+    {
+      "name": "#bounds",
+      "syntax": "#bounds on|off",
+      "example": "#bounds on",
+      "status": "current"
+    },
+    {
+      "name": "#overflow",
+      "syntax": "#overflow check|wrap",
+      "example": "#overflow check",
+      "status": "current"
+    },
+    {
+      "name": "#compare",
+      "syntax": "#compare signed|unsigned",
+      "example": "#compare unsigned",
+      "status": "current"
+    },
+    {
+      "name": "#endian",
+      "syntax": "#endian little|big",
+      "example": "#endian little",
+      "status": "current"
+    },
+    {
+      "name": "#seed",
+      "syntax": "#seed [integer]",
+      "example": "#seed 1234",
+      "status": "current"
+    },
+    {
+      "name": "#arge",
+      "syntax": "#arge json|interpreter|step|trace|watch",
+      "example": "#arge trace watch",
+      "status": "current"
+    },
+    {
+      "name": "#poly",
+      "syntax": "#poly ...",
+      "status": "current_math_addition"
+    },
+    {
+      "name": "#expr-rpn",
+      "syntax": "#expr-rpn ...",
+      "status": "current_math_addition"
+    },
+    {
+      "name": "#matrix/#identity/#zeros/#ones",
+      "syntax": "#matrix ...",
+      "status": "current_matrix_addition"
+    }
+  ],
+  "definitions": [
+    {
+      "kind": "string",
+      "syntax": "sN=start,{text}",
+      "example": "s1=0,{Merhaba}",
+      "notes": "pN prints defined string."
+    },
+    {
+      "kind": "macro",
+      "syntax": "mN={ ux-code }",
+      "example": "m128={+k1.}",
+      "notes": "Current parser requires N in 128..255. Host service shadowing is possible; use @!N to force host when macro id conflicts."
+    }
+  ],
+  "primitive_commands": [
+    {
+      "token": ">",
+      "name": "PTR_RIGHT",
+      "addressing_allowed": false,
+      "amount": "repeat count, default 1"
+    },
+    {
+      "token": "<",
+      "name": "PTR_LEFT",
+      "addressing_allowed": false,
+      "amount": "repeat count, default 1"
+    },
+    {
+      "token": "+",
+      "name": "INC",
+      "addressing_allowed": true,
+      "amount": "default 1 or +kN"
+    },
+    {
+      "token": "-",
+      "name": "DEC",
+      "addressing_allowed": true,
+      "amount": "default 1 or -kN"
+    },
+    {
+      "token": "0",
+      "name": "CLEAR",
+      "addressing_allowed": true,
+      "amount": "no amount; special 0(addr)+kN inherited address supported"
+    },
+    {
+      "token": ".",
+      "name": "PUT_CHAR",
+      "addressing_allowed": true
+    },
+    {
+      "token": ",",
+      "name": "GET_CHAR",
+      "addressing_allowed": true
+    },
+    {
+      "token": "[",
+      "name": "LOOP_BEGIN",
+      "addressing_allowed": false,
+      "condition": "active cell nonzero"
+    },
+    {
+      "token": "]",
+      "name": "LOOP_END",
+      "addressing_allowed": false
+    },
+    {
+      "token": "$",
+      "name": "STACK_PUSH",
+      "addressing_allowed": true
+    },
+    {
+      "token": "%",
+      "name": "STACK_POP",
+      "addressing_allowed": true
+    },
+    {
+      "token": "?",
+      "name": "COMPARE_EQ_WITH_ACTIVE",
+      "addressing_allowed": true
+    },
+    {
+      "token": "!",
+      "name": "COMPARE_GT_WITH_ACTIVE",
+      "addressing_allowed": true
+    },
+    {
+      "token": ";",
+      "name": "COMPARE_LT_WITH_ACTIVE",
+      "addressing_allowed": true
+    },
+    {
+      "token": "&",
+      "name": "BIT_AND",
+      "addressing_allowed": true
+    },
+    {
+      "token": "|",
+      "name": "BIT_OR",
+      "addressing_allowed": true
+    },
+    {
+      "token": "^",
+      "name": "BIT_XOR",
+      "addressing_allowed": true
+    },
+    {
+      "token": "~",
+      "name": "BIT_NOT",
+      "addressing_allowed": true
+    },
+    {
+      "token": "{",
+      "name": "SHIFT_LEFT",
+      "addressing_allowed": true
+    },
+    {
+      "token": "}",
+      "name": "SHIFT_RIGHT",
+      "addressing_allowed": true
+    },
+    {
+      "token": "e",
+      "name": "STATUS_OP",
+      "addressing_allowed": true
+    },
+    {
+      "token": "pN",
+      "name": "PRINT_STRING",
+      "addressing_allowed": false,
+      "example": "p1"
+    },
+    {
+      "token": "@N",
+      "name": "META_OR_MACRO_CALL",
+      "addressing_allowed": false,
+      "example": "@20"
+    },
+    {
+      "token": "@!N",
+      "name": "FORCE_HOST_META_CALL",
+      "addressing_allowed": false,
+      "example": "@!150"
+    },
+    {
+      "token": "@#",
+      "name": "DYNAMIC_META_CALL",
+      "addressing_allowed": false,
+      "example": "0(T)+k20 @#"
+    }
+  ],
+  "branch_commands": [
+    {
+      "syntax": "::+N / ::-N",
+      "condition": "always"
+    },
+    {
+      "syntax": ":0+N / :0-N",
+      "condition": "current cell zero"
+    },
+    {
+      "syntax": ":+N / :-N",
+      "condition": "current cell nonzero"
+    },
+    {
+      "syntax": ":z+N / :z-N",
+      "condition": "zero flag set"
+    },
+    {
+      "syntax": ":Z+N / :Z-N",
+      "condition": "zero flag clear"
+    },
+    {
+      "syntax": ":c+N / :c-N",
+      "condition": "carry flag set"
+    },
+    {
+      "syntax": ":C+N / :C-N",
+      "condition": "carry flag clear"
+    },
+    {
+      "syntax": ":o+N / :o-N",
+      "condition": "overflow flag set"
+    },
+    {
+      "syntax": ":O+N / :O-N",
+      "condition": "overflow flag clear"
+    },
+    {
+      "syntax": ":s+N / :s-N",
+      "condition": "sign flag set"
+    },
+    {
+      "syntax": ":S+N / :S-N",
+      "condition": "sign flag clear"
+    }
+  ],
+  "address_modes_current": [
+    {
+      "syntax": "(T)",
+      "kind": "ADDR_T",
+      "meaning": "current tape pointer cell"
+    },
+    {
+      "syntax": "(T+N)",
+      "kind": "ADDR_T_REL",
+      "meaning": "tape pointer relative positive offset"
+    },
+    {
+      "syntax": "(T-N)",
+      "kind": "ADDR_T_REL",
+      "meaning": "tape pointer relative negative offset"
+    },
+    {
+      "syntax": "(T:N)",
+      "kind": "ADDR_T_ABS",
+      "meaning": "absolute tape cell N"
+    },
+    {
+      "syntax": "(D:N)",
+      "kind": "ADDR_D_ABS",
+      "meaning": "absolute data cell N"
+    },
+    {
+      "syntax": "(S:N)",
+      "kind": "ADDR_S_ABS",
+      "meaning": "absolute stack cell N"
+    },
+    {
+      "syntax": "(SP)",
+      "kind": "ADDR_SP",
+      "meaning": "stack pointer cell"
+    },
+    {
+      "syntax": "(P)",
+      "kind": "ADDR_P",
+      "meaning": "program/runtime pointer pseudo-cell"
+    },
+    {
+      "syntax": "(E)",
+      "kind": "ADDR_E",
+      "meaning": "status/error pseudo-cell"
+    },
+    {
+      "syntax": "(F)",
+      "kind": "ADDR_F",
+      "meaning": "flags pseudo-cell"
+    },
+    {
+      "syntax": "(*T)",
+      "kind": "ADDR_IND_T",
+      "meaning": "indirect through tape current cell"
+    },
+    {
+      "syntax": "(*(T+N))",
+      "kind": "ADDR_IND_T_REL",
+      "meaning": "indirect through tape[T+N]"
+    },
+    {
+      "syntax": "(*(T-N))",
+      "kind": "ADDR_IND_T_REL",
+      "meaning": "indirect through tape[T-N]"
+    },
+    {
+      "syntax": "(D@T)",
+      "kind": "ADDR_D_AT_T_REL",
+      "meaning": "data[tape[T]]"
+    },
+    {
+      "syntax": "(D@T+N)",
+      "kind": "ADDR_D_AT_T_REL",
+      "meaning": "data[tape[T]+N]"
+    },
+    {
+      "syntax": "(D@T-N)",
+      "kind": "ADDR_D_AT_T_REL",
+      "meaning": "data[tape[T]-N]"
+    },
+    {
+      "syntax": "(D@(T+K)+N)",
+      "kind": "ADDR_D_AT_TBASE_REL",
+      "meaning": "data[tape[T+K]+N]"
+    },
+    {
+      "syntax": "(D@(T-K)+N)",
+      "kind": "ADDR_D_AT_TBASE_REL",
+      "meaning": "data[tape[T-K]+N]"
+    }
+  ],
+  "address_modes_proposed_v32": [
+    {
+      "syntax": "(SP+N)/(SP-N)",
+      "status": "patch_candidate",
+      "meaning": "stack[SP-1+N]"
+    },
+    {
+      "syntax": "(D:BASE+P)",
+      "status": "patch_candidate",
+      "meaning": "data[BASE + pointer]"
+    },
+    {
+      "syntax": "(T:BASE+P)",
+      "status": "patch_candidate",
+      "meaning": "tape[BASE + pointer]"
+    },
+    {
+      "syntax": "(D@D:N)",
+      "status": "patch_candidate",
+      "meaning": "data[data[N]]"
+    },
+    {
+      "syntax": "(T@D:N)",
+      "status": "patch_candidate",
+      "meaning": "tape[data[N]]"
+    },
+    {
+      "syntax": "(B:N)",
+      "status": "deferred_raw_memory",
+      "meaning": "raw byte address; not yet safe with cell width"
+    },
+    {
+      "syntax": "(M:N)",
+      "status": "deferred_raw_memory",
+      "meaning": "raw memory address; not yet safe with cell width"
+    }
+  ],
+  "lint_rules": [
+    {
+      "id": "UXM001",
+      "severity": "error",
+      "message": "No spaces inside address parentheses."
+    },
+    {
+      "id": "UXM002",
+      "severity": "error",
+      "message": "@260+/@400+ requires extended meta-id parser; current native parser rejects >255."
+    },
+    {
+      "id": "UXM003",
+      "severity": "warning",
+      "message": "m150..m254 can shadow host services. Use @!N to force host, or keep user macros in m128..m149 only."
+    },
+    {
+      "id": "UXM004",
+      "severity": "error",
+      "message": "0(D:600)+0(T+1) is not valid cell-to-cell addition; use stack/meta frame or dedicated service."
+    },
+    {
+      "id": "UXM005",
+      "severity": "warning",
+      "message": "@130..@149 cases exist in one source but are unreachable unless dispatcher is fixed."
+    }
+  ]
+}

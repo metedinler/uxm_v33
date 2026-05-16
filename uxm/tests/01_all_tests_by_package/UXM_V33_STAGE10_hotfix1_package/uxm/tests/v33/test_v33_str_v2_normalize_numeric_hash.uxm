@@ -1,0 +1,23 @@
+# V3.3 Stage-8 STR V2: normalize spaces, numeric test, hash8
+# Expected output includes: A B C, 1, 198
+#memory tape=64,stack=8,data=64,queue=4
+#cell byte
+s1=0,{A  B	C}
+s2=32,{12345}
+>>>>>>
+0(T-4)+k0
+0(T-3)+k6
+0(T-2)+k16
+0(T-1)+k16
+@354
+0(T-1)+k16
+@313
+@!5
+0(T-2)+k32
+0(T-1)+k5
+@355
+@61
+0(T-2)+k0
+0(T-1)+k3
+@358
+@61

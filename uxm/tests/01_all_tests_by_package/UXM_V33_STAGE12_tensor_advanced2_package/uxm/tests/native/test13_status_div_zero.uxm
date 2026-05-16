@@ -1,0 +1,10 @@
+>>
+0(T-2)+k20
+0(T-1)
+@23
+e
+@61
+
+# EXPECT_OUTPUT: 15
+# [UXM program finished]
+# Final status: 15 Division by zero

@@ -1,0 +1,53 @@
+# --- 1. Katman Kuralları (Register ve Pipeline Odaklı) ---
+
+# 1. Kayıtçı Ömrünü Uzatma (Register Pinning)
+engine.add_rule("UX_PTR Önbellekleme", 
+    "Sık 'mov rbx, [ux_ptr]' kullanımı.", 
+    "rbx kayıtçısını ux_ptr için ayırın, her seferinde bellekten okumayın.", "%10")
+
+# 2. Döngü Açma (Loop Unrolling - Tensor Özel)
+engine.add_rule("Tensor Sıfırlama Optimizasyonu", 
+    "Döngü içinde tek tek 0 yazılması.", 
+    "REP STOSQ komutuyla 8'er 8'er sıfırlayın.", "%30")
+
+# 3. Dallanma Azaltma (Branch Elimination)
+engine.add_rule("CMP/JNZ Temizliği", 
+    "Ardışık karşılaştırmalar.", 
+    "CMOV (Conditional Move) komutlarını kullanın, zıplamalardan kurtulun.", "%15")
+
+# 4. Bellek Hizalama (Data Alignment)
+engine.add_rule("4-Byte Hizalama", 
+    "Data alanına asimetrik erişim.", 
+    "Verileri 8-byte sınırına (align 8) çekin, CPU bus trafiği rahatlasın.", "%12")
+
+# 5. Pipeline Stall Engelleme
+engine.add_rule("Write-After-Write (WAW) Engeli", 
+    "Aynı register'a çok yakın satırlarda yazma.", 
+    "Araya bağımsız komutlar (Instruction Scheduling) serpiştirin.", "%8")
+
+# 6. Stack Frame Kaldırma
+engine.add_rule("Leaf Function Optimizasyonu", 
+    "Alt fonksiyonlarda gereksiz push rbp.", 
+    "Eğer fonksiyon başka fonksiyon çağırmıyorsa stack frame açmayın.", "%5")
+
+# 7. Hızlı Çarpma (Shift/Add)
+engine.add_rule("Sabit Çarpan Dönüşümü", 
+    "mul rax, 10 gibi komutlar.", 
+    "lea rax, [rax*4 + rax] -> shl rax, 1 şeklinde değiştirin.", "%20")
+
+# 8. Bayrak Koruma (LAHF/SAHF)
+engine.add_rule("Bayrak Yükle-Boşalt Temizliği", 
+    "Sürekli ux_flags güncelleme.", 
+    "Sadece kritik eşiklerde bayrakları güncelleyin.", "%15")
+
+# 9. Pointer Aritmetiği
+engine.add_rule("LEA ile Adres Hesaplama", 
+    "add rbx, rcx -> add rbx, 4 dizisi.", 
+    "lea rbx, [rbx + rcx*4] kullanarak tek çevrimde bitirin.", "%18")
+
+# 10. NOP Doldurma (Instruction Padding)
+engine.add_rule("Kod Hizalama (Code Alignment)", 
+    "Sıkça zıplanan etiketlerin (labels) konumu.", 
+    "Etiketleri 16-byte sınırına hizalayın (align 16), önbellek daha hızlı okusun.", "%7")
+
+print(engine.build_report())

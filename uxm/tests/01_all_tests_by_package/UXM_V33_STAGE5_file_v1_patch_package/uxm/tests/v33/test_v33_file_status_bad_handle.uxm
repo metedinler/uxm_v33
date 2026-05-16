@@ -1,0 +1,11 @@
+# V3.3 Stage-5 FILE V1: bad handle status smoke test
+# Expected output: non-zero status code, currently 24
+#memory tape=32,stack=4,data=32,queue=4
+#cell byte
+#mode normal
+>>
+0(T-1)+k99
+@405
+@415
+@61
+@!5

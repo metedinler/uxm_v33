@@ -1,0 +1,12 @@
+# V3.3: (D:BASE+P) ve (T:BASE+P) syntax smoke testi
+# data[10] = 'A', pointer 0 iken .(D:10+P) A basar.
+#memory tape=16,stack=4,data=32
+#cell byte
+#mode normal
+s1=10,{ABC}
+.(D:10+P)
+>
+.(D:10+P)
+>
+.(D:10+P)
+@!5

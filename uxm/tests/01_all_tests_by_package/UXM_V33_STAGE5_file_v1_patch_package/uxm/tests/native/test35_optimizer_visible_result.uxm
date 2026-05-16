@@ -1,0 +1,7 @@
+# TEST: optimizer clear/inc-dec merge/cancel
+# EXPECT_OUTPUT: B
+0
++k10
+-k10
+0+k66
+.

@@ -1,0 +1,4 @@
+mode: exact
+exit_code: 0
+---
+42

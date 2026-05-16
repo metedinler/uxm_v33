@@ -1,0 +1,15 @@
+service,name,status,input,output,note
+@274,STAT_MODE,gercek_kod_v19,DATA[base..base+n-1],mode,eşitlikte ilk bulunan küçük tarama sırası
+@275,STAT_RANGE,gercek_kod_v19,DATA array,max-min,integer
+@276,STAT_IQR,gercek_kod_v19,DATA array,Q3-Q1,basit sıralı quartile
+@277,STAT_MAD,gercek_kod_v19,DATA array,median absolute deviation,integer median
+@278,STAT_GEOMEAN,gercek_kod_v19,DATA positive array,rounded geometric mean,<=0 değer hata
+@279,STAT_HARMEAN,gercek_kod_v19,DATA positive array,rounded harmonic mean,<=0 değer hata
+@280,STAT_COVARIANCE,gercek_kod_v19,"xBase,yBase,n",sample covariance,n>=2
+@283,NORMAL_PDF_SCALED,gercek_kod_v19,"xMilli,muMilli,sigmaMilli",pdf*1000000,dword önerilir
+@284,NORMAL_CDF_SCALED,gercek_kod_v19,"xMilli,muMilli,sigmaMilli",cdf*1000000,dword önerilir
+@285,BINOM_PMF_SCALED,gercek_kod_v19,"k,pPermille,n",pmf*1000000,dword önerilir
+@286,POISSON_PMF_SCALED,gercek_kod_v19,"k,lambdaMilli",pmf*1000000,dword önerilir
+@287,LERP_PERMILLE,gercek_kod_v19,"a,b,tPermille",interpolated int,integer
+@288,CLAMP_VALUE,gercek_kod_v19,"min,max,x",clamped x,integer
+@289,MAP_RANGE_DATA,gercek_kod_v19,"x,base(DATA four values)",mapped int,"DATA[base]=inMin,inMax,outMin,outMax"

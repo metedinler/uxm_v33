@@ -1,0 +1,10 @@
+# TEST: safe mode içinde wild layout change reddedilmeli
+# EXPECT_OUTPUT: 23
+#mode safe
+>>
+0(T-2)+k48
+0(T-1)+k4
+0(T)+k12
+@127
+e(T+1)
+@61

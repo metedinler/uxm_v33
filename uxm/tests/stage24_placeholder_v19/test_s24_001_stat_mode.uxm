@@ -1,0 +1,24 @@
+# TEST: V19 STAT_MODE @274
+# EXPECT_OUTPUT: 7
+#cell dword
+#memory data=1mb,tape=64kb,stack=16kb,queue=64kb
+>>
+0(T-2)+k100
+0(T-1)+k2
+@96
+0(T-2)+k101
+0(T-1)+k7
+@96
+0(T-2)+k102
+0(T-1)+k7
+@96
+0(T-2)+k103
+0(T-1)+k9
+@96
+0(T-2)+k104
+0(T-1)+k7
+@96
+0(T-2)+k100
+0(T-1)+k5
+@274
+@61

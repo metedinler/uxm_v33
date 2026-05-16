@@ -1,0 +1,14 @@
+# V3.3 Stage-10 Matrix Advanced: inverse2 identity
+# EXPECT_OUTPUT:
+# [1 0]
+# [0 1]
+#memory tape=64,stack=8,data=256,queue=4
+#cell dword
+#mode normal
+>>>>>
+#matrix 100 2 2 = 1,0,0,1
+0(T-4)+k200
+0(T-3)+k100
+@513
+0(T-3)+k200
+@166

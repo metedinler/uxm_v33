@@ -1,0 +1,7 @@
+#memory tape=64,stack=8,data=256,queue=4
+#cell dword
+#mode normal
+>>>>>
+# Simple known-good output gate for matrix/tape print path
+0(T-1)+k50
+@61

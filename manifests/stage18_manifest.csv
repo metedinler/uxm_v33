@@ -1,0 +1,5 @@
+﻿test_path,expect_path
+uxm\tests\stage18\test_s18_01_native_bridge_add.uxm,uxm\tests\stage18\test_s18_01_native_bridge_add.expect
+uxm\tests\stage18\test_s18_02_native_bridge_data_domain.uxm,uxm\tests\stage18\test_s18_02_native_bridge_data_domain.expect
+uxm\tests\stage18\test_s18_03_tensor4d_bridge.uxm,uxm\tests\stage18\test_s18_03_tensor4d_bridge.expect
+uxm\tests\stage18\test_s18_04_translator_expected_prefix.uxm,uxm\tests\stage18\test_s18_04_translator_expected_prefix.expect

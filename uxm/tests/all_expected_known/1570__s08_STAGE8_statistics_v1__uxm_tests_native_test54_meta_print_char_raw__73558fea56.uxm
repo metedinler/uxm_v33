@@ -1,0 +1,5 @@
+# TEST: META 69 char/raw print
+# EXPECT_OUTPUT: A
+>>
+0(T-1)+k65
+@69

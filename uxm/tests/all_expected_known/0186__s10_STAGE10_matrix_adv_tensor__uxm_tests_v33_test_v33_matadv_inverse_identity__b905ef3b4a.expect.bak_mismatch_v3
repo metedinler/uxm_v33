@@ -1,0 +1,9 @@
+# mode: compact
+# exit_code: 0
+# source: embedded_EXPECT_OUTPUT
+
+[1 0]
+[0 1]
+memory tape=64,stack=8,data=256,queue=4
+cell dword
+mode normal

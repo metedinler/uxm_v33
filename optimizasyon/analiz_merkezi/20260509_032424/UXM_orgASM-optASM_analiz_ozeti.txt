@@ -1,0 +1,707 @@
+TEST: test01_print_A
+ - Durum: BASARILI_OPTIMIZASYON
+ - Orijinal Süre: 49.431000 ms
+ - Optimize Süre: 45.276600 ms
+ - Fark (Kazanç): %8.40
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test02_string
+ - Durum: BASARISIZ_YAVASLAMA_VAR
+ - Orijinal Süre: 46.141100 ms
+ - Optimize Süre: 46.675700 ms
+ - Fark (Kazanç): %-1.16
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test03_addressing
+ - Durum: BASARISIZ_YAVASLAMA_VAR
+ - Orijinal Süre: 43.517100 ms
+ - Optimize Süre: 48.211200 ms
+ - Fark (Kazanç): %-10.79
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test04_stack_lifo
+ - Durum: BASARILI_OPTIMIZASYON
+ - Orijinal Süre: 47.579600 ms
+ - Optimize Süre: 44.785200 ms
+ - Fark (Kazanç): %5.87
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test05_meta_add
+ - Durum: BASARILI_OPTIMIZASYON
+ - Orijinal Süre: 47.207200 ms
+ - Optimize Süre: 45.139600 ms
+ - Fark (Kazanç): %4.38
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test06_dynamic_meta_mul
+ - Durum: BASARISIZ_YAVASLAMA_VAR
+ - Orijinal Süre: 44.506800 ms
+ - Optimize Süre: 58.668800 ms
+ - Fark (Kazanç): %-31.82
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test07_macro
+ - Durum: BASARILI_OPTIMIZASYON
+ - Orijinal Süre: 52.122800 ms
+ - Optimize Süre: 44.040800 ms
+ - Fark (Kazanç): %15.51
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test08_newline
+ - Durum: BASARISIZ_YAVASLAMA_VAR
+ - Orijinal Süre: 46.290500 ms
+ - Optimize Süre: 46.601700 ms
+ - Fark (Kazanç): %-0.67
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test09_div_mod
+ - Durum: BASARISIZ_YAVASLAMA_VAR
+ - Orijinal Süre: 45.816100 ms
+ - Optimize Süre: 46.729600 ms
+ - Fark (Kazanç): %-1.99
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test10_sin_scaled
+ - Durum: BASARILI_OPTIMIZASYON
+ - Orijinal Süre: 45.693300 ms
+ - Optimize Süre: 43.799300 ms
+ - Fark (Kazanç): %4.15
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test11_hypotenuse
+ - Durum: BASARILI_OPTIMIZASYON
+ - Orijinal Süre: 49.766000 ms
+ - Optimize Süre: 47.903900 ms
+ - Fark (Kazanç): %3.74
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test12_signed_mode
+ - Durum: BASARISIZ_YAVASLAMA_VAR
+ - Orijinal Süre: 45.783100 ms
+ - Optimize Süre: 50.593100 ms
+ - Fark (Kazanç): %-10.51
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test13_status_div_zero
+ - Durum: BASARISIZ_YAVASLAMA_VAR
+ - Orijinal Süre: 48.525800 ms
+ - Optimize Süre: 61.629500 ms
+ - Fark (Kazanç): %-27.00
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test14_branch_current_zero
+ - Durum: BASARILI_OPTIMIZASYON
+ - Orijinal Süre: 58.509500 ms
+ - Optimize Süre: 51.307800 ms
+ - Fark (Kazanç): %12.31
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test15_branch_nonzero
+ - Durum: BASARILI_OPTIMIZASYON
+ - Orijinal Süre: 49.867600 ms
+ - Optimize Süre: 45.809100 ms
+ - Fark (Kazanç): %8.14
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test16_data_digit
+ - Durum: BASARISIZ_YAVASLAMA_VAR
+ - Orijinal Süre: 47.500600 ms
+ - Optimize Süre: 48.908400 ms
+ - Fark (Kazanç): %-2.96
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test17_endian_word_split
+ - Durum: BASARISIZ_YAVASLAMA_VAR
+ - Orijinal Süre: 55.560300 ms
+ - Optimize Süre: 69.788600 ms
+ - Fark (Kazanç): %-25.61
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test18_pointer_service
+ - Durum: BASARISIZ_YAVASLAMA_VAR
+ - Orijinal Süre: 66.394700 ms
+ - Optimize Süre: 82.350500 ms
+ - Fark (Kazanç): %-24.03
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test20_fifo_char_order
+ - Durum: BASARISIZ_YAVASLAMA_VAR
+ - Orijinal Süre: 76.106200 ms
+ - Optimize Süre: 78.177500 ms
+ - Fark (Kazanç): %-2.72
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test21_fifo_count_peek
+ - Durum: BASARISIZ_YAVASLAMA_VAR
+ - Orijinal Süre: 75.698100 ms
+ - Optimize Süre: 88.131600 ms
+ - Fark (Kazanç): %-16.43
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test22_data_write_read_char
+ - Durum: BASARISIZ_YAVASLAMA_VAR
+ - Orijinal Süre: 87.248000 ms
+ - Optimize Süre: 94.511100 ms
+ - Fark (Kazanç): %-8.32
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test23_data_digit_ascii_to_number
+ - Durum: BASARILI_OPTIMIZASYON
+ - Orijinal Süre: 96.448500 ms
+ - Optimize Süre: 89.806100 ms
+ - Fark (Kazanç): %6.89
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test24_data_block_copy_print
+ - Durum: BASARILI_OPTIMIZASYON
+ - Orijinal Süre: 94.261400 ms
+ - Optimize Süre: 90.087500 ms
+ - Fark (Kazanç): %4.43
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test25_data_sort_ascending
+ - Durum: BASARILI_OPTIMIZASYON
+ - Orijinal Süre: 133.810000 ms
+ - Optimize Süre: 92.819900 ms
+ - Fark (Kazanç): %30.63
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test26_tape_sort_descending_chars
+ - Durum: BASARILI_OPTIMIZASYON
+ - Orijinal Süre: 97.072900 ms
+ - Optimize Süre: 88.284200 ms
+ - Fark (Kazanç): %9.05
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test27_tape_linear_search
+ - Durum: BASARISIZ_YAVASLAMA_VAR
+ - Orijinal Süre: 77.468000 ms
+ - Optimize Süre: 85.015200 ms
+ - Fark (Kazanç): %-9.74
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test28_dynamic_meta_fifo
+ - Durum: BASARISIZ_YAVASLAMA_VAR
+ - Orijinal Süre: 85.151000 ms
+ - Optimize Süre: 110.351900 ms
+ - Fark (Kazanç): %-29.60
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test29_nested_macro_call
+ - Durum: BASARILI_OPTIMIZASYON
+ - Orijinal Süre: 108.364700 ms
+ - Optimize Süre: 105.387600 ms
+ - Fark (Kazanç): %2.75
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test30_word_mode_add
+ - Durum: BASARILI_OPTIMIZASYON
+ - Orijinal Süre: 95.956000 ms
+ - Optimize Süre: 86.761900 ms
+ - Fark (Kazanç): %9.58
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test31_safe_mode_wild_denied
+ - Durum: BASARISIZ_YAVASLAMA_VAR
+ - Orijinal Süre: 111.755300 ms
+ - Optimize Süre: 124.032600 ms
+ - Fark (Kazanç): %-10.99
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test32_wild_layout_change
+ - Durum: BASARISIZ_YAVASLAMA_VAR
+ - Orijinal Süre: 92.006700 ms
+ - Optimize Süre: 107.617700 ms
+ - Fark (Kazanç): %-16.97
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test33_bitwise_and_stack
+ - Durum: BASARISIZ_YAVASLAMA_VAR
+ - Orijinal Süre: 97.321300 ms
+ - Optimize Süre: 120.264600 ms
+ - Fark (Kazanç): %-23.57
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test34_data_block_clear
+ - Durum: BASARISIZ_YAVASLAMA_VAR
+ - Orijinal Süre: 98.557500 ms
+ - Optimize Süre: 129.525400 ms
+ - Fark (Kazanç): %-31.42
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test40_4bit_cpu_alu_model
+ - Durum: BASARISIZ_YAVASLAMA_VAR
+ - Orijinal Süre: 92.079000 ms
+ - Optimize Süre: 94.015800 ms
+ - Fark (Kazanç): %-2.10
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test41_4_neuron_nn_model
+ - Durum: BASARISIZ_YAVASLAMA_VAR
+ - Orijinal Süre: 79.394100 ms
+ - Optimize Süre: 100.403400 ms
+ - Fark (Kazanç): %-26.46
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test42_error_flag_set_reset
+ - Durum: BASARILI_OPTIMIZASYON
+ - Orijinal Süre: 96.726600 ms
+ - Optimize Süre: 88.467300 ms
+ - Fark (Kazanç): %8.54
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test43_error_macro_helpers
+ - Durum: BASARILI_OPTIMIZASYON
+ - Orijinal Süre: 109.650500 ms
+ - Optimize Süre: 102.101100 ms
+ - Fark (Kazanç): %6.88
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test44_asin
+ - Durum: BASARILI_OPTIMIZASYON
+ - Orijinal Süre: 90.990800 ms
+ - Optimize Süre: 84.135500 ms
+ - Fark (Kazanç): %7.53
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test44_meta_version_info
+ - Durum: BASARISIZ_YAVASLAMA_VAR
+ - Orijinal Süre: 89.936100 ms
+ - Optimize Süre: 98.881800 ms
+ - Fark (Kazanç): %-9.95
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test45_acos
+ - Durum: BASARISIZ_YAVASLAMA_VAR
+ - Orijinal Süre: 86.888700 ms
+ - Optimize Süre: 87.159100 ms
+ - Fark (Kazanç): %-0.31
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test45_pointer_meta_extended
+ - Durum: BASARILI_OPTIMIZASYON
+ - Orijinal Süre: 106.787100 ms
+ - Optimize Süre: 103.899800 ms
+ - Fark (Kazanç): %2.70
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test46_fifo_clear
+ - Durum: BASARILI_OPTIMIZASYON
+ - Orijinal Süre: 104.462300 ms
+ - Optimize Süre: 100.849700 ms
+ - Fark (Kazanç): %3.46
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test46_sqrt
+ - Durum: BASARISIZ_YAVASLAMA_VAR
+ - Orijinal Süre: 81.218900 ms
+ - Optimize Süre: 83.374700 ms
+ - Fark (Kazanç): %-2.65
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test47_sinh
+ - Durum: BASARILI_OPTIMIZASYON
+ - Orijinal Süre: 83.040100 ms
+ - Optimize Süre: 80.757600 ms
+ - Fark (Kazanç): %2.75
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test47_tape_sort_ascending
+ - Durum: BASARILI_OPTIMIZASYON
+ - Orijinal Süre: 99.704500 ms
+ - Optimize Süre: 87.127600 ms
+ - Fark (Kazanç): %12.61
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test48_cosh
+ - Durum: BASARILI_OPTIMIZASYON
+ - Orijinal Süre: 75.374700 ms
+ - Optimize Süre: 74.097100 ms
+ - Fark (Kazanç): %1.69
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test48_data_sort_descending
+ - Durum: BASARISIZ_YAVASLAMA_VAR
+ - Orijinal Süre: 99.891800 ms
+ - Optimize Süre: 108.924500 ms
+ - Fark (Kazanç): %-9.04
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test49_data_linear_search
+ - Durum: BASARISIZ_YAVASLAMA_VAR
+ - Orijinal Süre: 93.454600 ms
+ - Optimize Süre: 97.984800 ms
+ - Fark (Kazanç): %-4.85
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test49_tanh
+ - Durum: BASARILI_OPTIMIZASYON
+ - Orijinal Süre: 78.556300 ms
+ - Optimize Süre: 77.453600 ms
+ - Fark (Kazanç): %1.40
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test50_tape_block_copy_clear
+ - Durum: BASARILI_OPTIMIZASYON
+ - Orijinal Süre: 99.601000 ms
+ - Optimize Süre: 97.730000 ms
+ - Fark (Kazanç): %1.88
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test51_meta_print_stack_pop
+ - Durum: BASARILI_OPTIMIZASYON
+ - Orijinal Süre: 94.801100 ms
+ - Optimize Süre: 88.586700 ms
+ - Fark (Kazanç): %6.56
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test52_meta_print_hex
+ - Durum: BASARISIZ_YAVASLAMA_VAR
+ - Orijinal Süre: 73.660200 ms
+ - Optimize Süre: 76.447400 ms
+ - Fark (Kazanç): %-3.78
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test53_meta_print_bin
+ - Durum: BASARISIZ_YAVASLAMA_VAR
+ - Orijinal Süre: 76.878700 ms
+ - Optimize Süre: 79.516700 ms
+ - Fark (Kazanç): %-3.43
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test54_meta_print_char_raw
+ - Durum: BASARILI_OPTIMIZASYON
+ - Orijinal Süre: 98.686900 ms
+ - Optimize Süre: 96.730900 ms
+ - Fark (Kazanç): %1.98
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test_fp01_add_int
+ - Durum: BASARILI_OPTIMIZASYON
+ - Orijinal Süre: 74.316300 ms
+ - Optimize Süre: 73.433900 ms
+ - Fark (Kazanç): %1.19
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test_fp02_sub_int
+ - Durum: BASARISIZ_YAVASLAMA_VAR
+ - Orijinal Süre: 73.242200 ms
+ - Optimize Süre: 76.286600 ms
+ - Fark (Kazanç): %-4.16
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test_fp03_mul_int
+ - Durum: BASARILI_OPTIMIZASYON
+ - Orijinal Süre: 78.061500 ms
+ - Optimize Süre: 77.275600 ms
+ - Fark (Kazanç): %1.01
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test_fp04_div_int
+ - Durum: BASARILI_OPTIMIZASYON
+ - Orijinal Süre: 89.376700 ms
+ - Optimize Süre: 77.984200 ms
+ - Fark (Kazanç): %12.75
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test_fp05_from_string
+ - Durum: BASARILI_OPTIMIZASYON
+ - Orijinal Süre: 82.151400 ms
+ - Optimize Süre: 75.802100 ms
+ - Fark (Kazanç): %7.73
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test_fp06_add_dec_string
+ - Durum: BASARISIZ_YAVASLAMA_VAR
+ - Orijinal Süre: 81.837600 ms
+ - Optimize Süre: 95.573200 ms
+ - Fark (Kazanç): %-16.78
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test_fp07_int_zero_sign_abs
+ - Durum: BASARILI_OPTIMIZASYON
+ - Orijinal Süre: 97.613600 ms
+ - Optimize Süre: 93.516400 ms
+ - Fark (Kazanç): %4.20
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test_math01_poly_deriv_arge
+ - Durum: BASARILI_OPTIMIZASYON
+ - Orijinal Süre: 89.694700 ms
+ - Optimize Süre: 86.907400 ms
+ - Fark (Kazanç): %3.11
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test_math02_poly_integral_arge
+ - Durum: BASARISIZ_YAVASLAMA_VAR
+ - Orijinal Süre: 90.761500 ms
+ - Optimize Süre: 91.216700 ms
+ - Fark (Kazanç): %-0.50
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test_math03_poly_eval_arge
+ - Durum: BASARILI_OPTIMIZASYON
+ - Orijinal Süre: 103.897400 ms
+ - Optimize Süre: 86.746000 ms
+ - Fark (Kazanç): %16.51
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test_math04_expr_rpn_eval
+ - Durum: BASARISIZ_YAVASLAMA_VAR
+ - Orijinal Süre: 73.892300 ms
+ - Optimize Süre: 84.281100 ms
+ - Fark (Kazanç): %-14.06
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test_math05_num_deriv
+ - Durum: BASARISIZ_YAVASLAMA_VAR
+ - Orijinal Süre: 71.054500 ms
+ - Optimize Süre: 79.545600 ms
+ - Fark (Kazanç): %-11.95
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test_math06_integral_trap
+ - Durum: BASARISIZ_YAVASLAMA_VAR
+ - Orijinal Süre: 83.008100 ms
+ - Optimize Süre: 88.654600 ms
+ - Fark (Kazanç): %-6.80
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test_math07_integral_simpson
+ - Durum: BASARISIZ_YAVASLAMA_VAR
+ - Orijinal Süre: 88.576400 ms
+ - Optimize Süre: 89.612400 ms
+ - Fark (Kazanç): %-1.17
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test_matrix01_init_set_print
+ - Durum: BASARISIZ_YAVASLAMA_VAR
+ - Orijinal Süre: 83.373800 ms
+ - Optimize Süre: 98.138300 ms
+ - Fark (Kazanç): %-17.71
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test_matrix02_add_2x2
+ - Durum: BASARILI_OPTIMIZASYON
+ - Orijinal Süre: 89.181900 ms
+ - Optimize Süre: 72.260900 ms
+ - Fark (Kazanç): %18.97
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test_matrix03_mul_2x2
+ - Durum: BASARILI_OPTIMIZASYON
+ - Orijinal Süre: 86.094400 ms
+ - Optimize Süre: 74.857800 ms
+ - Fark (Kazanç): %13.05
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test_matrix04_identity_trace_det2
+ - Durum: BASARISIZ_YAVASLAMA_VAR
+ - Orijinal Süre: 84.550400 ms
+ - Optimize Süre: 86.129400 ms
+ - Fark (Kazanç): %-1.87
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test_v33_address_base_p
+ - Durum: BASARISIZ_YAVASLAMA_VAR
+ - Orijinal Süre: 74.336100 ms
+ - Optimize Süre: 86.848500 ms
+ - Fark (Kazanç): %-16.83
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test_v33_bio_base_codon
+ - Durum: BASARISIZ_YAVASLAMA_VAR
+ - Orijinal Süre: 83.616100 ms
+ - Optimize Süre: 84.516400 ms
+ - Fark (Kazanç): %-1.08
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test_v33_bio_motif_aa_count
+ - Durum: BASARISIZ_YAVASLAMA_VAR
+ - Orijinal Süre: 91.696500 ms
+ - Optimize Süre: 100.617500 ms
+ - Fark (Kazanç): %-9.73
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test_v33_bio_translate_gc
+ - Durum: BASARISIZ_YAVASLAMA_VAR
+ - Orijinal Süre: 86.140200 ms
+ - Optimize Süre: 101.659500 ms
+ - Fark (Kazanç): %-18.02
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test_v33_complex_basic
+ - Durum: BASARILI_OPTIMIZASYON
+ - Orijinal Süre: 254.033200 ms
+ - Optimize Süre: 89.307700 ms
+ - Fark (Kazanç): %64.84
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test_v33_corr_regression
+ - Durum: BASARISIZ_YAVASLAMA_VAR
+ - Orijinal Süre: 84.823100 ms
+ - Optimize Süre: 105.183100 ms
+ - Fark (Kazanç): %-24.00
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test_v33_dynamic_meta_addr
+ - Durum: BASARISIZ_YAVASLAMA_VAR
+ - Orijinal Süre: 99.517900 ms
+ - Optimize Süre: 101.496200 ms
+ - Fark (Kazanç): %-1.99
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test_v33_dynamic_meta_addr_compat
+ - Durum: BASARILI_OPTIMIZASYON
+ - Orijinal Süre: 93.879500 ms
+ - Optimize Süre: 89.704800 ms
+ - Fark (Kazanç): %4.45
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test_v33_file_binary_byte
+ - Durum: BASARISIZ_YAVASLAMA_VAR
+ - Orijinal Süre: 85.802300 ms
+ - Optimize Süre: 90.228000 ms
+ - Fark (Kazanç): %-5.16
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test_v33_file_status_bad_handle
+ - Durum: BASARISIZ_YAVASLAMA_VAR
+ - Orijinal Süre: 93.427700 ms
+ - Optimize Süre: 93.725700 ms
+ - Fark (Kazanç): %-0.32
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test_v33_file_write_read_line
+ - Durum: BASARILI_OPTIMIZASYON
+ - Orijinal Süre: 95.206300 ms
+ - Optimize Süre: 89.408500 ms
+ - Fark (Kazanç): %6.09
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test_v33_matadv_det_rank_norm
+ - Durum: BASARISIZ_YAVASLAMA_VAR
+ - Orijinal Süre: 85.970900 ms
+ - Optimize Süre: 89.512700 ms
+ - Fark (Kazanç): %-4.12
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test_v33_matadv_inverse_identity
+ - Durum: BASARILI_OPTIMIZASYON
+ - Orijinal Süre: 104.531600 ms
+ - Optimize Süre: 86.985700 ms
+ - Fark (Kazanç): %16.79
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test_v33_numeric_poly_integral
+ - Durum: BASARILI_OPTIMIZASYON
+ - Orijinal Süre: 93.652500 ms
+ - Optimize Süre: 83.635200 ms
+ - Fark (Kazanç): %10.70
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test_v33_probability_random
+ - Durum: BASARILI_OPTIMIZASYON
+ - Orijinal Süre: 86.443600 ms
+ - Optimize Süre: 82.864900 ms
+ - Fark (Kazanç): %4.14
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test_v33_stack_pointer_relative
+ - Durum: BASARISIZ_YAVASLAMA_VAR
+ - Orijinal Süre: 85.986000 ms
+ - Optimize Süre: 89.095000 ms
+ - Fark (Kazanç): %-3.62
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test_v33_stat_median_variance
+ - Durum: BASARILI_OPTIMIZASYON
+ - Orijinal Süre: 90.151700 ms
+ - Optimize Süre: 83.186800 ms
+ - Fark (Kazanç): %7.73
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test_v33_stat_sum_mean_minmax
+ - Durum: BASARILI_OPTIMIZASYON
+ - Orijinal Süre: 94.083200 ms
+ - Optimize Süre: 86.792700 ms
+ - Fark (Kazanç): %7.75
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test_v33_str_copy_upper
+ - Durum: BASARISIZ_YAVASLAMA_VAR
+ - Orijinal Süre: 79.130100 ms
+ - Optimize Süre: 90.919400 ms
+ - Fark (Kazanç): %-14.90
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test_v33_str_find_count
+ - Durum: BASARISIZ_YAVASLAMA_VAR
+ - Orijinal Süre: 76.457700 ms
+ - Optimize Süre: 90.108900 ms
+ - Fark (Kazanç): %-17.85
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test_v33_str_len_print
+ - Durum: BASARISIZ_YAVASLAMA_VAR
+ - Orijinal Süre: 72.075000 ms
+ - Optimize Süre: 88.107200 ms
+ - Fark (Kazanç): %-22.24
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test_v33_str_v2_find_count
+ - Durum: BASARILI_OPTIMIZASYON
+ - Orijinal Süre: 90.494600 ms
+ - Optimize Süre: 88.350600 ms
+ - Fark (Kazanç): %2.37
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test_v33_str_v2_hex_url
+ - Durum: BASARISIZ_YAVASLAMA_VAR
+ - Orijinal Süre: 93.167300 ms
+ - Optimize Süre: 110.912700 ms
+ - Fark (Kazanç): %-19.05
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test_v33_str_v2_normalize_numeric_hash
+ - Durum: BASARISIZ_YAVASLAMA_VAR
+ - Orijinal Süre: 100.771000 ms
+ - Optimize Süre: 106.615800 ms
+ - Fark (Kazanç): %-5.80
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test_v33_tensor3d_index_slice
+ - Durum: BASARILI_OPTIMIZASYON
+ - Orijinal Süre: 109.948500 ms
+ - Optimize Süre: 106.860100 ms
+ - Fark (Kazanç): %2.81
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test_v33_tensor4d_flat
+ - Durum: BASARISIZ_YAVASLAMA_VAR
+ - Orijinal Süre: 98.778900 ms
+ - Optimize Süre: 98.955000 ms
+ - Fark (Kazanç): %-0.18
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test_v33_tensor_add_scalar_same
+ - Durum: BASARISIZ_YAVASLAMA_VAR
+ - Orijinal Süre: 103.837000 ms
+ - Optimize Süre: 105.676600 ms
+ - Fark (Kazanç): %-1.77
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: test_v33_tensor_basic
+ - Durum: BASARILI_OPTIMIZASYON
+ - Orijinal Süre: 96.283800 ms
+ - Optimize Süre: 86.826700 ms
+ - Fark (Kazanç): %9.82
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------
+TEST: _tmp_det_debug
+ - Durum: BASARILI_OPTIMIZASYON
+ - Orijinal Süre: 57.623900 ms
+ - Optimize Süre: 46.656000 ms
+ - Fark (Kazanç): %19.03
+ - Çıktı Doğruluğu: AYNI
+--------------------------------------------------

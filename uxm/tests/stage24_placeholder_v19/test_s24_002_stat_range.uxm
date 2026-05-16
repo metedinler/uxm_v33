@@ -1,0 +1,18 @@
+# TEST: V19 STAT_RANGE @275
+# EXPECT_OUTPUT: 7
+#cell dword
+#memory data=1mb,tape=64kb,stack=16kb,queue=64kb
+>>
+0(T-2)+k110
+0(T-1)+k3
+@96
+0(T-2)+k111
+0(T-1)+k10
+@96
+0(T-2)+k112
+0(T-1)+k6
+@96
+0(T-2)+k110
+0(T-1)+k3
+@275
+@61

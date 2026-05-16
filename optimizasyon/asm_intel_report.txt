@@ -1,0 +1,1590 @@
+
+ANALIZ: program.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 102 kez: cmp r10, TAPE_CELLS -> jae __ux_err_ptr
+ - 102 kez: jae __ux_err_ptr -> lea r11, [r12 + r10*4]
+ - 74 kez: mov dword [r11], eax -> push rax
+ - 74 kez: push rax -> mov dx, word [ux_flags]
+ - 74 kez: mov dx, word [ux_flags] -> and dx, 0FFF0h
+ - 74 kez: and dx, 0FFF0h -> cmp rax, 0
+ - 74 kez: or dx, FLAG_Z -> test eax, 80000000h
+ - 74 kez: or dx, FLAG_S -> mov word [ux_flags], dx
+ - 74 kez: mov word [ux_flags], dx -> pop rax
+ - 68 kez: lea r11, [r12 + r10*4] -> mov dword [r11], eax
+Jump Yoğunluğu: %14.68
+
+ANALIZ: test01_print_A.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 4 kez: call ux_runtime_error -> jmp __ux_ok_exit
+ - 3 kez: mov qword [ux_ptr], rbx -> mov qword [ux_sp], r14
+ - 3 kez: mov r10, rbx -> sub r10, 1
+ - 3 kez: sub r10, 1 -> cmp r10, TAPE_CELLS
+ - 3 kez: cmp r10, TAPE_CELLS -> jae __ux_err_ptr
+ - 3 kez: jae __ux_err_ptr -> lea r11, [r12 + r10]
+ - 2 kez: inc rbx -> cmp rbx, TAPE_CELLS
+ - 2 kez: cmp rbx, TAPE_CELLS -> jae __ux_err_ptr
+ - 2 kez: lea r11, [r12 + r10] -> mov byte [r11], al
+ - 2 kez: mov byte [r11], al -> push rax
+Jump Yoğunluğu: %6.67
+
+ANALIZ: test02_string.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 4 kez: call ux_runtime_error -> jmp __ux_ok_exit
+ - 1 kez: default rel -> global uxm_entry
+ - 1 kez: global uxm_entry -> global ux_mem
+ - 1 kez: global ux_mem -> global ux_status
+ - 1 kez: global ux_status -> global ux_flags
+ - 1 kez: global ux_flags -> global ux_ptr
+ - 1 kez: global ux_ptr -> global ux_sp
+ - 1 kez: global ux_sp -> global ux_cell_bits
+ - 1 kez: global ux_cell_bits -> global ux_cell_bytes
+ - 1 kez: global ux_cell_bytes -> global ux_tape_cells
+Jump Yoğunluğu: %2.50
+
+ANALIZ: test03_addressing.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 4 kez: mov byte [r11], al -> push rax
+ - 4 kez: push rax -> mov dx, word [ux_flags]
+ - 4 kez: mov dx, word [ux_flags] -> and dx, 0FFF0h
+ - 4 kez: and dx, 0FFF0h -> cmp rax, 0
+ - 4 kez: or dx, FLAG_Z -> test al, 80h
+ - 4 kez: or dx, FLAG_S -> mov word [ux_flags], dx
+ - 4 kez: mov word [ux_flags], dx -> pop rax
+ - 4 kez: mov r10, rbx -> add r10, 1
+ - 4 kez: add r10, 1 -> cmp r10, TAPE_CELLS
+ - 4 kez: cmp r10, TAPE_CELLS -> jae __ux_err_ptr
+Jump Yoğunluğu: %7.37
+
+ANALIZ: test04_stack_lifo.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 6 kez: lea r11, [r12 + rbx] -> mov byte [r11], al
+ - 6 kez: mov byte [r11], al -> push rax
+ - 6 kez: push rax -> mov dx, word [ux_flags]
+ - 6 kez: mov dx, word [ux_flags] -> and dx, 0FFF0h
+ - 6 kez: and dx, 0FFF0h -> cmp rax, 0
+ - 6 kez: or dx, FLAG_Z -> test al, 80h
+ - 6 kez: or dx, FLAG_S -> mov word [ux_flags], dx
+ - 6 kez: mov word [ux_flags], dx -> pop rax
+ - 6 kez: lea r11, [r12 + rbx] -> movzx rax, byte [r11]
+ - 4 kez: pop rax -> lea r11, [r12 + rbx]
+Jump Yoğunluğu: %8.10
+
+ANALIZ: test05_meta_add.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 6 kez: cmp r10, TAPE_CELLS -> jae __ux_err_ptr
+ - 6 kez: jae __ux_err_ptr -> lea r11, [r12 + r10]
+ - 4 kez: lea r11, [r12 + r10] -> mov byte [r11], al
+ - 4 kez: mov byte [r11], al -> push rax
+ - 4 kez: push rax -> mov dx, word [ux_flags]
+ - 4 kez: mov dx, word [ux_flags] -> and dx, 0FFF0h
+ - 4 kez: and dx, 0FFF0h -> cmp rax, 0
+ - 4 kez: or dx, FLAG_Z -> test al, 80h
+ - 4 kez: or dx, FLAG_S -> mov word [ux_flags], dx
+ - 4 kez: mov word [ux_flags], dx -> pop rax
+Jump Yoğunluğu: %8.44
+
+ANALIZ: test06_dynamic_meta_mul.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 6 kez: cmp r10, TAPE_CELLS -> jae __ux_err_ptr
+ - 6 kez: jae __ux_err_ptr -> lea r11, [r12 + r10]
+ - 6 kez: mov byte [r11], al -> push rax
+ - 6 kez: push rax -> mov dx, word [ux_flags]
+ - 6 kez: mov dx, word [ux_flags] -> and dx, 0FFF0h
+ - 6 kez: and dx, 0FFF0h -> cmp rax, 0
+ - 6 kez: or dx, FLAG_Z -> test al, 80h
+ - 6 kez: or dx, FLAG_S -> mov word [ux_flags], dx
+ - 6 kez: mov word [ux_flags], dx -> pop rax
+ - 4 kez: lea r11, [r12 + r10] -> mov byte [r11], al
+Jump Yoğunluğu: %8.92
+
+ANALIZ: test07_macro.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 4 kez: call ux_runtime_error -> jmp __ux_ok_exit
+ - 2 kez: lea r11, [r12 + rbx] -> mov byte [r11], al
+ - 2 kez: mov byte [r11], al -> push rax
+ - 2 kez: push rax -> mov dx, word [ux_flags]
+ - 2 kez: mov dx, word [ux_flags] -> and dx, 0FFF0h
+ - 2 kez: and dx, 0FFF0h -> cmp rax, 0
+ - 2 kez: or dx, FLAG_Z -> test al, 80h
+ - 2 kez: or dx, FLAG_S -> mov word [ux_flags], dx
+ - 2 kez: mov word [ux_flags], dx -> pop rax
+ - 2 kez: pop rax -> lea r11, [r12 + rbx]
+Jump Yoğunluğu: %4.79
+
+ANALIZ: test08_newline.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 4 kez: lea r11, [r12 + rbx] -> mov byte [r11], al
+ - 4 kez: mov byte [r11], al -> push rax
+ - 4 kez: push rax -> mov dx, word [ux_flags]
+ - 4 kez: mov dx, word [ux_flags] -> and dx, 0FFF0h
+ - 4 kez: and dx, 0FFF0h -> cmp rax, 0
+ - 4 kez: or dx, FLAG_Z -> test al, 80h
+ - 4 kez: or dx, FLAG_S -> mov word [ux_flags], dx
+ - 4 kez: mov word [ux_flags], dx -> pop rax
+ - 4 kez: pop rax -> lea r11, [r12 + rbx]
+ - 4 kez: lea r11, [r12 + rbx] -> movzx rax, byte [r11]
+Jump Yoğunluğu: %5.77
+
+ANALIZ: test09_div_mod.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 6 kez: mov qword [ux_ptr], rbx -> mov qword [ux_sp], r14
+ - 6 kez: cmp r10, TAPE_CELLS -> jae __ux_err_ptr
+ - 6 kez: jae __ux_err_ptr -> lea r11, [r12 + r10]
+ - 5 kez: lea rdx, [ux_mem] -> call ux_meta_call_ex
+ - 5 kez: call ux_meta_call_ex -> mov rbx, qword [ux_ptr]
+ - 5 kez: mov rbx, qword [ux_ptr] -> mov r14, qword [ux_sp]
+ - 4 kez: lea r11, [r12 + r10] -> mov byte [r11], al
+ - 4 kez: mov byte [r11], al -> push rax
+ - 4 kez: push rax -> mov dx, word [ux_flags]
+ - 4 kez: mov dx, word [ux_flags] -> and dx, 0FFF0h
+Jump Yoğunluğu: %7.75
+
+ANALIZ: test10_sin_scaled.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 4 kez: call ux_runtime_error -> jmp __ux_ok_exit
+ - 3 kez: mov qword [ux_ptr], rbx -> mov qword [ux_sp], r14
+ - 3 kez: mov r10, rbx -> sub r10, 1
+ - 3 kez: sub r10, 1 -> cmp r10, TAPE_CELLS
+ - 3 kez: cmp r10, TAPE_CELLS -> jae __ux_err_ptr
+ - 3 kez: jae __ux_err_ptr -> lea r11, [r12 + r10]
+ - 2 kez: inc rbx -> cmp rbx, TAPE_CELLS
+ - 2 kez: cmp rbx, TAPE_CELLS -> jae __ux_err_ptr
+ - 2 kez: lea r11, [r12 + r10] -> mov byte [r11], al
+ - 2 kez: mov byte [r11], al -> push rax
+Jump Yoğunluğu: %6.67
+
+ANALIZ: test11_hypotenuse.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 6 kez: cmp r10, TAPE_CELLS -> jae __ux_err_ptr
+ - 6 kez: jae __ux_err_ptr -> lea r11, [r12 + r10]
+ - 4 kez: lea r11, [r12 + r10] -> mov byte [r11], al
+ - 4 kez: mov byte [r11], al -> push rax
+ - 4 kez: push rax -> mov dx, word [ux_flags]
+ - 4 kez: mov dx, word [ux_flags] -> and dx, 0FFF0h
+ - 4 kez: and dx, 0FFF0h -> cmp rax, 0
+ - 4 kez: or dx, FLAG_Z -> test al, 80h
+ - 4 kez: or dx, FLAG_S -> mov word [ux_flags], dx
+ - 4 kez: mov word [ux_flags], dx -> pop rax
+Jump Yoğunluğu: %8.44
+
+ANALIZ: test12_signed_mode.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 6 kez: cmp r10, TAPE_CELLS -> jae __ux_err_ptr
+ - 6 kez: jae __ux_err_ptr -> lea r11, [r12 + r10]
+ - 4 kez: mov qword [ux_ptr], rbx -> mov qword [ux_sp], r14
+ - 4 kez: lea r11, [r12 + r10] -> mov byte [r11], al
+ - 4 kez: mov byte [r11], al -> push rax
+ - 4 kez: push rax -> mov dx, word [ux_flags]
+ - 4 kez: mov dx, word [ux_flags] -> and dx, 0FFF0h
+ - 4 kez: and dx, 0FFF0h -> cmp rax, 0
+ - 4 kez: or dx, FLAG_Z -> test al, 80h
+ - 4 kez: or dx, FLAG_S -> mov word [ux_flags], dx
+Jump Yoğunluğu: %8.20
+
+ANALIZ: test13_status_div_zero.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 4 kez: cmp r10, TAPE_CELLS -> jae __ux_err_ptr
+ - 4 kez: jae __ux_err_ptr -> lea r11, [r12 + r10]
+ - 4 kez: mov byte [r11], al -> push rax
+ - 4 kez: push rax -> mov dx, word [ux_flags]
+ - 4 kez: mov dx, word [ux_flags] -> and dx, 0FFF0h
+ - 4 kez: and dx, 0FFF0h -> cmp rax, 0
+ - 4 kez: or dx, FLAG_Z -> test al, 80h
+ - 4 kez: or dx, FLAG_S -> mov word [ux_flags], dx
+ - 4 kez: mov word [ux_flags], dx -> pop rax
+ - 4 kez: call ux_runtime_error -> jmp __ux_ok_exit
+Jump Yoğunluğu: %7.93
+
+ANALIZ: test14_branch_current_zero.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 5 kez: lea r11, [r12 + rbx] -> mov byte [r11], al
+ - 5 kez: mov byte [r11], al -> push rax
+ - 5 kez: push rax -> mov dx, word [ux_flags]
+ - 5 kez: mov dx, word [ux_flags] -> and dx, 0FFF0h
+ - 5 kez: and dx, 0FFF0h -> cmp rax, 0
+ - 5 kez: or dx, FLAG_Z -> test al, 80h
+ - 5 kez: or dx, FLAG_S -> mov word [ux_flags], dx
+ - 5 kez: mov word [ux_flags], dx -> pop rax
+ - 5 kez: pop rax -> lea r11, [r12 + rbx]
+ - 5 kez: lea r11, [r12 + rbx] -> movzx rax, byte [r11]
+Jump Yoğunluğu: %6.85
+
+ANALIZ: test15_branch_nonzero.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 6 kez: lea r11, [r12 + rbx] -> mov byte [r11], al
+ - 6 kez: mov byte [r11], al -> push rax
+ - 6 kez: push rax -> mov dx, word [ux_flags]
+ - 6 kez: mov dx, word [ux_flags] -> and dx, 0FFF0h
+ - 6 kez: and dx, 0FFF0h -> cmp rax, 0
+ - 6 kez: or dx, FLAG_Z -> test al, 80h
+ - 6 kez: or dx, FLAG_S -> mov word [ux_flags], dx
+ - 6 kez: mov word [ux_flags], dx -> pop rax
+ - 6 kez: pop rax -> lea r11, [r12 + rbx]
+ - 6 kez: lea r11, [r12 + rbx] -> movzx rax, byte [r11]
+Jump Yoğunluğu: %7.23
+
+ANALIZ: test16_data_digit.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 4 kez: call ux_runtime_error -> jmp __ux_ok_exit
+ - 3 kez: mov qword [ux_ptr], rbx -> mov qword [ux_sp], r14
+ - 3 kez: mov r10, rbx -> sub r10, 1
+ - 3 kez: sub r10, 1 -> cmp r10, TAPE_CELLS
+ - 3 kez: cmp r10, TAPE_CELLS -> jae __ux_err_ptr
+ - 3 kez: jae __ux_err_ptr -> lea r11, [r12 + r10]
+ - 2 kez: inc rbx -> cmp rbx, TAPE_CELLS
+ - 2 kez: cmp rbx, TAPE_CELLS -> jae __ux_err_ptr
+ - 2 kez: lea r11, [r12 + r10] -> mov byte [r11], al
+ - 2 kez: mov byte [r11], al -> push rax
+Jump Yoğunluğu: %6.47
+
+ANALIZ: test17_endian_word_split.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 4 kez: cmp r10, TAPE_CELLS -> jae __ux_err_ptr
+ - 4 kez: jae __ux_err_ptr -> lea r11, [r12 + r10]
+ - 4 kez: call ux_runtime_error -> jmp __ux_ok_exit
+ - 3 kez: mov r10, rbx -> sub r10, 1
+ - 3 kez: sub r10, 1 -> cmp r10, TAPE_CELLS
+ - 2 kez: mov qword [ux_ptr], rbx -> mov qword [ux_sp], r14
+ - 2 kez: inc rbx -> cmp rbx, TAPE_CELLS
+ - 2 kez: cmp rbx, TAPE_CELLS -> jae __ux_err_ptr
+ - 2 kez: lea r11, [r12 + r10] -> mov byte [r11], al
+ - 2 kez: mov byte [r11], al -> push rax
+Jump Yoğunluğu: %7.14
+
+ANALIZ: test18_pointer_service.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 4 kez: mov byte [r11], al -> push rax
+ - 4 kez: push rax -> mov dx, word [ux_flags]
+ - 4 kez: mov dx, word [ux_flags] -> and dx, 0FFF0h
+ - 4 kez: and dx, 0FFF0h -> cmp rax, 0
+ - 4 kez: or dx, FLAG_Z -> test al, 80h
+ - 4 kez: or dx, FLAG_S -> mov word [ux_flags], dx
+ - 4 kez: mov word [ux_flags], dx -> pop rax
+ - 4 kez: call ux_runtime_error -> jmp __ux_ok_exit
+ - 3 kez: mov r10, rbx -> sub r10, 1
+ - 3 kez: sub r10, 1 -> cmp r10, TAPE_CELLS
+Jump Yoğunluğu: %7.66
+
+ANALIZ: test20_fifo_char_order.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 8 kez: cmp r10, TAPE_CELLS -> jae __ux_err_ptr
+ - 8 kez: jae __ux_err_ptr -> lea r11, [r12 + r10]
+ - 6 kez: mov r10, rbx -> sub r10, 1
+ - 6 kez: sub r10, 1 -> cmp r10, TAPE_CELLS
+ - 5 kez: mov qword [ux_ptr], rbx -> mov qword [ux_sp], r14
+ - 4 kez: lea r11, [r12 + r10] -> mov byte [r11], al
+ - 4 kez: mov byte [r11], al -> push rax
+ - 4 kez: push rax -> mov dx, word [ux_flags]
+ - 4 kez: mov dx, word [ux_flags] -> and dx, 0FFF0h
+ - 4 kez: and dx, 0FFF0h -> cmp rax, 0
+Jump Yoğunluğu: %8.24
+
+ANALIZ: test21_fifo_count_peek.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 8 kez: mov qword [ux_ptr], rbx -> mov qword [ux_sp], r14
+ - 7 kez: lea rdx, [ux_mem] -> call ux_meta_call_ex
+ - 7 kez: call ux_meta_call_ex -> mov rbx, qword [ux_ptr]
+ - 7 kez: mov rbx, qword [ux_ptr] -> mov r14, qword [ux_sp]
+ - 6 kez: mov r10, rbx -> sub r10, 1
+ - 6 kez: sub r10, 1 -> cmp r10, TAPE_CELLS
+ - 6 kez: cmp r10, TAPE_CELLS -> jae __ux_err_ptr
+ - 6 kez: jae __ux_err_ptr -> lea r11, [r12 + r10]
+ - 5 kez: mov r14, qword [ux_sp] -> mov qword [ux_ptr], rbx
+ - 4 kez: lea r11, [r12 + r10] -> mov byte [r11], al
+Jump Yoğunluğu: %7.35
+
+ANALIZ: test22_data_write_read_char.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 10 kez: cmp r10, TAPE_CELLS -> jae __ux_err_ptr
+ - 10 kez: jae __ux_err_ptr -> lea r11, [r12 + r10]
+ - 6 kez: lea r11, [r12 + r10] -> mov byte [r11], al
+ - 6 kez: mov byte [r11], al -> push rax
+ - 6 kez: push rax -> mov dx, word [ux_flags]
+ - 6 kez: mov dx, word [ux_flags] -> and dx, 0FFF0h
+ - 6 kez: and dx, 0FFF0h -> cmp rax, 0
+ - 6 kez: or dx, FLAG_Z -> test al, 80h
+ - 6 kez: or dx, FLAG_S -> mov word [ux_flags], dx
+ - 6 kez: mov word [ux_flags], dx -> pop rax
+Jump Yoğunluğu: %9.76
+
+ANALIZ: test23_data_digit_ascii_to_number.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 4 kez: call ux_runtime_error -> jmp __ux_ok_exit
+ - 3 kez: mov qword [ux_ptr], rbx -> mov qword [ux_sp], r14
+ - 3 kez: mov r10, rbx -> sub r10, 1
+ - 3 kez: sub r10, 1 -> cmp r10, TAPE_CELLS
+ - 3 kez: cmp r10, TAPE_CELLS -> jae __ux_err_ptr
+ - 3 kez: jae __ux_err_ptr -> lea r11, [r12 + r10]
+ - 2 kez: inc rbx -> cmp rbx, TAPE_CELLS
+ - 2 kez: cmp rbx, TAPE_CELLS -> jae __ux_err_ptr
+ - 2 kez: lea r11, [r12 + r10] -> mov byte [r11], al
+ - 2 kez: mov byte [r11], al -> push rax
+Jump Yoğunluğu: %6.53
+
+ANALIZ: test24_data_block_copy_print.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 24 kez: cmp r10, TAPE_CELLS -> jae __ux_err_ptr
+ - 24 kez: jae __ux_err_ptr -> lea r11, [r12 + r10]
+ - 18 kez: mov r10, rbx -> sub r10, 1
+ - 18 kez: sub r10, 1 -> cmp r10, TAPE_CELLS
+ - 15 kez: mov byte [r11], al -> push rax
+ - 15 kez: push rax -> mov dx, word [ux_flags]
+ - 15 kez: mov dx, word [ux_flags] -> and dx, 0FFF0h
+ - 15 kez: and dx, 0FFF0h -> cmp rax, 0
+ - 15 kez: or dx, FLAG_Z -> test al, 80h
+ - 15 kez: or dx, FLAG_S -> mov word [ux_flags], dx
+Jump Yoğunluğu: %11.39
+
+ANALIZ: test25_data_sort_ascending.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 30 kez: cmp r10, TAPE_CELLS -> jae __ux_err_ptr
+ - 30 kez: jae __ux_err_ptr -> lea r11, [r12 + r10]
+ - 19 kez: lea r11, [r12 + r10] -> mov byte [r11], al
+ - 19 kez: mov byte [r11], al -> push rax
+ - 19 kez: push rax -> mov dx, word [ux_flags]
+ - 19 kez: mov dx, word [ux_flags] -> and dx, 0FFF0h
+ - 19 kez: and dx, 0FFF0h -> cmp rax, 0
+ - 19 kez: or dx, FLAG_Z -> test al, 80h
+ - 19 kez: or dx, FLAG_S -> mov word [ux_flags], dx
+ - 19 kez: mov word [ux_flags], dx -> pop rax
+Jump Yoğunluğu: %12.29
+
+ANALIZ: test26_tape_sort_descending_chars.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 10 kez: mov byte [r11], al -> push rax
+ - 10 kez: push rax -> mov dx, word [ux_flags]
+ - 10 kez: mov dx, word [ux_flags] -> and dx, 0FFF0h
+ - 10 kez: and dx, 0FFF0h -> cmp rax, 0
+ - 10 kez: or dx, FLAG_Z -> test al, 80h
+ - 10 kez: or dx, FLAG_S -> mov word [ux_flags], dx
+ - 10 kez: mov word [ux_flags], dx -> pop rax
+ - 6 kez: cmp r10, TAPE_CELLS -> jae __ux_err_ptr
+ - 6 kez: jae __ux_err_ptr -> lea r11, [r12 + r10]
+ - 4 kez: lea r11, [r12 + r10] -> mov byte [r11], al
+Jump Yoğunluğu: %9.64
+
+ANALIZ: test27_tape_linear_search.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 12 kez: mov byte [r11], al -> push rax
+ - 12 kez: push rax -> mov dx, word [ux_flags]
+ - 12 kez: mov dx, word [ux_flags] -> and dx, 0FFF0h
+ - 12 kez: and dx, 0FFF0h -> cmp rax, 0
+ - 12 kez: or dx, FLAG_Z -> test al, 80h
+ - 12 kez: or dx, FLAG_S -> mov word [ux_flags], dx
+ - 12 kez: mov word [ux_flags], dx -> pop rax
+ - 6 kez: cmp r10, TAPE_CELLS -> jae __ux_err_ptr
+ - 6 kez: jae __ux_err_ptr -> lea r11, [r12 + r10]
+ - 4 kez: pop rax -> xor rax, rax
+Jump Yoğunluğu: %10.08
+
+ANALIZ: test28_dynamic_meta_fifo.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 6 kez: mov byte [r11], al -> push rax
+ - 6 kez: push rax -> mov dx, word [ux_flags]
+ - 6 kez: mov dx, word [ux_flags] -> and dx, 0FFF0h
+ - 6 kez: and dx, 0FFF0h -> cmp rax, 0
+ - 6 kez: or dx, FLAG_Z -> test al, 80h
+ - 6 kez: or dx, FLAG_S -> mov word [ux_flags], dx
+ - 6 kez: mov word [ux_flags], dx -> pop rax
+ - 4 kez: cmp r10, TAPE_CELLS -> jae __ux_err_ptr
+ - 4 kez: jae __ux_err_ptr -> lea r11, [r12 + r10]
+ - 4 kez: lea r11, [r12 + rbx] -> mov byte [r11], al
+Jump Yoğunluğu: %8.24
+
+ANALIZ: test29_nested_macro_call.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 6 kez: lea r11, [r12 + rbx] -> mov byte [r11], al
+ - 6 kez: mov byte [r11], al -> push rax
+ - 6 kez: push rax -> mov dx, word [ux_flags]
+ - 6 kez: mov dx, word [ux_flags] -> and dx, 0FFF0h
+ - 6 kez: and dx, 0FFF0h -> cmp rax, 0
+ - 6 kez: or dx, FLAG_Z -> test al, 80h
+ - 6 kez: or dx, FLAG_S -> mov word [ux_flags], dx
+ - 6 kez: mov word [ux_flags], dx -> pop rax
+ - 6 kez: pop rax -> lea r11, [r12 + rbx]
+ - 6 kez: lea r11, [r12 + rbx] -> movzx rax, byte [r11]
+Jump Yoğunluğu: %6.81
+
+ANALIZ: test30_word_mode_add.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 6 kez: cmp r10, TAPE_CELLS -> jae __ux_err_ptr
+ - 6 kez: jae __ux_err_ptr -> lea r11, [r12 + r10*2]
+ - 4 kez: lea r11, [r12 + r10*2] -> mov word [r11], ax
+ - 4 kez: mov word [r11], ax -> push rax
+ - 4 kez: push rax -> mov dx, word [ux_flags]
+ - 4 kez: mov dx, word [ux_flags] -> and dx, 0FFF0h
+ - 4 kez: and dx, 0FFF0h -> cmp rax, 0
+ - 4 kez: or dx, FLAG_Z -> test ax, 8000h
+ - 4 kez: or dx, FLAG_S -> mov word [ux_flags], dx
+ - 4 kez: mov word [ux_flags], dx -> pop rax
+Jump Yoğunluğu: %8.44
+
+ANALIZ: test31_safe_mode_wild_denied.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 7 kez: cmp r10, TAPE_CELLS -> jae __ux_err_ptr
+ - 7 kez: jae __ux_err_ptr -> lea r11, [r12 + r10]
+ - 7 kez: mov byte [r11], al -> push rax
+ - 7 kez: push rax -> mov dx, word [ux_flags]
+ - 7 kez: mov dx, word [ux_flags] -> and dx, 0FFF0h
+ - 7 kez: and dx, 0FFF0h -> cmp rax, 0
+ - 7 kez: or dx, FLAG_Z -> test al, 80h
+ - 7 kez: or dx, FLAG_S -> mov word [ux_flags], dx
+ - 7 kez: mov word [ux_flags], dx -> pop rax
+ - 5 kez: lea r11, [r12 + r10] -> mov byte [r11], al
+Jump Yoğunluğu: %9.47
+
+ANALIZ: test32_wild_layout_change.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 6 kez: cmp r10, TAPE_CELLS -> jae __ux_err_ptr
+ - 6 kez: jae __ux_err_ptr -> lea r11, [r12 + r10]
+ - 6 kez: mov byte [r11], al -> push rax
+ - 6 kez: push rax -> mov dx, word [ux_flags]
+ - 6 kez: mov dx, word [ux_flags] -> and dx, 0FFF0h
+ - 6 kez: and dx, 0FFF0h -> cmp rax, 0
+ - 6 kez: or dx, FLAG_Z -> test al, 80h
+ - 6 kez: or dx, FLAG_S -> mov word [ux_flags], dx
+ - 6 kez: mov word [ux_flags], dx -> pop rax
+ - 4 kez: mov qword [ux_ptr], rbx -> mov qword [ux_sp], r14
+Jump Yoğunluğu: %8.73
+
+ANALIZ: test33_bitwise_and_stack.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 6 kez: mov byte [r11], al -> push rax
+ - 6 kez: push rax -> mov dx, word [ux_flags]
+ - 6 kez: mov dx, word [ux_flags] -> and dx, 0FFF0h
+ - 6 kez: and dx, 0FFF0h -> cmp rax, 0
+ - 6 kez: or dx, FLAG_Z -> test al, 80h
+ - 6 kez: or dx, FLAG_S -> mov word [ux_flags], dx
+ - 6 kez: mov word [ux_flags], dx -> pop rax
+ - 5 kez: lea r11, [r12 + rbx] -> mov byte [r11], al
+ - 5 kez: lea r11, [r12 + rbx] -> movzx rax, byte [r11]
+ - 4 kez: call ux_runtime_error -> jmp __ux_ok_exit
+Jump Yoğunluğu: %8.30
+
+ANALIZ: test34_data_block_clear.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 16 kez: cmp r10, TAPE_CELLS -> jae __ux_err_ptr
+ - 16 kez: jae __ux_err_ptr -> lea r11, [r12 + r10]
+ - 10 kez: mov r10, rbx -> sub r10, 1
+ - 10 kez: sub r10, 1 -> cmp r10, TAPE_CELLS
+ - 9 kez: lea r11, [r12 + r10] -> mov byte [r11], al
+ - 9 kez: mov byte [r11], al -> push rax
+ - 9 kez: push rax -> mov dx, word [ux_flags]
+ - 9 kez: mov dx, word [ux_flags] -> and dx, 0FFF0h
+ - 9 kez: and dx, 0FFF0h -> cmp rax, 0
+ - 9 kez: or dx, FLAG_Z -> test al, 80h
+Jump Yoğunluğu: %10.50
+
+ANALIZ: test35_optimizer_visible_result.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 5 kez: lea r11, [r12 + rbx] -> mov byte [r11], al
+ - 5 kez: mov byte [r11], al -> push rax
+ - 5 kez: push rax -> mov dx, word [ux_flags]
+ - 5 kez: mov dx, word [ux_flags] -> and dx, 0FFF0h
+ - 5 kez: and dx, 0FFF0h -> cmp rax, 0
+ - 5 kez: or dx, FLAG_Z -> test al, 80h
+ - 5 kez: or dx, FLAG_S -> mov word [ux_flags], dx
+ - 5 kez: mov word [ux_flags], dx -> pop rax
+ - 4 kez: pop rax -> lea r11, [r12 + rbx]
+ - 4 kez: lea r11, [r12 + rbx] -> movzx rax, byte [r11]
+Jump Yoğunluğu: %6.57
+
+ANALIZ: test40_4bit_cpu_alu_model.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 22 kez: mov byte [r11], al -> push rax
+ - 22 kez: push rax -> mov dx, word [ux_flags]
+ - 22 kez: mov dx, word [ux_flags] -> and dx, 0FFF0h
+ - 22 kez: and dx, 0FFF0h -> cmp rax, 0
+ - 22 kez: or dx, FLAG_Z -> test al, 80h
+ - 22 kez: or dx, FLAG_S -> mov word [ux_flags], dx
+ - 22 kez: mov word [ux_flags], dx -> pop rax
+ - 11 kez: mov edx, CELL_BITS -> call ux_print_data_string
+ - 9 kez: cmp r14, STACK_CELLS -> jae __ux_err_stack_over
+ - 9 kez: movzx rax, byte [r11] -> mov byte [r13 + r14], al
+Jump Yoğunluğu: %10.30
+
+ANALIZ: test41_4_neuron_nn_model.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 31 kez: mov byte [r11], al -> push rax
+ - 31 kez: push rax -> mov dx, word [ux_flags]
+ - 31 kez: mov dx, word [ux_flags] -> and dx, 0FFF0h
+ - 31 kez: and dx, 0FFF0h -> cmp rax, 0
+ - 31 kez: or dx, FLAG_Z -> test al, 80h
+ - 31 kez: or dx, FLAG_S -> mov word [ux_flags], dx
+ - 31 kez: mov word [ux_flags], dx -> pop rax
+ - 22 kez: inc rbx -> cmp rbx, TAPE_CELLS
+ - 22 kez: cmp rbx, TAPE_CELLS -> jae __ux_err_ptr
+ - 22 kez: cmp r14, STACK_CELLS -> jae __ux_err_stack_over
+Jump Yoğunluğu: %13.16
+
+ANALIZ: test42_error_flag_set_reset.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 7 kez: mov qword [ux_ptr], rbx -> mov qword [ux_sp], r14
+ - 6 kez: lea rdx, [ux_mem] -> call ux_meta_call_ex
+ - 6 kez: call ux_meta_call_ex -> mov rbx, qword [ux_ptr]
+ - 6 kez: mov rbx, qword [ux_ptr] -> mov r14, qword [ux_sp]
+ - 5 kez: mov r14, qword [ux_sp] -> mov qword [ux_ptr], rbx
+ - 4 kez: call ux_runtime_error -> jmp __ux_ok_exit
+ - 2 kez: inc rbx -> cmp rbx, TAPE_CELLS
+ - 2 kez: cmp rbx, TAPE_CELLS -> jae __ux_err_ptr
+ - 2 kez: mov qword [ux_sp], r14 -> mov ecx, 15
+ - 2 kez: mov ecx, 15 -> lea rdx, [ux_mem]
+Jump Yoğunluğu: %3.31
+
+ANALIZ: test43_error_macro_helpers.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 12 kez: mov qword [ux_ptr], rbx -> mov qword [ux_sp], r14
+ - 11 kez: lea rdx, [ux_mem] -> call ux_meta_call_ex
+ - 11 kez: call ux_meta_call_ex -> mov rbx, qword [ux_ptr]
+ - 11 kez: mov rbx, qword [ux_ptr] -> mov r14, qword [ux_sp]
+ - 10 kez: mov r14, qword [ux_sp] -> mov qword [ux_ptr], rbx
+ - 4 kez: call ux_runtime_error -> jmp __ux_ok_exit
+ - 3 kez: mov qword [ux_sp], r14 -> mov ecx, 15
+ - 3 kez: mov ecx, 15 -> lea rdx, [ux_mem]
+ - 3 kez: mov qword [ux_sp], r14 -> mov ecx, 61
+ - 3 kez: mov ecx, 61 -> lea rdx, [ux_mem]
+Jump Yoğunluğu: %2.78
+
+ANALIZ: test44_asin.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 4 kez: call ux_runtime_error -> jmp __ux_ok_exit
+ - 3 kez: mov qword [ux_ptr], rbx -> mov qword [ux_sp], r14
+ - 3 kez: mov r10, rbx -> sub r10, 1
+ - 3 kez: sub r10, 1 -> cmp r10, TAPE_CELLS
+ - 3 kez: cmp r10, TAPE_CELLS -> jae __ux_err_ptr
+ - 3 kez: jae __ux_err_ptr -> lea r11, [r12 + r10]
+ - 2 kez: inc rbx -> cmp rbx, TAPE_CELLS
+ - 2 kez: cmp rbx, TAPE_CELLS -> jae __ux_err_ptr
+ - 2 kez: lea r11, [r12 + r10] -> mov byte [r11], al
+ - 2 kez: mov byte [r11], al -> push rax
+Jump Yoğunluğu: %6.67
+
+ANALIZ: test44_meta_version_info.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 6 kez: mov qword [ux_ptr], rbx -> mov qword [ux_sp], r14
+ - 5 kez: lea rdx, [ux_mem] -> call ux_meta_call_ex
+ - 5 kez: call ux_meta_call_ex -> mov rbx, qword [ux_ptr]
+ - 5 kez: mov rbx, qword [ux_ptr] -> mov r14, qword [ux_sp]
+ - 4 kez: mov r14, qword [ux_sp] -> mov qword [ux_ptr], rbx
+ - 4 kez: call ux_runtime_error -> jmp __ux_ok_exit
+ - 2 kez: mov qword [ux_sp], r14 -> mov ecx, 61
+ - 2 kez: mov ecx, 61 -> lea rdx, [ux_mem]
+ - 1 kez: default rel -> global uxm_entry
+ - 1 kez: global uxm_entry -> global ux_mem
+Jump Yoğunluğu: %2.38
+
+ANALIZ: test45_acos.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 4 kez: call ux_runtime_error -> jmp __ux_ok_exit
+ - 3 kez: mov qword [ux_ptr], rbx -> mov qword [ux_sp], r14
+ - 3 kez: mov r10, rbx -> sub r10, 1
+ - 3 kez: sub r10, 1 -> cmp r10, TAPE_CELLS
+ - 3 kez: cmp r10, TAPE_CELLS -> jae __ux_err_ptr
+ - 3 kez: jae __ux_err_ptr -> lea r11, [r12 + r10]
+ - 2 kez: inc rbx -> cmp rbx, TAPE_CELLS
+ - 2 kez: cmp rbx, TAPE_CELLS -> jae __ux_err_ptr
+ - 2 kez: lea r11, [r12 + r10] -> mov byte [r11], al
+ - 2 kez: mov byte [r11], al -> push rax
+Jump Yoğunluğu: %6.67
+
+ANALIZ: test45_pointer_meta_extended.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 10 kez: mov qword [ux_ptr], rbx -> mov qword [ux_sp], r14
+ - 9 kez: lea rdx, [ux_mem] -> call ux_meta_call_ex
+ - 9 kez: call ux_meta_call_ex -> mov rbx, qword [ux_ptr]
+ - 9 kez: mov rbx, qword [ux_ptr] -> mov r14, qword [ux_sp]
+ - 8 kez: mov r14, qword [ux_sp] -> mov qword [ux_ptr], rbx
+ - 4 kez: mov qword [ux_sp], r14 -> mov ecx, 61
+ - 4 kez: mov ecx, 61 -> lea rdx, [ux_mem]
+ - 4 kez: call ux_runtime_error -> jmp __ux_ok_exit
+ - 2 kez: lea r11, [r12 + rbx] -> mov byte [r11], al
+ - 2 kez: mov byte [r11], al -> push rax
+Jump Yoğunluğu: %3.93
+
+ANALIZ: test46_fifo_clear.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 10 kez: mov qword [ux_ptr], rbx -> mov qword [ux_sp], r14
+ - 9 kez: mov r10, rbx -> sub r10, 1
+ - 9 kez: sub r10, 1 -> cmp r10, TAPE_CELLS
+ - 9 kez: cmp r10, TAPE_CELLS -> jae __ux_err_ptr
+ - 9 kez: jae __ux_err_ptr -> lea r11, [r12 + r10]
+ - 9 kez: lea rdx, [ux_mem] -> call ux_meta_call_ex
+ - 9 kez: call ux_meta_call_ex -> mov rbx, qword [ux_ptr]
+ - 9 kez: mov rbx, qword [ux_ptr] -> mov r14, qword [ux_sp]
+ - 6 kez: lea r11, [r12 + r10] -> mov byte [r11], al
+ - 6 kez: mov byte [r11], al -> push rax
+Jump Yoğunluğu: %8.23
+
+ANALIZ: test46_sqrt.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 4 kez: call ux_runtime_error -> jmp __ux_ok_exit
+ - 3 kez: mov qword [ux_ptr], rbx -> mov qword [ux_sp], r14
+ - 3 kez: mov r10, rbx -> sub r10, 1
+ - 3 kez: sub r10, 1 -> cmp r10, TAPE_CELLS
+ - 3 kez: cmp r10, TAPE_CELLS -> jae __ux_err_ptr
+ - 3 kez: jae __ux_err_ptr -> lea r11, [r12 + r10]
+ - 2 kez: inc rbx -> cmp rbx, TAPE_CELLS
+ - 2 kez: cmp rbx, TAPE_CELLS -> jae __ux_err_ptr
+ - 2 kez: lea r11, [r12 + r10] -> mov byte [r11], al
+ - 2 kez: mov byte [r11], al -> push rax
+Jump Yoğunluğu: %6.67
+
+ANALIZ: test47_sinh.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 4 kez: call ux_runtime_error -> jmp __ux_ok_exit
+ - 3 kez: mov qword [ux_ptr], rbx -> mov qword [ux_sp], r14
+ - 3 kez: mov r10, rbx -> sub r10, 1
+ - 3 kez: sub r10, 1 -> cmp r10, TAPE_CELLS
+ - 3 kez: cmp r10, TAPE_CELLS -> jae __ux_err_ptr
+ - 3 kez: jae __ux_err_ptr -> lea r11, [r12 + r10]
+ - 2 kez: inc rbx -> cmp rbx, TAPE_CELLS
+ - 2 kez: cmp rbx, TAPE_CELLS -> jae __ux_err_ptr
+ - 2 kez: lea r11, [r12 + r10] -> mov byte [r11], al
+ - 2 kez: mov byte [r11], al -> push rax
+Jump Yoğunluğu: %6.67
+
+ANALIZ: test47_tape_sort_ascending.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 10 kez: mov byte [r11], al -> push rax
+ - 10 kez: push rax -> mov dx, word [ux_flags]
+ - 10 kez: mov dx, word [ux_flags] -> and dx, 0FFF0h
+ - 10 kez: and dx, 0FFF0h -> cmp rax, 0
+ - 10 kez: or dx, FLAG_Z -> test al, 80h
+ - 10 kez: or dx, FLAG_S -> mov word [ux_flags], dx
+ - 10 kez: mov word [ux_flags], dx -> pop rax
+ - 6 kez: cmp r10, TAPE_CELLS -> jae __ux_err_ptr
+ - 6 kez: jae __ux_err_ptr -> lea r11, [r12 + r10]
+ - 4 kez: lea r11, [r12 + r10] -> mov byte [r11], al
+Jump Yoğunluğu: %9.64
+
+ANALIZ: test48_cosh.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 4 kez: call ux_runtime_error -> jmp __ux_ok_exit
+ - 3 kez: mov qword [ux_ptr], rbx -> mov qword [ux_sp], r14
+ - 3 kez: mov r10, rbx -> sub r10, 1
+ - 3 kez: sub r10, 1 -> cmp r10, TAPE_CELLS
+ - 3 kez: cmp r10, TAPE_CELLS -> jae __ux_err_ptr
+ - 3 kez: jae __ux_err_ptr -> lea r11, [r12 + r10]
+ - 2 kez: inc rbx -> cmp rbx, TAPE_CELLS
+ - 2 kez: cmp rbx, TAPE_CELLS -> jae __ux_err_ptr
+ - 2 kez: lea r11, [r12 + r10] -> mov byte [r11], al
+ - 2 kez: mov byte [r11], al -> push rax
+Jump Yoğunluğu: %6.67
+
+ANALIZ: test48_data_sort_descending.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 30 kez: cmp r10, TAPE_CELLS -> jae __ux_err_ptr
+ - 30 kez: jae __ux_err_ptr -> lea r11, [r12 + r10]
+ - 19 kez: lea r11, [r12 + r10] -> mov byte [r11], al
+ - 19 kez: mov byte [r11], al -> push rax
+ - 19 kez: push rax -> mov dx, word [ux_flags]
+ - 19 kez: mov dx, word [ux_flags] -> and dx, 0FFF0h
+ - 19 kez: and dx, 0FFF0h -> cmp rax, 0
+ - 19 kez: or dx, FLAG_Z -> test al, 80h
+ - 19 kez: or dx, FLAG_S -> mov word [ux_flags], dx
+ - 19 kez: mov word [ux_flags], dx -> pop rax
+Jump Yoğunluğu: %12.29
+
+ANALIZ: test49_data_linear_search.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 5 kez: mov byte [r11], al -> push rax
+ - 5 kez: push rax -> mov dx, word [ux_flags]
+ - 5 kez: mov dx, word [ux_flags] -> and dx, 0FFF0h
+ - 5 kez: and dx, 0FFF0h -> cmp rax, 0
+ - 5 kez: or dx, FLAG_Z -> test al, 80h
+ - 5 kez: or dx, FLAG_S -> mov word [ux_flags], dx
+ - 5 kez: mov word [ux_flags], dx -> pop rax
+ - 4 kez: cmp r10, TAPE_CELLS -> jae __ux_err_ptr
+ - 4 kez: jae __ux_err_ptr -> lea r11, [r12 + r10]
+ - 4 kez: call ux_runtime_error -> jmp __ux_ok_exit
+Jump Yoğunluğu: %8.10
+
+ANALIZ: test49_tanh.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 4 kez: call ux_runtime_error -> jmp __ux_ok_exit
+ - 3 kez: mov qword [ux_ptr], rbx -> mov qword [ux_sp], r14
+ - 3 kez: mov r10, rbx -> sub r10, 1
+ - 3 kez: sub r10, 1 -> cmp r10, TAPE_CELLS
+ - 3 kez: cmp r10, TAPE_CELLS -> jae __ux_err_ptr
+ - 3 kez: jae __ux_err_ptr -> lea r11, [r12 + r10]
+ - 2 kez: inc rbx -> cmp rbx, TAPE_CELLS
+ - 2 kez: cmp rbx, TAPE_CELLS -> jae __ux_err_ptr
+ - 2 kez: lea r11, [r12 + r10] -> mov byte [r11], al
+ - 2 kez: mov byte [r11], al -> push rax
+Jump Yoğunluğu: %6.67
+
+ANALIZ: test50_tape_block_copy_clear.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 26 kez: mov byte [r11], al -> push rax
+ - 26 kez: push rax -> mov dx, word [ux_flags]
+ - 26 kez: mov dx, word [ux_flags] -> and dx, 0FFF0h
+ - 26 kez: and dx, 0FFF0h -> cmp rax, 0
+ - 26 kez: or dx, FLAG_Z -> test al, 80h
+ - 26 kez: or dx, FLAG_S -> mov word [ux_flags], dx
+ - 26 kez: mov word [ux_flags], dx -> pop rax
+ - 24 kez: cmp r10, TAPE_CELLS -> jae __ux_err_ptr
+ - 24 kez: jae __ux_err_ptr -> lea r11, [r12 + r10]
+ - 16 kez: lea r11, [r12 + r10] -> mov byte [r11], al
+Jump Yoğunluğu: %12.17
+
+ANALIZ: test51_meta_print_stack_pop.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 4 kez: mov r10, rbx -> sub r10, 1
+ - 4 kez: sub r10, 1 -> cmp r10, TAPE_CELLS
+ - 4 kez: cmp r10, TAPE_CELLS -> jae __ux_err_ptr
+ - 4 kez: jae __ux_err_ptr -> lea r11, [r12 + r10]
+ - 4 kez: call ux_runtime_error -> jmp __ux_ok_exit
+ - 2 kez: mov qword [ux_ptr], rbx -> mov qword [ux_sp], r14
+ - 2 kez: inc rbx -> cmp rbx, TAPE_CELLS
+ - 2 kez: cmp rbx, TAPE_CELLS -> jae __ux_err_ptr
+ - 2 kez: lea r11, [r12 + r10] -> mov byte [r11], al
+ - 2 kez: mov byte [r11], al -> push rax
+Jump Yoğunluğu: %7.58
+
+ANALIZ: test52_meta_print_hex.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 4 kez: call ux_runtime_error -> jmp __ux_ok_exit
+ - 3 kez: mov r10, rbx -> sub r10, 1
+ - 3 kez: sub r10, 1 -> cmp r10, TAPE_CELLS
+ - 3 kez: cmp r10, TAPE_CELLS -> jae __ux_err_ptr
+ - 3 kez: jae __ux_err_ptr -> lea r11, [r12 + r10]
+ - 2 kez: mov qword [ux_ptr], rbx -> mov qword [ux_sp], r14
+ - 2 kez: inc rbx -> cmp rbx, TAPE_CELLS
+ - 2 kez: cmp rbx, TAPE_CELLS -> jae __ux_err_ptr
+ - 2 kez: lea r11, [r12 + r10] -> mov byte [r11], al
+ - 2 kez: mov byte [r11], al -> push rax
+Jump Yoğunluğu: %6.91
+
+ANALIZ: test53_meta_print_bin.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 4 kez: call ux_runtime_error -> jmp __ux_ok_exit
+ - 3 kez: mov r10, rbx -> sub r10, 1
+ - 3 kez: sub r10, 1 -> cmp r10, TAPE_CELLS
+ - 3 kez: cmp r10, TAPE_CELLS -> jae __ux_err_ptr
+ - 3 kez: jae __ux_err_ptr -> lea r11, [r12 + r10]
+ - 2 kez: mov qword [ux_ptr], rbx -> mov qword [ux_sp], r14
+ - 2 kez: inc rbx -> cmp rbx, TAPE_CELLS
+ - 2 kez: cmp rbx, TAPE_CELLS -> jae __ux_err_ptr
+ - 2 kez: lea r11, [r12 + r10] -> mov byte [r11], al
+ - 2 kez: mov byte [r11], al -> push rax
+Jump Yoğunluğu: %6.91
+
+ANALIZ: test54_meta_print_char_raw.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 4 kez: call ux_runtime_error -> jmp __ux_ok_exit
+ - 3 kez: mov r10, rbx -> sub r10, 1
+ - 3 kez: sub r10, 1 -> cmp r10, TAPE_CELLS
+ - 3 kez: cmp r10, TAPE_CELLS -> jae __ux_err_ptr
+ - 3 kez: jae __ux_err_ptr -> lea r11, [r12 + r10]
+ - 2 kez: mov qword [ux_ptr], rbx -> mov qword [ux_sp], r14
+ - 2 kez: inc rbx -> cmp rbx, TAPE_CELLS
+ - 2 kez: cmp rbx, TAPE_CELLS -> jae __ux_err_ptr
+ - 2 kez: lea r11, [r12 + r10] -> mov byte [r11], al
+ - 2 kez: mov byte [r11], al -> push rax
+Jump Yoğunluğu: %6.91
+
+ANALIZ: test_fp01_add_int.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 30 kez: cmp r10, TAPE_CELLS -> jae __ux_err_ptr
+ - 30 kez: jae __ux_err_ptr -> lea r11, [r12 + r10]
+ - 22 kez: mov byte [r11], al -> push rax
+ - 22 kez: push rax -> mov dx, word [ux_flags]
+ - 22 kez: mov dx, word [ux_flags] -> and dx, 0FFF0h
+ - 22 kez: and dx, 0FFF0h -> cmp rax, 0
+ - 22 kez: or dx, FLAG_Z -> test al, 80h
+ - 22 kez: or dx, FLAG_S -> mov word [ux_flags], dx
+ - 22 kez: mov word [ux_flags], dx -> pop rax
+ - 20 kez: lea r11, [r12 + r10] -> mov byte [r11], al
+Jump Yoğunluğu: %12.54
+
+ANALIZ: test_fp02_sub_int.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 30 kez: cmp r10, TAPE_CELLS -> jae __ux_err_ptr
+ - 30 kez: jae __ux_err_ptr -> lea r11, [r12 + r10]
+ - 22 kez: mov byte [r11], al -> push rax
+ - 22 kez: push rax -> mov dx, word [ux_flags]
+ - 22 kez: mov dx, word [ux_flags] -> and dx, 0FFF0h
+ - 22 kez: and dx, 0FFF0h -> cmp rax, 0
+ - 22 kez: or dx, FLAG_Z -> test al, 80h
+ - 22 kez: or dx, FLAG_S -> mov word [ux_flags], dx
+ - 22 kez: mov word [ux_flags], dx -> pop rax
+ - 20 kez: lea r11, [r12 + r10] -> mov byte [r11], al
+Jump Yoğunluğu: %12.54
+
+ANALIZ: test_fp03_mul_int.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 30 kez: cmp r10, TAPE_CELLS -> jae __ux_err_ptr
+ - 30 kez: jae __ux_err_ptr -> lea r11, [r12 + r10]
+ - 22 kez: mov byte [r11], al -> push rax
+ - 22 kez: push rax -> mov dx, word [ux_flags]
+ - 22 kez: mov dx, word [ux_flags] -> and dx, 0FFF0h
+ - 22 kez: and dx, 0FFF0h -> cmp rax, 0
+ - 22 kez: or dx, FLAG_Z -> test al, 80h
+ - 22 kez: or dx, FLAG_S -> mov word [ux_flags], dx
+ - 22 kez: mov word [ux_flags], dx -> pop rax
+ - 20 kez: lea r11, [r12 + r10] -> mov byte [r11], al
+Jump Yoğunluğu: %12.54
+
+ANALIZ: test_fp04_div_int.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 30 kez: cmp r10, TAPE_CELLS -> jae __ux_err_ptr
+ - 30 kez: jae __ux_err_ptr -> lea r11, [r12 + r10]
+ - 22 kez: mov byte [r11], al -> push rax
+ - 22 kez: push rax -> mov dx, word [ux_flags]
+ - 22 kez: mov dx, word [ux_flags] -> and dx, 0FFF0h
+ - 22 kez: and dx, 0FFF0h -> cmp rax, 0
+ - 22 kez: or dx, FLAG_Z -> test al, 80h
+ - 22 kez: or dx, FLAG_S -> mov word [ux_flags], dx
+ - 22 kez: mov word [ux_flags], dx -> pop rax
+ - 20 kez: lea r11, [r12 + r10] -> mov byte [r11], al
+Jump Yoğunluğu: %12.54
+
+ANALIZ: test_fp05_from_string.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 10 kez: cmp r10, TAPE_CELLS -> jae __ux_err_ptr
+ - 10 kez: jae __ux_err_ptr -> lea r11, [r12 + r10]
+ - 7 kez: lea r11, [r12 + r10] -> mov byte [r11], al
+ - 7 kez: mov byte [r11], al -> push rax
+ - 7 kez: push rax -> mov dx, word [ux_flags]
+ - 7 kez: mov dx, word [ux_flags] -> and dx, 0FFF0h
+ - 7 kez: and dx, 0FFF0h -> cmp rax, 0
+ - 7 kez: or dx, FLAG_Z -> test al, 80h
+ - 7 kez: or dx, FLAG_S -> mov word [ux_flags], dx
+ - 7 kez: mov word [ux_flags], dx -> pop rax
+Jump Yoğunluğu: %9.68
+
+ANALIZ: test_fp06_add_dec_string.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 28 kez: cmp r10, TAPE_CELLS -> jae __ux_err_ptr
+ - 28 kez: jae __ux_err_ptr -> lea r11, [r12 + r10]
+ - 21 kez: mov byte [r11], al -> push rax
+ - 21 kez: push rax -> mov dx, word [ux_flags]
+ - 21 kez: mov dx, word [ux_flags] -> and dx, 0FFF0h
+ - 21 kez: and dx, 0FFF0h -> cmp rax, 0
+ - 21 kez: or dx, FLAG_Z -> test al, 80h
+ - 21 kez: or dx, FLAG_S -> mov word [ux_flags], dx
+ - 21 kez: mov word [ux_flags], dx -> pop rax
+ - 19 kez: lea r11, [r12 + r10] -> mov byte [r11], al
+Jump Yoğunluğu: %12.18
+
+ANALIZ: test_fp07_int_zero_sign_abs.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 45 kez: cmp r10, TAPE_CELLS -> jae __ux_err_ptr
+ - 45 kez: jae __ux_err_ptr -> lea r11, [r12 + r10]
+ - 30 kez: lea r11, [r12 + r10] -> mov byte [r11], al
+ - 30 kez: mov byte [r11], al -> push rax
+ - 30 kez: push rax -> mov dx, word [ux_flags]
+ - 30 kez: mov dx, word [ux_flags] -> and dx, 0FFF0h
+ - 30 kez: and dx, 0FFF0h -> cmp rax, 0
+ - 30 kez: or dx, FLAG_Z -> test al, 80h
+ - 30 kez: or dx, FLAG_S -> mov word [ux_flags], dx
+ - 30 kez: mov word [ux_flags], dx -> pop rax
+Jump Yoğunluğu: %12.40
+
+ANALIZ: test_math01_poly_deriv_arge.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 9 kez: cmp r10, TAPE_CELLS -> jae __ux_err_ptr
+ - 9 kez: jae __ux_err_ptr -> lea r11, [r12 + r10]
+ - 6 kez: lea r11, [r12 + r10] -> mov byte [r11], al
+ - 6 kez: mov byte [r11], al -> push rax
+ - 6 kez: push rax -> mov dx, word [ux_flags]
+ - 6 kez: mov dx, word [ux_flags] -> and dx, 0FFF0h
+ - 6 kez: and dx, 0FFF0h -> cmp rax, 0
+ - 6 kez: or dx, FLAG_Z -> test al, 80h
+ - 6 kez: or dx, FLAG_S -> mov word [ux_flags], dx
+ - 6 kez: mov word [ux_flags], dx -> pop rax
+Jump Yoğunluğu: %9.41
+
+ANALIZ: test_math02_poly_integral_arge.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 9 kez: cmp r10, TAPE_CELLS -> jae __ux_err_ptr
+ - 9 kez: jae __ux_err_ptr -> lea r11, [r12 + r10]
+ - 7 kez: mov byte [r11], al -> push rax
+ - 7 kez: push rax -> mov dx, word [ux_flags]
+ - 7 kez: mov dx, word [ux_flags] -> and dx, 0FFF0h
+ - 7 kez: and dx, 0FFF0h -> cmp rax, 0
+ - 7 kez: or dx, FLAG_Z -> test al, 80h
+ - 7 kez: or dx, FLAG_S -> mov word [ux_flags], dx
+ - 7 kez: mov word [ux_flags], dx -> pop rax
+ - 6 kez: lea r11, [r12 + r10] -> mov byte [r11], al
+Jump Yoğunluğu: %9.63
+
+ANALIZ: test_math03_poly_eval_arge.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 6 kez: cmp r10, TAPE_CELLS -> jae __ux_err_ptr
+ - 6 kez: jae __ux_err_ptr -> lea r11, [r12 + r10]
+ - 4 kez: lea r11, [r12 + r10] -> mov byte [r11], al
+ - 4 kez: mov byte [r11], al -> push rax
+ - 4 kez: push rax -> mov dx, word [ux_flags]
+ - 4 kez: mov dx, word [ux_flags] -> and dx, 0FFF0h
+ - 4 kez: and dx, 0FFF0h -> cmp rax, 0
+ - 4 kez: or dx, FLAG_Z -> test al, 80h
+ - 4 kez: or dx, FLAG_S -> mov word [ux_flags], dx
+ - 4 kez: mov word [ux_flags], dx -> pop rax
+Jump Yoğunluğu: %8.16
+
+ANALIZ: test_math04_expr_rpn_eval.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 6 kez: cmp r10, TAPE_CELLS -> jae __ux_err_ptr
+ - 6 kez: jae __ux_err_ptr -> lea r11, [r12 + r10]
+ - 4 kez: lea r11, [r12 + r10] -> mov byte [r11], al
+ - 4 kez: mov byte [r11], al -> push rax
+ - 4 kez: push rax -> mov dx, word [ux_flags]
+ - 4 kez: mov dx, word [ux_flags] -> and dx, 0FFF0h
+ - 4 kez: and dx, 0FFF0h -> cmp rax, 0
+ - 4 kez: or dx, FLAG_Z -> test al, 80h
+ - 4 kez: or dx, FLAG_S -> mov word [ux_flags], dx
+ - 4 kez: mov word [ux_flags], dx -> pop rax
+Jump Yoğunluğu: %7.87
+
+ANALIZ: test_math05_num_deriv.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 6 kez: cmp r10, TAPE_CELLS -> jae __ux_err_ptr
+ - 6 kez: jae __ux_err_ptr -> lea r11, [r12 + r10]
+ - 6 kez: mov byte [r11], al -> push rax
+ - 6 kez: push rax -> mov dx, word [ux_flags]
+ - 6 kez: mov dx, word [ux_flags] -> and dx, 0FFF0h
+ - 6 kez: and dx, 0FFF0h -> cmp rax, 0
+ - 6 kez: or dx, FLAG_Z -> test al, 80h
+ - 6 kez: or dx, FLAG_S -> mov word [ux_flags], dx
+ - 6 kez: mov word [ux_flags], dx -> pop rax
+ - 4 kez: lea r11, [r12 + r10] -> mov byte [r11], al
+Jump Yoğunluğu: %8.70
+
+ANALIZ: test_math06_integral_trap.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 30 kez: inc rbx -> cmp rbx, TAPE_CELLS
+ - 30 kez: cmp rbx, TAPE_CELLS -> jae __ux_err_ptr
+ - 29 kez: jae __ux_err_ptr -> inc rbx
+ - 10 kez: cmp r10, TAPE_CELLS -> jae __ux_err_ptr
+ - 10 kez: jae __ux_err_ptr -> lea r11, [r12 + r10]
+ - 7 kez: lea r11, [r12 + r10] -> mov byte [r11], al
+ - 7 kez: mov byte [r11], al -> push rax
+ - 7 kez: push rax -> mov dx, word [ux_flags]
+ - 7 kez: mov dx, word [ux_flags] -> and dx, 0FFF0h
+ - 7 kez: and dx, 0FFF0h -> cmp rax, 0
+Jump Yoğunluğu: %14.99
+
+ANALIZ: test_math07_integral_simpson.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 30 kez: inc rbx -> cmp rbx, TAPE_CELLS
+ - 30 kez: cmp rbx, TAPE_CELLS -> jae __ux_err_ptr
+ - 29 kez: jae __ux_err_ptr -> inc rbx
+ - 10 kez: cmp r10, TAPE_CELLS -> jae __ux_err_ptr
+ - 10 kez: jae __ux_err_ptr -> lea r11, [r12 + r10]
+ - 7 kez: lea r11, [r12 + r10] -> mov byte [r11], al
+ - 7 kez: mov byte [r11], al -> push rax
+ - 7 kez: push rax -> mov dx, word [ux_flags]
+ - 7 kez: mov dx, word [ux_flags] -> and dx, 0FFF0h
+ - 7 kez: and dx, 0FFF0h -> cmp rax, 0
+Jump Yoğunluğu: %14.87
+
+ANALIZ: test_matrix01_init_set_print.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 53 kez: cmp r10, TAPE_CELLS -> jae __ux_err_ptr
+ - 53 kez: jae __ux_err_ptr -> lea r11, [r12 + r10]
+ - 38 kez: mov byte [r11], al -> push rax
+ - 38 kez: push rax -> mov dx, word [ux_flags]
+ - 38 kez: mov dx, word [ux_flags] -> and dx, 0FFF0h
+ - 38 kez: and dx, 0FFF0h -> cmp rax, 0
+ - 38 kez: or dx, FLAG_Z -> test al, 80h
+ - 38 kez: or dx, FLAG_S -> mov word [ux_flags], dx
+ - 38 kez: mov word [ux_flags], dx -> pop rax
+ - 37 kez: lea r11, [r12 + r10] -> mov byte [r11], al
+Jump Yoğunluğu: %15.66
+
+ANALIZ: test_matrix02_add_2x2.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 30 kez: inc rbx -> cmp rbx, TAPE_CELLS
+ - 30 kez: cmp rbx, TAPE_CELLS -> jae __ux_err_ptr
+ - 29 kez: jae __ux_err_ptr -> inc rbx
+ - 12 kez: cmp r10, TAPE_CELLS -> jae __ux_err_ptr
+ - 12 kez: jae __ux_err_ptr -> lea r11, [r12 + r10]
+ - 8 kez: lea r11, [r12 + r10] -> mov byte [r11], al
+ - 8 kez: mov byte [r11], al -> push rax
+ - 8 kez: push rax -> mov dx, word [ux_flags]
+ - 8 kez: mov dx, word [ux_flags] -> and dx, 0FFF0h
+ - 8 kez: and dx, 0FFF0h -> cmp rax, 0
+Jump Yoğunluğu: %13.93
+
+ANALIZ: test_matrix03_mul_2x2.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 30 kez: inc rbx -> cmp rbx, TAPE_CELLS
+ - 30 kez: cmp rbx, TAPE_CELLS -> jae __ux_err_ptr
+ - 29 kez: jae __ux_err_ptr -> inc rbx
+ - 12 kez: cmp r10, TAPE_CELLS -> jae __ux_err_ptr
+ - 12 kez: jae __ux_err_ptr -> lea r11, [r12 + r10]
+ - 8 kez: lea r11, [r12 + r10] -> mov byte [r11], al
+ - 8 kez: mov byte [r11], al -> push rax
+ - 8 kez: push rax -> mov dx, word [ux_flags]
+ - 8 kez: mov dx, word [ux_flags] -> and dx, 0FFF0h
+ - 8 kez: and dx, 0FFF0h -> cmp rax, 0
+Jump Yoğunluğu: %13.93
+
+ANALIZ: test_matrix04_identity_trace_det2.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 30 kez: inc rbx -> cmp rbx, TAPE_CELLS
+ - 30 kez: cmp rbx, TAPE_CELLS -> jae __ux_err_ptr
+ - 29 kez: jae __ux_err_ptr -> inc rbx
+ - 17 kez: cmp r10, TAPE_CELLS -> jae __ux_err_ptr
+ - 17 kez: jae __ux_err_ptr -> lea r11, [r12 + r10]
+ - 12 kez: lea r11, [r12 + r10] -> mov byte [r11], al
+ - 12 kez: mov byte [r11], al -> push rax
+ - 12 kez: push rax -> mov dx, word [ux_flags]
+ - 12 kez: mov dx, word [ux_flags] -> and dx, 0FFF0h
+ - 12 kez: and dx, 0FFF0h -> cmp rax, 0
+Jump Yoğunluğu: %14.10
+
+ANALIZ: test_v33_address_base_p.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 4 kez: call ux_runtime_error -> jmp __ux_ok_exit
+ - 3 kez: mov r10, rbx -> add r10, 10
+ - 3 kez: add r10, 10 -> cmp r10, DATA_CELLS
+ - 3 kez: cmp r10, DATA_CELLS -> jae __ux_err_data
+ - 3 kez: jae __ux_err_data -> lea r11, [r12 + DATA_OFFSET + r10]
+ - 3 kez: lea r11, [r12 + DATA_OFFSET + r10] -> movzx rax, byte [r11]
+ - 3 kez: movzx rax, byte [r11] -> mov ecx, eax
+ - 3 kez: mov ecx, eax -> call ux_putc
+ - 2 kez: mov qword [ux_ptr], rbx -> mov qword [ux_sp], r14
+ - 2 kez: call ux_putc -> inc rbx
+Jump Yoğunluğu: %5.17
+
+ANALIZ: test_v33_bio_base_codon.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 15 kez: cmp r10, TAPE_CELLS -> jae __ux_err_ptr
+ - 15 kez: jae __ux_err_ptr -> lea r11, [r12 + r10]
+ - 10 kez: lea r11, [r12 + r10] -> mov byte [r11], al
+ - 10 kez: mov byte [r11], al -> push rax
+ - 10 kez: push rax -> mov dx, word [ux_flags]
+ - 10 kez: mov dx, word [ux_flags] -> and dx, 0FFF0h
+ - 10 kez: and dx, 0FFF0h -> cmp rax, 0
+ - 10 kez: or dx, FLAG_Z -> test al, 80h
+ - 10 kez: or dx, FLAG_S -> mov word [ux_flags], dx
+ - 10 kez: mov word [ux_flags], dx -> pop rax
+Jump Yoğunluğu: %11.00
+
+ANALIZ: test_v33_bio_motif_aa_count.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 21 kez: cmp r10, TAPE_CELLS -> jae __ux_err_ptr
+ - 21 kez: jae __ux_err_ptr -> lea r11, [r12 + r10]
+ - 14 kez: lea r11, [r12 + r10] -> mov byte [r11], al
+ - 14 kez: mov byte [r11], al -> push rax
+ - 14 kez: push rax -> mov dx, word [ux_flags]
+ - 14 kez: mov dx, word [ux_flags] -> and dx, 0FFF0h
+ - 14 kez: and dx, 0FFF0h -> cmp rax, 0
+ - 14 kez: or dx, FLAG_Z -> test al, 80h
+ - 14 kez: or dx, FLAG_S -> mov word [ux_flags], dx
+ - 14 kez: mov word [ux_flags], dx -> pop rax
+Jump Yoğunluğu: %11.91
+
+ANALIZ: test_v33_bio_translate_gc.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 21 kez: cmp r10, TAPE_CELLS -> jae __ux_err_ptr
+ - 21 kez: jae __ux_err_ptr -> lea r11, [r12 + r10]
+ - 14 kez: lea r11, [r12 + r10] -> mov byte [r11], al
+ - 14 kez: mov byte [r11], al -> push rax
+ - 14 kez: push rax -> mov dx, word [ux_flags]
+ - 14 kez: mov dx, word [ux_flags] -> and dx, 0FFF0h
+ - 14 kez: and dx, 0FFF0h -> cmp rax, 0
+ - 14 kez: or dx, FLAG_Z -> test al, 80h
+ - 14 kez: or dx, FLAG_S -> mov word [ux_flags], dx
+ - 14 kez: mov word [ux_flags], dx -> pop rax
+Jump Yoğunluğu: %11.91
+
+ANALIZ: test_v33_complex_basic.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 27 kez: cmp r10, TAPE_CELLS -> jae __ux_err_ptr
+ - 27 kez: jae __ux_err_ptr -> lea r11, [r12 + r10*4]
+ - 24 kez: mov dword [r11], eax -> push rax
+ - 24 kez: push rax -> mov dx, word [ux_flags]
+ - 24 kez: mov dx, word [ux_flags] -> and dx, 0FFF0h
+ - 24 kez: and dx, 0FFF0h -> cmp rax, 0
+ - 24 kez: or dx, FLAG_Z -> test eax, 80000000h
+ - 24 kez: or dx, FLAG_S -> mov word [ux_flags], dx
+ - 24 kez: mov word [ux_flags], dx -> pop rax
+ - 18 kez: lea r11, [r12 + r10*4] -> mov dword [r11], eax
+Jump Yoğunluğu: %12.37
+
+ANALIZ: test_v33_corr_regression.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 57 kez: cmp r10, TAPE_CELLS -> jae __ux_err_ptr
+ - 57 kez: jae __ux_err_ptr -> lea r11, [r12 + r10*4]
+ - 43 kez: mov dword [r11], eax -> push rax
+ - 43 kez: push rax -> mov dx, word [ux_flags]
+ - 43 kez: mov dx, word [ux_flags] -> and dx, 0FFF0h
+ - 43 kez: and dx, 0FFF0h -> cmp rax, 0
+ - 43 kez: or dx, FLAG_Z -> test eax, 80000000h
+ - 43 kez: or dx, FLAG_S -> mov word [ux_flags], dx
+ - 43 kez: mov word [ux_flags], dx -> pop rax
+ - 38 kez: lea r11, [r12 + r10*4] -> mov dword [r11], eax
+Jump Yoğunluğu: %13.68
+
+ANALIZ: test_v33_dynamic_meta_addr.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 4 kez: mov r10, rbx -> add r10, 1
+ - 4 kez: add r10, 1 -> cmp r10, TAPE_CELLS
+ - 4 kez: cmp r10, TAPE_CELLS -> jae __ux_err_ptr
+ - 4 kez: jae __ux_err_ptr -> lea r11, [r12 + r10]
+ - 4 kez: mov byte [r11], al -> push rax
+ - 4 kez: push rax -> mov dx, word [ux_flags]
+ - 4 kez: mov dx, word [ux_flags] -> and dx, 0FFF0h
+ - 4 kez: and dx, 0FFF0h -> cmp rax, 0
+ - 4 kez: or dx, FLAG_Z -> test al, 80h
+ - 4 kez: or dx, FLAG_S -> mov word [ux_flags], dx
+Jump Yoğunluğu: %6.99
+
+ANALIZ: test_v33_dynamic_meta_addr_compat.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 4 kez: lea r11, [r12 + rbx] -> mov byte [r11], al
+ - 4 kez: mov byte [r11], al -> push rax
+ - 4 kez: push rax -> mov dx, word [ux_flags]
+ - 4 kez: mov dx, word [ux_flags] -> and dx, 0FFF0h
+ - 4 kez: and dx, 0FFF0h -> cmp rax, 0
+ - 4 kez: or dx, FLAG_Z -> test al, 80h
+ - 4 kez: or dx, FLAG_S -> mov word [ux_flags], dx
+ - 4 kez: mov word [ux_flags], dx -> pop rax
+ - 4 kez: lea r11, [r12 + rbx] -> movzx rax, byte [r11]
+ - 4 kez: call ux_runtime_error -> jmp __ux_ok_exit
+Jump Yoğunluğu: %5.63
+
+ANALIZ: test_v33_file_binary_byte.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 17 kez: cmp r10, TAPE_CELLS -> jae __ux_err_ptr
+ - 17 kez: jae __ux_err_ptr -> lea r11, [r12 + r10]
+ - 13 kez: mov r10, rbx -> sub r10, 1
+ - 13 kez: sub r10, 1 -> cmp r10, TAPE_CELLS
+ - 10 kez: lea r11, [r12 + r10] -> mov byte [r11], al
+ - 10 kez: mov byte [r11], al -> push rax
+ - 10 kez: push rax -> mov dx, word [ux_flags]
+ - 10 kez: mov dx, word [ux_flags] -> and dx, 0FFF0h
+ - 10 kez: and dx, 0FFF0h -> cmp rax, 0
+ - 10 kez: or dx, FLAG_Z -> test al, 80h
+Jump Yoğunluğu: %11.42
+
+ANALIZ: test_v33_file_status_bad_handle.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 5 kez: mov qword [ux_ptr], rbx -> mov qword [ux_sp], r14
+ - 4 kez: lea rdx, [ux_mem] -> call ux_meta_call_ex
+ - 4 kez: call ux_meta_call_ex -> mov rbx, qword [ux_ptr]
+ - 4 kez: mov rbx, qword [ux_ptr] -> mov r14, qword [ux_sp]
+ - 4 kez: call ux_runtime_error -> jmp __ux_ok_exit
+ - 3 kez: mov r10, rbx -> sub r10, 1
+ - 3 kez: sub r10, 1 -> cmp r10, TAPE_CELLS
+ - 3 kez: cmp r10, TAPE_CELLS -> jae __ux_err_ptr
+ - 3 kez: jae __ux_err_ptr -> lea r11, [r12 + r10]
+ - 3 kez: mov r14, qword [ux_sp] -> mov qword [ux_ptr], rbx
+Jump Yoğunluğu: %6.22
+
+ANALIZ: test_v33_file_write_read_line.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 26 kez: cmp r10, TAPE_CELLS -> jae __ux_err_ptr
+ - 26 kez: jae __ux_err_ptr -> lea r11, [r12 + r10]
+ - 17 kez: mov r10, rbx -> sub r10, 1
+ - 17 kez: sub r10, 1 -> cmp r10, TAPE_CELLS
+ - 16 kez: lea r11, [r12 + r10] -> mov byte [r11], al
+ - 16 kez: mov byte [r11], al -> push rax
+ - 16 kez: push rax -> mov dx, word [ux_flags]
+ - 16 kez: mov dx, word [ux_flags] -> and dx, 0FFF0h
+ - 16 kez: and dx, 0FFF0h -> cmp rax, 0
+ - 16 kez: or dx, FLAG_Z -> test al, 80h
+Jump Yoğunluğu: %12.15
+
+ANALIZ: test_v33_matadv_det_rank_norm.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 12 kez: mov r10, rbx -> sub r10, 3
+ - 12 kez: sub r10, 3 -> cmp r10, TAPE_CELLS
+ - 12 kez: cmp r10, TAPE_CELLS -> jae __ux_err_ptr
+ - 12 kez: jae __ux_err_ptr -> lea r11, [r12 + r10*4]
+ - 9 kez: mov qword [ux_ptr], rbx -> mov qword [ux_sp], r14
+ - 8 kez: lea r11, [r12 + r10*4] -> mov dword [r11], eax
+ - 8 kez: mov dword [r11], eax -> push rax
+ - 8 kez: push rax -> mov dx, word [ux_flags]
+ - 8 kez: mov dx, word [ux_flags] -> and dx, 0FFF0h
+ - 8 kez: and dx, 0FFF0h -> cmp rax, 0
+Jump Yoğunluğu: %9.30
+
+ANALIZ: test_v33_matadv_inverse_identity.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 9 kez: cmp r10, TAPE_CELLS -> jae __ux_err_ptr
+ - 9 kez: jae __ux_err_ptr -> lea r11, [r12 + r10*4]
+ - 6 kez: lea r11, [r12 + r10*4] -> mov dword [r11], eax
+ - 6 kez: mov dword [r11], eax -> push rax
+ - 6 kez: push rax -> mov dx, word [ux_flags]
+ - 6 kez: mov dx, word [ux_flags] -> and dx, 0FFF0h
+ - 6 kez: and dx, 0FFF0h -> cmp rax, 0
+ - 6 kez: or dx, FLAG_Z -> test eax, 80000000h
+ - 6 kez: or dx, FLAG_S -> mov word [ux_flags], dx
+ - 6 kez: mov word [ux_flags], dx -> pop rax
+Jump Yoğunluğu: %9.74
+
+ANALIZ: test_v33_numeric_poly_integral.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 42 kez: cmp r10, TAPE_CELLS -> jae __ux_err_ptr
+ - 42 kez: jae __ux_err_ptr -> lea r11, [r12 + r10*4]
+ - 28 kez: lea r11, [r12 + r10*4] -> mov dword [r11], eax
+ - 28 kez: mov dword [r11], eax -> push rax
+ - 28 kez: push rax -> mov dx, word [ux_flags]
+ - 28 kez: mov dx, word [ux_flags] -> and dx, 0FFF0h
+ - 28 kez: and dx, 0FFF0h -> cmp rax, 0
+ - 28 kez: or dx, FLAG_Z -> test eax, 80000000h
+ - 28 kez: or dx, FLAG_S -> mov word [ux_flags], dx
+ - 28 kez: mov word [ux_flags], dx -> pop rax
+Jump Yoğunluğu: %13.51
+
+ANALIZ: test_v33_probability_random.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 12 kez: cmp r10, TAPE_CELLS -> jae __ux_err_ptr
+ - 12 kez: jae __ux_err_ptr -> lea r11, [r12 + r10*4]
+ - 9 kez: mov r10, rbx -> sub r10, 1
+ - 9 kez: sub r10, 1 -> cmp r10, TAPE_CELLS
+ - 9 kez: mov dword [r11], eax -> push rax
+ - 9 kez: push rax -> mov dx, word [ux_flags]
+ - 9 kez: mov dx, word [ux_flags] -> and dx, 0FFF0h
+ - 9 kez: and dx, 0FFF0h -> cmp rax, 0
+ - 9 kez: or dx, FLAG_Z -> test eax, 80000000h
+ - 9 kez: or dx, FLAG_S -> mov word [ux_flags], dx
+Jump Yoğunluğu: %10.29
+
+ANALIZ: test_v33_stack_pointer_relative.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 4 kez: lea r11, [r12 + rbx] -> mov byte [r11], al
+ - 4 kez: mov byte [r11], al -> push rax
+ - 4 kez: push rax -> mov dx, word [ux_flags]
+ - 4 kez: mov dx, word [ux_flags] -> and dx, 0FFF0h
+ - 4 kez: and dx, 0FFF0h -> cmp rax, 0
+ - 4 kez: or dx, FLAG_Z -> test al, 80h
+ - 4 kez: or dx, FLAG_S -> mov word [ux_flags], dx
+ - 4 kez: mov word [ux_flags], dx -> pop rax
+ - 4 kez: lea r11, [r12 + rbx] -> movzx rax, byte [r11]
+ - 4 kez: call ux_runtime_error -> jmp __ux_ok_exit
+Jump Yoğunluğu: %7.36
+
+ANALIZ: test_v33_stat_median_variance.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 37 kez: cmp r10, TAPE_CELLS -> jae __ux_err_ptr
+ - 37 kez: jae __ux_err_ptr -> lea r11, [r12 + r10*4]
+ - 26 kez: mov dword [r11], eax -> push rax
+ - 26 kez: push rax -> mov dx, word [ux_flags]
+ - 26 kez: mov dx, word [ux_flags] -> and dx, 0FFF0h
+ - 26 kez: and dx, 0FFF0h -> cmp rax, 0
+ - 26 kez: or dx, FLAG_Z -> test eax, 80000000h
+ - 26 kez: or dx, FLAG_S -> mov word [ux_flags], dx
+ - 26 kez: mov word [ux_flags], dx -> pop rax
+ - 25 kez: lea r11, [r12 + r10*4] -> mov dword [r11], eax
+Jump Yoğunluğu: %12.88
+
+ANALIZ: test_v33_stat_sum_mean_minmax.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 37 kez: cmp r10, TAPE_CELLS -> jae __ux_err_ptr
+ - 37 kez: jae __ux_err_ptr -> lea r11, [r12 + r10*4]
+ - 26 kez: mov dword [r11], eax -> push rax
+ - 26 kez: push rax -> mov dx, word [ux_flags]
+ - 26 kez: mov dx, word [ux_flags] -> and dx, 0FFF0h
+ - 26 kez: and dx, 0FFF0h -> cmp rax, 0
+ - 26 kez: or dx, FLAG_Z -> test eax, 80000000h
+ - 26 kez: or dx, FLAG_S -> mov word [ux_flags], dx
+ - 26 kez: mov word [ux_flags], dx -> pop rax
+ - 25 kez: lea r11, [r12 + r10*4] -> mov dword [r11], eax
+Jump Yoğunluğu: %12.65
+
+ANALIZ: test_v33_str_copy_upper.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 15 kez: cmp r10, TAPE_CELLS -> jae __ux_err_ptr
+ - 15 kez: jae __ux_err_ptr -> lea r11, [r12 + r10]
+ - 10 kez: lea r11, [r12 + r10] -> mov byte [r11], al
+ - 10 kez: mov byte [r11], al -> push rax
+ - 10 kez: push rax -> mov dx, word [ux_flags]
+ - 10 kez: mov dx, word [ux_flags] -> and dx, 0FFF0h
+ - 10 kez: and dx, 0FFF0h -> cmp rax, 0
+ - 10 kez: or dx, FLAG_Z -> test al, 80h
+ - 10 kez: or dx, FLAG_S -> mov word [ux_flags], dx
+ - 10 kez: mov word [ux_flags], dx -> pop rax
+Jump Yoğunluğu: %11.83
+
+ANALIZ: test_v33_str_find_count.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 18 kez: cmp r10, TAPE_CELLS -> jae __ux_err_ptr
+ - 18 kez: jae __ux_err_ptr -> lea r11, [r12 + r10]
+ - 12 kez: lea r11, [r12 + r10] -> mov byte [r11], al
+ - 12 kez: mov byte [r11], al -> push rax
+ - 12 kez: push rax -> mov dx, word [ux_flags]
+ - 12 kez: mov dx, word [ux_flags] -> and dx, 0FFF0h
+ - 12 kez: and dx, 0FFF0h -> cmp rax, 0
+ - 12 kez: or dx, FLAG_Z -> test al, 80h
+ - 12 kez: or dx, FLAG_S -> mov word [ux_flags], dx
+ - 12 kez: mov word [ux_flags], dx -> pop rax
+Jump Yoğunluğu: %11.57
+
+ANALIZ: test_v33_str_len_print.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 6 kez: mov r10, rbx -> sub r10, 1
+ - 6 kez: sub r10, 1 -> cmp r10, TAPE_CELLS
+ - 6 kez: cmp r10, TAPE_CELLS -> jae __ux_err_ptr
+ - 6 kez: jae __ux_err_ptr -> lea r11, [r12 + r10]
+ - 5 kez: mov qword [ux_ptr], rbx -> mov qword [ux_sp], r14
+ - 4 kez: lea r11, [r12 + r10] -> mov byte [r11], al
+ - 4 kez: mov byte [r11], al -> push rax
+ - 4 kez: push rax -> mov dx, word [ux_flags]
+ - 4 kez: mov dx, word [ux_flags] -> and dx, 0FFF0h
+ - 4 kez: and dx, 0FFF0h -> cmp rax, 0
+Jump Yoğunluğu: %7.78
+
+ANALIZ: test_v33_str_v2_find_count.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 24 kez: cmp r10, TAPE_CELLS -> jae __ux_err_ptr
+ - 24 kez: jae __ux_err_ptr -> lea r11, [r12 + r10]
+ - 16 kez: lea r11, [r12 + r10] -> mov byte [r11], al
+ - 16 kez: mov byte [r11], al -> push rax
+ - 16 kez: push rax -> mov dx, word [ux_flags]
+ - 16 kez: mov dx, word [ux_flags] -> and dx, 0FFF0h
+ - 16 kez: and dx, 0FFF0h -> cmp rax, 0
+ - 16 kez: or dx, FLAG_Z -> test al, 80h
+ - 16 kez: or dx, FLAG_S -> mov word [ux_flags], dx
+ - 16 kez: mov word [ux_flags], dx -> pop rax
+Jump Yoğunluğu: %12.55
+
+ANALIZ: test_v33_str_v2_hex_url.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 30 kez: cmp r10, TAPE_CELLS -> jae __ux_err_ptr
+ - 30 kez: jae __ux_err_ptr -> lea r11, [r12 + r10]
+ - 20 kez: lea r11, [r12 + r10] -> mov byte [r11], al
+ - 20 kez: mov byte [r11], al -> push rax
+ - 20 kez: push rax -> mov dx, word [ux_flags]
+ - 20 kez: mov dx, word [ux_flags] -> and dx, 0FFF0h
+ - 20 kez: and dx, 0FFF0h -> cmp rax, 0
+ - 20 kez: or dx, FLAG_Z -> test al, 80h
+ - 20 kez: or dx, FLAG_S -> mov word [ux_flags], dx
+ - 20 kez: mov word [ux_flags], dx -> pop rax
+Jump Yoğunluğu: %12.90
+
+ANALIZ: test_v33_str_v2_normalize_numeric_hash.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 27 kez: cmp r10, TAPE_CELLS -> jae __ux_err_ptr
+ - 27 kez: jae __ux_err_ptr -> lea r11, [r12 + r10]
+ - 18 kez: lea r11, [r12 + r10] -> mov byte [r11], al
+ - 18 kez: mov byte [r11], al -> push rax
+ - 18 kez: push rax -> mov dx, word [ux_flags]
+ - 18 kez: mov dx, word [ux_flags] -> and dx, 0FFF0h
+ - 18 kez: and dx, 0FFF0h -> cmp rax, 0
+ - 18 kez: or dx, FLAG_Z -> test al, 80h
+ - 18 kez: or dx, FLAG_S -> mov word [ux_flags], dx
+ - 18 kez: mov word [ux_flags], dx -> pop rax
+Jump Yoğunluğu: %12.35
+
+ANALIZ: test_v33_tensor3d_index_slice.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 81 kez: cmp r10, TAPE_CELLS -> jae __ux_err_ptr
+ - 81 kez: jae __ux_err_ptr -> lea r11, [r12 + r10*4]
+ - 56 kez: mov dword [r11], eax -> push rax
+ - 56 kez: push rax -> mov dx, word [ux_flags]
+ - 56 kez: mov dx, word [ux_flags] -> and dx, 0FFF0h
+ - 56 kez: and dx, 0FFF0h -> cmp rax, 0
+ - 56 kez: or dx, FLAG_Z -> test eax, 80000000h
+ - 56 kez: or dx, FLAG_S -> mov word [ux_flags], dx
+ - 56 kez: mov word [ux_flags], dx -> pop rax
+ - 54 kez: lea r11, [r12 + r10*4] -> mov dword [r11], eax
+Jump Yoğunluğu: %14.47
+
+ANALIZ: test_v33_tensor4d_flat.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 75 kez: cmp r10, TAPE_CELLS -> jae __ux_err_ptr
+ - 75 kez: jae __ux_err_ptr -> lea r11, [r12 + r10*4]
+ - 50 kez: lea r11, [r12 + r10*4] -> mov dword [r11], eax
+ - 50 kez: mov dword [r11], eax -> push rax
+ - 50 kez: push rax -> mov dx, word [ux_flags]
+ - 50 kez: mov dx, word [ux_flags] -> and dx, 0FFF0h
+ - 50 kez: and dx, 0FFF0h -> cmp rax, 0
+ - 50 kez: or dx, FLAG_Z -> test eax, 80000000h
+ - 50 kez: or dx, FLAG_S -> mov word [ux_flags], dx
+ - 50 kez: mov word [ux_flags], dx -> pop rax
+Jump Yoğunluğu: %14.20
+
+ANALIZ: test_v33_tensor_add_scalar_same.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 111 kez: cmp r10, TAPE_CELLS -> jae __ux_err_ptr
+ - 111 kez: jae __ux_err_ptr -> lea r11, [r12 + r10*4]
+ - 86 kez: mov dword [r11], eax -> push rax
+ - 86 kez: push rax -> mov dx, word [ux_flags]
+ - 86 kez: mov dx, word [ux_flags] -> and dx, 0FFF0h
+ - 86 kez: and dx, 0FFF0h -> cmp rax, 0
+ - 86 kez: or dx, FLAG_Z -> test eax, 80000000h
+ - 86 kez: or dx, FLAG_S -> mov word [ux_flags], dx
+ - 86 kez: mov word [ux_flags], dx -> pop rax
+ - 74 kez: lea r11, [r12 + r10*4] -> mov dword [r11], eax
+Jump Yoğunluğu: %14.70
+
+ANALIZ: test_v33_tensor_basic.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 39 kez: cmp r10, TAPE_CELLS -> jae __ux_err_ptr
+ - 39 kez: jae __ux_err_ptr -> lea r11, [r12 + r10*4]
+ - 26 kez: lea r11, [r12 + r10*4] -> mov dword [r11], eax
+ - 26 kez: mov dword [r11], eax -> push rax
+ - 26 kez: push rax -> mov dx, word [ux_flags]
+ - 26 kez: mov dx, word [ux_flags] -> and dx, 0FFF0h
+ - 26 kez: and dx, 0FFF0h -> cmp rax, 0
+ - 26 kez: or dx, FLAG_Z -> test eax, 80000000h
+ - 26 kez: or dx, FLAG_S -> mov word [ux_flags], dx
+ - 26 kez: mov word [ux_flags], dx -> pop rax
+Jump Yoğunluğu: %13.46
+
+ANALIZ: test_v33_tensor_broadcast_add.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 117 kez: cmp r10, TAPE_CELLS -> jae __ux_err_ptr
+ - 117 kez: jae __ux_err_ptr -> lea r11, [r12 + r10*4]
+ - 86 kez: mov dword [r11], eax -> push rax
+ - 86 kez: push rax -> mov dx, word [ux_flags]
+ - 86 kez: mov dx, word [ux_flags] -> and dx, 0FFF0h
+ - 86 kez: and dx, 0FFF0h -> cmp rax, 0
+ - 86 kez: or dx, FLAG_Z -> test eax, 80000000h
+ - 86 kez: or dx, FLAG_S -> mov word [ux_flags], dx
+ - 86 kez: mov word [ux_flags], dx -> pop rax
+ - 78 kez: lea r11, [r12 + r10*4] -> mov dword [r11], eax
+Jump Yoğunluğu: %14.57
+
+ANALIZ: test_v33_tensor_reshape_infer_flatten.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 126 kez: cmp r10, TAPE_CELLS -> jae __ux_err_ptr
+ - 126 kez: jae __ux_err_ptr -> lea r11, [r12 + r10*4]
+ - 88 kez: mov dword [r11], eax -> push rax
+ - 88 kez: push rax -> mov dx, word [ux_flags]
+ - 88 kez: mov dx, word [ux_flags] -> and dx, 0FFF0h
+ - 88 kez: and dx, 0FFF0h -> cmp rax, 0
+ - 88 kez: or dx, FLAG_Z -> test eax, 80000000h
+ - 88 kez: or dx, FLAG_S -> mov word [ux_flags], dx
+ - 88 kez: mov word [ux_flags], dx -> pop rax
+ - 84 kez: lea r11, [r12 + r10*4] -> mov dword [r11], eax
+Jump Yoğunluğu: %14.68
+
+ANALIZ: test_v33_tensor_slice_axes.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 102 kez: cmp r10, TAPE_CELLS -> jae __ux_err_ptr
+ - 102 kez: jae __ux_err_ptr -> lea r11, [r12 + r10*4]
+ - 74 kez: mov dword [r11], eax -> push rax
+ - 74 kez: push rax -> mov dx, word [ux_flags]
+ - 74 kez: mov dx, word [ux_flags] -> and dx, 0FFF0h
+ - 74 kez: and dx, 0FFF0h -> cmp rax, 0
+ - 74 kez: or dx, FLAG_Z -> test eax, 80000000h
+ - 74 kez: or dx, FLAG_S -> mov word [ux_flags], dx
+ - 74 kez: mov word [ux_flags], dx -> pop rax
+ - 68 kez: lea r11, [r12 + r10*4] -> mov dword [r11], eax
+Jump Yoğunluğu: %14.68
+
+ANALIZ: _tmp_det_debug.asm
+========================================
+Sik Kullanilan Bigramlar:
+ - 30 kez: inc rbx -> cmp rbx, TAPE_CELLS
+ - 30 kez: cmp rbx, TAPE_CELLS -> jae __ux_err_ptr
+ - 29 kez: jae __ux_err_ptr -> inc rbx
+ - 6 kez: mov r10, rbx -> sub r10, 3
+ - 6 kez: sub r10, 3 -> cmp r10, TAPE_CELLS
+ - 6 kez: cmp r10, TAPE_CELLS -> jae __ux_err_ptr
+ - 6 kez: jae __ux_err_ptr -> lea r11, [r12 + r10]
+ - 4 kez: mov qword [ux_ptr], rbx -> mov qword [ux_sp], r14
+ - 4 kez: lea r11, [r12 + r10] -> mov byte [r11], al
+ - 4 kez: mov byte [r11], al -> push rax
+Jump Yoğunluğu: %13.75

@@ -1,0 +1,175 @@
+--- onceki/runtime_matrix_services.bas
++++ guncel/runtime_matrix_services.bas
+@@ -504,6 +504,151 @@
+     MatWriteStatus baseAddr,STATUS_OK
+ End Sub
+ 
++
++' UXM V17 MATRIX LEGACY GERCEK KOD EKLERI
++Const UXM_CSR_MAGIC As LongInt = 19301
++Const UXM_CSR_ROWPTR_OFF As LongInt = 8
++
++Function MatV17CSRRows(ByVal csrBase As LongInt) As LongInt
++    If csrBase<0 Or csrBase+7>=CLngInt(ux_data_cells) Then Return 0
++    If CLngInt(ReadData(csrBase))<>UXM_CSR_MAGIC Then Return 0
++    Return CLngInt(ReadData(csrBase+1))
++End Function
++
++Function MatV17CSRCols(ByVal csrBase As LongInt) As LongInt
++    If MatV17CSRRows(csrBase)<=0 Then Return 0
++    Return CLngInt(ReadData(csrBase+2))
++End Function
++
++Function MatV17CSRNNZ(ByVal csrBase As LongInt) As LongInt
++    If MatV17CSRRows(csrBase)<=0 Then Return 0
++    Return CLngInt(ReadData(csrBase+3))
++End Function
++
++Function MatV17CSRRowPtrBase(ByVal csrBase As LongInt) As LongInt
++    Return csrBase + UXM_CSR_ROWPTR_OFF
++End Function
++
++Function MatV17CSRColBase(ByVal csrBase As LongInt) As LongInt
++    Return csrBase + UXM_CSR_ROWPTR_OFF + MatV17CSRRows(csrBase) + 1
++End Function
++
++Function MatV17CSRValBase(ByVal csrBase As LongInt) As LongInt
++    Return MatV17CSRColBase(csrBase) + MatV17CSRNNZ(csrBase)
++End Function
++
++Function MatV17CSRValid(ByVal csrBase As LongInt) As Long
++    Dim rows As LongInt, cols As LongInt, nnz As LongInt, endIdx As LongInt
++    rows=MatV17CSRRows(csrBase): cols=MatV17CSRCols(csrBase): nnz=MatV17CSRNNZ(csrBase)
++    If rows<=0 Or cols<=0 Or nnz<0 Then Return 0
++    endIdx = MatV17CSRValBase(csrBase) + nnz
++    If endIdx > CLngInt(ux_data_cells) Then Return 0
++    Return -1
++End Function
++
++Sub MatV17NDGet(ByVal matrixBase As LongInt, ByVal idxBase As LongInt)
++    Dim r As LongInt, c As LongInt
++    If idxBase<0 Or idxBase+1>=CLngInt(ux_data_cells) Then SetStatus STATUS_DATA_BOUNDS: SetResult 0: Exit Sub
++    r=CLngInt(ReadData(idxBase)): c=CLngInt(ReadData(idxBase+1))
++    SetResult ClampToCell(MatGet(matrixBase,r,c))
++    SetLogicFlags ResultValue()
++End Sub
++
++Sub MatV17NDSet(ByVal matrixBase As LongInt, ByVal idxBase As LongInt, ByVal value As LongInt)
++    Dim r As LongInt, c As LongInt
++    If idxBase<0 Or idxBase+1>=CLngInt(ux_data_cells) Then SetStatus STATUS_DATA_BOUNDS: SetResult STATUS_DATA_BOUNDS: Exit Sub
++    r=CLngInt(ReadData(idxBase)): c=CLngInt(ReadData(idxBase+1))
++    MatSet matrixBase,r,c,value
++    SetResult ux_status
++End Sub
++
++Sub MatV17Eigen2Sym(ByVal outBase As LongInt, ByVal matrixBase As LongInt)
++    Dim a As Double, b As Double, d As Double, tr As Double, disc As Double
++    If MatIsValid(matrixBase)=0 Or MatRows(matrixBase)<>2 Or MatCols(matrixBase)<>2 Or outBase<0 Or outBase+1>=CLngInt(ux_data_cells) Then SetStatus STATUS_DATA_BOUNDS: SetResult STATUS_DATA_BOUNDS: Exit Sub
++    a=CDbl(MatGet(matrixBase,0,0)): b=CDbl(MatGet(matrixBase,0,1)): d=CDbl(MatGet(matrixBase,1,1))
++    tr=(a+d)/2.0: disc=Sqr(((a-d)/2.0)*((a-d)/2.0)+b*b)
++    WriteData outBase+0, ClampToCell(CLngInt(tr+disc))
++    WriteData outBase+1, ClampToCell(CLngInt(tr-disc))
++    SetResult outBase: SetStatus STATUS_OK
++End Sub
++
++Sub MatV17SVD2Values(ByVal outBase As LongInt, ByVal matrixBase As LongInt)
++    Dim a As Double, b As Double, c As Double, d As Double
++    Dim s11 As Double, s22 As Double, s12 As Double, tr As Double, disc As Double, l1 As Double, l2 As Double
++    If MatIsValid(matrixBase)=0 Or MatRows(matrixBase)<>2 Or MatCols(matrixBase)<>2 Or outBase<0 Or outBase+1>=CLngInt(ux_data_cells) Then SetStatus STATUS_DATA_BOUNDS: SetResult STATUS_DATA_BOUNDS: Exit Sub
++    a=CDbl(MatGet(matrixBase,0,0)): b=CDbl(MatGet(matrixBase,0,1)): c=CDbl(MatGet(matrixBase,1,0)): d=CDbl(MatGet(matrixBase,1,1))
++    s11=a*a+c*c: s22=b*b+d*d: s12=a*b+c*d
++    tr=(s11+s22)/2.0: disc=Sqr(((s11-s22)/2.0)*((s11-s22)/2.0)+s12*s12)
++    l1=tr+disc: l2=tr-disc
++    If l1<0 Then l1=0
++    If l2<0 Then l2=0
++    WriteData outBase+0, ClampToCell(CLngInt(Sqr(l1)))
++    WriteData outBase+1, ClampToCell(CLngInt(Sqr(l2)))
++    SetResult outBase: SetStatus STATUS_OK
++End Sub
++
++Sub MatV17CSRMatVec(ByVal outBase As LongInt, ByVal csrBase As LongInt, ByVal xBase As LongInt)
++    Dim rows As LongInt, r As LongInt, p As LongInt, p0 As LongInt, p1 As LongInt, col As LongInt, s As LongInt
++    If MatV17CSRValid(csrBase)=0 Then SetStatus STATUS_DATA_BOUNDS: SetResult STATUS_DATA_BOUNDS: Exit Sub
++    rows=MatV17CSRRows(csrBase)
++    If xBase<0 Or xBase+MatV17CSRCols(csrBase)>CLngInt(ux_data_cells) Or outBase<0 Or outBase+rows>CLngInt(ux_data_cells) Then SetStatus STATUS_DATA_BOUNDS: SetResult STATUS_DATA_BOUNDS: Exit Sub
++    For r=0 To rows-1
++        p0=CLngInt(ReadData(MatV17CSRRowPtrBase(csrBase)+r))
++        p1=CLngInt(ReadData(MatV17CSRRowPtrBase(csrBase)+r+1))
++        s=0
++        For p=p0 To p1-1
++            col=CLngInt(ReadData(MatV17CSRColBase(csrBase)+p))
++            If col>=0 And col<MatV17CSRCols(csrBase) Then s += CLngInt(ReadData(MatV17CSRValBase(csrBase)+p))*CLngInt(ReadData(xBase+col))
++        Next
++        WriteData outBase+r, ClampToCell(s)
++    Next
++    SetResult outBase: SetStatus STATUS_OK
++End Sub
++
++Sub MatV17SparseToDense(ByVal denseBase As LongInt, ByVal csrBase As LongInt)
++    Dim rows As LongInt, cols As LongInt, r As LongInt, p As LongInt, p0 As LongInt, p1 As LongInt, col As LongInt
++    If MatV17CSRValid(csrBase)=0 Then SetStatus STATUS_DATA_BOUNDS: SetResult STATUS_DATA_BOUNDS: Exit Sub
++    rows=MatV17CSRRows(csrBase): cols=MatV17CSRCols(csrBase)
++    MatInit denseBase, rows, cols, 0, 1
++    If ux_status<>STATUS_OK Then SetResult ux_status: Exit Sub
++    For r=0 To rows-1
++        p0=CLngInt(ReadData(MatV17CSRRowPtrBase(csrBase)+r))
++        p1=CLngInt(ReadData(MatV17CSRRowPtrBase(csrBase)+r+1))
++        For p=p0 To p1-1
++            col=CLngInt(ReadData(MatV17CSRColBase(csrBase)+p))
++            MatSet denseBase,r,col,CLngInt(ReadData(MatV17CSRValBase(csrBase)+p))
++        Next
++    Next
++    SetResult denseBase: SetStatus STATUS_OK
++End Sub
++
++Sub MatV17DenseToSparse(ByVal csrBase As LongInt, ByVal denseBase As LongInt)
++    Dim rows As LongInt, cols As LongInt, r As LongInt, c As LongInt, nnz As LongInt, p As LongInt, val As LongInt
++    If MatIsValid(denseBase)=0 Then SetStatus STATUS_DATA_BOUNDS: SetResult STATUS_DATA_BOUNDS: Exit Sub
++    rows=MatRows(denseBase): cols=MatCols(denseBase)
++    For r=0 To rows-1
++        For c=0 To cols-1
++            If MatGet(denseBase,r,c)<>0 Then nnz+=1
++        Next
++    Next
++    If csrBase<0 Or csrBase+UXM_CSR_ROWPTR_OFF+(rows+1)+nnz*2>=CLngInt(ux_data_cells) Then SetStatus STATUS_DATA_BOUNDS: SetResult STATUS_DATA_BOUNDS: Exit Sub
++    WriteData csrBase+0, UXM_CSR_MAGIC: WriteData csrBase+1, rows: WriteData csrBase+2, cols: WriteData csrBase+3, nnz
++    p=0
++    For r=0 To rows-1
++        WriteData MatV17CSRRowPtrBase(csrBase)+r, p
++        For c=0 To cols-1
++            val=MatGet(denseBase,r,c)
++            If val<>0 Then
++                WriteData MatV17CSRColBase(csrBase)+p, c
++                WriteData MatV17CSRValBase(csrBase)+p, ClampToCell(val)
++                p+=1
++            End If
++        Next
++    Next
++    WriteData MatV17CSRRowPtrBase(csrBase)+rows, p
++    SetResult csrBase: SetStatus STATUS_OK
++End Sub
++
+ Sub MetaMatrix(ByVal metaId As ULongInt)
+     Dim dst As LongInt
+     Dim a As LongInt
+@@ -572,6 +717,20 @@
+     Case 176
+         MatPrintRaw a
+         SetResult ux_status
++    Case 181 ' MAT_ND_GET: T-4=matrixBase, T-3=idxBase(data[row,col])
++        MatV17NDGet dst,a
++    Case 182 ' MAT_ND_SET: T-4=matrixBase, T-3=idxBase, T-2=value
++        MatV17NDSet dst,a,b
++    Case 190 ' MAT_EIG_JACOBI_SYM: 2x2 symmetric eigenvalues -> DATA[out,out+1]
++        MatV17Eigen2Sym dst,a
++    Case 191 ' MAT_SVD_SYM_HELPER: 2x2 singular values -> DATA[out,out+1]
++        MatV17SVD2Values dst,a
++    Case 193 ' MAT_SPARSE_CSR_MV: T-4=outVec,T-3=csrBase,T-2=xVec
++        MatV17CSRMatVec dst,a,b
++    Case 194 ' MAT_SPARSE_TO_DENSE: T-4=denseMatrix,T-3=csrBase
++        MatV17SparseToDense dst,a
++    Case 195 ' MAT_DENSE_TO_SPARSE: T-4=csrBase,T-3=denseMatrix
++        MatV17DenseToSparse dst,a
+     Case Else
+         SetStatus STATUS_INVALID_META
+         SetResult STATUS_INVALID_META

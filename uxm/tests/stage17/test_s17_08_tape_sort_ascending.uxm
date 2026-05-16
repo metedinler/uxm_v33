@@ -1,0 +1,13 @@
+#memory tape=64,stack=8,data=32,queue=4
+#cell byte
+#mode normal
+0(T:10)+k67
+0(T:11)+k65
+0(T:12)+k66
+>>>>>
+0(T-2)+k10
+0(T-1)+k3
+@100
+.(T:10)
+.(T:11)
+.(T:12)

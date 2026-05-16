@@ -1,0 +1,67 @@
+--- onceki/ortak/uxm_arac_cekirdek.py
++++ v13/ortak/uxm_arac_cekirdek.py
+@@ -46,19 +46,45 @@
+ def compact(s: str) -> str:
+     return re.sub(r'\s+', '', (s or '').replace('\ufeff','')).strip()
+ 
++INLINE_EXPECT_PREFIXES = (
++    r'#\s*source\s*[:=]\s*embedded[_\s-]*expect[_\s-]*output',
++    r'#\s*embedded[_\s-]*expect[_\s-]*output\s*[:=]?',
++    r'#\s*expect[_\s-]*output\s*[:=]?',
++)
++
++META_ONLY_PREFIXES = (
++    r'#\s*source\s*[:=](?!\s*embedded[_\s-]*expect[_\s-]*output)',
++    r'#\s*expect[_\s-]*source\s*[:=]?',
++    r'#\s*generated[_\s-]*from\s*[:=]?',
++)
++
++def _strip_inline_expect_prefix(line: str) -> tuple[str, bool]:
++    """#source:embedded_EXPECT_OUTPUT7 gibi aynı satıra yapışmış beklenen çıktı ön eklerini ayıklar."""
++    s=(line or '').replace('\ufeff','')
++    changed=False
++    for pat in INLINE_EXPECT_PREFIXES:
++        ns=re.sub(pat, '', s, flags=re.I)
++        if ns != s:
++            s=ns; changed=True
++    return s, changed
++
+ def _is_expect_meta_line(line: str) -> bool:
+-    """Beklenen çıktı dosyasındaki üretim/metaveri satırlarını ayıklar."""
++    """Beklenen çıktı dosyasındaki salt üretim/metaveri satırlarını tanır.
++    DİKKAT: #source:embedded_EXPECT_OUTPUT7 gibi satırlar salt meta değildir;
++    7 beklenen çıktıdır ve korunmalıdır.
++    """
+     st=(line or '').strip().replace('\ufeff','')
++    if not st:
++        return False
++    # Inline embedded output ise satır silinmez, yalnız prefix temizlenir.
++    _, inline_changed = _strip_inline_expect_prefix(st)
++    if inline_changed:
++        return False
++    for pat in META_ONLY_PREFIXES:
++        if re.match(pat, st, flags=re.I):
++            return True
+     low=st.lower().replace(' ', '').replace('\t','')
+-    if not low:
+-        return False
+-    if low.startswith('#source:') or low.startswith('#source='):
+-        return True
+     if low.startswith('#expect_source:') or low.startswith('#expectsource:'):
+-        return True
+-    if low.startswith('#embedded_expect_output') or low.startswith('#embeddedexpectoutput'):
+-        return True
+-    if low.startswith('#expect_output') or low.startswith('#expectoutput'):
+         return True
+     if low.startswith('#generated_from') or low.startswith('#generatedfrom'):
+         return True
+@@ -69,7 +95,8 @@
+     for line in (body or '').splitlines():
+         if _is_expect_meta_line(line):
+             continue
+-        lines.append(line)
++        cleaned, _ = _strip_inline_expect_prefix(line)
++        lines.append(cleaned)
+     return '\n'.join(lines).strip('\r\n')
+ 
+ def read_expect(p: Path):

@@ -1,0 +1,7 @@
+# mode: compact
+# exit_code: 0
+# source: embedded_EXPECT_OUTPUT
+
+4 NEURON NN TEST
+X1=1 X2=0
+N1=1 N2=0 N3=1 OUT=1

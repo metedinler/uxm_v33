@@ -1,0 +1,29 @@
+# V3.3 Stage-9 Numeric V1: polynomial eval and integration
+# Polynomial: f(x)=x^2 at data[100]
+# EXPECT_OUTPUT: 9000000 and about 2660000/2666666 depending n/rounding
+#memory tape=64,stack=8,data=256,queue=4
+#cell dword
+#mode normal
+>>>>>
+0(T-2)+k100
+0(T-1)+k2
+@96
+0(T-2)+k101
+0(T-1)+k0
+@96
+0(T-2)+k102
+0(T-1)+k0
+@96
+0(T-2)+k103
+0(T-1)+k1
+@96
+0(T-2)+k100
+0(T-1)+k3000000
+@420
+@61
+0(T-4)+k100
+0(T-3)+k0
+0(T-2)+k2000000
+0(T-1)+k10
+@423
+@61

@@ -1,0 +1,105 @@
+# TEST: Basit 4-bit CPU / ALU modeli
+# MODEL:
+#   T:0 = A register
+#   T:1 = B register
+#   T:2 = PC / frame pointer
+#   T:3 = ALU_OUT
+#   T:4 = CARRY4
+#   T:5 = MASK4 = 15
+# EXPECT_OUTPUT:
+# 4BIT CPU TEST
+# ADD=3 C=1
+# AND=4
+# XOR=11
+# SHL=8 C=1
+
+s1=0,{4BIT CPU TEST\n}
+s2=32,{ADD=}
+s3=40,{ C=}
+s4=48,{\n}
+s5=56,{AND=}
+s6=64,{XOR=}
+s7=72,{SHL=}
+
+p1
+
+# Register init:
+# A = 12 = 1100b
+# B = 7  = 0111b
+0(T:0)+k12
+0(T:1)+k7
+
+# Pointer T:2 konumuna alin.
+# Boylece meta frame:
+#   T-2 = A
+#   T-1 = B
+#   T+1 = ALU_OUT
+>>
+
+# ADD instruction simulation
+p2
+@20
+
+# Carry hesabı:
+$(T:3)
+0(T:4)+k15
+!(T:4)
+
+# 4-bit maskeleme:
+0(T:5)+k15
+$(T:5)
+&(T:3)
+
+# ALU_OUT yazdir
+@61
+
+# Carry yazdir
+p3
+>
+@61
+<
+p4
+
+# AND instruction simulation
+p5
+$(T:1)
+%(T:3)
+$(T:0)
+&(T:3)
+@61
+p4
+
+# XOR instruction simulation
+p6
+$(T:1)
+%(T:3)
+$(T:0)
+^(T:3)
+@61
+p4
+
+# SHL instruction simulation
+p7
+$(T:0)
+%(T:3)
+{(T:3)
+
+# carry hesabı
+$(T:3)
+0(T:4)+k15
+!(T:4)
+
+# 4-bit maskeleme
+0(T:5)+k15
+$(T:5)
+&(T:3)
+
+# sonuc yazdir
+@61
+
+# carry yazdir
+p3
+>
+@61
+<
+p4

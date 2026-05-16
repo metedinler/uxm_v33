@@ -1,0 +1,5 @@
+# mode: compact
+# exit_code: 0
+# source: embedded_EXPECT_OUTPUT
+
+deterministic random values, all compile/run success

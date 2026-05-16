@@ -1,0 +1,8 @@
+#memory total=16mb,tape=2048b,stack=1024b,data=3072b,fifo=1024b
+#cell byte
+#mode normal
+>>>>>
+@84
+@61
+@85
+@61

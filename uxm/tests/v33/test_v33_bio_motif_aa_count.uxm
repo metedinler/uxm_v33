@@ -1,0 +1,21 @@
+# V3.3 Stage-8 BIO V1: motif find and AA count
+# Expected output: 2 and 3
+# ACGTACGT motif GT first index=2; MFMM contains three M characters.
+#memory tape=64,stack=8,data=64,queue=4
+#cell byte
+#mode normal
+s1=0,{ACGTACGT}
+s2=16,{GT}
+s3=32,{MFMM}
+>>>>>
+0(T-4)+k0
+0(T-3)+k8
+0(T-2)+k16
+0(T-1)+k2
+@487
+@61
+0(T-3)+k32
+0(T-2)+k4
+0(T-1)+k77
+@486
+@61

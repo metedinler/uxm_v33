@@ -1,0 +1,21 @@
+{
+  "bellek 16mb": {
+    "prefix": "bellek16",
+    "body": [
+      "#memory total=16mb,tape=64kb,stack=64kb,data=4mb,fifo=64kb",
+      "#cell dword",
+      "#mode normal",
+      ">>>>>",
+      "$0"
+    ],
+    "description": "16 MB bellek modeli"
+  },
+  "servis yazdır": {
+    "prefix": "yazdir",
+    "body": [
+      "0(T-1)+k${1:65}",
+      "@61"
+    ],
+    "description": "Sonucu yazdır"
+  }
+}

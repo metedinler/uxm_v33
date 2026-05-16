@@ -1,0 +1,28 @@
+# TEST: V19 STAT_COVARIANCE @280
+# EXPECT_OUTPUT: 2
+#cell dword
+#memory data=1mb,tape=64kb,stack=16kb,queue=64kb
+>>
+0(T-2)+k160
+0(T-1)+k1
+@96
+0(T-2)+k161
+0(T-1)+k2
+@96
+0(T-2)+k162
+0(T-1)+k3
+@96
+0(T-2)+k170
+0(T-1)+k2
+@96
+0(T-2)+k171
+0(T-1)+k4
+@96
+0(T-2)+k172
+0(T-1)+k6
+@96
+0(T-2)+k160
+0(T-1)+k170
+0(T)+k3
+@280
+@61

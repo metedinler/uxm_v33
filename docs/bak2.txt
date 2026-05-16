@@ -1,0 +1,1210 @@
+PS C:\Users\mete\Downloads\1\UXMv33>   .\run_mismatch_solver_v3_dryrun.bat
+MISMATCH_SOLVER_V3: apply=False changes=128 quarantine=37
+RAPOR: C:\Users\mete\Downloads\1\UXMv33\mismatch_fix_reports\20260510_133234
+DRY-RUN: dosya yazilmadi. Gercek duzeltme icin --apply kullan.
+PS C:\Users\mete\Downloads\1\UXMv33>   .\run_mismatch_solver_v3_dryrun.bat --apply
+MISMATCH_SOLVER_V3: apply=True changes=128 quarantine=37
+RAPOR: C:\Users\mete\Downloads\1\UXMv33\mismatch_fix_reports\20260510_133305
+PS C:\Users\mete\Downloads\1\UXMv33> .\run_mismatch_solver_v3_apply.bat
+MISMATCH_SOLVER_V3: apply=True changes=0 quarantine=37
+RAPOR: C:\Users\mete\Downloads\1\UXMv33\mismatch_fix_reports\20260510_135119
+PS C:\Users\mete\Downloads\1\UXMv33> .\run_03_mismatch_diag.bat
+[DIAG] mismatch_count= 165
+[DIAG] out= C:\Users\mete\Downloads\1\UXMv33\mismatch_diagnostics\20260510_141207
+PS C:\Users\mete\Downloads\1\UXMv33> .\run_04_fix_mismatches.bat
+usage: UXM_TOOL_LAUNCHER.py [-h] --tool {fix_mismatch,diag_mismatch,workspace,emekli} ...
+UXM_TOOL_LAUNCHER.py: error: unrecognized arguments: --apply
+PS C:\Users\mete\Downloads\1\UXMv33> .\run_04_fix_mismatches.bat --apply
+usage: UXM_TOOL_LAUNCHER.py [-h] --tool {fix_mismatch,diag_mismatch,workspace,emekli} ...
+UXM_TOOL_LAUNCHER.py: error: unrecognized arguments: --apply --apply
+PS C:\Users\mete\Downloads\1\UXMv33> .\run_04_fix_mismatches.bat --tool 
+usage: UXM_TOOL_LAUNCHER.py [-h] --tool {fix_mismatch,diag_mismatch,workspace,emekli} ...
+UXM_TOOL_LAUNCHER.py: error: argument --tool: expected one argument
+PS C:\Users\mete\Downloads\1\UXMv33> .\run_04_fix_mismatches.bat --apply
+usage: UXM_TOOL_LAUNCHER.py [-h] --tool {fix_mismatch,diag_mismatch,workspace,emekli} ...
+UXM_TOOL_LAUNCHER.py: error: unrecognized arguments: --apply --apply
+PS C:\Users\mete\Downloads\1\UXMv33> .\run_04_fix_mismatches.bat
+usage: UXM_TOOL_LAUNCHER.py [-h] --tool {fix_mismatch,diag_mismatch,workspace,emekli} ...
+UXM_TOOL_LAUNCHER.py: error: unrecognized arguments: --apply
+PS C:\Users\mete\Downloads\1\UXMv33> -h
+-h: The term '-h' is not recognized as a name of a cmdlet, function, script file, or executable program.
+Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+
+[General Feedback]
+  The most similar commands are:
+    ? oh, h
+
+PS C:\Users\mete\Downloads\1\UXMv33> .\run_04_all_expected.bat          
+.\run_04_all_expected.bat: The term '.\run_04_all_expected.bat' is not recognized as a name of a cmdlet, function, script file, or executable program.
+Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+PS C:\Users\mete\Downloads\1\UXMv33> .\run_02_all_expected.bat 
+UXM Expected Runner V2: tests=1054 run_dir=C:\Users\mete\Downloads\1\UXMv33\expected_results_v2\all_expected_v2_20260510_141605
+[BUILD] code=0 seconds=2.09
+[0001/1054] BASARILI uxm\tests\all_expected_known\0001__s10_STAGE10_hotfix1__uxm_tests_fp_test_fp01_add_int__18c1725f7c.uxm (5.61 sn) mode=compact
+[0002/1054] BASARILI uxm\tests\all_expected_known\0002__s10_STAGE10_hotfix1__uxm_tests_fp_test_fp02_sub_int__6ecba5893d.uxm (4.86 sn) mode=compact
+[0003/1054] BASARILI uxm\tests\all_expected_known\0003__s10_STAGE10_hotfix1__uxm_tests_fp_test_fp03_mul_int__c545076a65.uxm (5.79 sn) mode=compact
+[0004/1054] BASARILI uxm\tests\all_expected_known\0004__s10_STAGE10_hotfix1__uxm_tests_fp_test_fp04_div_int__d98e9e479e.uxm (5.39 sn) mode=compact
+[0005/1054] BASARILI uxm\tests\all_expected_known\0005__s10_STAGE10_hotfix1__uxm_tests_fp_test_fp05_from_string__7dcbf9b0c9.uxm (5.30 sn) mode=compact
+[0006/1054] BASARILI uxm\tests\all_expected_known\0006__s10_STAGE10_hotfix1__uxm_tests_fp_test_fp06_add_dec_string__1caccb2f3c.uxm (5.00 sn) mode=compact
+[0007/1054] BASARILI uxm\tests\all_expected_known\0007__s10_STAGE10_hotfix1__uxm_tests_fp_test_fp07_int_zero_sign_abs__3a5c5c2bca.uxm (5.03 sn) mode=compact
+[0008/1054] BASARILI uxm\tests\all_expected_known\0008__s10_STAGE10_hotfix1__uxm_tests_math_test_math01_poly_deriv_arge__dea08874ec.uxm (5.84 sn) mode=compact
+[0009/1054] BASARILI uxm\tests\all_expected_known\0009__s10_STAGE10_hotfix1__uxm_tests_math_test_math02_poly_integral_arge__f2b514b3e4.uxm (5.62 sn) mode=compact
+[0010/1054] BASARILI uxm\tests\all_expected_known\0010__s10_STAGE10_hotfix1__uxm_tests_math_test_math03_poly_eval_arge__7f1d2b2783.uxm (4.79 sn) mode=compact
+[0011/1054] BASARILI uxm\tests\all_expected_known\0011__s10_STAGE10_hotfix1__uxm_tests_math_test_math04_expr_rpn_eval__2f2f641449.uxm (4.93 sn) mode=compact
+[0012/1054] BASARILI uxm\tests\all_expected_known\0012__s10_STAGE10_hotfix1__uxm_tests_math_test_math05_num_deriv__191a99caff.uxm (5.43 sn) mode=compact
+[0013/1054] BASARILI uxm\tests\all_expected_known\0013__s10_STAGE10_hotfix1__uxm_tests_math_test_math06_integral_trap__f9df1f263f.uxm (5.41 sn) mode=compact
+[0014/1054] BASARILI uxm\tests\all_expected_known\0014__s10_STAGE10_hotfix1__uxm_tests_math_test_math07_integral_simpson__7adae488ba.uxm (4.91 sn) mode=compact
+[0015/1054] BASARILI uxm\tests\all_expected_known\0015__s10_STAGE10_hotfix1__uxm_tests_matrix_tmp_det_debug__0ea11514b5.uxm (6.68 sn) mode=compact
+[0016/1054] BASARILI uxm\tests\all_expected_known\0016__s10_STAGE10_hotfix1__uxm_tests_matrix_test_matrix01_init_set_print__15a7b101f5.uxm (5.09 sn) mode=compact
+[0017/1054] BASARILI uxm\tests\all_expected_known\0017__s10_STAGE10_hotfix1__uxm_tests_matrix_test_matrix02_add_2x2__d6ea7d27d1.uxm (5.76 sn) mode=compact
+[0018/1054] BASARILI uxm\tests\all_expected_known\0018__s10_STAGE10_hotfix1__uxm_tests_matrix_test_matrix03_mul_2x2__41485263d4.uxm (5.78 sn) mode=compact
+[0019/1054] BASARILI uxm\tests\all_expected_known\0019__s10_STAGE10_hotfix1__uxm_tests_matrix_test_matrix04_identity_trace_det2__dc519cfef9.uxm (7.00 sn) mode=compact
+[0020/1054] BASARILI uxm\tests\all_expected_known\0020__s10_STAGE10_hotfix1__uxm_tests_native_test01_print_A__b500a9cd9d.uxm (6.52 sn) mode=compact
+[0021/1054] BASARILI uxm\tests\all_expected_known\0024__s10_STAGE10_hotfix1__uxm_tests_native_test05_meta_add__7f35cb022e.uxm (5.70 sn) mode=compact
+[0022/1054] BASARILI uxm\tests\all_expected_known\0025__s10_STAGE10_hotfix1__uxm_tests_native_test06_dynamic_meta_mul__29485899d9.uxm (5.80 sn) mode=compact
+[0023/1054] BASARILI uxm\tests\all_expected_known\0028__s10_STAGE10_hotfix1__uxm_tests_native_test09_div_mod__a7bc2502ca.uxm (6.06 sn) mode=compact
+[0024/1054] BASARILI uxm\tests\all_expected_known\0029__s10_STAGE10_hotfix1__uxm_tests_native_test10_sin_scaled__ecc0b20106.uxm (7.76 sn) mode=compact
+[0025/1054] BASARILI uxm\tests\all_expected_known\0030__s10_STAGE10_hotfix1__uxm_tests_native_test11_hypotenuse__a38c889f46.uxm (7.94 sn) mode=compact
+[0026/1054] BASARILI uxm\tests\all_expected_known\0031__s10_STAGE10_hotfix1__uxm_tests_native_test12_signed_mode__7d57850849.uxm (7.25 sn) mode=compact
+[0027/1054] BASARILI uxm\tests\all_expected_known\0032__s10_STAGE10_hotfix1__uxm_tests_native_test13_status_div_zero__1517d0d659.uxm (8.57 sn) mode=compact
+[0028/1054] BASARILI uxm\tests\all_expected_known\0033__s10_STAGE10_hotfix1__uxm_tests_native_test14_branch_current_zero__475660ecab.uxm (8.17 sn) mode=compact
+[0029/1054] BASARILI uxm\tests\all_expected_known\0034__s10_STAGE10_hotfix1__uxm_tests_native_test15_branch_nonzero__264c6a7d20.uxm (6.67 sn) mode=compact
+[0030/1054] BASARILI uxm\tests\all_expected_known\0035__s10_STAGE10_hotfix1__uxm_tests_native_test16_data_digit__8156a7eb55.uxm (8.43 sn) mode=compact
+[0031/1054] BASARILI uxm\tests\all_expected_known\0037__s10_STAGE10_hotfix1__uxm_tests_native_test18_pointer_service__df26f04e62.uxm (5.57 sn) mode=compact
+[0032/1054] BASARILI uxm\tests\all_expected_known\0038__s10_STAGE10_hotfix1__uxm_tests_native_test20_fifo_char_order__c1764b342c.uxm (4.75 sn) mode=compact
+[0033/1054] BASARILI uxm\tests\all_expected_known\0039__s10_STAGE10_hotfix1__uxm_tests_native_test21_fifo_count_peek__7cbb128eb0.uxm (4.84 sn) mode=compact
+[0034/1054] BASARILI uxm\tests\all_expected_known\0040__s10_STAGE10_hotfix1__uxm_tests_native_test22_data_write_read_char__73195918bb.uxm (4.61 sn) mode=compact
+[0035/1054] BASARILI uxm\tests\all_expected_known\0041__s10_STAGE10_hotfix1__uxm_tests_native_test23_data_digit_ascii_to_number__ce86650ec8.uxm (4.23 sn) mode=compact
+[0036/1054] BASARILI uxm\tests\all_expected_known\0042__s10_STAGE10_hotfix1__uxm_tests_native_test24_data_block_copy_print__0544393ce5.uxm (5.53 sn) mode=compact
+[0037/1054] BASARILI uxm\tests\all_expected_known\0043__s10_STAGE10_hotfix1__uxm_tests_native_test25_data_sort_ascending__d04d7a1665.uxm (6.03 sn) mode=compact
+[0038/1054] BASARILI uxm\tests\all_expected_known\0044__s10_STAGE10_hotfix1__uxm_tests_native_test26_tape_sort_descending_chars__9f54dd8c13.uxm (5.14 sn) mode=compact
+[0039/1054] BASARILI uxm\tests\all_expected_known\0045__s10_STAGE10_hotfix1__uxm_tests_native_test27_tape_linear_search__2cd880af08.uxm (4.86 sn) mode=compact
+[0040/1054] BASARILI uxm\tests\all_expected_known\0046__s10_STAGE10_hotfix1__uxm_tests_native_test28_dynamic_meta_fifo__f394e8656d.uxm (4.66 sn) mode=compact
+[0041/1054] BASARILI uxm\tests\all_expected_known\0047__s10_STAGE10_hotfix1__uxm_tests_native_test29_nested_macro_call__b41ffab903.uxm (4.97 sn) mode=compact
+[0042/1054] BASARILI uxm\tests\all_expected_known\0048__s10_STAGE10_hotfix1__uxm_tests_native_test30_word_mode_add__e96c724f19.uxm (5.06 sn) mode=compact
+[0043/1054] BASARILI uxm\tests\all_expected_known\0049__s10_STAGE10_hotfix1__uxm_tests_native_test31_safe_mode_wild_denied__656fd3964f.uxm (4.60 sn) mode=compact
+[0044/1054] BASARILI uxm\tests\all_expected_known\0050__s10_STAGE10_hotfix1__uxm_tests_native_test32_wild_layout_change__f8cad9d531.uxm (5.03 sn) mode=compact
+[0045/1054] BASARILI uxm\tests\all_expected_known\0051__s10_STAGE10_hotfix1__uxm_tests_native_test33_bitwise_and_stack__41357a25c4.uxm (5.57 sn) mode=compact
+[0046/1054] BASARILI uxm\tests\all_expected_known\0052__s10_STAGE10_hotfix1__uxm_tests_native_test34_data_block_clear__6d10b5d36d.uxm (4.77 sn) mode=compact
+[0047/1054] BASARILI uxm\tests\all_expected_known\0053__s10_STAGE10_hotfix1__uxm_tests_native_test35_optimizer_visible_result__57396ffe1e.uxm (4.78 sn) mode=compact
+[0048/1054] BASARILI uxm\tests\all_expected_known\0054__s10_STAGE10_hotfix1__uxm_tests_native_test40_4bit_cpu_alu_model__ae78c75f2f.uxm (4.78 sn) mode=compact
+[0049/1054] BASARILI uxm\tests\all_expected_known\0055__s10_STAGE10_hotfix1__uxm_tests_native_test41_4_neuron_nn_model__7677e9cfea.uxm (5.47 sn) mode=compact
+[0050/1054] BASARILI uxm\tests\all_expected_known\0056__s10_STAGE10_hotfix1__uxm_tests_native_test42_error_flag_set_reset__ac85ba06fb.uxm (5.12 sn) mode=compact
+[0051/1054] BASARILI uxm\tests\all_expected_known\0057__s10_STAGE10_hotfix1__uxm_tests_native_test43_error_macro_helpers__8f6f291619.uxm (5.14 sn) mode=compact
+[0052/1054] BASARILI uxm\tests\all_expected_known\0058__s10_STAGE10_hotfix1__uxm_tests_native_test44_asin__8ccbbd25d1.uxm (5.01 sn) mode=compact
+[0053/1054] BASARILI uxm\tests\all_expected_known\0059__s10_STAGE10_hotfix1__uxm_tests_native_test44_meta_version_info__df2490ab11.uxm (5.29 sn) mode=compact
+[0054/1054] BASARILI uxm\tests\all_expected_known\0060__s10_STAGE10_hotfix1__uxm_tests_native_test45_acos__3f525605df.uxm (5.28 sn) mode=compact
+[0055/1054] BASARILI uxm\tests\all_expected_known\0061__s10_STAGE10_hotfix1__uxm_tests_native_test45_pointer_meta_extended__62f7d0b3ce.uxm (4.82 sn) mode=compact
+[0056/1054] BASARILI uxm\tests\all_expected_known\0062__s10_STAGE10_hotfix1__uxm_tests_native_test46_fifo_clear__8d1f5ff5ef.uxm (5.23 sn) mode=compact
+[0057/1054] BASARILI uxm\tests\all_expected_known\0063__s10_STAGE10_hotfix1__uxm_tests_native_test46_sqrt__ba2125299d.uxm (4.79 sn) mode=compact
+[0058/1054] BASARILI uxm\tests\all_expected_known\0064__s10_STAGE10_hotfix1__uxm_tests_native_test47_sinh__bf870a2c68.uxm (4.65 sn) mode=compact
+[0059/1054] BASARILI uxm\tests\all_expected_known\0065__s10_STAGE10_hotfix1__uxm_tests_native_test47_tape_sort_ascending__1ef486c6a9.uxm (5.81 sn) mode=compact
+[0060/1054] BASARILI uxm\tests\all_expected_known\0066__s10_STAGE10_hotfix1__uxm_tests_native_test48_cosh__f8e0aaf176.uxm (5.01 sn) mode=compact
+[0061/1054] BASARILI uxm\tests\all_expected_known\0067__s10_STAGE10_hotfix1__uxm_tests_native_test48_data_sort_descending__db3356afb6.uxm (5.86 sn) mode=compact
+[0062/1054] BASARILI uxm\tests\all_expected_known\0068__s10_STAGE10_hotfix1__uxm_tests_native_test49_data_linear_search__962f7b8415.uxm (5.43 sn) mode=compact
+[0063/1054] BASARILI uxm\tests\all_expected_known\0069__s10_STAGE10_hotfix1__uxm_tests_native_test49_tanh__9f2c8ceeca.uxm (5.56 sn) mode=compact
+[0064/1054] BASARILI uxm\tests\all_expected_known\0070__s10_STAGE10_hotfix1__uxm_tests_native_test50_tape_block_copy_clear__0ea5b5be81.uxm (5.13 sn) mode=compact
+[0065/1054] BASARILI uxm\tests\all_expected_known\0071__s10_STAGE10_hotfix1__uxm_tests_native_test51_meta_print_stack_pop__41df904a3e.uxm (5.78 sn) mode=compact
+[0066/1054] BASARILI uxm\tests\all_expected_known\0072__s10_STAGE10_hotfix1__uxm_tests_native_test52_meta_print_hex__443105bf21.uxm (4.81 sn) mode=compact
+[0067/1054] BASARILI uxm\tests\all_expected_known\0073__s10_STAGE10_hotfix1__uxm_tests_native_test53_meta_print_bin__746bc9c5a1.uxm (5.28 sn) mode=compact
+[0068/1054] BASARILI uxm\tests\all_expected_known\0074__s10_STAGE10_hotfix1__uxm_tests_native_test54_meta_print_char_raw__73558fea56.uxm (5.64 sn) mode=compact
+[0069/1054] BASARILI uxm\tests\all_expected_known\0079__s10_STAGE10_hotfix1__uxm_tests_v33_test_v33_complex_basic__0344e7a13a.uxm (4.72 sn) mode=compact
+[0070/1054] BASARILI uxm\tests\all_expected_known\0080__s10_STAGE10_hotfix1__uxm_tests_v33_test_v33_corr_regression__7845beefc2.uxm (5.88 sn) mode=compact
+[0071/1054] BASARILI uxm\tests\all_expected_known\0081__s10_STAGE10_hotfix1__uxm_tests_v33_test_v33_dynamic_meta_addr__f1e7679b77.uxm (5.34 sn) mode=compact
+[0072/1054] BASARILI uxm\tests\all_expected_known\0086__s10_STAGE10_hotfix1__uxm_tests_v33_test_v33_matadv_det_rank_norm__8b59b573be.uxm (5.46 sn) mode=compact
+[0073/1054] BASARILI uxm\tests\all_expected_known\0087__s10_STAGE10_hotfix1__uxm_tests_v33_test_v33_matadv_inverse_identity__b905ef3b4a.uxm (5.05 sn) mode=compact
+[0074/1054] BASARILI uxm\tests\all_expected_known\0088__s10_STAGE10_hotfix1__uxm_tests_v33_test_v33_numeric_poly_integral__dad9497505.uxm (4.93 sn) mode=compact
+[0075/1054] BASARILI uxm\tests\all_expected_known\0089__s10_STAGE10_hotfix1__uxm_tests_v33_test_v33_probability_random__0cedf8d236.uxm (4.84 sn) mode=compact
+[0076/1054] BASARILI uxm\tests\all_expected_known\0091__s10_STAGE10_hotfix1__uxm_tests_v33_test_v33_stat_median_variance__e6d4a047a9.uxm (5.54 sn) mode=compact
+[0077/1054] BASARILI uxm\tests\all_expected_known\0092__s10_STAGE10_hotfix1__uxm_tests_v33_test_v33_stat_sum_mean_minmax__282ab4ea3a.uxm (5.45 sn) mode=compact
+[0078/1054] BASARILI uxm\tests\all_expected_known\0099__s10_STAGE10_hotfix1__uxm_tests_v33_test_v33_tensor_basic__1583c8b3e6.uxm (4.83 sn) mode=compact
+[0079/1054] BASARILI uxm\tests\all_expected_known\0100__s10_STAGE10_matrix_adv_tensor__uxm_tests_fp_test_fp01_add_int__18c1725f7c.uxm (5.08 sn) mode=compact
+[0080/1054] BASARILI uxm\tests\all_expected_known\0101__s10_STAGE10_matrix_adv_tensor__uxm_tests_fp_test_fp02_sub_int__6ecba5893d.uxm (5.05 sn) mode=compact
+[0081/1054] BASARILI uxm\tests\all_expected_known\0102__s10_STAGE10_matrix_adv_tensor__uxm_tests_fp_test_fp03_mul_int__c545076a65.uxm (4.51 sn) mode=compact
+[0082/1054] BASARILI uxm\tests\all_expected_known\0103__s10_STAGE10_matrix_adv_tensor__uxm_tests_fp_test_fp04_div_int__d98e9e479e.uxm (5.17 sn) mode=compact
+[0083/1054] BASARILI uxm\tests\all_expected_known\0104__s10_STAGE10_matrix_adv_tensor__uxm_tests_fp_test_fp05_from_string__7dcbf9b0c9.uxm (4.76 sn) mode=compact
+[0084/1054] BASARILI uxm\tests\all_expected_known\0105__s10_STAGE10_matrix_adv_tensor__uxm_tests_fp_test_fp06_add_dec_string__1caccb2f3c.uxm (5.08 sn) mode=compact
+[0085/1054] BASARILI uxm\tests\all_expected_known\0106__s10_STAGE10_matrix_adv_tensor__uxm_tests_fp_test_fp07_int_zero_sign_abs__3a5c5c2bca.uxm (5.21 sn) mode=compact
+[0086/1054] BASARILI uxm\tests\all_expected_known\0107__s10_STAGE10_matrix_adv_tensor__uxm_tests_math_test_math01_poly_deriv_arge__dea08874ec.uxm (4.92 sn) mode=compact
+[0087/1054] BASARILI uxm\tests\all_expected_known\0108__s10_STAGE10_matrix_adv_tensor__uxm_tests_math_test_math02_poly_integral_arge__f2b514b3e4.uxm (4.79 sn) mode=compact
+[0088/1054] BASARILI uxm\tests\all_expected_known\0109__s10_STAGE10_matrix_adv_tensor__uxm_tests_math_test_math03_poly_eval_arge__7f1d2b2783.uxm (5.15 sn) mode=compact
+[0089/1054] BASARILI uxm\tests\all_expected_known\0110__s10_STAGE10_matrix_adv_tensor__uxm_tests_math_test_math04_expr_rpn_eval__2f2f641449.uxm (5.11 sn) mode=compact
+[0090/1054] BASARILI uxm\tests\all_expected_known\0111__s10_STAGE10_matrix_adv_tensor__uxm_tests_math_test_math05_num_deriv__191a99caff.uxm (4.90 sn) mode=compact
+[0091/1054] BASARILI uxm\tests\all_expected_known\0112__s10_STAGE10_matrix_adv_tensor__uxm_tests_math_test_math06_integral_trap__f9df1f263f.uxm (5.79 sn) mode=compact
+[0092/1054] BASARILI uxm\tests\all_expected_known\0113__s10_STAGE10_matrix_adv_tensor__uxm_tests_math_test_math07_integral_simpson__7adae488ba.uxm (6.12 sn) mode=compact
+[0093/1054] BASARILI uxm\tests\all_expected_known\0114__s10_STAGE10_matrix_adv_tensor__uxm_tests_matrix_tmp_det_debug__0ea11514b5.uxm (4.94 sn) mode=compact
+[0094/1054] BASARILI uxm\tests\all_expected_known\0115__s10_STAGE10_matrix_adv_tensor__uxm_tests_matrix_test_matrix01_init_set_print__15a7b101f5.uxm (5.42 sn) mode=compact
+[0095/1054] BASARILI uxm\tests\all_expected_known\0116__s10_STAGE10_matrix_adv_tensor__uxm_tests_matrix_test_matrix02_add_2x2__d6ea7d27d1.uxm (5.52 sn) mode=compact
+[0096/1054] BASARILI uxm\tests\all_expected_known\0117__s10_STAGE10_matrix_adv_tensor__uxm_tests_matrix_test_matrix03_mul_2x2__41485263d4.uxm (4.85 sn) mode=compact
+[0097/1054] BASARILI uxm\tests\all_expected_known\0118__s10_STAGE10_matrix_adv_tensor__uxm_tests_matrix_test_matrix04_identity_trace_det2__dc519cfef9.uxm (5.06 sn) mode=compact
+[0098/1054] BASARILI uxm\tests\all_expected_known\0119__s10_STAGE10_matrix_adv_tensor__uxm_tests_native_test01_print_A__b500a9cd9d.uxm (4.64 sn) mode=compact
+[0099/1054] BASARILI uxm\tests\all_expected_known\0123__s10_STAGE10_matrix_adv_tensor__uxm_tests_native_test05_meta_add__7f35cb022e.uxm (4.36 sn) mode=compact
+[0100/1054] BASARILI uxm\tests\all_expected_known\0124__s10_STAGE10_matrix_adv_tensor__uxm_tests_native_test06_dynamic_meta_mul__29485899d9.uxm (5.16 sn) mode=compact
+[0101/1054] BASARILI uxm\tests\all_expected_known\0127__s10_STAGE10_matrix_adv_tensor__uxm_tests_native_test09_div_mod__a7bc2502ca.uxm (4.93 sn) mode=compact
+[0102/1054] BASARILI uxm\tests\all_expected_known\0128__s10_STAGE10_matrix_adv_tensor__uxm_tests_native_test10_sin_scaled__ecc0b20106.uxm (4.88 sn) mode=compact
+[0103/1054] BASARILI uxm\tests\all_expected_known\0129__s10_STAGE10_matrix_adv_tensor__uxm_tests_native_test11_hypotenuse__a38c889f46.uxm (5.16 sn) mode=compact
+[0104/1054] BASARILI uxm\tests\all_expected_known\0130__s10_STAGE10_matrix_adv_tensor__uxm_tests_native_test12_signed_mode__7d57850849.uxm (5.24 sn) mode=compact
+[0105/1054] BASARILI uxm\tests\all_expected_known\0131__s10_STAGE10_matrix_adv_tensor__uxm_tests_native_test13_status_div_zero__1517d0d659.uxm (4.69 sn) mode=compact
+[0106/1054] BASARILI uxm\tests\all_expected_known\0132__s10_STAGE10_matrix_adv_tensor__uxm_tests_native_test14_branch_current_zero__475660ecab.uxm (5.71 sn) mode=compact
+[0107/1054] BASARILI uxm\tests\all_expected_known\0133__s10_STAGE10_matrix_adv_tensor__uxm_tests_native_test15_branch_nonzero__264c6a7d20.uxm (5.54 sn) mode=compact
+[0108/1054] BASARILI uxm\tests\all_expected_known\0134__s10_STAGE10_matrix_adv_tensor__uxm_tests_native_test16_data_digit__8156a7eb55.uxm (6.43 sn) mode=compact
+[0109/1054] BASARILI uxm\tests\all_expected_known\0136__s10_STAGE10_matrix_adv_tensor__uxm_tests_native_test18_pointer_service__df26f04e62.uxm (6.18 sn) mode=compact
+[0110/1054] BASARILI uxm\tests\all_expected_known\0137__s10_STAGE10_matrix_adv_tensor__uxm_tests_native_test20_fifo_char_order__c1764b342c.uxm (4.52 sn) mode=compact
+[0111/1054] BASARILI uxm\tests\all_expected_known\0138__s10_STAGE10_matrix_adv_tensor__uxm_tests_native_test21_fifo_count_peek__7cbb128eb0.uxm (5.13 sn) mode=compact
+[0112/1054] BASARILI uxm\tests\all_expected_known\0139__s10_STAGE10_matrix_adv_tensor__uxm_tests_native_test22_data_write_read_char__73195918bb.uxm (5.53 sn) mode=compact
+[0113/1054] BASARILI uxm\tests\all_expected_known\0140__s10_STAGE10_matrix_adv_tensor__uxm_tests_native_test23_data_digit_ascii_to_number__ce86650ec8.uxm (5.04 sn) mode=compact
+[0114/1054] BASARILI uxm\tests\all_expected_known\0141__s10_STAGE10_matrix_adv_tensor__uxm_tests_native_test24_data_block_copy_print__0544393ce5.uxm (5.41 sn) mode=compact
+[0115/1054] BASARILI uxm\tests\all_expected_known\0142__s10_STAGE10_matrix_adv_tensor__uxm_tests_native_test25_data_sort_ascending__d04d7a1665.uxm (5.45 sn) mode=compact
+[0116/1054] BASARILI uxm\tests\all_expected_known\0143__s10_STAGE10_matrix_adv_tensor__uxm_tests_native_test26_tape_sort_descending_chars__9f54dd8c13.uxm (4.35 sn) mode=compact
+[0117/1054] BASARILI uxm\tests\all_expected_known\0144__s10_STAGE10_matrix_adv_tensor__uxm_tests_native_test27_tape_linear_search__2cd880af08.uxm (5.18 sn) mode=compact
+[0118/1054] BASARILI uxm\tests\all_expected_known\0145__s10_STAGE10_matrix_adv_tensor__uxm_tests_native_test28_dynamic_meta_fifo__f394e8656d.uxm (5.34 sn) mode=compact
+[0119/1054] BASARILI uxm\tests\all_expected_known\0146__s10_STAGE10_matrix_adv_tensor__uxm_tests_native_test29_nested_macro_call__b41ffab903.uxm (4.69 sn) mode=compact
+[0120/1054] BASARILI uxm\tests\all_expected_known\0147__s10_STAGE10_matrix_adv_tensor__uxm_tests_native_test30_word_mode_add__e96c724f19.uxm (5.47 sn) mode=compact
+[0121/1054] BASARILI uxm\tests\all_expected_known\0148__s10_STAGE10_matrix_adv_tensor__uxm_tests_native_test31_safe_mode_wild_denied__656fd3964f.uxm (4.73 sn) mode=compact
+[0122/1054] BASARILI uxm\tests\all_expected_known\0149__s10_STAGE10_matrix_adv_tensor__uxm_tests_native_test32_wild_layout_change__f8cad9d531.uxm (4.12 sn) mode=compact
+[0123/1054] BASARILI uxm\tests\all_expected_known\0150__s10_STAGE10_matrix_adv_tensor__uxm_tests_native_test33_bitwise_and_stack__41357a25c4.uxm (4.81 sn) mode=compact
+[0124/1054] BASARILI uxm\tests\all_expected_known\0151__s10_STAGE10_matrix_adv_tensor__uxm_tests_native_test34_data_block_clear__6d10b5d36d.uxm (5.03 sn) mode=compact
+[0125/1054] BASARILI uxm\tests\all_expected_known\0152__s10_STAGE10_matrix_adv_tensor__uxm_tests_native_test35_optimizer_visible_result__57396ffe1e.uxm (4.78 sn) mode=compact
+[0126/1054] BASARILI uxm\tests\all_expected_known\0153__s10_STAGE10_matrix_adv_tensor__uxm_tests_native_test40_4bit_cpu_alu_model__ae78c75f2f.uxm (5.02 sn) mode=compact
+[0127/1054] BASARILI uxm\tests\all_expected_known\0154__s10_STAGE10_matrix_adv_tensor__uxm_tests_native_test41_4_neuron_nn_model__7677e9cfea.uxm (5.12 sn) mode=compact
+[0128/1054] BASARILI uxm\tests\all_expected_known\0155__s10_STAGE10_matrix_adv_tensor__uxm_tests_native_test42_error_flag_set_reset__ac85ba06fb.uxm (4.13 sn) mode=compact
+[0129/1054] BASARILI uxm\tests\all_expected_known\0156__s10_STAGE10_matrix_adv_tensor__uxm_tests_native_test43_error_macro_helpers__8f6f291619.uxm (4.88 sn) mode=compact
+[0130/1054] BASARILI uxm\tests\all_expected_known\0157__s10_STAGE10_matrix_adv_tensor__uxm_tests_native_test44_asin__8ccbbd25d1.uxm (4.78 sn) mode=compact
+[0131/1054] BASARILI uxm\tests\all_expected_known\0158__s10_STAGE10_matrix_adv_tensor__uxm_tests_native_test44_meta_version_info__df2490ab11.uxm (5.18 sn) mode=compact
+[0132/1054] BASARILI uxm\tests\all_expected_known\0159__s10_STAGE10_matrix_adv_tensor__uxm_tests_native_test45_acos__3f525605df.uxm (4.95 sn) mode=compact
+[0133/1054] BASARILI uxm\tests\all_expected_known\0160__s10_STAGE10_matrix_adv_tensor__uxm_tests_native_test45_pointer_meta_extended__62f7d0b3ce.uxm (4.85 sn) mode=compact
+[0134/1054] BASARILI uxm\tests\all_expected_known\0161__s10_STAGE10_matrix_adv_tensor__uxm_tests_native_test46_fifo_clear__8d1f5ff5ef.uxm (4.53 sn) mode=compact
+[0135/1054] BASARILI uxm\tests\all_expected_known\0162__s10_STAGE10_matrix_adv_tensor__uxm_tests_native_test46_sqrt__ba2125299d.uxm (4.63 sn) mode=compact
+[0136/1054] BASARILI uxm\tests\all_expected_known\0163__s10_STAGE10_matrix_adv_tensor__uxm_tests_native_test47_sinh__bf870a2c68.uxm (4.78 sn) mode=compact
+[0137/1054] BASARILI uxm\tests\all_expected_known\0164__s10_STAGE10_matrix_adv_tensor__uxm_tests_native_test47_tape_sort_ascending__1ef486c6a9.uxm (5.06 sn) mode=compact
+[0138/1054] BASARILI uxm\tests\all_expected_known\0165__s10_STAGE10_matrix_adv_tensor__uxm_tests_native_test48_cosh__f8e0aaf176.uxm (4.75 sn) mode=compact
+[0139/1054] BASARILI uxm\tests\all_expected_known\0166__s10_STAGE10_matrix_adv_tensor__uxm_tests_native_test48_data_sort_descending__db3356afb6.uxm (6.65 sn) mode=compact
+[0140/1054] BASARILI uxm\tests\all_expected_known\0167__s10_STAGE10_matrix_adv_tensor__uxm_tests_native_test49_data_linear_search__962f7b8415.uxm (4.42 sn) mode=compact
+[0141/1054] BASARILI uxm\tests\all_expected_known\0168__s10_STAGE10_matrix_adv_tensor__uxm_tests_native_test49_tanh__9f2c8ceeca.uxm (6.40 sn) mode=compact
+[0142/1054] BASARILI uxm\tests\all_expected_known\0169__s10_STAGE10_matrix_adv_tensor__uxm_tests_native_test50_tape_block_copy_clear__0ea5b5be81.uxm (5.11 sn) mode=compact
+[0143/1054] BASARILI uxm\tests\all_expected_known\0170__s10_STAGE10_matrix_adv_tensor__uxm_tests_native_test51_meta_print_stack_pop__41df904a3e.uxm (5.68 sn) mode=compact
+[0144/1054] BASARILI uxm\tests\all_expected_known\0171__s10_STAGE10_matrix_adv_tensor__uxm_tests_native_test52_meta_print_hex__443105bf21.uxm (5.37 sn) mode=compact
+[0145/1054] BASARILI uxm\tests\all_expected_known\0172__s10_STAGE10_matrix_adv_tensor__uxm_tests_native_test53_meta_print_bin__746bc9c5a1.uxm (4.94 sn) mode=compact
+[0146/1054] BASARILI uxm\tests\all_expected_known\0173__s10_STAGE10_matrix_adv_tensor__uxm_tests_native_test54_meta_print_char_raw__73558fea56.uxm (4.33 sn) mode=compact
+[0147/1054] BASARILI uxm\tests\all_expected_known\0178__s10_STAGE10_matrix_adv_tensor__uxm_tests_v33_test_v33_complex_basic__0344e7a13a.uxm (5.00 sn) mode=compact
+[0148/1054] BASARILI uxm\tests\all_expected_known\0179__s10_STAGE10_matrix_adv_tensor__uxm_tests_v33_test_v33_corr_regression__7845beefc2.uxm (5.58 sn) mode=compact
+[0149/1054] BASARILI uxm\tests\all_expected_known\0180__s10_STAGE10_matrix_adv_tensor__uxm_tests_v33_test_v33_dynamic_meta_addr__f1e7679b77.uxm (5.06 sn) mode=compact
+[0150/1054] BASARILI uxm\tests\all_expected_known\0185__s10_STAGE10_matrix_adv_tensor__uxm_tests_v33_test_v33_matadv_det_rank_norm__8b59b573be.uxm (5.61 sn) mode=compact
+[0151/1054] BASARILI uxm\tests\all_expected_known\0186__s10_STAGE10_matrix_adv_tensor__uxm_tests_v33_test_v33_matadv_inverse_identity__b905ef3b4a.uxm (5.20 sn) mode=compact
+[0152/1054] BASARILI uxm\tests\all_expected_known\0187__s10_STAGE10_matrix_adv_tensor__uxm_tests_v33_test_v33_numeric_poly_integral__dad9497505.uxm (5.05 sn) mode=compact
+[0153/1054] BASARILI uxm\tests\all_expected_known\0188__s10_STAGE10_matrix_adv_tensor__uxm_tests_v33_test_v33_probability_random__0cedf8d236.uxm (5.45 sn) mode=compact
+[0154/1054] BASARILI uxm\tests\all_expected_known\0190__s10_STAGE10_matrix_adv_tensor__uxm_tests_v33_test_v33_stat_median_variance__e6d4a047a9.uxm (5.25 sn) mode=compact
+[0155/1054] BASARILI uxm\tests\all_expected_known\0191__s10_STAGE10_matrix_adv_tensor__uxm_tests_v33_test_v33_stat_sum_mean_minmax__282ab4ea3a.uxm (4.76 sn) mode=compact
+[0156/1054] BASARILI uxm\tests\all_expected_known\0198__s10_STAGE10_matrix_adv_tensor__uxm_tests_v33_test_v33_tensor_basic__1583c8b3e6.uxm (4.94 sn) mode=compact
+[0157/1054] BASARILI uxm\tests\all_expected_known\0199__s11_STAGE11_tensor_advanced__uxm_tests_fp_test_fp01_add_int__18c1725f7c.uxm (4.69 sn) mode=compact
+[0158/1054] BASARILI uxm\tests\all_expected_known\0200__s11_STAGE11_tensor_advanced__uxm_tests_fp_test_fp02_sub_int__6ecba5893d.uxm (5.82 sn) mode=compact
+[0159/1054] BASARILI uxm\tests\all_expected_known\0201__s11_STAGE11_tensor_advanced__uxm_tests_fp_test_fp03_mul_int__c545076a65.uxm (4.80 sn) mode=compact
+[0160/1054] BASARILI uxm\tests\all_expected_known\0202__s11_STAGE11_tensor_advanced__uxm_tests_fp_test_fp04_div_int__d98e9e479e.uxm (5.89 sn) mode=compact
+[0161/1054] BASARILI uxm\tests\all_expected_known\0203__s11_STAGE11_tensor_advanced__uxm_tests_fp_test_fp05_from_string__7dcbf9b0c9.uxm (5.52 sn) mode=compact
+[0162/1054] BASARILI uxm\tests\all_expected_known\0204__s11_STAGE11_tensor_advanced__uxm_tests_fp_test_fp06_add_dec_string__1caccb2f3c.uxm (6.25 sn) mode=compact
+[0163/1054] BASARILI uxm\tests\all_expected_known\0205__s11_STAGE11_tensor_advanced__uxm_tests_fp_test_fp07_int_zero_sign_abs__3a5c5c2bca.uxm (4.85 sn) mode=compact
+[0164/1054] BASARILI uxm\tests\all_expected_known\0206__s11_STAGE11_tensor_advanced__uxm_tests_math_test_math01_poly_deriv_arge__dea08874ec.uxm (5.50 sn) mode=compact
+[0165/1054] BASARILI uxm\tests\all_expected_known\0207__s11_STAGE11_tensor_advanced__uxm_tests_math_test_math02_poly_integral_arge__f2b514b3e4.uxm (5.26 sn) mode=compact
+[0166/1054] BASARILI uxm\tests\all_expected_known\0208__s11_STAGE11_tensor_advanced__uxm_tests_math_test_math03_poly_eval_arge__7f1d2b2783.uxm (5.40 sn) mode=compact
+[0167/1054] BASARILI uxm\tests\all_expected_known\0209__s11_STAGE11_tensor_advanced__uxm_tests_math_test_math04_expr_rpn_eval__2f2f641449.uxm (5.55 sn) mode=compact
+[0168/1054] BASARILI uxm\tests\all_expected_known\0210__s11_STAGE11_tensor_advanced__uxm_tests_math_test_math05_num_deriv__191a99caff.uxm (5.08 sn) mode=compact
+[0169/1054] BASARILI uxm\tests\all_expected_known\0211__s11_STAGE11_tensor_advanced__uxm_tests_math_test_math06_integral_trap__f9df1f263f.uxm (4.26 sn) mode=compact
+[0170/1054] BASARILI uxm\tests\all_expected_known\0212__s11_STAGE11_tensor_advanced__uxm_tests_math_test_math07_integral_simpson__7adae488ba.uxm (4.85 sn) mode=compact
+[0171/1054] BASARILI uxm\tests\all_expected_known\0213__s11_STAGE11_tensor_advanced__uxm_tests_matrix_tmp_det_debug__0ea11514b5.uxm (4.95 sn) mode=compact
+[0172/1054] BASARILI uxm\tests\all_expected_known\0214__s11_STAGE11_tensor_advanced__uxm_tests_matrix_test_matrix01_init_set_print__15a7b101f5.uxm (4.97 sn) mode=compact
+[0173/1054] BASARILI uxm\tests\all_expected_known\0215__s11_STAGE11_tensor_advanced__uxm_tests_matrix_test_matrix02_add_2x2__d6ea7d27d1.uxm (6.80 sn) mode=compact
+[0174/1054] BASARILI uxm\tests\all_expected_known\0216__s11_STAGE11_tensor_advanced__uxm_tests_matrix_test_matrix03_mul_2x2__41485263d4.uxm (4.89 sn) mode=compact
+[0175/1054] BASARILI uxm\tests\all_expected_known\0217__s11_STAGE11_tensor_advanced__uxm_tests_matrix_test_matrix04_identity_trace_det2__dc519cfef9.uxm (4.82 sn) mode=compact
+[0176/1054] BASARILI uxm\tests\all_expected_known\0218__s11_STAGE11_tensor_advanced__uxm_tests_native_test01_print_A__b500a9cd9d.uxm (5.25 sn) mode=compact
+[0177/1054] BASARILI uxm\tests\all_expected_known\0222__s11_STAGE11_tensor_advanced__uxm_tests_native_test05_meta_add__7f35cb022e.uxm (6.05 sn) mode=compact
+[0178/1054] BASARILI uxm\tests\all_expected_known\0223__s11_STAGE11_tensor_advanced__uxm_tests_native_test06_dynamic_meta_mul__29485899d9.uxm (5.22 sn) mode=compact
+[0179/1054] BASARILI uxm\tests\all_expected_known\0226__s11_STAGE11_tensor_advanced__uxm_tests_native_test09_div_mod__a7bc2502ca.uxm (5.25 sn) mode=compact
+[0180/1054] BASARILI uxm\tests\all_expected_known\0227__s11_STAGE11_tensor_advanced__uxm_tests_native_test10_sin_scaled__ecc0b20106.uxm (5.86 sn) mode=compact
+[0181/1054] BASARILI uxm\tests\all_expected_known\0228__s11_STAGE11_tensor_advanced__uxm_tests_native_test11_hypotenuse__a38c889f46.uxm (5.39 sn) mode=compact
+[0182/1054] BASARILI uxm\tests\all_expected_known\0229__s11_STAGE11_tensor_advanced__uxm_tests_native_test12_signed_mode__7d57850849.uxm (5.00 sn) mode=compact
+[0183/1054] BASARILI uxm\tests\all_expected_known\0230__s11_STAGE11_tensor_advanced__uxm_tests_native_test13_status_div_zero__1517d0d659.uxm (5.38 sn) mode=compact
+[0184/1054] BASARILI uxm\tests\all_expected_known\0231__s11_STAGE11_tensor_advanced__uxm_tests_native_test14_branch_current_zero__475660ecab.uxm (5.39 sn) mode=compact
+[0185/1054] BASARILI uxm\tests\all_expected_known\0232__s11_STAGE11_tensor_advanced__uxm_tests_native_test15_branch_nonzero__264c6a7d20.uxm (4.93 sn) mode=compact
+[0186/1054] BASARILI uxm\tests\all_expected_known\0233__s11_STAGE11_tensor_advanced__uxm_tests_native_test16_data_digit__8156a7eb55.uxm (4.36 sn) mode=compact
+[0187/1054] BASARILI uxm\tests\all_expected_known\0235__s11_STAGE11_tensor_advanced__uxm_tests_native_test18_pointer_service__df26f04e62.uxm (5.25 sn) mode=compact
+[0188/1054] BASARILI uxm\tests\all_expected_known\0236__s11_STAGE11_tensor_advanced__uxm_tests_native_test20_fifo_char_order__c1764b342c.uxm (4.73 sn) mode=compact
+[0189/1054] BASARILI uxm\tests\all_expected_known\0237__s11_STAGE11_tensor_advanced__uxm_tests_native_test21_fifo_count_peek__7cbb128eb0.uxm (6.37 sn) mode=compact
+[0190/1054] BASARILI uxm\tests\all_expected_known\0238__s11_STAGE11_tensor_advanced__uxm_tests_native_test22_data_write_read_char__73195918bb.uxm (6.29 sn) mode=compact
+[0191/1054] BASARILI uxm\tests\all_expected_known\0239__s11_STAGE11_tensor_advanced__uxm_tests_native_test23_data_digit_ascii_to_number__ce86650ec8.uxm (5.05 sn) mode=compact
+[0192/1054] BASARILI uxm\tests\all_expected_known\0240__s11_STAGE11_tensor_advanced__uxm_tests_native_test24_data_block_copy_print__0544393ce5.uxm (4.87 sn) mode=compact
+[0193/1054] BASARILI uxm\tests\all_expected_known\0241__s11_STAGE11_tensor_advanced__uxm_tests_native_test25_data_sort_ascending__d04d7a1665.uxm (4.89 sn) mode=compact
+[0194/1054] BASARILI uxm\tests\all_expected_known\0242__s11_STAGE11_tensor_advanced__uxm_tests_native_test26_tape_sort_descending_chars__9f54dd8c13.uxm (5.00 sn) mode=compact
+[0195/1054] BASARILI uxm\tests\all_expected_known\0243__s11_STAGE11_tensor_advanced__uxm_tests_native_test27_tape_linear_search__2cd880af08.uxm (5.38 sn) mode=compact
+[0196/1054] BASARILI uxm\tests\all_expected_known\0244__s11_STAGE11_tensor_advanced__uxm_tests_native_test28_dynamic_meta_fifo__f394e8656d.uxm (4.88 sn) mode=compact
+[0197/1054] BASARILI uxm\tests\all_expected_known\0245__s11_STAGE11_tensor_advanced__uxm_tests_native_test29_nested_macro_call__b41ffab903.uxm (4.57 sn) mode=compact
+[0198/1054] BASARILI uxm\tests\all_expected_known\0246__s11_STAGE11_tensor_advanced__uxm_tests_native_test30_word_mode_add__e96c724f19.uxm (4.69 sn) mode=compact
+[0199/1054] BASARILI uxm\tests\all_expected_known\0247__s11_STAGE11_tensor_advanced__uxm_tests_native_test31_safe_mode_wild_denied__656fd3964f.uxm (5.39 sn) mode=compact
+[0200/1054] BASARILI uxm\tests\all_expected_known\0248__s11_STAGE11_tensor_advanced__uxm_tests_native_test32_wild_layout_change__f8cad9d531.uxm (4.87 sn) mode=compact
+[0201/1054] BASARILI uxm\tests\all_expected_known\0249__s11_STAGE11_tensor_advanced__uxm_tests_native_test33_bitwise_and_stack__41357a25c4.uxm (5.26 sn) mode=compact
+[0202/1054] BASARILI uxm\tests\all_expected_known\0250__s11_STAGE11_tensor_advanced__uxm_tests_native_test34_data_block_clear__6d10b5d36d.uxm (5.02 sn) mode=compact
+[0203/1054] BASARILI uxm\tests\all_expected_known\0251__s11_STAGE11_tensor_advanced__uxm_tests_native_test35_optimizer_visible_result__57396ffe1e.uxm (4.56 sn) mode=compact
+[0204/1054] BASARILI uxm\tests\all_expected_known\0252__s11_STAGE11_tensor_advanced__uxm_tests_native_test40_4bit_cpu_alu_model__ae78c75f2f.uxm (5.26 sn) mode=compact
+[0205/1054] BASARILI uxm\tests\all_expected_known\0253__s11_STAGE11_tensor_advanced__uxm_tests_native_test41_4_neuron_nn_model__7677e9cfea.uxm (5.12 sn) mode=compact
+[0206/1054] BASARILI uxm\tests\all_expected_known\0254__s11_STAGE11_tensor_advanced__uxm_tests_native_test42_error_flag_set_reset__ac85ba06fb.uxm (4.97 sn) mode=compact
+[0207/1054] BASARILI uxm\tests\all_expected_known\0255__s11_STAGE11_tensor_advanced__uxm_tests_native_test43_error_macro_helpers__8f6f291619.uxm (4.90 sn) mode=compact
+[0208/1054] BASARILI uxm\tests\all_expected_known\0256__s11_STAGE11_tensor_advanced__uxm_tests_native_test44_asin__8ccbbd25d1.uxm (5.89 sn) mode=compact
+[0209/1054] BASARILI uxm\tests\all_expected_known\0257__s11_STAGE11_tensor_advanced__uxm_tests_native_test44_meta_version_info__df2490ab11.uxm (4.51 sn) mode=compact
+[0210/1054] BASARILI uxm\tests\all_expected_known\0258__s11_STAGE11_tensor_advanced__uxm_tests_native_test45_acos__3f525605df.uxm (4.90 sn) mode=compact
+[0211/1054] BASARILI uxm\tests\all_expected_known\0259__s11_STAGE11_tensor_advanced__uxm_tests_native_test45_pointer_meta_extended__62f7d0b3ce.uxm (5.21 sn) mode=compact
+[0212/1054] BASARILI uxm\tests\all_expected_known\0260__s11_STAGE11_tensor_advanced__uxm_tests_native_test46_fifo_clear__8d1f5ff5ef.uxm (4.89 sn) mode=compact
+[0213/1054] BASARILI uxm\tests\all_expected_known\0261__s11_STAGE11_tensor_advanced__uxm_tests_native_test46_sqrt__ba2125299d.uxm (4.83 sn) mode=compact
+[0214/1054] BASARILI uxm\tests\all_expected_known\0262__s11_STAGE11_tensor_advanced__uxm_tests_native_test47_sinh__bf870a2c68.uxm (5.11 sn) mode=compact
+[0215/1054] BASARILI uxm\tests\all_expected_known\0263__s11_STAGE11_tensor_advanced__uxm_tests_native_test47_tape_sort_ascending__1ef486c6a9.uxm (4.59 sn) mode=compact
+[0216/1054] BASARILI uxm\tests\all_expected_known\0264__s11_STAGE11_tensor_advanced__uxm_tests_native_test48_cosh__f8e0aaf176.uxm (4.80 sn) mode=compact
+[0217/1054] BASARILI uxm\tests\all_expected_known\0265__s11_STAGE11_tensor_advanced__uxm_tests_native_test48_data_sort_descending__db3356afb6.uxm (5.14 sn) mode=compact
+[0218/1054] BASARILI uxm\tests\all_expected_known\0266__s11_STAGE11_tensor_advanced__uxm_tests_native_test49_data_linear_search__962f7b8415.uxm (4.98 sn) mode=compact
+[0219/1054] BASARILI uxm\tests\all_expected_known\0267__s11_STAGE11_tensor_advanced__uxm_tests_native_test49_tanh__9f2c8ceeca.uxm (4.82 sn) mode=compact
+[0220/1054] BASARILI uxm\tests\all_expected_known\0268__s11_STAGE11_tensor_advanced__uxm_tests_native_test50_tape_block_copy_clear__0ea5b5be81.uxm (5.06 sn) mode=compact
+[0221/1054] BASARILI uxm\tests\all_expected_known\0269__s11_STAGE11_tensor_advanced__uxm_tests_native_test51_meta_print_stack_pop__41df904a3e.uxm (4.55 sn) mode=compact
+[0222/1054] BASARILI uxm\tests\all_expected_known\0270__s11_STAGE11_tensor_advanced__uxm_tests_native_test52_meta_print_hex__443105bf21.uxm (4.97 sn) mode=compact
+[0223/1054] BASARILI uxm\tests\all_expected_known\0271__s11_STAGE11_tensor_advanced__uxm_tests_native_test53_meta_print_bin__746bc9c5a1.uxm (5.34 sn) mode=compact
+[0224/1054] BASARILI uxm\tests\all_expected_known\0272__s11_STAGE11_tensor_advanced__uxm_tests_native_test54_meta_print_char_raw__73558fea56.uxm (4.93 sn) mode=compact
+[0225/1054] BASARILI uxm\tests\all_expected_known\0277__s11_STAGE11_tensor_advanced__uxm_tests_v33_test_v33_complex_basic__0344e7a13a.uxm (5.20 sn) mode=compact
+[0226/1054] BASARILI uxm\tests\all_expected_known\0278__s11_STAGE11_tensor_advanced__uxm_tests_v33_test_v33_corr_regression__7845beefc2.uxm (4.97 sn) mode=compact
+[0227/1054] BASARILI uxm\tests\all_expected_known\0279__s11_STAGE11_tensor_advanced__uxm_tests_v33_test_v33_dynamic_meta_addr__f1e7679b77.uxm (4.67 sn) mode=compact
+[0228/1054] BASARILI uxm\tests\all_expected_known\0284__s11_STAGE11_tensor_advanced__uxm_tests_v33_test_v33_matadv_det_rank_norm__8b59b573be.uxm (4.74 sn) mode=compact
+[0229/1054] BASARILI uxm\tests\all_expected_known\0285__s11_STAGE11_tensor_advanced__uxm_tests_v33_test_v33_matadv_inverse_identity__b905ef3b4a.uxm (5.14 sn) mode=compact
+[0230/1054] BASARILI uxm\tests\all_expected_known\0286__s11_STAGE11_tensor_advanced__uxm_tests_v33_test_v33_numeric_poly_integral__dad9497505.uxm (5.57 sn) mode=compact
+[0231/1054] BASARILI uxm\tests\all_expected_known\0287__s11_STAGE11_tensor_advanced__uxm_tests_v33_test_v33_probability_random__0cedf8d236.uxm (5.28 sn) mode=compact
+[0232/1054] BASARILI uxm\tests\all_expected_known\0289__s11_STAGE11_tensor_advanced__uxm_tests_v33_test_v33_stat_median_variance__e6d4a047a9.uxm (6.13 sn) mode=compact
+[0233/1054] BASARILI uxm\tests\all_expected_known\0290__s11_STAGE11_tensor_advanced__uxm_tests_v33_test_v33_stat_sum_mean_minmax__282ab4ea3a.uxm (4.45 sn) mode=compact
+[0234/1054] BASARILI uxm\tests\all_expected_known\0300__s11_STAGE11_tensor_advanced__uxm_tests_v33_test_v33_tensor_basic__1583c8b3e6.uxm (5.03 sn) mode=compact
+[0235/1054] BASARILI uxm\tests\all_expected_known\0301__s12_STAGE12_tensor_advanced2__uxm_tests_fp_test_fp01_add_int__18c1725f7c.uxm (4.96 sn) mode=compact
+[0236/1054] BASARILI uxm\tests\all_expected_known\0302__s12_STAGE12_tensor_advanced2__uxm_tests_fp_test_fp02_sub_int__6ecba5893d.uxm (5.30 sn) mode=compact
+[0237/1054] BASARILI uxm\tests\all_expected_known\0303__s12_STAGE12_tensor_advanced2__uxm_tests_fp_test_fp03_mul_int__c545076a65.uxm (4.87 sn) mode=compact
+[0238/1054] BASARILI uxm\tests\all_expected_known\0304__s12_STAGE12_tensor_advanced2__uxm_tests_fp_test_fp04_div_int__d98e9e479e.uxm (4.89 sn) mode=compact
+[0239/1054] BASARILI uxm\tests\all_expected_known\0305__s12_STAGE12_tensor_advanced2__uxm_tests_fp_test_fp05_from_string__7dcbf9b0c9.uxm (4.61 sn) mode=compact
+[0240/1054] BASARILI uxm\tests\all_expected_known\0306__s12_STAGE12_tensor_advanced2__uxm_tests_fp_test_fp06_add_dec_string__1caccb2f3c.uxm (5.06 sn) mode=compact
+[0241/1054] BASARILI uxm\tests\all_expected_known\0307__s12_STAGE12_tensor_advanced2__uxm_tests_fp_test_fp07_int_zero_sign_abs__3a5c5c2bca.uxm (4.86 sn) mode=compact
+[0242/1054] BASARILI uxm\tests\all_expected_known\0308__s12_STAGE12_tensor_advanced2__uxm_tests_math_test_math01_poly_deriv_arge__dea08874ec.uxm (4.81 sn) mode=compact
+[0243/1054] BASARILI uxm\tests\all_expected_known\0309__s12_STAGE12_tensor_advanced2__uxm_tests_math_test_math02_poly_integral_arge__f2b514b3e4.uxm (5.13 sn) mode=compact
+[0244/1054] BASARILI uxm\tests\all_expected_known\0310__s12_STAGE12_tensor_advanced2__uxm_tests_math_test_math03_poly_eval_arge__7f1d2b2783.uxm (5.06 sn) mode=compact
+[0245/1054] BASARILI uxm\tests\all_expected_known\0311__s12_STAGE12_tensor_advanced2__uxm_tests_math_test_math04_expr_rpn_eval__2f2f641449.uxm (4.81 sn) mode=compact
+[0246/1054] BASARILI uxm\tests\all_expected_known\0312__s12_STAGE12_tensor_advanced2__uxm_tests_math_test_math05_num_deriv__191a99caff.uxm (4.87 sn) mode=compact
+[0247/1054] BASARILI uxm\tests\all_expected_known\0313__s12_STAGE12_tensor_advanced2__uxm_tests_math_test_math06_integral_trap__f9df1f263f.uxm (4.83 sn) mode=compact
+[0248/1054] BASARILI uxm\tests\all_expected_known\0314__s12_STAGE12_tensor_advanced2__uxm_tests_math_test_math07_integral_simpson__7adae488ba.uxm (5.07 sn) mode=compact
+[0249/1054] BASARILI uxm\tests\all_expected_known\0315__s12_STAGE12_tensor_advanced2__uxm_tests_matrix_tmp_det_debug__0ea11514b5.uxm (4.92 sn) mode=compact
+[0250/1054] BASARILI uxm\tests\all_expected_known\0316__s12_STAGE12_tensor_advanced2__uxm_tests_matrix_test_matrix01_init_set_print__15a7b101f5.uxm (4.91 sn) mode=compact
+[0251/1054] BASARILI uxm\tests\all_expected_known\0317__s12_STAGE12_tensor_advanced2__uxm_tests_matrix_test_matrix02_add_2x2__d6ea7d27d1.uxm (4.68 sn) mode=compact
+[0252/1054] BASARILI uxm\tests\all_expected_known\0318__s12_STAGE12_tensor_advanced2__uxm_tests_matrix_test_matrix03_mul_2x2__41485263d4.uxm (4.96 sn) mode=compact
+[0253/1054] BASARILI uxm\tests\all_expected_known\0319__s12_STAGE12_tensor_advanced2__uxm_tests_matrix_test_matrix04_identity_trace_det2__dc519cfef9.uxm (5.63 sn) mode=compact
+[0254/1054] BASARILI uxm\tests\all_expected_known\0320__s12_STAGE12_tensor_advanced2__uxm_tests_native_test01_print_A__b500a9cd9d.uxm (6.04 sn) mode=compact
+[0255/1054] BASARILI uxm\tests\all_expected_known\0324__s12_STAGE12_tensor_advanced2__uxm_tests_native_test05_meta_add__7f35cb022e.uxm (5.60 sn) mode=compact
+[0256/1054] BASARILI uxm\tests\all_expected_known\0325__s12_STAGE12_tensor_advanced2__uxm_tests_native_test06_dynamic_meta_mul__29485899d9.uxm (6.04 sn) mode=compact
+[0257/1054] BASARILI uxm\tests\all_expected_known\0328__s12_STAGE12_tensor_advanced2__uxm_tests_native_test09_div_mod__a7bc2502ca.uxm (4.97 sn) mode=compact
+[0258/1054] BASARILI uxm\tests\all_expected_known\0329__s12_STAGE12_tensor_advanced2__uxm_tests_native_test10_sin_scaled__ecc0b20106.uxm (5.33 sn) mode=compact
+[0259/1054] BASARILI uxm\tests\all_expected_known\0330__s12_STAGE12_tensor_advanced2__uxm_tests_native_test11_hypotenuse__a38c889f46.uxm (4.94 sn) mode=compact
+[0260/1054] BASARILI uxm\tests\all_expected_known\0331__s12_STAGE12_tensor_advanced2__uxm_tests_native_test12_signed_mode__7d57850849.uxm (7.78 sn) mode=compact
+[0261/1054] BASARILI uxm\tests\all_expected_known\0332__s12_STAGE12_tensor_advanced2__uxm_tests_native_test13_status_div_zero__1517d0d659.uxm (7.26 sn) mode=compact
+[0262/1054] BASARILI uxm\tests\all_expected_known\0333__s12_STAGE12_tensor_advanced2__uxm_tests_native_test14_branch_current_zero__475660ecab.uxm (4.73 sn) mode=compact
+[0263/1054] BASARILI uxm\tests\all_expected_known\0334__s12_STAGE12_tensor_advanced2__uxm_tests_native_test15_branch_nonzero__264c6a7d20.uxm (4.49 sn) mode=compact
+[0264/1054] BASARILI uxm\tests\all_expected_known\0335__s12_STAGE12_tensor_advanced2__uxm_tests_native_test16_data_digit__8156a7eb55.uxm (5.56 sn) mode=compact
+[0265/1054] BASARILI uxm\tests\all_expected_known\0337__s12_STAGE12_tensor_advanced2__uxm_tests_native_test18_pointer_service__df26f04e62.uxm (5.12 sn) mode=compact
+[0266/1054] BASARILI uxm\tests\all_expected_known\0338__s12_STAGE12_tensor_advanced2__uxm_tests_native_test20_fifo_char_order__c1764b342c.uxm (6.37 sn) mode=compact
+[0267/1054] BASARILI uxm\tests\all_expected_known\0339__s12_STAGE12_tensor_advanced2__uxm_tests_native_test21_fifo_count_peek__7cbb128eb0.uxm (6.86 sn) mode=compact
+[0268/1054] BASARILI uxm\tests\all_expected_known\0340__s12_STAGE12_tensor_advanced2__uxm_tests_native_test22_data_write_read_char__73195918bb.uxm (6.22 sn) mode=compact
+[0269/1054] BASARILI uxm\tests\all_expected_known\0341__s12_STAGE12_tensor_advanced2__uxm_tests_native_test23_data_digit_ascii_to_number__ce86650ec8.uxm (6.73 sn) mode=compact
+[0270/1054] BASARILI uxm\tests\all_expected_known\0342__s12_STAGE12_tensor_advanced2__uxm_tests_native_test24_data_block_copy_print__0544393ce5.uxm (5.63 sn) mode=compact
+[0271/1054] BASARILI uxm\tests\all_expected_known\0343__s12_STAGE12_tensor_advanced2__uxm_tests_native_test25_data_sort_ascending__d04d7a1665.uxm (5.20 sn) mode=compact
+[0272/1054] BASARILI uxm\tests\all_expected_known\0344__s12_STAGE12_tensor_advanced2__uxm_tests_native_test26_tape_sort_descending_chars__9f54dd8c13.uxm (5.98 sn) mode=compact
+[0273/1054] BASARILI uxm\tests\all_expected_known\0345__s12_STAGE12_tensor_advanced2__uxm_tests_native_test27_tape_linear_search__2cd880af08.uxm (5.72 sn) mode=compact
+[0274/1054] BASARILI uxm\tests\all_expected_known\0346__s12_STAGE12_tensor_advanced2__uxm_tests_native_test28_dynamic_meta_fifo__f394e8656d.uxm (6.49 sn) mode=compact
+[0275/1054] BASARILI uxm\tests\all_expected_known\0347__s12_STAGE12_tensor_advanced2__uxm_tests_native_test29_nested_macro_call__b41ffab903.uxm (5.30 sn) mode=compact
+[0276/1054] BASARILI uxm\tests\all_expected_known\0348__s12_STAGE12_tensor_advanced2__uxm_tests_native_test30_word_mode_add__e96c724f19.uxm (7.74 sn) mode=compact
+[0277/1054] BASARILI uxm\tests\all_expected_known\0349__s12_STAGE12_tensor_advanced2__uxm_tests_native_test31_safe_mode_wild_denied__656fd3964f.uxm (4.47 sn) mode=compact
+[0278/1054] BASARILI uxm\tests\all_expected_known\0350__s12_STAGE12_tensor_advanced2__uxm_tests_native_test32_wild_layout_change__f8cad9d531.uxm (4.49 sn) mode=compact
+[0279/1054] BASARILI uxm\tests\all_expected_known\0351__s12_STAGE12_tensor_advanced2__uxm_tests_native_test33_bitwise_and_stack__41357a25c4.uxm (5.13 sn) mode=compact
+[0280/1054] BASARILI uxm\tests\all_expected_known\0352__s12_STAGE12_tensor_advanced2__uxm_tests_native_test34_data_block_clear__6d10b5d36d.uxm (4.95 sn) mode=compact
+[0281/1054] BASARILI uxm\tests\all_expected_known\0353__s12_STAGE12_tensor_advanced2__uxm_tests_native_test35_optimizer_visible_result__57396ffe1e.uxm (5.00 sn) mode=compact
+[0282/1054] BASARILI uxm\tests\all_expected_known\0354__s12_STAGE12_tensor_advanced2__uxm_tests_native_test40_4bit_cpu_alu_model__ae78c75f2f.uxm (5.01 sn) mode=compact
+[0283/1054] BASARILI uxm\tests\all_expected_known\0355__s12_STAGE12_tensor_advanced2__uxm_tests_native_test41_4_neuron_nn_model__7677e9cfea.uxm (4.70 sn) mode=compact
+[0284/1054] BASARILI uxm\tests\all_expected_known\0356__s12_STAGE12_tensor_advanced2__uxm_tests_native_test42_error_flag_set_reset__ac85ba06fb.uxm (5.09 sn) mode=compact
+[0285/1054] BASARILI uxm\tests\all_expected_known\0357__s12_STAGE12_tensor_advanced2__uxm_tests_native_test43_error_macro_helpers__8f6f291619.uxm (5.64 sn) mode=compact
+[0286/1054] BASARILI uxm\tests\all_expected_known\0358__s12_STAGE12_tensor_advanced2__uxm_tests_native_test44_asin__8ccbbd25d1.uxm (5.75 sn) mode=compact
+[0287/1054] BASARILI uxm\tests\all_expected_known\0359__s12_STAGE12_tensor_advanced2__uxm_tests_native_test44_meta_version_info__df2490ab11.uxm (5.64 sn) mode=compact
+[0288/1054] BASARILI uxm\tests\all_expected_known\0360__s12_STAGE12_tensor_advanced2__uxm_tests_native_test45_acos__3f525605df.uxm (5.49 sn) mode=compact
+[0289/1054] BASARILI uxm\tests\all_expected_known\0361__s12_STAGE12_tensor_advanced2__uxm_tests_native_test45_pointer_meta_extended__62f7d0b3ce.uxm (4.95 sn) mode=compact
+[0290/1054] BASARILI uxm\tests\all_expected_known\0362__s12_STAGE12_tensor_advanced2__uxm_tests_native_test46_fifo_clear__8d1f5ff5ef.uxm (7.50 sn) mode=compact
+[0291/1054] BASARILI uxm\tests\all_expected_known\0363__s12_STAGE12_tensor_advanced2__uxm_tests_native_test46_sqrt__ba2125299d.uxm (6.96 sn) mode=compact
+[0292/1054] BASARILI uxm\tests\all_expected_known\0364__s12_STAGE12_tensor_advanced2__uxm_tests_native_test47_sinh__bf870a2c68.uxm (7.03 sn) mode=compact
+[0293/1054] BASARILI uxm\tests\all_expected_known\0365__s12_STAGE12_tensor_advanced2__uxm_tests_native_test47_tape_sort_ascending__1ef486c6a9.uxm (10.97 sn) mode=compact
+[0294/1054] BASARILI uxm\tests\all_expected_known\0366__s12_STAGE12_tensor_advanced2__uxm_tests_native_test48_cosh__f8e0aaf176.uxm (7.21 sn) mode=compact
+[0295/1054] BASARILI uxm\tests\all_expected_known\0367__s12_STAGE12_tensor_advanced2__uxm_tests_native_test48_data_sort_descending__db3356afb6.uxm (7.46 sn) mode=compact
+[0296/1054] BASARILI uxm\tests\all_expected_known\0368__s12_STAGE12_tensor_advanced2__uxm_tests_native_test49_data_linear_search__962f7b8415.uxm (7.46 sn) mode=compact
+[0297/1054] BASARILI uxm\tests\all_expected_known\0369__s12_STAGE12_tensor_advanced2__uxm_tests_native_test49_tanh__9f2c8ceeca.uxm (5.75 sn) mode=compact
+[0298/1054] BASARILI uxm\tests\all_expected_known\0370__s12_STAGE12_tensor_advanced2__uxm_tests_native_test50_tape_block_copy_clear__0ea5b5be81.uxm (4.76 sn) mode=compact
+[0299/1054] BASARILI uxm\tests\all_expected_known\0371__s12_STAGE12_tensor_advanced2__uxm_tests_native_test51_meta_print_stack_pop__41df904a3e.uxm (4.40 sn) mode=compact
+[0300/1054] BASARILI uxm\tests\all_expected_known\0372__s12_STAGE12_tensor_advanced2__uxm_tests_native_test52_meta_print_hex__443105bf21.uxm (6.73 sn) mode=compact
+[0301/1054] BASARILI uxm\tests\all_expected_known\0373__s12_STAGE12_tensor_advanced2__uxm_tests_native_test53_meta_print_bin__746bc9c5a1.uxm (6.95 sn) mode=compact
+[0302/1054] BASARILI uxm\tests\all_expected_known\0374__s12_STAGE12_tensor_advanced2__uxm_tests_native_test54_meta_print_char_raw__73558fea56.uxm (5.20 sn) mode=compact
+[0303/1054] BASARILI uxm\tests\all_expected_known\0379__s12_STAGE12_tensor_advanced2__uxm_tests_v33_test_v33_complex_basic__0344e7a13a.uxm (5.03 sn) mode=compact
+[0304/1054] BASARILI uxm\tests\all_expected_known\0380__s12_STAGE12_tensor_advanced2__uxm_tests_v33_test_v33_corr_regression__7845beefc2.uxm (4.84 sn) mode=compact
+[0305/1054] BASARILI uxm\tests\all_expected_known\0381__s12_STAGE12_tensor_advanced2__uxm_tests_v33_test_v33_dynamic_meta_addr__f1e7679b77.uxm (5.16 sn) mode=compact
+[0306/1054] BASARILI uxm\tests\all_expected_known\0386__s12_STAGE12_tensor_advanced2__uxm_tests_v33_test_v33_matadv_det_rank_norm__8b59b573be.uxm (6.31 sn) mode=compact
+[0307/1054] BASARILI uxm\tests\all_expected_known\0387__s12_STAGE12_tensor_advanced2__uxm_tests_v33_test_v33_matadv_inverse_identity__b905ef3b4a.uxm (5.36 sn) mode=compact
+[0308/1054] BASARILI uxm\tests\all_expected_known\0388__s12_STAGE12_tensor_advanced2__uxm_tests_v33_test_v33_numeric_poly_integral__dad9497505.uxm (5.34 sn) mode=compact
+[0309/1054] BASARILI uxm\tests\all_expected_known\0389__s12_STAGE12_tensor_advanced2__uxm_tests_v33_test_v33_probability_random__0cedf8d236.uxm (4.53 sn) mode=compact
+[0310/1054] BASARILI uxm\tests\all_expected_known\0391__s12_STAGE12_tensor_advanced2__uxm_tests_v33_test_v33_stat_median_variance__e6d4a047a9.uxm (5.45 sn) mode=compact
+[0311/1054] BASARILI uxm\tests\all_expected_known\0392__s12_STAGE12_tensor_advanced2__uxm_tests_v33_test_v33_stat_sum_mean_minmax__282ab4ea3a.uxm (5.27 sn) mode=compact
+[0312/1054] BASARILI uxm\tests\all_expected_known\0402__s12_STAGE12_tensor_advanced2__uxm_tests_v33_test_v33_tensor_basic__1583c8b3e6.uxm (6.00 sn) mode=compact
+[0313/1054] BASARILI uxm\tests\all_expected_known\0406__s13_STAGE13_sparse_vector__uxm_tests_v33_stage13_test_s13_integration_sparse_matvec_dot__b4cdd8b8bf.uxm (5.70 sn) mode=compact
+[0314/1054] BASARILI uxm\tests\all_expected_known\0407__s13_STAGE13_sparse_vector__uxm_tests_v33_stage13_test_s13_integration_vector_data_pipeline__c5a8da2a5c.uxm (4.12 sn) mode=compact
+[0315/1054] BASARILI uxm\tests\all_expected_known\0408__s13_STAGE13_sparse_vector__uxm_tests_v33_stage13_test_s13_sparse_get_entry_value__32a075b9cb.uxm (4.24 sn) mode=compact
+[0316/1054] BASARILI uxm\tests\all_expected_known\0409__s13_STAGE13_sparse_vector__uxm_tests_v33_stage13_test_s13_sparse_info__862d0fc41b.uxm (4.87 sn) mode=compact
+[0317/1054] BASARILI uxm\tests\all_expected_known\0410__s13_STAGE13_sparse_vector__uxm_tests_v33_stage13_test_s13_sparse_init__c4f46dbb4c.uxm (6.56 sn) mode=compact
+[0318/1054] BASARILI uxm\tests\all_expected_known\0411__s13_STAGE13_sparse_vector__uxm_tests_v33_stage13_test_s13_sparse_matvec__91ef962877.uxm (7.31 sn) mode=compact
+[0319/1054] BASARILI uxm\tests\all_expected_known\0412__s13_STAGE13_sparse_vector__uxm_tests_v33_stage13_test_s13_sparse_nnz__86112c5658.uxm (5.30 sn) mode=compact
+[0320/1054] BASARILI uxm\tests\all_expected_known\0413__s13_STAGE13_sparse_vector__uxm_tests_v33_stage13_test_s13_sparse_set_entry__0cf1ce5151.uxm (4.89 sn) mode=compact
+[0321/1054] BASARILI uxm\tests\all_expected_known\0414__s13_STAGE13_sparse_vector__uxm_tests_v33_stage13_test_s13_sparse_set_nnz__ae4dc0259d.uxm (4.97 sn) mode=compact
+[0322/1054] BASARILI uxm\tests\all_expected_known\0415__s13_STAGE13_sparse_vector__uxm_tests_v33_stage13_test_s13_sparse_sum_values__e2dff9a886.uxm (4.90 sn) mode=compact
+[0323/1054] BASARILI uxm\tests\all_expected_known\0416__s13_STAGE13_sparse_vector__uxm_tests_v33_stage13_test_s13_sparse_to_dense__8cda2dccaa.uxm (5.80 sn) mode=compact
+[0324/1054] BASARILI uxm\tests\all_expected_known\0417__s13_STAGE13_sparse_vector__uxm_tests_v33_stage13_test_s13_sparse_trace__a2b4e31a6e.uxm (5.24 sn) mode=compact
+[0325/1054] BASARILI uxm\tests\all_expected_known\0418__s13_STAGE13_sparse_vector__uxm_tests_v33_stage13_test_s13_vec_add__5519cceee5.uxm (4.31 sn) mode=compact
+[0326/1054] BASARILI uxm\tests\all_expected_known\0419__s13_STAGE13_sparse_vector__uxm_tests_v33_stage13_test_s13_vec_dot__61bae345e6.uxm (4.75 sn) mode=compact
+[0327/1054] BASARILI uxm\tests\all_expected_known\0420__s13_STAGE13_sparse_vector__uxm_tests_v33_stage13_test_s13_vec_fill__92d500e2d3.uxm (5.33 sn) mode=compact
+[0328/1054] BASARILI uxm\tests\all_expected_known\0421__s13_STAGE13_sparse_vector__uxm_tests_v33_stage13_test_s13_vec_from_data__239f522eda.uxm (5.27 sn) mode=compact
+[0329/1054] BASARILI uxm\tests\all_expected_known\0422__s13_STAGE13_sparse_vector__uxm_tests_v33_stage13_test_s13_vec_get__9a791db17b.uxm (5.38 sn) mode=compact
+[0330/1054] BASARILI uxm\tests\all_expected_known\0423__s13_STAGE13_sparse_vector__uxm_tests_v33_stage13_test_s13_vec_info__61db96e24e.uxm (5.23 sn) mode=compact
+[0331/1054] BASARILI uxm\tests\all_expected_known\0424__s13_STAGE13_sparse_vector__uxm_tests_v33_stage13_test_s13_vec_init__64ead9d9d2.uxm (4.10 sn) mode=compact
+[0332/1054] BASARILI uxm\tests\all_expected_known\0425__s13_STAGE13_sparse_vector__uxm_tests_v33_stage13_test_s13_vec_norm1__87f62341ff.uxm (4.93 sn) mode=compact
+[0333/1054] BASARILI uxm\tests\all_expected_known\0426__s13_STAGE13_sparse_vector__uxm_tests_v33_stage13_test_s13_vec_norm2sq__dde605a71b.uxm (5.18 sn) mode=compact
+[0334/1054] BASARILI uxm\tests\all_expected_known\0427__s13_STAGE13_sparse_vector__uxm_tests_v33_stage13_test_s13_vec_scale__c59707cf0d.uxm (5.02 sn) mode=compact
+[0335/1054] BASARILI uxm\tests\all_expected_known\0428__s13_STAGE13_sparse_vector__uxm_tests_v33_stage13_test_s13_vec_set__fbb40482c7.uxm (5.74 sn) mode=compact
+[0336/1054] BASARILI uxm\tests\all_expected_known\0429__s13_STAGE13_sparse_vector__uxm_tests_v33_stage13_test_s13_vec_sum__55a0fe420c.uxm (4.78 sn) mode=compact
+[0337/1054] BASARILI uxm\tests\all_expected_known\0430__s13_STAGE13_sparse_vector__uxm_tests_v33_stage13_test_s13_vec_to_data__5fee01d94b.uxm (3.94 sn) mode=compact
+[0338/1054] BASARILI uxm\tests\all_expected_known\0431__s14_STAGE14_linalg_advanced__uxm_tests_v33_stage14_test_s14_integration_rowops_det__ffb4dafd1c.uxm (4.31 sn) mode=compact
+[0339/1054] BASARILI uxm\tests\all_expected_known\0432__s14_STAGE14_linalg_advanced__uxm_tests_v33_stage14_test_s14_integration_solve_then_matvec__9b84c8e909.uxm (5.37 sn) mode=compact
+[0340/1054] BASARILI uxm\tests\all_expected_known\0433__s14_STAGE14_linalg_advanced__uxm_tests_v33_stage14_test_s14_linalg_add_row_multiple__ee8bfc3f18.uxm (4.90 sn) mode=compact
+[0341/1054] BASARILI uxm\tests\all_expected_known\0434__s14_STAGE14_linalg_advanced__uxm_tests_v33_stage14_test_s14_linalg_col_sum__6086bc5978.uxm (5.73 sn) mode=compact
+[0342/1054] BASARILI uxm\tests\all_expected_known\0435__s14_STAGE14_linalg_advanced__uxm_tests_v33_stage14_test_s14_linalg_det_n__14dd791100.uxm (4.91 sn) mode=compact
+[0343/1054] BASARILI uxm\tests\all_expected_known\0436__s14_STAGE14_linalg_advanced__uxm_tests_v33_stage14_test_s14_linalg_diag_product__d003c9fe7c.uxm (4.02 sn) mode=compact
+[0344/1054] BASARILI uxm\tests\all_expected_known\0437__s14_STAGE14_linalg_advanced__uxm_tests_v33_stage14_test_s14_linalg_identity_check__9b79b133f4.uxm (4.14 sn) mode=compact
+[0345/1054] BASARILI uxm\tests\all_expected_known\0438__s14_STAGE14_linalg_advanced__uxm_tests_v33_stage14_test_s14_linalg_info__543cacdfbb.uxm (4.89 sn) mode=compact
+[0346/1054] BASARILI uxm\tests\all_expected_known\0439__s14_STAGE14_linalg_advanced__uxm_tests_v33_stage14_test_s14_linalg_inverse_nxn__9a523d865f.uxm (9.68 sn) mode=compact
+[0347/1054] BASARILI uxm\tests\all_expected_known\0440__s14_STAGE14_linalg_advanced__uxm_tests_v33_stage14_test_s14_linalg_matvec__b0dacd1e3f.uxm (8.75 sn) mode=compact
+[0348/1054] BASARILI uxm\tests\all_expected_known\0441__s14_STAGE14_linalg_advanced__uxm_tests_v33_stage14_test_s14_linalg_rank__21ede2f07d.uxm (5.34 sn) mode=compact
+[0349/1054] BASARILI uxm\tests\all_expected_known\0442__s14_STAGE14_linalg_advanced__uxm_tests_v33_stage14_test_s14_linalg_row_sum__c774f97b9b.uxm (4.85 sn) mode=compact
+[0350/1054] BASARILI uxm\tests\all_expected_known\0443__s14_STAGE14_linalg_advanced__uxm_tests_v33_stage14_test_s14_linalg_scale_row__15d007aad1.uxm (4.57 sn) mode=compact
+[0351/1054] BASARILI uxm\tests\all_expected_known\0444__s14_STAGE14_linalg_advanced__uxm_tests_v33_stage14_test_s14_linalg_solve_nxn__617ee60b8f.uxm (5.14 sn) mode=compact
+[0352/1054] BASARILI uxm\tests\all_expected_known\0445__s14_STAGE14_linalg_advanced__uxm_tests_v33_stage14_test_s14_linalg_swap_rows__149576a52b.uxm (5.64 sn) mode=compact
+[0353/1054] BASARILI uxm\tests\all_expected_known\0446__s14_STAGE14_linalg_advanced__uxm_tests_v33_stage14_test_s14_linalg_symmetric_check__a364c68e78.uxm (4.90 sn) mode=compact
+[0354/1054] BASARILI uxm\tests\all_expected_known\0447__s14_STAGE14_linalg_advanced__uxm_tests_v33_stage14_test_s14_linalg_upper_triangular__ae2dc1f0a9.uxm (4.25 sn) mode=compact
+[0355/1054] BASARILI uxm\tests\all_expected_known\0448__s15_STAGE15_16_ml_data_pipeline__uxm_tests_stage15_16_test_s15_16_integration_data_vec_train__f280ea333f.uxm (5.03 sn) mode=compact
+[0356/1054] BASARILI uxm\tests\all_expected_known\0449__s15_STAGE15_16_ml_data_pipeline__uxm_tests_stage15_16_test_s15_16_integration_dataset_ml_predict__c17aa67135.uxm (5.08 sn) mode=compact
+[0357/1054] BASARILI uxm\tests\all_expected_known\0450__s15_STAGE15_16_ml_data_pipeline__uxm_tests_stage15_16_test_s15_ml_argmax__a1cfc649af.uxm (5.15 sn) mode=compact
+[0358/1054] BASARILI uxm\tests\all_expected_known\0451__s15_STAGE15_16_ml_data_pipeline__uxm_tests_stage15_16_test_s15_ml_clamp__89c9658ad1.uxm (5.31 sn) mode=compact
+[0359/1054] BASARILI uxm\tests\all_expected_known\0452__s15_STAGE15_16_ml_data_pipeline__uxm_tests_stage15_16_test_s15_ml_dot_bias__d5696f676c.uxm (4.87 sn) mode=compact
+[0360/1054] BASARILI uxm\tests\all_expected_known\0453__s15_STAGE15_16_ml_data_pipeline__uxm_tests_stage15_16_test_s15_ml_info__c3889a7fc6.uxm (4.36 sn) mode=compact
+[0361/1054] BASARILI uxm\tests\all_expected_known\0454__s15_STAGE15_16_ml_data_pipeline__uxm_tests_stage15_16_test_s15_ml_linear_grad_step__b74ed7493a.uxm (4.47 sn) mode=compact
+[0362/1054] BASARILI uxm\tests\all_expected_known\0455__s15_STAGE15_16_ml_data_pipeline__uxm_tests_stage15_16_test_s15_ml_mae__9e3c8e2e4e.uxm (4.89 sn) mode=compact
+[0363/1054] BASARILI uxm\tests\all_expected_known\0456__s15_STAGE15_16_ml_data_pipeline__uxm_tests_stage15_16_test_s15_ml_mse__3ce9490488.uxm (5.29 sn) mode=compact
+[0364/1054] BASARILI uxm\tests\all_expected_known\0457__s15_STAGE15_16_ml_data_pipeline__uxm_tests_stage15_16_test_s15_ml_perceptron_predict__31e1c604b6.uxm (5.44 sn) mode=compact
+[0365/1054] BASARILI uxm\tests\all_expected_known\0458__s15_STAGE15_16_ml_data_pipeline__uxm_tests_stage15_16_test_s15_ml_perceptron_update__05f249e76a.uxm (4.80 sn) mode=compact
+[0366/1054] BASARILI uxm\tests\all_expected_known\0459__s15_STAGE15_16_ml_data_pipeline__uxm_tests_stage15_16_test_s15_ml_relu__4bb921fd08.uxm (4.10 sn) mode=compact
+[0367/1054] BASARILI uxm\tests\all_expected_known\0460__s15_STAGE15_16_ml_data_pipeline__uxm_tests_stage15_16_test_s15_ml_sigmoid_fast1000__fa85193463.uxm (4.74 sn) mode=compact
+[0368/1054] BASARILI uxm\tests\all_expected_known\0461__s15_STAGE15_16_ml_data_pipeline__uxm_tests_stage15_16_test_s15_ml_step__d346e9cf92.uxm (4.73 sn) mode=compact
+[0369/1054] BASARILI uxm\tests\all_expected_known\0462__s15_STAGE15_16_ml_data_pipeline__uxm_tests_stage15_16_test_s16_dataset_col_sum__2d8ab4463f.uxm (4.85 sn) mode=compact
+[0370/1054] BASARILI uxm\tests\all_expected_known\0463__s15_STAGE15_16_ml_data_pipeline__uxm_tests_stage15_16_test_s16_dataset_get_x__0303072c07.uxm (5.28 sn) mode=compact
+[0371/1054] BASARILI uxm\tests\all_expected_known\0464__s15_STAGE15_16_ml_data_pipeline__uxm_tests_stage15_16_test_s16_dataset_get_y__918ca2268a.uxm (6.09 sn) mode=compact
+[0372/1054] BASARILI uxm\tests\all_expected_known\0465__s15_STAGE15_16_ml_data_pipeline__uxm_tests_stage15_16_test_s16_dataset_info__881d10a14c.uxm (4.35 sn) mode=compact
+[0373/1054] BASARILI uxm\tests\all_expected_known\0466__s15_STAGE15_16_ml_data_pipeline__uxm_tests_stage15_16_test_s16_dataset_init__56f27c9949.uxm (4.10 sn) mode=compact
+[0374/1054] BASARILI uxm\tests\all_expected_known\0467__s15_STAGE15_16_ml_data_pipeline__uxm_tests_stage15_16_test_s16_dataset_row_dot_vec__c17aa67135.uxm (5.01 sn) mode=compact
+[0375/1054] BASARILI uxm\tests\all_expected_known\0468__s15_STAGE15_16_ml_data_pipeline__uxm_tests_stage15_16_test_s16_dataset_row_to_vec__a0722b9a1f.uxm (5.04 sn) mode=compact
+[0376/1054] BASARILI uxm\tests\all_expected_known\0469__s15_STAGE15_16_ml_data_pipeline__uxm_tests_stage15_16_test_s16_dataset_set_x__8680772562.uxm (5.05 sn) mode=compact
+[0377/1054] BASARILI uxm\tests\all_expected_known\0470__s15_STAGE15_16_ml_data_pipeline__uxm_tests_stage15_16_test_s16_dataset_set_y__6c01d739be.uxm (6.15 sn) mode=compact
+[0378/1054] BASARILI uxm\tests\all_expected_known\0471__s15_STAGE15_16_ml_data_pipeline__uxm_tests_stage15_16_test_s16_dataset_y_sum__7037394bd7.uxm (5.32 sn) mode=compact
+[0379/1054] BASARILI uxm\tests\all_expected_known\0472__s15_STAGE15_16_ml_data_pipeline__uxm_tests_stage15_16_test_s16_pipe_batch_row_to_vec__ef0b4a63cc.uxm (5.59 sn) mode=compact
+[0380/1054] BASARILI uxm\tests\all_expected_known\0473__s15_STAGE15_16_ml_data_pipeline__uxm_tests_stage15_16_test_s16_pipe_batch_y_sum__15f1a9f34e.uxm (5.16 sn) mode=compact
+[0381/1054] BASARILI uxm\tests\all_expected_known\0474__s15_STAGE15_16_ml_data_pipeline__uxm_tests_stage15_16_test_s16_pipe_data_to_vec__ff74dd2582.uxm (4.70 sn) mode=compact
+[0382/1054] BASARILI uxm\tests\all_expected_known\0475__s15_STAGE15_16_ml_data_pipeline__uxm_tests_stage15_16_test_s16_pipe_dataset_to_dense__026e06a835.uxm (5.54 sn) mode=compact
+[0383/1054] BASARILI uxm\tests\all_expected_known\0476__s15_STAGE15_16_ml_data_pipeline__uxm_tests_stage15_16_test_s16_pipe_eval_mse_dataset__612e92d3de.uxm (4.95 sn) mode=compact
+[0384/1054] BASARILI uxm\tests\all_expected_known\0477__s15_STAGE15_16_ml_data_pipeline__uxm_tests_stage15_16_test_s16_pipe_feature_scale_const__05530f6480.uxm (3.91 sn) mode=compact
+[0385/1054] BASARILI uxm\tests\all_expected_known\0478__s15_STAGE15_16_ml_data_pipeline__uxm_tests_stage15_16_test_s16_pipe_info__2edc4af4ea.uxm (4.89 sn) mode=compact
+[0386/1054] BASARILI uxm\tests\all_expected_known\0479__s15_STAGE15_16_ml_data_pipeline__uxm_tests_stage15_16_test_s16_pipe_linear_predict_data__353f588c1c.uxm (4.76 sn) mode=compact
+[0387/1054] BASARILI uxm\tests\all_expected_known\0480__s15_STAGE15_16_ml_data_pipeline__uxm_tests_stage15_16_test_s16_pipe_status__85ab13f3dc.uxm (4.70 sn) mode=compact
+[0388/1054] BASARILI uxm\tests\all_expected_known\0481__s15_STAGE15_16_ml_data_pipeline__uxm_tests_stage15_16_test_s16_pipe_vec_to_data__beb4128f1f.uxm (5.72 sn) mode=compact
+[0389/1054] BASARILI uxm\tests\all_expected_known\0482__s17_STAGE17_test_framework__uxm_tests_stage17_test_s17_expect_exact_add__b7f5a7246f.uxm (4.78 sn) mode=compact
+[0390/1054] BASARILI uxm\tests\all_expected_known\0483__s17_STAGE17_test_framework__uxm_tests_stage17_test_s17_expect_exact_mul__d9d75ec911.uxm (4.04 sn) mode=compact
+[0391/1054] BASARILI uxm\tests\all_expected_known\0484__s17_STAGE17_test_framework__uxm_tests_stage17_test_s17_expect_multiline__395682003c.uxm (4.50 sn) mode=compact
+[0392/1054] BASARILI uxm\tests\all_expected_known\0485__s17_STAGE17_test_framework__uxm_tests_stage17_test_s17_integration_compact_pipeline__54f9e21028.uxm (4.74 sn) mode=compact
+[0393/1054] BASARILI uxm\tests\all_expected_known\0486__s17_STAGE17_test_framework__uxm_tests_stage17_test_s17_integration_contains_mode__4bc81fa73c.uxm (4.82 sn) mode=contains
+[0394/1054] BUILD_FAIL uxm\tests\all_expected_known\0487__s18_STAGE18_MEGA_TEST_CORPUS_TRANSLATORS_PACKAGE__uxm_tests_mega_corpus_example_01_game_score_combo__a67334acd6.uxm (0.12 sn) mode=compact
+        exit_code expected=0 actual=1
+        beklenen(compact): 150300
+        gercek(compact)  : HATA:databellekustsiniri256KB.Verilen=4096KB.Toplam-politikaicin#memorypolicy=totalkullan.
+[0395/1054] BUILD_FAIL uxm\tests\all_expected_known\0489__s18_STAGE18_MEGA_TEST_CORPUS_TRANSLATORS_PACKAGE__uxm_tests_mega_corpus_example_03_game_inventory_vector_sum__b175c33a4f.uxm (0.14 sn) mode=compact
+        exit_code expected=0 actual=1
+        beklenen(compact): 21
+        gercek(compact)  : HATA:databellekustsiniri256KB.Verilen=4096KB.Toplam-politikaicin#memorypolicy=totalkullan.
+[0396/1054] BUILD_FAIL uxm\tests\all_expected_known\0497__s18_STAGE18_MEGA_TEST_CORPUS_TRANSLATORS_PACKAGE__uxm_tests_mega_corpus_example_11_tensor2d_sum__aa75c49a1a.uxm (0.15 sn) mode=compact
+        exit_code expected=0 actual=1
+        beklenen(compact): 30
+        gercek(compact)  : HATA:databellekustsiniri256KB.Verilen=4096KB.Toplam-politikaicin#memorypolicy=totalkullan.
+[0397/1054] BUILD_FAIL uxm\tests\all_expected_known\0498__s18_STAGE18_MEGA_TEST_CORPUS_TRANSLATORS_PACKAGE__uxm_tests_mega_corpus_example_12_tensor3d_index__ef143e286c.uxm (0.15 sn) mode=compact
+        exit_code expected=0 actual=1
+        beklenen(compact): 77
+        gercek(compact)  : HATA:databellekustsiniri256KB.Verilen=4096KB.Toplam-politikaicin#memorypolicy=totalkullan.
+[0398/1054] BUILD_FAIL uxm\tests\all_expected_known\0499__s18_STAGE18_MEGA_TEST_CORPUS_TRANSLATORS_PACKAGE__uxm_tests_mega_corpus_example_13_tensor4d_flat_logic__948afdf95a.uxm (0.16 sn) mode=compact
+        exit_code expected=0 actual=1
+        beklenen(compact): 88
+        gercek(compact)  : HATA:databellekustsiniri256KB.Verilen=4096KB.Toplam-politikaicin#memorypolicy=totalkullan.
+[0399/1054] BUILD_FAIL uxm\tests\all_expected_known\0502__s18_STAGE18_MEGA_TEST_CORPUS_TRANSLATORS_PACKAGE__uxm_tests_mega_corpus_example_16_ml_linear_prediction__7b2de624f3.uxm (0.16 sn) mode=compact
+        exit_code expected=0 actual=1
+        beklenen(compact): 46
+        gercek(compact)  : HATA:databellekustsiniri256KB.Verilen=4096KB.Toplam-politikaicin#memorypolicy=totalkullan.
+[0400/1054] BUILD_FAIL uxm\tests\all_expected_known\0513__s18_STAGE18_MEGA_TEST_CORPUS_TRANSLATORS_PACKAGE__uxm_tests_mega_corpus_program_domain_02_chemistry_molar_mass_ch4o__bea0c507a1.uxm (0.17 sn) mode=compact
+        exit_code expected=0 actual=1
+        beklenen(compact): 1320
+        gercek(compact)  : HATA:databellekustsiniri256KB.Verilen=4096KB.Toplam-politikaicin#memorypolicy=totalkullan.
+[0401/1054] BUILD_FAIL uxm\tests\all_expected_known\0514__s18_STAGE18_MEGA_TEST_CORPUS_TRANSLATORS_PACKAGE__uxm_tests_mega_corpus_program_domain_03_physics_kinetic_energy_scaled__ee9a9bfc93.uxm (0.16 sn) mode=compact
+        exit_code expected=0 actual=1
+        beklenen(compact): 50
+        gercek(compact)  : HATA:databellekustsiniri256KB.Verilen=4096KB.Toplam-politikaicin#memorypolicy=totalkullan.
+[0402/1054] BUILD_FAIL uxm\tests\all_expected_known\0515__s18_STAGE18_MEGA_TEST_CORPUS_TRANSLATORS_PACKAGE__uxm_tests_mega_corpus_program_domain_04_accounting_vat_profit__97929a1f4e.uxm (0.14 sn) mode=compact
+        exit_code expected=0 actual=1
+        beklenen(compact): 180200
+        gercek(compact)  : HATA:databellekustsiniri256KB.Verilen=4096KB.Toplam-politikaicin#memorypolicy=totalkullan.
+[0403/1054] BUILD_FAIL uxm\tests\all_expected_known\0518__s18_STAGE18_MEGA_TEST_CORPUS_TRANSLATORS_PACKAGE__uxm_tests_mega_corpus_test_mega_cmd_dynamic_meta_addr__6a0e5ee1a9.uxm (0.16 sn) mode=compact
+        exit_code expected=0 actual=1
+        beklenen(compact): 33
+        gercek(compact)  : HATA:databellekustsiniri256KB.Verilen=4096KB.Toplam-politikaicin#memorypolicy=totalkullan.
+[0404/1054] BUILD_FAIL uxm\tests\all_expected_known\0519__s18_STAGE18_MEGA_TEST_CORPUS_TRANSLATORS_PACKAGE__uxm_tests_mega_corpus_test_mega_cmd_forced_host_meta__9ff7eecddb.uxm (0.15 sn) mode=compact
+        exit_code expected=0 actual=1
+        beklenen(compact): 5
+        gercek(compact)  : HATA:databellekustsiniri256KB.Verilen=4096KB.Toplam-politikaicin#memorypolicy=totalkullan.
+[0405/1054] BUILD_FAIL uxm\tests\all_expected_known\0520__s18_STAGE18_MEGA_TEST_CORPUS_TRANSLATORS_PACKAGE__uxm_tests_mega_corpus_test_mega_cmd_immediate_add__c26151b3c9.uxm (0.14 sn) mode=compact
+        exit_code expected=0 actual=1
+        beklenen(compact): 15
+        gercek(compact)  : HATA:databellekustsiniri256KB.Verilen=4096KB.Toplam-politikaicin#memorypolicy=totalkullan.
+[0406/1054] BUILD_FAIL uxm\tests\all_expected_known\0521__s18_STAGE18_MEGA_TEST_CORPUS_TRANSLATORS_PACKAGE__uxm_tests_mega_corpus_test_mega_cmd_immediate_sub__d5b6549c24.uxm (0.16 sn) mode=compact
+        exit_code expected=0 actual=1
+        beklenen(compact): 7
+        gercek(compact)  : HATA:databellekustsiniri256KB.Verilen=4096KB.Toplam-politikaicin#memorypolicy=totalkullan.
+[0407/1054] BASARILI uxm\tests\all_expected_known\0522__s18_STAGE18_MEGA_TEST_CORPUS_TRANSLATORS_PACKAGE__uxm_tests_mega_corpus_test_mega_cmd_print_string__b36f298bc9.uxm (5.53 sn) mode=compact
+[0408/1054] BUILD_FAIL uxm\tests\all_expected_known\0523__s18_STAGE18_MEGA_TEST_CORPUS_TRANSLATORS_PACKAGE__uxm_tests_mega_corpus_test_mega_cmd_stack_push_pop__2e1188b1ae.uxm (0.13 sn) mode=compact
+        exit_code expected=0 actual=1
+        beklenen(compact): 65
+        gercek(compact)  : HATA:databellekustsiniri256KB.Verilen=4096KB.Toplam-politikaicin#memorypolicy=totalkullan.
+[0409/1054] BUILD_FAIL uxm\tests\all_expected_known\0528__s18_STAGE18_MEGA_TEST_CORPUS_TRANSLATORS_PACKAGE__uxm_tests_mega_corpus_test_mega_service_007_const_7__09bcbd9ed7.uxm (0.14 sn) mode=compact
+        exit_code expected=0 actual=1
+        beklenen(compact): 7
+        gercek(compact)  : HATA:databellekustsiniri256KB.Verilen=4096KB.Toplam-politikaicin#memorypolicy=totalkullan.
+[0410/1054] BUILD_FAIL uxm\tests\all_expected_known\0529__s18_STAGE18_MEGA_TEST_CORPUS_TRANSLATORS_PACKAGE__uxm_tests_mega_corpus_test_mega_service_008_const_8__8ea967a66a.uxm (0.15 sn) mode=compact
+        exit_code expected=0 actual=1
+        beklenen(compact): 8
+        gercek(compact)  : HATA:databellekustsiniri256KB.Verilen=4096KB.Toplam-politikaicin#memorypolicy=totalkullan.
+[0411/1054] BUILD_FAIL uxm\tests\all_expected_known\0537__s18_STAGE18_MEGA_TEST_CORPUS_TRANSLATORS_PACKAGE__uxm_tests_mega_corpus_test_mega_service_020_add__e9f9c61b77.uxm (0.14 sn) mode=compact
+        exit_code expected=0 actual=1
+        beklenen(compact): 30
+        gercek(compact)  : HATA:databellekustsiniri256KB.Verilen=4096KB.Toplam-politikaicin#memorypolicy=totalkullan.
+[0412/1054] BUILD_FAIL uxm\tests\all_expected_known\0538__s18_STAGE18_MEGA_TEST_CORPUS_TRANSLATORS_PACKAGE__uxm_tests_mega_corpus_test_mega_service_021_sub__fa56f66ae5.uxm (0.14 sn) mode=compact
+        exit_code expected=0 actual=1
+        beklenen(compact): 30
+        gercek(compact)  : HATA:databellekustsiniri256KB.Verilen=4096KB.Toplam-politikaicin#memorypolicy=totalkullan.
+[0413/1054] BUILD_FAIL uxm\tests\all_expected_known\0539__s18_STAGE18_MEGA_TEST_CORPUS_TRANSLATORS_PACKAGE__uxm_tests_mega_corpus_test_mega_service_022_mul__8a23bbac00.uxm (0.16 sn) mode=compact
+        exit_code expected=0 actual=1
+        beklenen(compact): 42
+        gercek(compact)  : HATA:databellekustsiniri256KB.Verilen=4096KB.Toplam-politikaicin#memorypolicy=totalkullan.
+[0414/1054] BUILD_FAIL uxm\tests\all_expected_known\0540__s18_STAGE18_MEGA_TEST_CORPUS_TRANSLATORS_PACKAGE__uxm_tests_mega_corpus_test_mega_service_023_div__00b38f2e5c.uxm (0.15 sn) mode=compact
+        exit_code expected=0 actual=1
+        beklenen(compact): 4
+        gercek(compact)  : HATA:databellekustsiniri256KB.Verilen=4096KB.Toplam-politikaicin#memorypolicy=totalkullan.
+[0415/1054] BUILD_FAIL uxm\tests\all_expected_known\0541__s18_STAGE18_MEGA_TEST_CORPUS_TRANSLATORS_PACKAGE__uxm_tests_mega_corpus_test_mega_service_024_mod__a5558b5934.uxm (0.14 sn) mode=compact
+        exit_code expected=0 actual=1
+        beklenen(compact): 3
+        gercek(compact)  : HATA:databellekustsiniri256KB.Verilen=4096KB.Toplam-politikaicin#memorypolicy=totalkullan.
+[0416/1054] BUILD_FAIL uxm\tests\all_expected_known\0542__s18_STAGE18_MEGA_TEST_CORPUS_TRANSLATORS_PACKAGE__uxm_tests_mega_corpus_test_mega_service_025_min__d0d8a2723b.uxm (0.14 sn) mode=compact
+        exit_code expected=0 actual=1
+        beklenen(compact): 3
+        gercek(compact)  : HATA:databellekustsiniri256KB.Verilen=4096KB.Toplam-politikaicin#memorypolicy=totalkullan.
+[0417/1054] BUILD_FAIL uxm\tests\all_expected_known\0543__s18_STAGE18_MEGA_TEST_CORPUS_TRANSLATORS_PACKAGE__uxm_tests_mega_corpus_test_mega_service_026_max__31d56e97f6.uxm (0.15 sn) mode=compact
+        exit_code expected=0 actual=1
+        beklenen(compact): 8
+        gercek(compact)  : HATA:databellekustsiniri256KB.Verilen=4096KB.Toplam-politikaicin#memorypolicy=totalkullan.
+[0418/1054] BUILD_FAIL uxm\tests\all_expected_known\0544__s18_STAGE18_MEGA_TEST_CORPUS_TRANSLATORS_PACKAGE__uxm_tests_mega_corpus_test_mega_service_027_abs_arg2__9f7689021d.uxm (0.36 sn) mode=compact
+        exit_code expected=0 actual=1
+        beklenen(compact): 9
+        gercek(compact)  : HATA:databellekustsiniri256KB.Verilen=4096KB.Toplam-politikaicin#memorypolicy=totalkullan.
+[0419/1054] BUILD_FAIL uxm\tests\all_expected_known\0545__s18_STAGE18_MEGA_TEST_CORPUS_TRANSLATORS_PACKAGE__uxm_tests_mega_corpus_test_mega_service_028_neg_arg2__1168d32204.uxm (0.20 sn) mode=compact
+        exit_code expected=0 actual=1
+        beklenen(compact): -9
+        gercek(compact)  : HATA:databellekustsiniri256KB.Verilen=4096KB.Toplam-politikaicin#memorypolicy=totalkullan.
+[0420/1054] BUILD_FAIL uxm\tests\all_expected_known\0546__s18_STAGE18_MEGA_TEST_CORPUS_TRANSLATORS_PACKAGE__uxm_tests_mega_corpus_test_mega_service_029_cmp__d790ef44ef.uxm (0.16 sn) mode=compact
+        exit_code expected=0 actual=1
+        beklenen(compact): 0
+        gercek(compact)  : HATA:databellekustsiniri256KB.Verilen=4096KB.Toplam-politikaicin#memorypolicy=totalkullan.
+[0421/1054] BUILD_FAIL uxm\tests\all_expected_known\0550__s18_STAGE18_MEGA_TEST_CORPUS_TRANSLATORS_PACKAGE__uxm_tests_mega_corpus_test_mega_service_033_div_unsigned_alias__116fd40778.uxm (0.18 sn) mode=compact
+        exit_code expected=0 actual=1
+        beklenen(compact): 4
+        gercek(compact)  : HATA:databellekustsiniri256KB.Verilen=4096KB.Toplam-politikaicin#memorypolicy=totalkullan.
+[0422/1054] BUILD_FAIL uxm\tests\all_expected_known\0551__s18_STAGE18_MEGA_TEST_CORPUS_TRANSLATORS_PACKAGE__uxm_tests_mega_corpus_test_mega_service_034_div_signed__b853dff78c.uxm (0.20 sn) mode=compact
+        exit_code expected=0 actual=1
+        beklenen(compact): 4
+        gercek(compact)  : HATA:databellekustsiniri256KB.Verilen=4096KB.Toplam-politikaicin#memorypolicy=totalkullan.
+[0423/1054] BUILD_FAIL uxm\tests\all_expected_known\0552__s18_STAGE18_MEGA_TEST_CORPUS_TRANSLATORS_PACKAGE__uxm_tests_mega_corpus_test_mega_service_035_mod_unsigned_alias__fe2e94cf65.uxm (0.15 sn) mode=compact
+        exit_code expected=0 actual=1
+        beklenen(compact): 3
+        gercek(compact)  : HATA:databellekustsiniri256KB.Verilen=4096KB.Toplam-politikaicin#memorypolicy=totalkullan.
+[0424/1054] BUILD_FAIL uxm\tests\all_expected_known\0553__s18_STAGE18_MEGA_TEST_CORPUS_TRANSLATORS_PACKAGE__uxm_tests_mega_corpus_test_mega_service_036_mod_signed__985eb4a0cc.uxm (0.15 sn) mode=compact
+        exit_code expected=0 actual=1
+        beklenen(compact): 3
+        gercek(compact)  : HATA:databellekustsiniri256KB.Verilen=4096KB.Toplam-politikaicin#memorypolicy=totalkullan.
+[0425/1054] BUILD_FAIL uxm\tests\all_expected_known\0557__s18_STAGE18_MEGA_TEST_CORPUS_TRANSLATORS_PACKAGE__uxm_tests_mega_corpus_test_mega_service_043_hypotenuse__999e2a2fb3.uxm (0.16 sn) mode=compact
+        exit_code expected=0 actual=1
+        beklenen(compact): 5
+        gercek(compact)  : HATA:databellekustsiniri256KB.Verilen=4096KB.Toplam-politikaicin#memorypolicy=totalkullan.
+[0426/1054] BUILD_FAIL uxm\tests\all_expected_known\0560__s18_STAGE18_MEGA_TEST_CORPUS_TRANSLATORS_PACKAGE__uxm_tests_mega_corpus_test_mega_service_046_sqrt__829cbc4853.uxm (0.15 sn) mode=compact
+        exit_code expected=0 actual=1
+        beklenen(compact): 5
+        gercek(compact)  : HATA:databellekustsiniri256KB.Verilen=4096KB.Toplam-politikaicin#memorypolicy=totalkullan.
+[0427/1054] BUILD_FAIL uxm\tests\all_expected_known\0569__s18_STAGE18_MEGA_TEST_CORPUS_TRANSLATORS_PACKAGE__uxm_tests_mega_corpus_test_mega_service_057_power__500966fa01.uxm (0.16 sn) mode=compact
+        exit_code expected=0 actual=1
+        beklenen(compact): 256
+        gercek(compact)  : HATA:databellekustsiniri256KB.Verilen=4096KB.Toplam-politikaicin#memorypolicy=totalkullan.
+[0428/1054] BUILD_FAIL uxm\tests\all_expected_known\0572__s18_STAGE18_MEGA_TEST_CORPUS_TRANSLATORS_PACKAGE__uxm_tests_mega_corpus_test_mega_service_060_print_arg2_decimal__06fcdc8471.uxm (0.15 sn) mode=compact
+        exit_code expected=0 actual=1
+        beklenen(compact): 77
+        gercek(compact)  : HATA:databellekustsiniri256KB.Verilen=4096KB.Toplam-politikaicin#memorypolicy=totalkullan.
+[0429/1054] BUILD_FAIL uxm\tests\all_expected_known\0573__s18_STAGE18_MEGA_TEST_CORPUS_TRANSLATORS_PACKAGE__uxm_tests_mega_corpus_test_mega_service_061_print_result_decimal__3545f540a4.uxm (0.16 sn) mode=compact
+        exit_code expected=0 actual=1
+        beklenen(compact): 3
+        gercek(compact)  : HATA:databellekustsiniri256KB.Verilen=4096KB.Toplam-politikaicin#memorypolicy=totalkullan.
+[0430/1054] BUILD_FAIL uxm\tests\all_expected_known\0574__s18_STAGE18_MEGA_TEST_CORPUS_TRANSLATORS_PACKAGE__uxm_tests_mega_corpus_test_mega_service_062_print_stack_pop_decimal__7d86d23ca6.uxm (0.14 sn) mode=compact
+        exit_code expected=0 actual=1
+        beklenen(compact): 88
+        gercek(compact)  : HATA:databellekustsiniri256KB.Verilen=4096KB.Toplam-politikaicin#memorypolicy=totalkullan.
+[0431/1054] BUILD_FAIL uxm\tests\all_expected_known\0578__s18_STAGE18_MEGA_TEST_CORPUS_TRANSLATORS_PACKAGE__uxm_tests_mega_corpus_test_mega_service_069_print_arg2_char__9a9abacf17.uxm (0.16 sn) mode=compact
+        exit_code expected=0 actual=1
+        beklenen(compact): A
+        gercek(compact)  : HATA:databellekustsiniri256KB.Verilen=4096KB.Toplam-politikaicin#memorypolicy=totalkullan.
+[0432/1054] BASARILI uxm\tests\all_expected_known\0926__s01_STAGE1__uxm_tests_fp_test_fp01_add_int__4ff48c654e.uxm (4.80 sn) mode=compact
+[0433/1054] BASARILI uxm\tests\all_expected_known\0927__s01_STAGE1__uxm_tests_fp_test_fp02_sub_int__d438ddc46b.uxm (4.93 sn) mode=compact
+[0434/1054] BASARILI uxm\tests\all_expected_known\0928__s01_STAGE1__uxm_tests_fp_test_fp03_mul_int__2896c4924c.uxm (4.94 sn) mode=compact
+[0435/1054] BASARILI uxm\tests\all_expected_known\0929__s01_STAGE1__uxm_tests_fp_test_fp04_div_int__915cc37e0d.uxm (5.20 sn) mode=compact
+[0436/1054] BASARILI uxm\tests\all_expected_known\0930__s01_STAGE1__uxm_tests_fp_test_fp05_from_string__7d5d052572.uxm (5.31 sn) mode=compact
+[0437/1054] BASARILI uxm\tests\all_expected_known\0931__s01_STAGE1__uxm_tests_fp_test_fp06_add_dec_string__c2eee589d7.uxm (4.94 sn) mode=compact
+[0438/1054] BASARILI uxm\tests\all_expected_known\0932__s01_STAGE1__uxm_tests_fp_test_fp07_int_zero_sign_abs__0211b86702.uxm (4.72 sn) mode=compact
+[0439/1054] BASARILI uxm\tests\all_expected_known\0933__s01_STAGE1__uxm_tests_math_test_math01_poly_deriv_arge__dea08874ec.uxm (4.85 sn) mode=compact
+[0440/1054] BASARILI uxm\tests\all_expected_known\0934__s01_STAGE1__uxm_tests_math_test_math02_poly_integral_arge__f2b514b3e4.uxm (4.99 sn) mode=compact
+[0441/1054] BASARILI uxm\tests\all_expected_known\0935__s01_STAGE1__uxm_tests_math_test_math03_poly_eval_arge__7f1d2b2783.uxm (5.21 sn) mode=compact
+[0442/1054] BASARILI uxm\tests\all_expected_known\0936__s01_STAGE1__uxm_tests_math_test_math04_expr_rpn_eval__2f2f641449.uxm (5.92 sn) mode=compact
+[0443/1054] BASARILI uxm\tests\all_expected_known\0937__s01_STAGE1__uxm_tests_math_test_math05_num_deriv__191a99caff.uxm (6.53 sn) mode=compact
+[0444/1054] BASARILI uxm\tests\all_expected_known\0938__s01_STAGE1__uxm_tests_math_test_math06_integral_trap__f9df1f263f.uxm (5.76 sn) mode=compact
+[0445/1054] BASARILI uxm\tests\all_expected_known\0939__s01_STAGE1__uxm_tests_math_test_math07_integral_simpson__7adae488ba.uxm (5.08 sn) mode=compact
+[0446/1054] BASARILI uxm\tests\all_expected_known\0940__s01_STAGE1__uxm_tests_matrix_tmp_det_debug__e17f820639.uxm (4.99 sn) mode=compact
+[0447/1054] BASARILI uxm\tests\all_expected_known\0941__s01_STAGE1__uxm_tests_matrix_test_matrix01_init_set_print__eae0ab88c2.uxm (5.52 sn) mode=compact
+[0448/1054] BASARILI uxm\tests\all_expected_known\0942__s01_STAGE1__uxm_tests_matrix_test_matrix02_add_2x2__50b27b5964.uxm (4.83 sn) mode=compact
+[0449/1054] BASARILI uxm\tests\all_expected_known\0943__s01_STAGE1__uxm_tests_matrix_test_matrix03_mul_2x2__451f57a0bb.uxm (4.28 sn) mode=compact
+[0450/1054] BASARILI uxm\tests\all_expected_known\0944__s01_STAGE1__uxm_tests_matrix_test_matrix04_identity_trace_det2__6bb04975dc.uxm (4.74 sn) mode=compact
+[0451/1054] BASARILI uxm\tests\all_expected_known\0945__s01_STAGE1__uxm_tests_native_test01_print_A__8e5b1a5c2c.uxm (5.09 sn) mode=compact
+[0452/1054] BASARILI uxm\tests\all_expected_known\0949__s01_STAGE1__uxm_tests_native_test05_meta_add__4fc7a1b8cb.uxm (4.87 sn) mode=compact
+[0453/1054] BASARILI uxm\tests\all_expected_known\0950__s01_STAGE1__uxm_tests_native_test06_dynamic_meta_mul__0637aeddbd.uxm (5.08 sn) mode=compact
+[0454/1054] BASARILI uxm\tests\all_expected_known\0953__s01_STAGE1__uxm_tests_native_test09_div_mod__dadc655607.uxm (5.47 sn) mode=compact
+[0455/1054] BASARILI uxm\tests\all_expected_known\0954__s01_STAGE1__uxm_tests_native_test10_sin_scaled__6a772e05b7.uxm (4.28 sn) mode=compact
+[0456/1054] BASARILI uxm\tests\all_expected_known\0955__s01_STAGE1__uxm_tests_native_test11_hypotenuse__80f1ac1840.uxm (4.85 sn) mode=compact
+[0457/1054] BASARILI uxm\tests\all_expected_known\0956__s01_STAGE1__uxm_tests_native_test12_signed_mode__ff2c9373ae.uxm (4.81 sn) mode=compact
+[0458/1054] BASARILI uxm\tests\all_expected_known\0957__s01_STAGE1__uxm_tests_native_test13_status_div_zero__207d72a375.uxm (5.36 sn) mode=compact
+[0459/1054] BASARILI uxm\tests\all_expected_known\0958__s01_STAGE1__uxm_tests_native_test14_branch_current_zero__0d0730bdf5.uxm (5.20 sn) mode=compact
+[0460/1054] BASARILI uxm\tests\all_expected_known\0959__s01_STAGE1__uxm_tests_native_test15_branch_nonzero__b96e692ead.uxm (5.39 sn) mode=compact
+[0461/1054] BASARILI uxm\tests\all_expected_known\0960__s01_STAGE1__uxm_tests_native_test16_data_digit__7ab68c52f8.uxm (4.32 sn) mode=compact
+[0462/1054] BASARILI uxm\tests\all_expected_known\0962__s01_STAGE1__uxm_tests_native_test18_pointer_service__70f6f00d78.uxm (4.49 sn) mode=compact
+[0463/1054] BASARILI uxm\tests\all_expected_known\0963__s01_STAGE1__uxm_tests_native_test20_fifo_char_order__26ea03af03.uxm (5.15 sn) mode=compact
+[0464/1054] BASARILI uxm\tests\all_expected_known\0964__s01_STAGE1__uxm_tests_native_test21_fifo_count_peek__b090c67183.uxm (4.98 sn) mode=compact
+[0465/1054] BASARILI uxm\tests\all_expected_known\0965__s01_STAGE1__uxm_tests_native_test22_data_write_read_char__3f6e8f6016.uxm (5.15 sn) mode=compact
+[0466/1054] BASARILI uxm\tests\all_expected_known\0966__s01_STAGE1__uxm_tests_native_test23_data_digit_ascii_to_number__731f5fdd07.uxm (5.17 sn) mode=compact
+[0467/1054] BASARILI uxm\tests\all_expected_known\0967__s01_STAGE1__uxm_tests_native_test24_data_block_copy_print__70f8237e41.uxm (5.32 sn) mode=compact
+[0468/1054] BASARILI uxm\tests\all_expected_known\0968__s01_STAGE1__uxm_tests_native_test25_data_sort_ascending__4b75724a15.uxm (4.86 sn) mode=compact
+[0469/1054] BASARILI uxm\tests\all_expected_known\0969__s01_STAGE1__uxm_tests_native_test26_tape_sort_descending_chars__de7fc3596b.uxm (5.11 sn) mode=compact
+[0470/1054] BASARILI uxm\tests\all_expected_known\0970__s01_STAGE1__uxm_tests_native_test27_tape_linear_search__113d9ad2fa.uxm (4.77 sn) mode=compact
+[0471/1054] BASARILI uxm\tests\all_expected_known\0971__s01_STAGE1__uxm_tests_native_test28_dynamic_meta_fifo__5f1a11e018.uxm (4.90 sn) mode=compact
+[0472/1054] BASARILI uxm\tests\all_expected_known\0972__s01_STAGE1__uxm_tests_native_test29_nested_macro_call__c4e2e765ff.uxm (5.93 sn) mode=compact
+[0473/1054] BASARILI uxm\tests\all_expected_known\0973__s01_STAGE1__uxm_tests_native_test30_word_mode_add__7183932545.uxm (5.84 sn) mode=compact
+[0474/1054] BASARILI uxm\tests\all_expected_known\0974__s01_STAGE1__uxm_tests_native_test31_safe_mode_wild_denied__f700bd1d2c.uxm (5.51 sn) mode=compact
+[0475/1054] BASARILI uxm\tests\all_expected_known\0975__s01_STAGE1__uxm_tests_native_test32_wild_layout_change__231278a172.uxm (4.92 sn) mode=compact
+[0476/1054] BASARILI uxm\tests\all_expected_known\0976__s01_STAGE1__uxm_tests_native_test33_bitwise_and_stack__42c3f71ffe.uxm (5.01 sn) mode=compact
+[0477/1054] BASARILI uxm\tests\all_expected_known\0977__s01_STAGE1__uxm_tests_native_test34_data_block_clear__117b3b216b.uxm (5.28 sn) mode=compact
+[0478/1054] BASARILI uxm\tests\all_expected_known\0978__s01_STAGE1__uxm_tests_native_test35_optimizer_visible_result__a35f706a7d.uxm (4.94 sn) mode=compact
+[0479/1054] BASARILI uxm\tests\all_expected_known\0979__s01_STAGE1__uxm_tests_native_test40_4bit_cpu_alu_model__5f02bfa629.uxm (4.11 sn) mode=compact
+[0480/1054] BASARILI uxm\tests\all_expected_known\0980__s01_STAGE1__uxm_tests_native_test41_4_neuron_nn_model__62638c4017.uxm (5.28 sn) mode=compact
+[0481/1054] BASARILI uxm\tests\all_expected_known\0981__s01_STAGE1__uxm_tests_native_test42_error_flag_set_reset__e7a6ab7c15.uxm (4.95 sn) mode=compact
+[0482/1054] BASARILI uxm\tests\all_expected_known\0982__s01_STAGE1__uxm_tests_native_test43_error_macro_helpers__44f46ee474.uxm (5.43 sn) mode=compact
+[0483/1054] BASARILI uxm\tests\all_expected_known\0983__s01_STAGE1__uxm_tests_native_test44_asin__761fbf3b48.uxm (5.65 sn) mode=compact
+[0484/1054] BASARILI uxm\tests\all_expected_known\0984__s01_STAGE1__uxm_tests_native_test44_meta_version_info__91d344a2a1.uxm (4.83 sn) mode=compact
+[0485/1054] BASARILI uxm\tests\all_expected_known\0985__s01_STAGE1__uxm_tests_native_test45_acos__7a833092f2.uxm (4.44 sn) mode=compact
+[0486/1054] BASARILI uxm\tests\all_expected_known\0986__s01_STAGE1__uxm_tests_native_test45_pointer_meta_extended__f9164ccb62.uxm (4.90 sn) mode=compact
+[0487/1054] BASARILI uxm\tests\all_expected_known\0987__s01_STAGE1__uxm_tests_native_test46_fifo_clear__bb536cd199.uxm (4.90 sn) mode=compact
+[0488/1054] BASARILI uxm\tests\all_expected_known\0988__s01_STAGE1__uxm_tests_native_test46_sqrt__1a461459c1.uxm (4.85 sn) mode=compact
+[0489/1054] BASARILI uxm\tests\all_expected_known\0989__s01_STAGE1__uxm_tests_native_test47_sinh__4fb09ec0b9.uxm (5.44 sn) mode=compact
+[0490/1054] BASARILI uxm\tests\all_expected_known\0990__s01_STAGE1__uxm_tests_native_test47_tape_sort_ascending__675684e90f.uxm (4.91 sn) mode=compact
+[0491/1054] BASARILI uxm\tests\all_expected_known\0991__s01_STAGE1__uxm_tests_native_test48_cosh__6488c161bc.uxm (4.38 sn) mode=compact
+[0492/1054] BASARILI uxm\tests\all_expected_known\0992__s01_STAGE1__uxm_tests_native_test48_data_sort_descending__56ee07378b.uxm (4.78 sn) mode=compact
+[0493/1054] BASARILI uxm\tests\all_expected_known\0993__s01_STAGE1__uxm_tests_native_test49_data_linear_search__b008a58f23.uxm (5.08 sn) mode=compact
+[0494/1054] BASARILI uxm\tests\all_expected_known\0994__s01_STAGE1__uxm_tests_native_test49_tanh__ad7cc4dab6.uxm (4.74 sn) mode=compact
+[0495/1054] BASARILI uxm\tests\all_expected_known\0995__s01_STAGE1__uxm_tests_native_test50_tape_block_copy_clear__b11e5f12e7.uxm (5.37 sn) mode=compact
+[0496/1054] BASARILI uxm\tests\all_expected_known\0996__s01_STAGE1__uxm_tests_native_test51_meta_print_stack_pop__bb605e52bd.uxm (4.93 sn) mode=compact
+[0497/1054] BASARILI uxm\tests\all_expected_known\0997__s01_STAGE1__uxm_tests_native_test52_meta_print_hex__45c02b6439.uxm (4.29 sn) mode=compact
+[0498/1054] BASARILI uxm\tests\all_expected_known\0998__s01_STAGE1__uxm_tests_native_test53_meta_print_bin__cd986c2d15.uxm (4.61 sn) mode=compact
+[0499/1054] BASARILI uxm\tests\all_expected_known\0999__s01_STAGE1__uxm_tests_native_test54_meta_print_char_raw__d493d4bbbd.uxm (5.04 sn) mode=compact
+[0500/1054] BASARILI uxm\tests\all_expected_known\1003__s02_STAGE2_memory__uxm_tests_fp_test_fp01_add_int__4ff48c654e.uxm (4.79 sn) mode=compact
+[0501/1054] BASARILI uxm\tests\all_expected_known\1004__s02_STAGE2_memory__uxm_tests_fp_test_fp02_sub_int__d438ddc46b.uxm (5.21 sn) mode=compact
+[0502/1054] BASARILI uxm\tests\all_expected_known\1005__s02_STAGE2_memory__uxm_tests_fp_test_fp03_mul_int__2896c4924c.uxm (6.39 sn) mode=compact
+[0503/1054] BASARILI uxm\tests\all_expected_known\1006__s02_STAGE2_memory__uxm_tests_fp_test_fp04_div_int__915cc37e0d.uxm (4.38 sn) mode=compact
+[0504/1054] BASARILI uxm\tests\all_expected_known\1007__s02_STAGE2_memory__uxm_tests_fp_test_fp05_from_string__7d5d052572.uxm (4.70 sn) mode=compact
+[0505/1054] BASARILI uxm\tests\all_expected_known\1008__s02_STAGE2_memory__uxm_tests_fp_test_fp06_add_dec_string__c2eee589d7.uxm (4.73 sn) mode=compact
+[0506/1054] BASARILI uxm\tests\all_expected_known\1009__s02_STAGE2_memory__uxm_tests_fp_test_fp07_int_zero_sign_abs__0211b86702.uxm (4.78 sn) mode=compact
+[0507/1054] BASARILI uxm\tests\all_expected_known\1010__s02_STAGE2_memory__uxm_tests_math_test_math01_poly_deriv_arge__dea08874ec.uxm (5.28 sn) mode=compact
+[0508/1054] BASARILI uxm\tests\all_expected_known\1011__s02_STAGE2_memory__uxm_tests_math_test_math02_poly_integral_arge__f2b514b3e4.uxm (4.77 sn) mode=compact
+[0509/1054] BASARILI uxm\tests\all_expected_known\1012__s02_STAGE2_memory__uxm_tests_math_test_math03_poly_eval_arge__7f1d2b2783.uxm (4.24 sn) mode=compact
+[0510/1054] BASARILI uxm\tests\all_expected_known\1013__s02_STAGE2_memory__uxm_tests_math_test_math04_expr_rpn_eval__2f2f641449.uxm (4.64 sn) mode=compact
+[0511/1054] BASARILI uxm\tests\all_expected_known\1014__s02_STAGE2_memory__uxm_tests_math_test_math05_num_deriv__191a99caff.uxm (4.66 sn) mode=compact
+[0512/1054] BASARILI uxm\tests\all_expected_known\1015__s02_STAGE2_memory__uxm_tests_math_test_math06_integral_trap__f9df1f263f.uxm (4.92 sn) mode=compact
+[0513/1054] BASARILI uxm\tests\all_expected_known\1016__s02_STAGE2_memory__uxm_tests_math_test_math07_integral_simpson__7adae488ba.uxm (4.70 sn) mode=compact
+[0514/1054] BASARILI uxm\tests\all_expected_known\1017__s02_STAGE2_memory__uxm_tests_matrix_tmp_det_debug__e17f820639.uxm (5.09 sn) mode=compact
+[0515/1054] BASARILI uxm\tests\all_expected_known\1018__s02_STAGE2_memory__uxm_tests_matrix_test_matrix01_init_set_print__eae0ab88c2.uxm (4.83 sn) mode=compact
+[0516/1054] BASARILI uxm\tests\all_expected_known\1019__s02_STAGE2_memory__uxm_tests_matrix_test_matrix02_add_2x2__50b27b5964.uxm (5.48 sn) mode=compact
+[0517/1054] BASARILI uxm\tests\all_expected_known\1020__s02_STAGE2_memory__uxm_tests_matrix_test_matrix03_mul_2x2__451f57a0bb.uxm (5.21 sn) mode=compact
+[0518/1054] BASARILI uxm\tests\all_expected_known\1021__s02_STAGE2_memory__uxm_tests_matrix_test_matrix04_identity_trace_det2__6bb04975dc.uxm (5.31 sn) mode=compact
+[0519/1054] BASARILI uxm\tests\all_expected_known\1022__s02_STAGE2_memory__uxm_tests_native_test01_print_A__8e5b1a5c2c.uxm (5.22 sn) mode=compact
+[0520/1054] BASARILI uxm\tests\all_expected_known\1026__s02_STAGE2_memory__uxm_tests_native_test05_meta_add__4fc7a1b8cb.uxm (5.13 sn) mode=compact
+[0521/1054] BASARILI uxm\tests\all_expected_known\1027__s02_STAGE2_memory__uxm_tests_native_test06_dynamic_meta_mul__0637aeddbd.uxm (4.39 sn) mode=compact
+[0522/1054] BASARILI uxm\tests\all_expected_known\1030__s02_STAGE2_memory__uxm_tests_native_test09_div_mod__dadc655607.uxm (4.25 sn) mode=compact
+[0523/1054] BASARILI uxm\tests\all_expected_known\1031__s02_STAGE2_memory__uxm_tests_native_test10_sin_scaled__6a772e05b7.uxm (4.69 sn) mode=compact
+[0524/1054] BASARILI uxm\tests\all_expected_known\1032__s02_STAGE2_memory__uxm_tests_native_test11_hypotenuse__80f1ac1840.uxm (4.76 sn) mode=compact
+[0525/1054] BASARILI uxm\tests\all_expected_known\1033__s02_STAGE2_memory__uxm_tests_native_test12_signed_mode__ff2c9373ae.uxm (5.16 sn) mode=compact
+[0526/1054] BASARILI uxm\tests\all_expected_known\1034__s02_STAGE2_memory__uxm_tests_native_test13_status_div_zero__207d72a375.uxm (5.26 sn) mode=compact
+[0527/1054] BASARILI uxm\tests\all_expected_known\1035__s02_STAGE2_memory__uxm_tests_native_test14_branch_current_zero__0d0730bdf5.uxm (5.09 sn) mode=compact
+[0528/1054] BASARILI uxm\tests\all_expected_known\1036__s02_STAGE2_memory__uxm_tests_native_test15_branch_nonzero__b96e692ead.uxm (5.24 sn) mode=compact
+[0529/1054] BASARILI uxm\tests\all_expected_known\1037__s02_STAGE2_memory__uxm_tests_native_test16_data_digit__7ab68c52f8.uxm (6.33 sn) mode=compact
+[0530/1054] BASARILI uxm\tests\all_expected_known\1039__s02_STAGE2_memory__uxm_tests_native_test18_pointer_service__70f6f00d78.uxm (4.89 sn) mode=compact
+[0531/1054] BASARILI uxm\tests\all_expected_known\1040__s02_STAGE2_memory__uxm_tests_native_test20_fifo_char_order__26ea03af03.uxm (5.39 sn) mode=compact
+[0532/1054] BASARILI uxm\tests\all_expected_known\1041__s02_STAGE2_memory__uxm_tests_native_test21_fifo_count_peek__b090c67183.uxm (5.04 sn) mode=compact
+[0533/1054] BASARILI uxm\tests\all_expected_known\1042__s02_STAGE2_memory__uxm_tests_native_test22_data_write_read_char__3f6e8f6016.uxm (4.66 sn) mode=compact
+[0534/1054] BASARILI uxm\tests\all_expected_known\1043__s02_STAGE2_memory__uxm_tests_native_test23_data_digit_ascii_to_number__731f5fdd07.uxm (4.73 sn) mode=compact
+[0535/1054] BASARILI uxm\tests\all_expected_known\1044__s02_STAGE2_memory__uxm_tests_native_test24_data_block_copy_print__70f8237e41.uxm (4.77 sn) mode=compact
+[0536/1054] BASARILI uxm\tests\all_expected_known\1045__s02_STAGE2_memory__uxm_tests_native_test25_data_sort_ascending__4b75724a15.uxm (5.54 sn) mode=compact
+[0537/1054] BASARILI uxm\tests\all_expected_known\1046__s02_STAGE2_memory__uxm_tests_native_test26_tape_sort_descending_chars__de7fc3596b.uxm (4.93 sn) mode=compact
+[0538/1054] BASARILI uxm\tests\all_expected_known\1047__s02_STAGE2_memory__uxm_tests_native_test27_tape_linear_search__113d9ad2fa.uxm (5.45 sn) mode=compact
+[0539/1054] BASARILI uxm\tests\all_expected_known\1048__s02_STAGE2_memory__uxm_tests_native_test28_dynamic_meta_fifo__5f1a11e018.uxm (4.60 sn) mode=compact
+[0540/1054] BASARILI uxm\tests\all_expected_known\1049__s02_STAGE2_memory__uxm_tests_native_test29_nested_macro_call__c4e2e765ff.uxm (4.61 sn) mode=compact
+[0541/1054] BASARILI uxm\tests\all_expected_known\1050__s02_STAGE2_memory__uxm_tests_native_test30_word_mode_add__7183932545.uxm (5.20 sn) mode=compact
+[0542/1054] BASARILI uxm\tests\all_expected_known\1051__s02_STAGE2_memory__uxm_tests_native_test31_safe_mode_wild_denied__f700bd1d2c.uxm (8.47 sn) mode=compact
+[0543/1054] BASARILI uxm\tests\all_expected_known\1052__s02_STAGE2_memory__uxm_tests_native_test32_wild_layout_change__231278a172.uxm (6.30 sn) mode=compact
+[0544/1054] BASARILI uxm\tests\all_expected_known\1053__s02_STAGE2_memory__uxm_tests_native_test33_bitwise_and_stack__42c3f71ffe.uxm (5.50 sn) mode=compact
+[0545/1054] BASARILI uxm\tests\all_expected_known\1054__s02_STAGE2_memory__uxm_tests_native_test34_data_block_clear__117b3b216b.uxm (4.91 sn) mode=compact
+[0546/1054] BASARILI uxm\tests\all_expected_known\1055__s02_STAGE2_memory__uxm_tests_native_test35_optimizer_visible_result__a35f706a7d.uxm (4.98 sn) mode=compact
+[0547/1054] BASARILI uxm\tests\all_expected_known\1056__s02_STAGE2_memory__uxm_tests_native_test40_4bit_cpu_alu_model__5f02bfa629.uxm (5.34 sn) mode=compact
+[0548/1054] BASARILI uxm\tests\all_expected_known\1057__s02_STAGE2_memory__uxm_tests_native_test41_4_neuron_nn_model__62638c4017.uxm (5.25 sn) mode=compact
+[0549/1054] BASARILI uxm\tests\all_expected_known\1058__s02_STAGE2_memory__uxm_tests_native_test42_error_flag_set_reset__e7a6ab7c15.uxm (4.93 sn) mode=compact
+[0550/1054] BASARILI uxm\tests\all_expected_known\1059__s02_STAGE2_memory__uxm_tests_native_test43_error_macro_helpers__44f46ee474.uxm (4.44 sn) mode=compact
+[0551/1054] BASARILI uxm\tests\all_expected_known\1060__s02_STAGE2_memory__uxm_tests_native_test44_asin__761fbf3b48.uxm (4.58 sn) mode=compact
+[0552/1054] BASARILI uxm\tests\all_expected_known\1061__s02_STAGE2_memory__uxm_tests_native_test44_meta_version_info__91d344a2a1.uxm (5.20 sn) mode=compact
+[0553/1054] BASARILI uxm\tests\all_expected_known\1062__s02_STAGE2_memory__uxm_tests_native_test45_acos__7a833092f2.uxm (4.92 sn) mode=compact
+[0554/1054] BASARILI uxm\tests\all_expected_known\1063__s02_STAGE2_memory__uxm_tests_native_test45_pointer_meta_extended__f9164ccb62.uxm (5.65 sn) mode=compact
+[0555/1054] BASARILI uxm\tests\all_expected_known\1064__s02_STAGE2_memory__uxm_tests_native_test46_fifo_clear__bb536cd199.uxm (5.80 sn) mode=compact
+[0556/1054] BASARILI uxm\tests\all_expected_known\1065__s02_STAGE2_memory__uxm_tests_native_test46_sqrt__1a461459c1.uxm (4.53 sn) mode=compact
+[0557/1054] BASARILI uxm\tests\all_expected_known\1066__s02_STAGE2_memory__uxm_tests_native_test47_sinh__4fb09ec0b9.uxm (4.98 sn) mode=compact
+[0558/1054] BASARILI uxm\tests\all_expected_known\1067__s02_STAGE2_memory__uxm_tests_native_test47_tape_sort_ascending__675684e90f.uxm (4.56 sn) mode=compact
+[0559/1054] BASARILI uxm\tests\all_expected_known\1068__s02_STAGE2_memory__uxm_tests_native_test48_cosh__6488c161bc.uxm (4.65 sn) mode=compact
+[0560/1054] BASARILI uxm\tests\all_expected_known\1069__s02_STAGE2_memory__uxm_tests_native_test48_data_sort_descending__56ee07378b.uxm (4.57 sn) mode=compact
+[0561/1054] BASARILI uxm\tests\all_expected_known\1070__s02_STAGE2_memory__uxm_tests_native_test49_data_linear_search__b008a58f23.uxm (5.01 sn) mode=compact
+[0562/1054] BASARILI uxm\tests\all_expected_known\1071__s02_STAGE2_memory__uxm_tests_native_test49_tanh__ad7cc4dab6.uxm (6.53 sn) mode=compact
+[0563/1054] BASARILI uxm\tests\all_expected_known\1072__s02_STAGE2_memory__uxm_tests_native_test50_tape_block_copy_clear__b11e5f12e7.uxm (9.54 sn) mode=compact
+[0564/1054] BASARILI uxm\tests\all_expected_known\1073__s02_STAGE2_memory__uxm_tests_native_test51_meta_print_stack_pop__bb605e52bd.uxm (5.45 sn) mode=compact
+[0565/1054] BASARILI uxm\tests\all_expected_known\1074__s02_STAGE2_memory__uxm_tests_native_test52_meta_print_hex__45c02b6439.uxm (8.66 sn) mode=compact
+[0566/1054] BASARILI uxm\tests\all_expected_known\1075__s02_STAGE2_memory__uxm_tests_native_test53_meta_print_bin__cd986c2d15.uxm (5.56 sn) mode=compact
+[0567/1054] BASARILI uxm\tests\all_expected_known\1076__s02_STAGE2_memory__uxm_tests_native_test54_meta_print_char_raw__d493d4bbbd.uxm (4.55 sn) mode=compact
+[0568/1054] BASARILI uxm\tests\all_expected_known\1080__s03_STAGE3_memory_policy__uxm_tests_fp_test_fp01_add_int__4ff48c654e.uxm (4.33 sn) mode=compact
+[0569/1054] BASARILI uxm\tests\all_expected_known\1081__s03_STAGE3_memory_policy__uxm_tests_fp_test_fp02_sub_int__d438ddc46b.uxm (4.21 sn) mode=compact
+[0570/1054] BASARILI uxm\tests\all_expected_known\1082__s03_STAGE3_memory_policy__uxm_tests_fp_test_fp03_mul_int__2896c4924c.uxm (5.82 sn) mode=compact
+[0571/1054] BASARILI uxm\tests\all_expected_known\1083__s03_STAGE3_memory_policy__uxm_tests_fp_test_fp04_div_int__915cc37e0d.uxm (8.03 sn) mode=compact
+[0572/1054] BASARILI uxm\tests\all_expected_known\1084__s03_STAGE3_memory_policy__uxm_tests_fp_test_fp05_from_string__7d5d052572.uxm (5.66 sn) mode=compact
+[0573/1054] BASARILI uxm\tests\all_expected_known\1085__s03_STAGE3_memory_policy__uxm_tests_fp_test_fp06_add_dec_string__c2eee589d7.uxm (5.07 sn) mode=compact
+[0574/1054] BASARILI uxm\tests\all_expected_known\1086__s03_STAGE3_memory_policy__uxm_tests_fp_test_fp07_int_zero_sign_abs__0211b86702.uxm (4.02 sn) mode=compact
+[0575/1054] BASARILI uxm\tests\all_expected_known\1087__s03_STAGE3_memory_policy__uxm_tests_math_test_math01_poly_deriv_arge__dea08874ec.uxm (4.79 sn) mode=compact
+[0576/1054] BASARILI uxm\tests\all_expected_known\1088__s03_STAGE3_memory_policy__uxm_tests_math_test_math02_poly_integral_arge__f2b514b3e4.uxm (5.64 sn) mode=compact
+[0577/1054] BASARILI uxm\tests\all_expected_known\1089__s03_STAGE3_memory_policy__uxm_tests_math_test_math03_poly_eval_arge__7f1d2b2783.uxm (4.83 sn) mode=compact
+[0578/1054] BASARILI uxm\tests\all_expected_known\1090__s03_STAGE3_memory_policy__uxm_tests_math_test_math04_expr_rpn_eval__2f2f641449.uxm (4.93 sn) mode=compact
+[0579/1054] BASARILI uxm\tests\all_expected_known\1091__s03_STAGE3_memory_policy__uxm_tests_math_test_math05_num_deriv__191a99caff.uxm (4.01 sn) mode=compact
+[0580/1054] BASARILI uxm\tests\all_expected_known\1092__s03_STAGE3_memory_policy__uxm_tests_math_test_math06_integral_trap__f9df1f263f.uxm (4.08 sn) mode=compact
+[0581/1054] BASARILI uxm\tests\all_expected_known\1093__s03_STAGE3_memory_policy__uxm_tests_math_test_math07_integral_simpson__7adae488ba.uxm (4.19 sn) mode=compact
+[0582/1054] BASARILI uxm\tests\all_expected_known\1094__s03_STAGE3_memory_policy__uxm_tests_matrix_tmp_det_debug__e17f820639.uxm (5.81 sn) mode=compact
+[0583/1054] BASARILI uxm\tests\all_expected_known\1095__s03_STAGE3_memory_policy__uxm_tests_matrix_test_matrix01_init_set_print__eae0ab88c2.uxm (5.06 sn) mode=compact
+[0584/1054] BASARILI uxm\tests\all_expected_known\1096__s03_STAGE3_memory_policy__uxm_tests_matrix_test_matrix02_add_2x2__50b27b5964.uxm (4.63 sn) mode=compact
+[0585/1054] BASARILI uxm\tests\all_expected_known\1097__s03_STAGE3_memory_policy__uxm_tests_matrix_test_matrix03_mul_2x2__451f57a0bb.uxm (5.67 sn) mode=compact
+[0586/1054] BASARILI uxm\tests\all_expected_known\1098__s03_STAGE3_memory_policy__uxm_tests_matrix_test_matrix04_identity_trace_det2__6bb04975dc.uxm (4.92 sn) mode=compact
+[0587/1054] BASARILI uxm\tests\all_expected_known\1099__s03_STAGE3_memory_policy__uxm_tests_native_test01_print_A__8e5b1a5c2c.uxm (4.72 sn) mode=compact
+[0588/1054] BASARILI uxm\tests\all_expected_known\1103__s03_STAGE3_memory_policy__uxm_tests_native_test05_meta_add__4fc7a1b8cb.uxm (5.71 sn) mode=compact
+[0589/1054] BASARILI uxm\tests\all_expected_known\1104__s03_STAGE3_memory_policy__uxm_tests_native_test06_dynamic_meta_mul__0637aeddbd.uxm (5.37 sn) mode=compact
+[0590/1054] BASARILI uxm\tests\all_expected_known\1107__s03_STAGE3_memory_policy__uxm_tests_native_test09_div_mod__dadc655607.uxm (4.37 sn) mode=compact
+[0591/1054] BASARILI uxm\tests\all_expected_known\1108__s03_STAGE3_memory_policy__uxm_tests_native_test10_sin_scaled__6a772e05b7.uxm (5.18 sn) mode=compact
+[0592/1054] BASARILI uxm\tests\all_expected_known\1109__s03_STAGE3_memory_policy__uxm_tests_native_test11_hypotenuse__80f1ac1840.uxm (4.87 sn) mode=compact
+[0593/1054] BASARILI uxm\tests\all_expected_known\1110__s03_STAGE3_memory_policy__uxm_tests_native_test12_signed_mode__ff2c9373ae.uxm (4.86 sn) mode=compact
+[0594/1054] BASARILI uxm\tests\all_expected_known\1111__s03_STAGE3_memory_policy__uxm_tests_native_test13_status_div_zero__207d72a375.uxm (5.47 sn) mode=compact
+[0595/1054] BASARILI uxm\tests\all_expected_known\1112__s03_STAGE3_memory_policy__uxm_tests_native_test14_branch_current_zero__0d0730bdf5.uxm (4.80 sn) mode=compact
+[0596/1054] BASARILI uxm\tests\all_expected_known\1113__s03_STAGE3_memory_policy__uxm_tests_native_test15_branch_nonzero__b96e692ead.uxm (4.33 sn) mode=compact
+[0597/1054] BASARILI uxm\tests\all_expected_known\1114__s03_STAGE3_memory_policy__uxm_tests_native_test16_data_digit__7ab68c52f8.uxm (4.80 sn) mode=compact
+[0598/1054] BASARILI uxm\tests\all_expected_known\1116__s03_STAGE3_memory_policy__uxm_tests_native_test18_pointer_service__70f6f00d78.uxm (4.84 sn) mode=compact
+[0599/1054] BASARILI uxm\tests\all_expected_known\1117__s03_STAGE3_memory_policy__uxm_tests_native_test20_fifo_char_order__26ea03af03.uxm (5.54 sn) mode=compact
+[0600/1054] BASARILI uxm\tests\all_expected_known\1118__s03_STAGE3_memory_policy__uxm_tests_native_test21_fifo_count_peek__b090c67183.uxm (6.37 sn) mode=compact
+[0601/1054] BASARILI uxm\tests\all_expected_known\1119__s03_STAGE3_memory_policy__uxm_tests_native_test22_data_write_read_char__3f6e8f6016.uxm (6.85 sn) mode=compact
+[0602/1054] BASARILI uxm\tests\all_expected_known\1120__s03_STAGE3_memory_policy__uxm_tests_native_test23_data_digit_ascii_to_number__731f5fdd07.uxm (5.06 sn) mode=compact
+[0603/1054] BASARILI uxm\tests\all_expected_known\1121__s03_STAGE3_memory_policy__uxm_tests_native_test24_data_block_copy_print__70f8237e41.uxm (5.08 sn) mode=compact
+[0604/1054] BASARILI uxm\tests\all_expected_known\1122__s03_STAGE3_memory_policy__uxm_tests_native_test25_data_sort_ascending__4b75724a15.uxm (5.31 sn) mode=compact
+[0605/1054] BASARILI uxm\tests\all_expected_known\1123__s03_STAGE3_memory_policy__uxm_tests_native_test26_tape_sort_descending_chars__de7fc3596b.uxm (4.97 sn) mode=compact
+[0606/1054] BASARILI uxm\tests\all_expected_known\1124__s03_STAGE3_memory_policy__uxm_tests_native_test27_tape_linear_search__113d9ad2fa.uxm (5.57 sn) mode=compact
+[0607/1054] BASARILI uxm\tests\all_expected_known\1125__s03_STAGE3_memory_policy__uxm_tests_native_test28_dynamic_meta_fifo__5f1a11e018.uxm (4.74 sn) mode=compact
+[0608/1054] BASARILI uxm\tests\all_expected_known\1126__s03_STAGE3_memory_policy__uxm_tests_native_test29_nested_macro_call__c4e2e765ff.uxm (4.04 sn) mode=compact
+[0609/1054] BASARILI uxm\tests\all_expected_known\1127__s03_STAGE3_memory_policy__uxm_tests_native_test30_word_mode_add__7183932545.uxm (4.82 sn) mode=compact
+[0610/1054] BASARILI uxm\tests\all_expected_known\1128__s03_STAGE3_memory_policy__uxm_tests_native_test31_safe_mode_wild_denied__f700bd1d2c.uxm (4.90 sn) mode=compact
+[0611/1054] BASARILI uxm\tests\all_expected_known\1129__s03_STAGE3_memory_policy__uxm_tests_native_test32_wild_layout_change__231278a172.uxm (5.45 sn) mode=compact
+[0612/1054] BASARILI uxm\tests\all_expected_known\1130__s03_STAGE3_memory_policy__uxm_tests_native_test33_bitwise_and_stack__42c3f71ffe.uxm (5.94 sn) mode=compact
+[0613/1054] BASARILI uxm\tests\all_expected_known\1131__s03_STAGE3_memory_policy__uxm_tests_native_test34_data_block_clear__117b3b216b.uxm (4.69 sn) mode=compact
+[0614/1054] BASARILI uxm\tests\all_expected_known\1132__s03_STAGE3_memory_policy__uxm_tests_native_test35_optimizer_visible_result__a35f706a7d.uxm (4.73 sn) mode=compact
+[0615/1054] BASARILI uxm\tests\all_expected_known\1133__s03_STAGE3_memory_policy__uxm_tests_native_test40_4bit_cpu_alu_model__5f02bfa629.uxm (4.92 sn) mode=compact
+[0616/1054] BASARILI uxm\tests\all_expected_known\1134__s03_STAGE3_memory_policy__uxm_tests_native_test41_4_neuron_nn_model__62638c4017.uxm (4.98 sn) mode=compact
+[0617/1054] BASARILI uxm\tests\all_expected_known\1135__s03_STAGE3_memory_policy__uxm_tests_native_test42_error_flag_set_reset__e7a6ab7c15.uxm (4.85 sn) mode=compact
+[0618/1054] BASARILI uxm\tests\all_expected_known\1136__s03_STAGE3_memory_policy__uxm_tests_native_test43_error_macro_helpers__44f46ee474.uxm (5.69 sn) mode=compact
+[0619/1054] BASARILI uxm\tests\all_expected_known\1137__s03_STAGE3_memory_policy__uxm_tests_native_test44_asin__761fbf3b48.uxm (4.66 sn) mode=compact
+[0620/1054] BASARILI uxm\tests\all_expected_known\1138__s03_STAGE3_memory_policy__uxm_tests_native_test44_meta_version_info__91d344a2a1.uxm (4.33 sn) mode=compact
+[0621/1054] BASARILI uxm\tests\all_expected_known\1139__s03_STAGE3_memory_policy__uxm_tests_native_test45_acos__7a833092f2.uxm (4.84 sn) mode=compact
+[0622/1054] BASARILI uxm\tests\all_expected_known\1140__s03_STAGE3_memory_policy__uxm_tests_native_test45_pointer_meta_extended__f9164ccb62.uxm (4.86 sn) mode=compact
+[0623/1054] BASARILI uxm\tests\all_expected_known\1141__s03_STAGE3_memory_policy__uxm_tests_native_test46_fifo_clear__bb536cd199.uxm (4.91 sn) mode=compact
+[0624/1054] BASARILI uxm\tests\all_expected_known\1142__s03_STAGE3_memory_policy__uxm_tests_native_test46_sqrt__1a461459c1.uxm (5.42 sn) mode=compact
+[0625/1054] BASARILI uxm\tests\all_expected_known\1143__s03_STAGE3_memory_policy__uxm_tests_native_test47_sinh__4fb09ec0b9.uxm (4.97 sn) mode=compact
+[0626/1054] BASARILI uxm\tests\all_expected_known\1144__s03_STAGE3_memory_policy__uxm_tests_native_test47_tape_sort_ascending__675684e90f.uxm (4.29 sn) mode=compact
+[0627/1054] BASARILI uxm\tests\all_expected_known\1145__s03_STAGE3_memory_policy__uxm_tests_native_test48_cosh__6488c161bc.uxm (5.01 sn) mode=compact
+[0628/1054] BASARILI uxm\tests\all_expected_known\1146__s03_STAGE3_memory_policy__uxm_tests_native_test48_data_sort_descending__56ee07378b.uxm (4.77 sn) mode=compact
+[0629/1054] BASARILI uxm\tests\all_expected_known\1147__s03_STAGE3_memory_policy__uxm_tests_native_test49_data_linear_search__b008a58f23.uxm (4.97 sn) mode=compact
+[0630/1054] BASARILI uxm\tests\all_expected_known\1148__s03_STAGE3_memory_policy__uxm_tests_native_test49_tanh__ad7cc4dab6.uxm (7.35 sn) mode=compact
+[0631/1054] BASARILI uxm\tests\all_expected_known\1149__s03_STAGE3_memory_policy__uxm_tests_native_test50_tape_block_copy_clear__b11e5f12e7.uxm (6.03 sn) mode=compact
+[0632/1054] BASARILI uxm\tests\all_expected_known\1150__s03_STAGE3_memory_policy__uxm_tests_native_test51_meta_print_stack_pop__bb605e52bd.uxm (5.71 sn) mode=compact
+[0633/1054] BASARILI uxm\tests\all_expected_known\1151__s03_STAGE3_memory_policy__uxm_tests_native_test52_meta_print_hex__45c02b6439.uxm (5.03 sn) mode=compact
+[0634/1054] BASARILI uxm\tests\all_expected_known\1152__s03_STAGE3_memory_policy__uxm_tests_native_test53_meta_print_bin__cd986c2d15.uxm (4.98 sn) mode=compact
+[0635/1054] BASARILI uxm\tests\all_expected_known\1153__s03_STAGE3_memory_policy__uxm_tests_native_test54_meta_print_char_raw__d493d4bbbd.uxm (6.41 sn) mode=compact
+[0636/1054] BASARILI uxm\tests\all_expected_known\1157__s04_STAGE4_string_v1__uxm_tests_fp_test_fp01_add_int__4ff48c654e.uxm (5.25 sn) mode=compact
+[0637/1054] BASARILI uxm\tests\all_expected_known\1158__s04_STAGE4_string_v1__uxm_tests_fp_test_fp02_sub_int__d438ddc46b.uxm (4.17 sn) mode=compact
+[0638/1054] BASARILI uxm\tests\all_expected_known\1159__s04_STAGE4_string_v1__uxm_tests_fp_test_fp03_mul_int__2896c4924c.uxm (4.49 sn) mode=compact
+[0639/1054] BASARILI uxm\tests\all_expected_known\1160__s04_STAGE4_string_v1__uxm_tests_fp_test_fp04_div_int__915cc37e0d.uxm (6.73 sn) mode=compact
+[0640/1054] BASARILI uxm\tests\all_expected_known\1161__s04_STAGE4_string_v1__uxm_tests_fp_test_fp05_from_string__7d5d052572.uxm (8.77 sn) mode=compact
+[0641/1054] BASARILI uxm\tests\all_expected_known\1162__s04_STAGE4_string_v1__uxm_tests_fp_test_fp06_add_dec_string__c2eee589d7.uxm (5.79 sn) mode=compact
+[0642/1054] BASARILI uxm\tests\all_expected_known\1163__s04_STAGE4_string_v1__uxm_tests_fp_test_fp07_int_zero_sign_abs__0211b86702.uxm (5.74 sn) mode=compact
+[0643/1054] BASARILI uxm\tests\all_expected_known\1164__s04_STAGE4_string_v1__uxm_tests_math_test_math01_poly_deriv_arge__dea08874ec.uxm (7.69 sn) mode=compact
+[0644/1054] BASARILI uxm\tests\all_expected_known\1165__s04_STAGE4_string_v1__uxm_tests_math_test_math02_poly_integral_arge__f2b514b3e4.uxm (5.14 sn) mode=compact
+[0645/1054] BASARILI uxm\tests\all_expected_known\1166__s04_STAGE4_string_v1__uxm_tests_math_test_math03_poly_eval_arge__7f1d2b2783.uxm (6.58 sn) mode=compact
+[0646/1054] BASARILI uxm\tests\all_expected_known\1167__s04_STAGE4_string_v1__uxm_tests_math_test_math04_expr_rpn_eval__2f2f641449.uxm (7.23 sn) mode=compact
+[0647/1054] BASARILI uxm\tests\all_expected_known\1168__s04_STAGE4_string_v1__uxm_tests_math_test_math05_num_deriv__191a99caff.uxm (5.94 sn) mode=compact
+[0648/1054] BASARILI uxm\tests\all_expected_known\1169__s04_STAGE4_string_v1__uxm_tests_math_test_math06_integral_trap__f9df1f263f.uxm (7.20 sn) mode=compact
+[0649/1054] BASARILI uxm\tests\all_expected_known\1170__s04_STAGE4_string_v1__uxm_tests_math_test_math07_integral_simpson__7adae488ba.uxm (6.32 sn) mode=compact
+[0650/1054] BASARILI uxm\tests\all_expected_known\1171__s04_STAGE4_string_v1__uxm_tests_matrix_tmp_det_debug__e17f820639.uxm (7.22 sn) mode=compact
+[0651/1054] BASARILI uxm\tests\all_expected_known\1172__s04_STAGE4_string_v1__uxm_tests_matrix_test_matrix01_init_set_print__eae0ab88c2.uxm (5.39 sn) mode=compact
+[0652/1054] BASARILI uxm\tests\all_expected_known\1173__s04_STAGE4_string_v1__uxm_tests_matrix_test_matrix02_add_2x2__50b27b5964.uxm (7.29 sn) mode=compact
+[0653/1054] BASARILI uxm\tests\all_expected_known\1174__s04_STAGE4_string_v1__uxm_tests_matrix_test_matrix03_mul_2x2__451f57a0bb.uxm (17.02 sn) mode=compact
+[0654/1054] BASARILI uxm\tests\all_expected_known\1175__s04_STAGE4_string_v1__uxm_tests_matrix_test_matrix04_identity_trace_det2__6bb04975dc.uxm (7.16 sn) mode=compact
+[0655/1054] BASARILI uxm\tests\all_expected_known\1176__s04_STAGE4_string_v1__uxm_tests_native_test01_print_A__8e5b1a5c2c.uxm (6.30 sn) mode=compact
+[0656/1054] BASARILI uxm\tests\all_expected_known\1180__s04_STAGE4_string_v1__uxm_tests_native_test05_meta_add__4fc7a1b8cb.uxm (5.64 sn) mode=compact
+[0657/1054] BASARILI uxm\tests\all_expected_known\1181__s04_STAGE4_string_v1__uxm_tests_native_test06_dynamic_meta_mul__0637aeddbd.uxm (7.77 sn) mode=compact
+[0658/1054] BASARILI uxm\tests\all_expected_known\1184__s04_STAGE4_string_v1__uxm_tests_native_test09_div_mod__dadc655607.uxm (6.10 sn) mode=compact
+[0659/1054] BASARILI uxm\tests\all_expected_known\1185__s04_STAGE4_string_v1__uxm_tests_native_test10_sin_scaled__6a772e05b7.uxm (4.91 sn) mode=compact
+[0660/1054] BASARILI uxm\tests\all_expected_known\1186__s04_STAGE4_string_v1__uxm_tests_native_test11_hypotenuse__80f1ac1840.uxm (7.27 sn) mode=compact
+[0661/1054] BASARILI uxm\tests\all_expected_known\1187__s04_STAGE4_string_v1__uxm_tests_native_test12_signed_mode__ff2c9373ae.uxm (5.50 sn) mode=compact
+[0662/1054] BASARILI uxm\tests\all_expected_known\1188__s04_STAGE4_string_v1__uxm_tests_native_test13_status_div_zero__207d72a375.uxm (7.29 sn) mode=compact
+[0663/1054] BASARILI uxm\tests\all_expected_known\1189__s04_STAGE4_string_v1__uxm_tests_native_test14_branch_current_zero__0d0730bdf5.uxm (6.82 sn) mode=compact
+[0664/1054] BASARILI uxm\tests\all_expected_known\1190__s04_STAGE4_string_v1__uxm_tests_native_test15_branch_nonzero__b96e692ead.uxm (4.43 sn) mode=compact
+[0665/1054] BASARILI uxm\tests\all_expected_known\1191__s04_STAGE4_string_v1__uxm_tests_native_test16_data_digit__7ab68c52f8.uxm (6.28 sn) mode=compact
+[0666/1054] BASARILI uxm\tests\all_expected_known\1193__s04_STAGE4_string_v1__uxm_tests_native_test18_pointer_service__70f6f00d78.uxm (5.97 sn) mode=compact
+[0667/1054] BASARILI uxm\tests\all_expected_known\1194__s04_STAGE4_string_v1__uxm_tests_native_test20_fifo_char_order__26ea03af03.uxm (5.39 sn) mode=compact
+[0668/1054] BASARILI uxm\tests\all_expected_known\1195__s04_STAGE4_string_v1__uxm_tests_native_test21_fifo_count_peek__b090c67183.uxm (6.82 sn) mode=compact
+[0669/1054] BASARILI uxm\tests\all_expected_known\1196__s04_STAGE4_string_v1__uxm_tests_native_test22_data_write_read_char__3f6e8f6016.uxm (4.86 sn) mode=compact
+[0670/1054] BASARILI uxm\tests\all_expected_known\1197__s04_STAGE4_string_v1__uxm_tests_native_test23_data_digit_ascii_to_number__731f5fdd07.uxm (5.78 sn) mode=compact
+[0671/1054] BASARILI uxm\tests\all_expected_known\1198__s04_STAGE4_string_v1__uxm_tests_native_test24_data_block_copy_print__70f8237e41.uxm (6.67 sn) mode=compact
+[0672/1054] BASARILI uxm\tests\all_expected_known\1199__s04_STAGE4_string_v1__uxm_tests_native_test25_data_sort_ascending__4b75724a15.uxm (7.30 sn) mode=compact
+[0673/1054] BASARILI uxm\tests\all_expected_known\1200__s04_STAGE4_string_v1__uxm_tests_native_test26_tape_sort_descending_chars__de7fc3596b.uxm (6.35 sn) mode=compact
+[0674/1054] BASARILI uxm\tests\all_expected_known\1201__s04_STAGE4_string_v1__uxm_tests_native_test27_tape_linear_search__113d9ad2fa.uxm (5.18 sn) mode=compact
+[0675/1054] BASARILI uxm\tests\all_expected_known\1202__s04_STAGE4_string_v1__uxm_tests_native_test28_dynamic_meta_fifo__5f1a11e018.uxm (5.64 sn) mode=compact
+[0676/1054] BASARILI uxm\tests\all_expected_known\1203__s04_STAGE4_string_v1__uxm_tests_native_test29_nested_macro_call__c4e2e765ff.uxm (6.68 sn) mode=compact
+[0677/1054] BASARILI uxm\tests\all_expected_known\1204__s04_STAGE4_string_v1__uxm_tests_native_test30_word_mode_add__7183932545.uxm (5.21 sn) mode=compact
+[0678/1054] BASARILI uxm\tests\all_expected_known\1205__s04_STAGE4_string_v1__uxm_tests_native_test31_safe_mode_wild_denied__f700bd1d2c.uxm (5.05 sn) mode=compact
+[0679/1054] BASARILI uxm\tests\all_expected_known\1206__s04_STAGE4_string_v1__uxm_tests_native_test32_wild_layout_change__231278a172.uxm (8.59 sn) mode=compact
+[0680/1054] BASARILI uxm\tests\all_expected_known\1207__s04_STAGE4_string_v1__uxm_tests_native_test33_bitwise_and_stack__42c3f71ffe.uxm (6.51 sn) mode=compact
+[0681/1054] BASARILI uxm\tests\all_expected_known\1208__s04_STAGE4_string_v1__uxm_tests_native_test34_data_block_clear__117b3b216b.uxm (5.98 sn) mode=compact
+[0682/1054] BASARILI uxm\tests\all_expected_known\1209__s04_STAGE4_string_v1__uxm_tests_native_test35_optimizer_visible_result__a35f706a7d.uxm (5.63 sn) mode=compact
+[0683/1054] BASARILI uxm\tests\all_expected_known\1210__s04_STAGE4_string_v1__uxm_tests_native_test40_4bit_cpu_alu_model__5f02bfa629.uxm (5.86 sn) mode=compact
+[0684/1054] BASARILI uxm\tests\all_expected_known\1211__s04_STAGE4_string_v1__uxm_tests_native_test41_4_neuron_nn_model__62638c4017.uxm (6.09 sn) mode=compact
+[0685/1054] BASARILI uxm\tests\all_expected_known\1212__s04_STAGE4_string_v1__uxm_tests_native_test42_error_flag_set_reset__e7a6ab7c15.uxm (5.38 sn) mode=compact
+[0686/1054] BASARILI uxm\tests\all_expected_known\1213__s04_STAGE4_string_v1__uxm_tests_native_test43_error_macro_helpers__44f46ee474.uxm (5.85 sn) mode=compact
+[0687/1054] BASARILI uxm\tests\all_expected_known\1214__s04_STAGE4_string_v1__uxm_tests_native_test44_asin__761fbf3b48.uxm (5.75 sn) mode=compact
+[0688/1054] BASARILI uxm\tests\all_expected_known\1215__s04_STAGE4_string_v1__uxm_tests_native_test44_meta_version_info__91d344a2a1.uxm (5.21 sn) mode=compact
+[0689/1054] BASARILI uxm\tests\all_expected_known\1216__s04_STAGE4_string_v1__uxm_tests_native_test45_acos__7a833092f2.uxm (4.92 sn) mode=compact
+[0690/1054] BASARILI uxm\tests\all_expected_known\1217__s04_STAGE4_string_v1__uxm_tests_native_test45_pointer_meta_extended__f9164ccb62.uxm (5.86 sn) mode=compact
+[0691/1054] BASARILI uxm\tests\all_expected_known\1218__s04_STAGE4_string_v1__uxm_tests_native_test46_fifo_clear__bb536cd199.uxm (5.55 sn) mode=compact
+[0692/1054] BASARILI uxm\tests\all_expected_known\1219__s04_STAGE4_string_v1__uxm_tests_native_test46_sqrt__1a461459c1.uxm (6.21 sn) mode=compact
+[0693/1054] BASARILI uxm\tests\all_expected_known\1220__s04_STAGE4_string_v1__uxm_tests_native_test47_sinh__4fb09ec0b9.uxm (7.21 sn) mode=compact
+[0694/1054] BASARILI uxm\tests\all_expected_known\1221__s04_STAGE4_string_v1__uxm_tests_native_test47_tape_sort_ascending__675684e90f.uxm (7.49 sn) mode=compact
+[0695/1054] BASARILI uxm\tests\all_expected_known\1222__s04_STAGE4_string_v1__uxm_tests_native_test48_cosh__6488c161bc.uxm (5.72 sn) mode=compact
+[0696/1054] BASARILI uxm\tests\all_expected_known\1223__s04_STAGE4_string_v1__uxm_tests_native_test48_data_sort_descending__56ee07378b.uxm (7.03 sn) mode=compact
+[0697/1054] BASARILI uxm\tests\all_expected_known\1224__s04_STAGE4_string_v1__uxm_tests_native_test49_data_linear_search__b008a58f23.uxm (6.55 sn) mode=compact
+[0698/1054] BASARILI uxm\tests\all_expected_known\1225__s04_STAGE4_string_v1__uxm_tests_native_test49_tanh__ad7cc4dab6.uxm (5.10 sn) mode=compact
+[0699/1054] BASARILI uxm\tests\all_expected_known\1226__s04_STAGE4_string_v1__uxm_tests_native_test50_tape_block_copy_clear__b11e5f12e7.uxm (4.98 sn) mode=compact
+[0700/1054] BASARILI uxm\tests\all_expected_known\1227__s04_STAGE4_string_v1__uxm_tests_native_test51_meta_print_stack_pop__bb605e52bd.uxm (12.41 sn) mode=compact
+[0701/1054] BASARILI uxm\tests\all_expected_known\1228__s04_STAGE4_string_v1__uxm_tests_native_test52_meta_print_hex__45c02b6439.uxm (7.59 sn) mode=compact
+[0702/1054] BASARILI uxm\tests\all_expected_known\1229__s04_STAGE4_string_v1__uxm_tests_native_test53_meta_print_bin__cd986c2d15.uxm (6.94 sn) mode=compact
+[0703/1054] BASARILI uxm\tests\all_expected_known\1230__s04_STAGE4_string_v1__uxm_tests_native_test54_meta_print_char_raw__d493d4bbbd.uxm (6.42 sn) mode=compact
+[0704/1054] BASARILI uxm\tests\all_expected_known\1237__s05_STAGE5_file_v1__uxm_tests_fp_test_fp01_add_int__4ff48c654e.uxm (8.18 sn) mode=compact
+[0705/1054] BASARILI uxm\tests\all_expected_known\1238__s05_STAGE5_file_v1__uxm_tests_fp_test_fp02_sub_int__d438ddc46b.uxm (7.18 sn) mode=compact
+[0706/1054] BASARILI uxm\tests\all_expected_known\1239__s05_STAGE5_file_v1__uxm_tests_fp_test_fp03_mul_int__2896c4924c.uxm (5.53 sn) mode=compact
+[0707/1054] BASARILI uxm\tests\all_expected_known\1240__s05_STAGE5_file_v1__uxm_tests_fp_test_fp04_div_int__915cc37e0d.uxm (5.15 sn) mode=compact
+[0708/1054] BASARILI uxm\tests\all_expected_known\1241__s05_STAGE5_file_v1__uxm_tests_fp_test_fp05_from_string__7d5d052572.uxm (6.22 sn) mode=compact
+[0709/1054] BASARILI uxm\tests\all_expected_known\1242__s05_STAGE5_file_v1__uxm_tests_fp_test_fp06_add_dec_string__c2eee589d7.uxm (7.15 sn) mode=compact
+[0710/1054] BASARILI uxm\tests\all_expected_known\1243__s05_STAGE5_file_v1__uxm_tests_fp_test_fp07_int_zero_sign_abs__0211b86702.uxm (6.87 sn) mode=compact
+[0711/1054] BASARILI uxm\tests\all_expected_known\1244__s05_STAGE5_file_v1__uxm_tests_math_test_math01_poly_deriv_arge__dea08874ec.uxm (5.48 sn) mode=compact
+[0712/1054] BASARILI uxm\tests\all_expected_known\1245__s05_STAGE5_file_v1__uxm_tests_math_test_math02_poly_integral_arge__f2b514b3e4.uxm (5.43 sn) mode=compact
+[0713/1054] BASARILI uxm\tests\all_expected_known\1246__s05_STAGE5_file_v1__uxm_tests_math_test_math03_poly_eval_arge__7f1d2b2783.uxm (6.24 sn) mode=compact
+[0714/1054] BASARILI uxm\tests\all_expected_known\1247__s05_STAGE5_file_v1__uxm_tests_math_test_math04_expr_rpn_eval__2f2f641449.uxm (6.18 sn) mode=compact
+[0715/1054] BASARILI uxm\tests\all_expected_known\1248__s05_STAGE5_file_v1__uxm_tests_math_test_math05_num_deriv__191a99caff.uxm (6.48 sn) mode=compact
+[0716/1054] BASARILI uxm\tests\all_expected_known\1249__s05_STAGE5_file_v1__uxm_tests_math_test_math06_integral_trap__f9df1f263f.uxm (5.32 sn) mode=compact
+[0717/1054] BASARILI uxm\tests\all_expected_known\1250__s05_STAGE5_file_v1__uxm_tests_math_test_math07_integral_simpson__7adae488ba.uxm (6.02 sn) mode=compact
+[0718/1054] BASARILI uxm\tests\all_expected_known\1251__s05_STAGE5_file_v1__uxm_tests_matrix_tmp_det_debug__e17f820639.uxm (4.91 sn) mode=compact
+[0719/1054] BASARILI uxm\tests\all_expected_known\1252__s05_STAGE5_file_v1__uxm_tests_matrix_test_matrix01_init_set_print__eae0ab88c2.uxm (9.81 sn) mode=compact
+[0720/1054] BASARILI uxm\tests\all_expected_known\1253__s05_STAGE5_file_v1__uxm_tests_matrix_test_matrix02_add_2x2__50b27b5964.uxm (6.46 sn) mode=compact
+[0721/1054] BASARILI uxm\tests\all_expected_known\1254__s05_STAGE5_file_v1__uxm_tests_matrix_test_matrix03_mul_2x2__451f57a0bb.uxm (5.33 sn) mode=compact
+[0722/1054] BASARILI uxm\tests\all_expected_known\1255__s05_STAGE5_file_v1__uxm_tests_matrix_test_matrix04_identity_trace_det2__6bb04975dc.uxm (6.15 sn) mode=compact
+[0723/1054] BASARILI uxm\tests\all_expected_known\1256__s05_STAGE5_file_v1__uxm_tests_native_test01_print_A__8e5b1a5c2c.uxm (7.67 sn) mode=compact
+[0724/1054] BASARILI uxm\tests\all_expected_known\1260__s05_STAGE5_file_v1__uxm_tests_native_test05_meta_add__4fc7a1b8cb.uxm (6.79 sn) mode=compact
+[0725/1054] BASARILI uxm\tests\all_expected_known\1261__s05_STAGE5_file_v1__uxm_tests_native_test06_dynamic_meta_mul__0637aeddbd.uxm (6.75 sn) mode=compact
+[0726/1054] BASARILI uxm\tests\all_expected_known\1264__s05_STAGE5_file_v1__uxm_tests_native_test09_div_mod__dadc655607.uxm (6.53 sn) mode=compact
+[0727/1054] BASARILI uxm\tests\all_expected_known\1265__s05_STAGE5_file_v1__uxm_tests_native_test10_sin_scaled__6a772e05b7.uxm (6.89 sn) mode=compact
+[0728/1054] BASARILI uxm\tests\all_expected_known\1266__s05_STAGE5_file_v1__uxm_tests_native_test11_hypotenuse__80f1ac1840.uxm (10.72 sn) mode=compact
+[0729/1054] BASARILI uxm\tests\all_expected_known\1267__s05_STAGE5_file_v1__uxm_tests_native_test12_signed_mode__ff2c9373ae.uxm (10.12 sn) mode=compact
+[0730/1054] BASARILI uxm\tests\all_expected_known\1268__s05_STAGE5_file_v1__uxm_tests_native_test13_status_div_zero__207d72a375.uxm (9.66 sn) mode=compact
+[0731/1054] BASARILI uxm\tests\all_expected_known\1269__s05_STAGE5_file_v1__uxm_tests_native_test14_branch_current_zero__0d0730bdf5.uxm (8.73 sn) mode=compact
+[0732/1054] BASARILI uxm\tests\all_expected_known\1270__s05_STAGE5_file_v1__uxm_tests_native_test15_branch_nonzero__b96e692ead.uxm (9.85 sn) mode=compact
+[0733/1054] BASARILI uxm\tests\all_expected_known\1271__s05_STAGE5_file_v1__uxm_tests_native_test16_data_digit__7ab68c52f8.uxm (7.35 sn) mode=compact
+[0734/1054] BASARILI uxm\tests\all_expected_known\1273__s05_STAGE5_file_v1__uxm_tests_native_test18_pointer_service__70f6f00d78.uxm (10.85 sn) mode=compact
+[0735/1054] BASARILI uxm\tests\all_expected_known\1274__s05_STAGE5_file_v1__uxm_tests_native_test20_fifo_char_order__26ea03af03.uxm (6.35 sn) mode=compact
+[0736/1054] BASARILI uxm\tests\all_expected_known\1275__s05_STAGE5_file_v1__uxm_tests_native_test21_fifo_count_peek__b090c67183.uxm (5.08 sn) mode=compact
+[0737/1054] BASARILI uxm\tests\all_expected_known\1276__s05_STAGE5_file_v1__uxm_tests_native_test22_data_write_read_char__3f6e8f6016.uxm (5.82 sn) mode=compact
+[0738/1054] BASARILI uxm\tests\all_expected_known\1277__s05_STAGE5_file_v1__uxm_tests_native_test23_data_digit_ascii_to_number__731f5fdd07.uxm (4.64 sn) mode=compact
+[0739/1054] BASARILI uxm\tests\all_expected_known\1278__s05_STAGE5_file_v1__uxm_tests_native_test24_data_block_copy_print__70f8237e41.uxm (6.55 sn) mode=compact
+[0740/1054] BASARILI uxm\tests\all_expected_known\1279__s05_STAGE5_file_v1__uxm_tests_native_test25_data_sort_ascending__4b75724a15.uxm (6.86 sn) mode=compact
+[0741/1054] BASARILI uxm\tests\all_expected_known\1280__s05_STAGE5_file_v1__uxm_tests_native_test26_tape_sort_descending_chars__de7fc3596b.uxm (6.58 sn) mode=compact
+[0742/1054] BASARILI uxm\tests\all_expected_known\1281__s05_STAGE5_file_v1__uxm_tests_native_test27_tape_linear_search__113d9ad2fa.uxm (7.56 sn) mode=compact
+[0743/1054] BASARILI uxm\tests\all_expected_known\1282__s05_STAGE5_file_v1__uxm_tests_native_test28_dynamic_meta_fifo__5f1a11e018.uxm (6.63 sn) mode=compact
+[0744/1054] BASARILI uxm\tests\all_expected_known\1283__s05_STAGE5_file_v1__uxm_tests_native_test29_nested_macro_call__c4e2e765ff.uxm (6.41 sn) mode=compact
+[0745/1054] BASARILI uxm\tests\all_expected_known\1284__s05_STAGE5_file_v1__uxm_tests_native_test30_word_mode_add__7183932545.uxm (4.68 sn) mode=compact
+[0746/1054] BASARILI uxm\tests\all_expected_known\1285__s05_STAGE5_file_v1__uxm_tests_native_test31_safe_mode_wild_denied__f700bd1d2c.uxm (4.14 sn) mode=compact
+[0747/1054] BASARILI uxm\tests\all_expected_known\1286__s05_STAGE5_file_v1__uxm_tests_native_test32_wild_layout_change__231278a172.uxm (3.54 sn) mode=compact
+[0748/1054] BASARILI uxm\tests\all_expected_known\1287__s05_STAGE5_file_v1__uxm_tests_native_test33_bitwise_and_stack__42c3f71ffe.uxm (4.37 sn) mode=compact
+[0749/1054] BASARILI uxm\tests\all_expected_known\1288__s05_STAGE5_file_v1__uxm_tests_native_test34_data_block_clear__117b3b216b.uxm (6.88 sn) mode=compact
+[0750/1054] BASARILI uxm\tests\all_expected_known\1289__s05_STAGE5_file_v1__uxm_tests_native_test35_optimizer_visible_result__a35f706a7d.uxm (4.36 sn) mode=compact
+[0751/1054] BASARILI uxm\tests\all_expected_known\1290__s05_STAGE5_file_v1__uxm_tests_native_test40_4bit_cpu_alu_model__5f02bfa629.uxm (4.59 sn) mode=compact
+[0752/1054] BASARILI uxm\tests\all_expected_known\1291__s05_STAGE5_file_v1__uxm_tests_native_test41_4_neuron_nn_model__62638c4017.uxm (3.82 sn) mode=compact
+[0753/1054] BASARILI uxm\tests\all_expected_known\1292__s05_STAGE5_file_v1__uxm_tests_native_test42_error_flag_set_reset__e7a6ab7c15.uxm (3.78 sn) mode=compact
+[0754/1054] BASARILI uxm\tests\all_expected_known\1293__s05_STAGE5_file_v1__uxm_tests_native_test43_error_macro_helpers__44f46ee474.uxm (5.33 sn) mode=compact
+[0755/1054] BASARILI uxm\tests\all_expected_known\1294__s05_STAGE5_file_v1__uxm_tests_native_test44_asin__761fbf3b48.uxm (5.56 sn) mode=compact
+[0756/1054] BASARILI uxm\tests\all_expected_known\1295__s05_STAGE5_file_v1__uxm_tests_native_test44_meta_version_info__91d344a2a1.uxm (9.64 sn) mode=compact
+[0757/1054] BASARILI uxm\tests\all_expected_known\1296__s05_STAGE5_file_v1__uxm_tests_native_test45_acos__7a833092f2.uxm (6.98 sn) mode=compact
+[0758/1054] BASARILI uxm\tests\all_expected_known\1297__s05_STAGE5_file_v1__uxm_tests_native_test45_pointer_meta_extended__f9164ccb62.uxm (7.41 sn) mode=compact
+[0759/1054] BASARILI uxm\tests\all_expected_known\1298__s05_STAGE5_file_v1__uxm_tests_native_test46_fifo_clear__bb536cd199.uxm (14.00 sn) mode=compact
+[0760/1054] BASARILI uxm\tests\all_expected_known\1299__s05_STAGE5_file_v1__uxm_tests_native_test46_sqrt__1a461459c1.uxm (8.02 sn) mode=compact
+[0761/1054] BASARILI uxm\tests\all_expected_known\1300__s05_STAGE5_file_v1__uxm_tests_native_test47_sinh__4fb09ec0b9.uxm (5.65 sn) mode=compact
+[0762/1054] BASARILI uxm\tests\all_expected_known\1301__s05_STAGE5_file_v1__uxm_tests_native_test47_tape_sort_ascending__675684e90f.uxm (6.31 sn) mode=compact
+[0763/1054] BASARILI uxm\tests\all_expected_known\1302__s05_STAGE5_file_v1__uxm_tests_native_test48_cosh__6488c161bc.uxm (7.27 sn) mode=compact
+[0764/1054] BASARILI uxm\tests\all_expected_known\1303__s05_STAGE5_file_v1__uxm_tests_native_test48_data_sort_descending__56ee07378b.uxm (7.40 sn) mode=compact
+[0765/1054] BASARILI uxm\tests\all_expected_known\1304__s05_STAGE5_file_v1__uxm_tests_native_test49_data_linear_search__b008a58f23.uxm (5.53 sn) mode=compact
+[0766/1054] BASARILI uxm\tests\all_expected_known\1305__s05_STAGE5_file_v1__uxm_tests_native_test49_tanh__ad7cc4dab6.uxm (5.62 sn) mode=compact
+[0767/1054] BASARILI uxm\tests\all_expected_known\1306__s05_STAGE5_file_v1__uxm_tests_native_test50_tape_block_copy_clear__b11e5f12e7.uxm (5.90 sn) mode=compact
+[0768/1054] BASARILI uxm\tests\all_expected_known\1307__s05_STAGE5_file_v1__uxm_tests_native_test51_meta_print_stack_pop__bb605e52bd.uxm (8.90 sn) mode=compact
+[0769/1054] BASARILI uxm\tests\all_expected_known\1308__s05_STAGE5_file_v1__uxm_tests_native_test52_meta_print_hex__45c02b6439.uxm (6.30 sn) mode=compact
+[0770/1054] BASARILI uxm\tests\all_expected_known\1309__s05_STAGE5_file_v1__uxm_tests_native_test53_meta_print_bin__cd986c2d15.uxm (4.14 sn) mode=compact
+[0771/1054] BASARILI uxm\tests\all_expected_known\1310__s05_STAGE5_file_v1__uxm_tests_native_test54_meta_print_char_raw__d493d4bbbd.uxm (4.04 sn) mode=compact
+[0772/1054] BASARILI uxm\tests\all_expected_known\1320__s06_STAGE6_string_v2__uxm_tests_fp_test_fp01_add_int__4ff48c654e.uxm (3.84 sn) mode=compact
+[0773/1054] BASARILI uxm\tests\all_expected_known\1321__s06_STAGE6_string_v2__uxm_tests_fp_test_fp02_sub_int__d438ddc46b.uxm (4.97 sn) mode=compact
+[0774/1054] BASARILI uxm\tests\all_expected_known\1322__s06_STAGE6_string_v2__uxm_tests_fp_test_fp03_mul_int__2896c4924c.uxm (4.92 sn) mode=compact
+[0775/1054] BASARILI uxm\tests\all_expected_known\1323__s06_STAGE6_string_v2__uxm_tests_fp_test_fp04_div_int__915cc37e0d.uxm (5.29 sn) mode=compact
+[0776/1054] BASARILI uxm\tests\all_expected_known\1324__s06_STAGE6_string_v2__uxm_tests_fp_test_fp05_from_string__7d5d052572.uxm (4.51 sn) mode=compact
+[0777/1054] BASARILI uxm\tests\all_expected_known\1325__s06_STAGE6_string_v2__uxm_tests_fp_test_fp06_add_dec_string__c2eee589d7.uxm (3.93 sn) mode=compact
+[0778/1054] BASARILI uxm\tests\all_expected_known\1326__s06_STAGE6_string_v2__uxm_tests_fp_test_fp07_int_zero_sign_abs__0211b86702.uxm (3.94 sn) mode=compact
+[0779/1054] BASARILI uxm\tests\all_expected_known\1327__s06_STAGE6_string_v2__uxm_tests_math_test_math01_poly_deriv_arge__dea08874ec.uxm (4.92 sn) mode=compact
+[0780/1054] BASARILI uxm\tests\all_expected_known\1328__s06_STAGE6_string_v2__uxm_tests_math_test_math02_poly_integral_arge__f2b514b3e4.uxm (4.87 sn) mode=compact
+[0781/1054] BASARILI uxm\tests\all_expected_known\1329__s06_STAGE6_string_v2__uxm_tests_math_test_math03_poly_eval_arge__7f1d2b2783.uxm (5.09 sn) mode=compact
+[0782/1054] BASARILI uxm\tests\all_expected_known\1330__s06_STAGE6_string_v2__uxm_tests_math_test_math04_expr_rpn_eval__2f2f641449.uxm (4.67 sn) mode=compact
+[0783/1054] BASARILI uxm\tests\all_expected_known\1331__s06_STAGE6_string_v2__uxm_tests_math_test_math05_num_deriv__191a99caff.uxm (3.82 sn) mode=compact
+[0784/1054] BASARILI uxm\tests\all_expected_known\1332__s06_STAGE6_string_v2__uxm_tests_math_test_math06_integral_trap__f9df1f263f.uxm (4.14 sn) mode=compact
+[0785/1054] BASARILI uxm\tests\all_expected_known\1333__s06_STAGE6_string_v2__uxm_tests_math_test_math07_integral_simpson__7adae488ba.uxm (3.94 sn) mode=compact
+[0786/1054] BASARILI uxm\tests\all_expected_known\1334__s06_STAGE6_string_v2__uxm_tests_matrix_tmp_det_debug__e17f820639.uxm (4.57 sn) mode=compact
+[0787/1054] BASARILI uxm\tests\all_expected_known\1335__s06_STAGE6_string_v2__uxm_tests_matrix_test_matrix01_init_set_print__eae0ab88c2.uxm (6.20 sn) mode=compact
+[0788/1054] BASARILI uxm\tests\all_expected_known\1336__s06_STAGE6_string_v2__uxm_tests_matrix_test_matrix02_add_2x2__50b27b5964.uxm (6.93 sn) mode=compact
+[0789/1054] BASARILI uxm\tests\all_expected_known\1337__s06_STAGE6_string_v2__uxm_tests_matrix_test_matrix03_mul_2x2__451f57a0bb.uxm (4.28 sn) mode=compact
+[0790/1054] BASARILI uxm\tests\all_expected_known\1338__s06_STAGE6_string_v2__uxm_tests_matrix_test_matrix04_identity_trace_det2__6bb04975dc.uxm (3.98 sn) mode=compact
+[0791/1054] BASARILI uxm\tests\all_expected_known\1339__s06_STAGE6_string_v2__uxm_tests_native_test01_print_A__8e5b1a5c2c.uxm (4.19 sn) mode=compact
+[0792/1054] BASARILI uxm\tests\all_expected_known\1343__s06_STAGE6_string_v2__uxm_tests_native_test05_meta_add__4fc7a1b8cb.uxm (4.29 sn) mode=compact
+[0793/1054] BASARILI uxm\tests\all_expected_known\1344__s06_STAGE6_string_v2__uxm_tests_native_test06_dynamic_meta_mul__0637aeddbd.uxm (5.10 sn) mode=compact
+[0794/1054] BASARILI uxm\tests\all_expected_known\1347__s06_STAGE6_string_v2__uxm_tests_native_test09_div_mod__dadc655607.uxm (4.85 sn) mode=compact
+[0795/1054] BASARILI uxm\tests\all_expected_known\1348__s06_STAGE6_string_v2__uxm_tests_native_test10_sin_scaled__6a772e05b7.uxm (4.55 sn) mode=compact
+[0796/1054] BASARILI uxm\tests\all_expected_known\1349__s06_STAGE6_string_v2__uxm_tests_native_test11_hypotenuse__80f1ac1840.uxm (3.96 sn) mode=compact
+[0797/1054] BASARILI uxm\tests\all_expected_known\1350__s06_STAGE6_string_v2__uxm_tests_native_test12_signed_mode__ff2c9373ae.uxm (4.03 sn) mode=compact
+[0798/1054] BASARILI uxm\tests\all_expected_known\1351__s06_STAGE6_string_v2__uxm_tests_native_test13_status_div_zero__207d72a375.uxm (4.04 sn) mode=compact
+[0799/1054] BASARILI uxm\tests\all_expected_known\1352__s06_STAGE6_string_v2__uxm_tests_native_test14_branch_current_zero__0d0730bdf5.uxm (4.48 sn) mode=compact
+[0800/1054] BASARILI uxm\tests\all_expected_known\1353__s06_STAGE6_string_v2__uxm_tests_native_test15_branch_nonzero__b96e692ead.uxm (5.01 sn) mode=compact
+[0801/1054] BASARILI uxm\tests\all_expected_known\1354__s06_STAGE6_string_v2__uxm_tests_native_test16_data_digit__7ab68c52f8.uxm (5.07 sn) mode=compact
+[0802/1054] BASARILI uxm\tests\all_expected_known\1356__s06_STAGE6_string_v2__uxm_tests_native_test18_pointer_service__70f6f00d78.uxm (4.71 sn) mode=compact
+[0803/1054] BASARILI uxm\tests\all_expected_known\1357__s06_STAGE6_string_v2__uxm_tests_native_test20_fifo_char_order__26ea03af03.uxm (4.05 sn) mode=compact
+[0804/1054] BASARILI uxm\tests\all_expected_known\1358__s06_STAGE6_string_v2__uxm_tests_native_test21_fifo_count_peek__b090c67183.uxm (5.88 sn) mode=compact
+[0805/1054] BASARILI uxm\tests\all_expected_known\1359__s06_STAGE6_string_v2__uxm_tests_native_test22_data_write_read_char__3f6e8f6016.uxm (6.50 sn) mode=compact
+[0806/1054] BASARILI uxm\tests\all_expected_known\1360__s06_STAGE6_string_v2__uxm_tests_native_test23_data_digit_ascii_to_number__731f5fdd07.uxm (6.36 sn) mode=compact
+[0807/1054] BASARILI uxm\tests\all_expected_known\1361__s06_STAGE6_string_v2__uxm_tests_native_test24_data_block_copy_print__70f8237e41.uxm (6.53 sn) mode=compact
+[0808/1054] BASARILI uxm\tests\all_expected_known\1362__s06_STAGE6_string_v2__uxm_tests_native_test25_data_sort_ascending__4b75724a15.uxm (4.48 sn) mode=compact
+[0809/1054] BASARILI uxm\tests\all_expected_known\1363__s06_STAGE6_string_v2__uxm_tests_native_test26_tape_sort_descending_chars__de7fc3596b.uxm (4.90 sn) mode=compact
+[0810/1054] BASARILI uxm\tests\all_expected_known\1364__s06_STAGE6_string_v2__uxm_tests_native_test27_tape_linear_search__113d9ad2fa.uxm (5.00 sn) mode=compact
+[0811/1054] BASARILI uxm\tests\all_expected_known\1365__s06_STAGE6_string_v2__uxm_tests_native_test28_dynamic_meta_fifo__5f1a11e018.uxm (6.29 sn) mode=compact
+[0812/1054] BASARILI uxm\tests\all_expected_known\1366__s06_STAGE6_string_v2__uxm_tests_native_test29_nested_macro_call__c4e2e765ff.uxm (5.55 sn) mode=compact
+[0813/1054] BASARILI uxm\tests\all_expected_known\1367__s06_STAGE6_string_v2__uxm_tests_native_test30_word_mode_add__7183932545.uxm (4.27 sn) mode=compact
+[0814/1054] BASARILI uxm\tests\all_expected_known\1368__s06_STAGE6_string_v2__uxm_tests_native_test31_safe_mode_wild_denied__f700bd1d2c.uxm (4.06 sn) mode=compact
+[0815/1054] BASARILI uxm\tests\all_expected_known\1369__s06_STAGE6_string_v2__uxm_tests_native_test32_wild_layout_change__231278a172.uxm (5.48 sn) mode=compact
+[0816/1054] BASARILI uxm\tests\all_expected_known\1370__s06_STAGE6_string_v2__uxm_tests_native_test33_bitwise_and_stack__42c3f71ffe.uxm (5.30 sn) mode=compact
+[0817/1054] BASARILI uxm\tests\all_expected_known\1371__s06_STAGE6_string_v2__uxm_tests_native_test34_data_block_clear__117b3b216b.uxm (5.01 sn) mode=compact
+[0818/1054] BASARILI uxm\tests\all_expected_known\1372__s06_STAGE6_string_v2__uxm_tests_native_test35_optimizer_visible_result__a35f706a7d.uxm (5.24 sn) mode=compact
+[0819/1054] BASARILI uxm\tests\all_expected_known\1373__s06_STAGE6_string_v2__uxm_tests_native_test40_4bit_cpu_alu_model__5f02bfa629.uxm (4.62 sn) mode=compact
+[0820/1054] BASARILI uxm\tests\all_expected_known\1374__s06_STAGE6_string_v2__uxm_tests_native_test41_4_neuron_nn_model__62638c4017.uxm (5.52 sn) mode=compact
+[0821/1054] BASARILI uxm\tests\all_expected_known\1375__s06_STAGE6_string_v2__uxm_tests_native_test42_error_flag_set_reset__e7a6ab7c15.uxm (5.51 sn) mode=compact
+[0822/1054] BASARILI uxm\tests\all_expected_known\1376__s06_STAGE6_string_v2__uxm_tests_native_test43_error_macro_helpers__44f46ee474.uxm (5.57 sn) mode=compact
+[0823/1054] BASARILI uxm\tests\all_expected_known\1377__s06_STAGE6_string_v2__uxm_tests_native_test44_asin__761fbf3b48.uxm (5.32 sn) mode=compact
+[0824/1054] BASARILI uxm\tests\all_expected_known\1378__s06_STAGE6_string_v2__uxm_tests_native_test44_meta_version_info__91d344a2a1.uxm (5.34 sn) mode=compact
+[0825/1054] BASARILI uxm\tests\all_expected_known\1379__s06_STAGE6_string_v2__uxm_tests_native_test45_acos__7a833092f2.uxm (4.57 sn) mode=compact
+[0826/1054] BASARILI uxm\tests\all_expected_known\1380__s06_STAGE6_string_v2__uxm_tests_native_test45_pointer_meta_extended__f9164ccb62.uxm (5.29 sn) mode=compact
+[0827/1054] BASARILI uxm\tests\all_expected_known\1381__s06_STAGE6_string_v2__uxm_tests_native_test46_fifo_clear__bb536cd199.uxm (5.09 sn) mode=compact
+[0828/1054] BASARILI uxm\tests\all_expected_known\1382__s06_STAGE6_string_v2__uxm_tests_native_test46_sqrt__1a461459c1.uxm (5.41 sn) mode=compact
+[0829/1054] BASARILI uxm\tests\all_expected_known\1383__s06_STAGE6_string_v2__uxm_tests_native_test47_sinh__4fb09ec0b9.uxm (5.05 sn) mode=compact
+[0830/1054] BASARILI uxm\tests\all_expected_known\1384__s06_STAGE6_string_v2__uxm_tests_native_test47_tape_sort_ascending__675684e90f.uxm (5.18 sn) mode=compact
+[0831/1054] BASARILI uxm\tests\all_expected_known\1385__s06_STAGE6_string_v2__uxm_tests_native_test48_cosh__6488c161bc.uxm (4.55 sn) mode=compact
+[0832/1054] BASARILI uxm\tests\all_expected_known\1386__s06_STAGE6_string_v2__uxm_tests_native_test48_data_sort_descending__56ee07378b.uxm (5.17 sn) mode=compact
+[0833/1054] BASARILI uxm\tests\all_expected_known\1387__s06_STAGE6_string_v2__uxm_tests_native_test49_data_linear_search__b008a58f23.uxm (6.14 sn) mode=compact
+[0834/1054] BASARILI uxm\tests\all_expected_known\1388__s06_STAGE6_string_v2__uxm_tests_native_test49_tanh__ad7cc4dab6.uxm (7.07 sn) mode=compact
+[0835/1054] BASARILI uxm\tests\all_expected_known\1389__s06_STAGE6_string_v2__uxm_tests_native_test50_tape_block_copy_clear__b11e5f12e7.uxm (6.83 sn) mode=compact
+[0836/1054] BASARILI uxm\tests\all_expected_known\1390__s06_STAGE6_string_v2__uxm_tests_native_test51_meta_print_stack_pop__bb605e52bd.uxm (6.15 sn) mode=compact
+[0837/1054] BASARILI uxm\tests\all_expected_known\1391__s06_STAGE6_string_v2__uxm_tests_native_test52_meta_print_hex__45c02b6439.uxm (5.58 sn) mode=compact
+[0838/1054] BASARILI uxm\tests\all_expected_known\1392__s06_STAGE6_string_v2__uxm_tests_native_test53_meta_print_bin__cd986c2d15.uxm (5.37 sn) mode=compact
+[0839/1054] BASARILI uxm\tests\all_expected_known\1393__s06_STAGE6_string_v2__uxm_tests_native_test54_meta_print_char_raw__d493d4bbbd.uxm (5.04 sn) mode=compact
+[0840/1054] BASARILI uxm\tests\all_expected_known\1407__s07_STAGE7_bio_v1__uxm_tests_fp_test_fp01_add_int__4ff48c654e.uxm (5.14 sn) mode=compact
+[0841/1054] BASARILI uxm\tests\all_expected_known\1408__s07_STAGE7_bio_v1__uxm_tests_fp_test_fp02_sub_int__d438ddc46b.uxm (4.98 sn) mode=compact
+[0842/1054] BASARILI uxm\tests\all_expected_known\1409__s07_STAGE7_bio_v1__uxm_tests_fp_test_fp03_mul_int__2896c4924c.uxm (5.19 sn) mode=compact
+[0843/1054] BASARILI uxm\tests\all_expected_known\1410__s07_STAGE7_bio_v1__uxm_tests_fp_test_fp04_div_int__915cc37e0d.uxm (4.89 sn) mode=compact
+[0844/1054] BASARILI uxm\tests\all_expected_known\1411__s07_STAGE7_bio_v1__uxm_tests_fp_test_fp05_from_string__7d5d052572.uxm (5.61 sn) mode=compact
+[0845/1054] BASARILI uxm\tests\all_expected_known\1412__s07_STAGE7_bio_v1__uxm_tests_fp_test_fp06_add_dec_string__c2eee589d7.uxm (4.85 sn) mode=compact
+[0846/1054] BASARILI uxm\tests\all_expected_known\1413__s07_STAGE7_bio_v1__uxm_tests_fp_test_fp07_int_zero_sign_abs__0211b86702.uxm (4.98 sn) mode=compact
+[0847/1054] BASARILI uxm\tests\all_expected_known\1414__s07_STAGE7_bio_v1__uxm_tests_math_test_math01_poly_deriv_arge__dea08874ec.uxm (4.37 sn) mode=compact
+[0848/1054] BASARILI uxm\tests\all_expected_known\1415__s07_STAGE7_bio_v1__uxm_tests_math_test_math02_poly_integral_arge__f2b514b3e4.uxm (5.65 sn) mode=compact
+[0849/1054] BASARILI uxm\tests\all_expected_known\1416__s07_STAGE7_bio_v1__uxm_tests_math_test_math03_poly_eval_arge__7f1d2b2783.uxm (6.37 sn) mode=compact
+[0850/1054] BASARILI uxm\tests\all_expected_known\1417__s07_STAGE7_bio_v1__uxm_tests_math_test_math04_expr_rpn_eval__2f2f641449.uxm (7.43 sn) mode=compact
+[0851/1054] BASARILI uxm\tests\all_expected_known\1418__s07_STAGE7_bio_v1__uxm_tests_math_test_math05_num_deriv__191a99caff.uxm (6.34 sn) mode=compact
+[0852/1054] BASARILI uxm\tests\all_expected_known\1419__s07_STAGE7_bio_v1__uxm_tests_math_test_math06_integral_trap__f9df1f263f.uxm (5.11 sn) mode=compact
+[0853/1054] BASARILI uxm\tests\all_expected_known\1420__s07_STAGE7_bio_v1__uxm_tests_math_test_math07_integral_simpson__7adae488ba.uxm (5.66 sn) mode=compact
+[0854/1054] BASARILI uxm\tests\all_expected_known\1421__s07_STAGE7_bio_v1__uxm_tests_matrix_tmp_det_debug__e17f820639.uxm (7.04 sn) mode=compact
+[0855/1054] BASARILI uxm\tests\all_expected_known\1422__s07_STAGE7_bio_v1__uxm_tests_matrix_test_matrix01_init_set_print__eae0ab88c2.uxm (7.44 sn) mode=compact
+[0856/1054] BASARILI uxm\tests\all_expected_known\1423__s07_STAGE7_bio_v1__uxm_tests_matrix_test_matrix02_add_2x2__50b27b5964.uxm (5.56 sn) mode=compact
+[0857/1054] BASARILI uxm\tests\all_expected_known\1424__s07_STAGE7_bio_v1__uxm_tests_matrix_test_matrix03_mul_2x2__451f57a0bb.uxm (4.89 sn) mode=compact
+[0858/1054] BASARILI uxm\tests\all_expected_known\1425__s07_STAGE7_bio_v1__uxm_tests_matrix_test_matrix04_identity_trace_det2__6bb04975dc.uxm (5.22 sn) mode=compact
+[0859/1054] BASARILI uxm\tests\all_expected_known\1426__s07_STAGE7_bio_v1__uxm_tests_native_test01_print_A__8e5b1a5c2c.uxm (5.44 sn) mode=compact
+[0860/1054] BASARILI uxm\tests\all_expected_known\1430__s07_STAGE7_bio_v1__uxm_tests_native_test05_meta_add__4fc7a1b8cb.uxm (6.27 sn) mode=compact
+[0861/1054] BASARILI uxm\tests\all_expected_known\1431__s07_STAGE7_bio_v1__uxm_tests_native_test06_dynamic_meta_mul__0637aeddbd.uxm (6.48 sn) mode=compact
+[0862/1054] BASARILI uxm\tests\all_expected_known\1434__s07_STAGE7_bio_v1__uxm_tests_native_test09_div_mod__dadc655607.uxm (4.50 sn) mode=compact
+[0863/1054] BASARILI uxm\tests\all_expected_known\1435__s07_STAGE7_bio_v1__uxm_tests_native_test10_sin_scaled__6a772e05b7.uxm (4.48 sn) mode=compact
+[0864/1054] BASARILI uxm\tests\all_expected_known\1436__s07_STAGE7_bio_v1__uxm_tests_native_test11_hypotenuse__80f1ac1840.uxm (6.00 sn) mode=compact
+[0865/1054] BASARILI uxm\tests\all_expected_known\1437__s07_STAGE7_bio_v1__uxm_tests_native_test12_signed_mode__ff2c9373ae.uxm (6.33 sn) mode=compact
+[0866/1054] BASARILI uxm\tests\all_expected_known\1438__s07_STAGE7_bio_v1__uxm_tests_native_test13_status_div_zero__207d72a375.uxm (6.06 sn) mode=compact
+[0867/1054] BASARILI uxm\tests\all_expected_known\1439__s07_STAGE7_bio_v1__uxm_tests_native_test14_branch_current_zero__0d0730bdf5.uxm (5.96 sn) mode=compact
+[0868/1054] BASARILI uxm\tests\all_expected_known\1440__s07_STAGE7_bio_v1__uxm_tests_native_test15_branch_nonzero__b96e692ead.uxm (4.82 sn) mode=compact
+[0869/1054] BASARILI uxm\tests\all_expected_known\1441__s07_STAGE7_bio_v1__uxm_tests_native_test16_data_digit__7ab68c52f8.uxm (6.28 sn) mode=compact
+[0870/1054] BASARILI uxm\tests\all_expected_known\1443__s07_STAGE7_bio_v1__uxm_tests_native_test18_pointer_service__70f6f00d78.uxm (6.11 sn) mode=compact
+[0871/1054] BASARILI uxm\tests\all_expected_known\1444__s07_STAGE7_bio_v1__uxm_tests_native_test20_fifo_char_order__26ea03af03.uxm (5.70 sn) mode=compact
+[0872/1054] BASARILI uxm\tests\all_expected_known\1445__s07_STAGE7_bio_v1__uxm_tests_native_test21_fifo_count_peek__b090c67183.uxm (6.00 sn) mode=compact
+[0873/1054] BASARILI uxm\tests\all_expected_known\1446__s07_STAGE7_bio_v1__uxm_tests_native_test22_data_write_read_char__3f6e8f6016.uxm (4.82 sn) mode=compact
+[0874/1054] BASARILI uxm\tests\all_expected_known\1447__s07_STAGE7_bio_v1__uxm_tests_native_test23_data_digit_ascii_to_number__731f5fdd07.uxm (6.07 sn) mode=compact
+[0875/1054] BASARILI uxm\tests\all_expected_known\1448__s07_STAGE7_bio_v1__uxm_tests_native_test24_data_block_copy_print__70f8237e41.uxm (6.04 sn) mode=compact
+[0876/1054] BASARILI uxm\tests\all_expected_known\1449__s07_STAGE7_bio_v1__uxm_tests_native_test25_data_sort_ascending__4b75724a15.uxm (7.32 sn) mode=compact
+[0877/1054] BASARILI uxm\tests\all_expected_known\1450__s07_STAGE7_bio_v1__uxm_tests_native_test26_tape_sort_descending_chars__de7fc3596b.uxm (5.88 sn) mode=compact
+[0878/1054] BASARILI uxm\tests\all_expected_known\1451__s07_STAGE7_bio_v1__uxm_tests_native_test27_tape_linear_search__113d9ad2fa.uxm (5.25 sn) mode=compact
+[0879/1054] BASARILI uxm\tests\all_expected_known\1452__s07_STAGE7_bio_v1__uxm_tests_native_test28_dynamic_meta_fifo__5f1a11e018.uxm (6.71 sn) mode=compact
+[0880/1054] BASARILI uxm\tests\all_expected_known\1453__s07_STAGE7_bio_v1__uxm_tests_native_test29_nested_macro_call__c4e2e765ff.uxm (5.96 sn) mode=compact
+[0881/1054] BASARILI uxm\tests\all_expected_known\1454__s07_STAGE7_bio_v1__uxm_tests_native_test30_word_mode_add__7183932545.uxm (5.11 sn) mode=compact
+[0882/1054] BASARILI uxm\tests\all_expected_known\1455__s07_STAGE7_bio_v1__uxm_tests_native_test31_safe_mode_wild_denied__f700bd1d2c.uxm (5.30 sn) mode=compact
+[0883/1054] BASARILI uxm\tests\all_expected_known\1456__s07_STAGE7_bio_v1__uxm_tests_native_test32_wild_layout_change__231278a172.uxm (4.34 sn) mode=compact
+[0884/1054] BASARILI uxm\tests\all_expected_known\1457__s07_STAGE7_bio_v1__uxm_tests_native_test33_bitwise_and_stack__42c3f71ffe.uxm (5.09 sn) mode=compact
+[0885/1054] BASARILI uxm\tests\all_expected_known\1458__s07_STAGE7_bio_v1__uxm_tests_native_test34_data_block_clear__117b3b216b.uxm (5.08 sn) mode=compact
+[0886/1054] BASARILI uxm\tests\all_expected_known\1459__s07_STAGE7_bio_v1__uxm_tests_native_test35_optimizer_visible_result__a35f706a7d.uxm (5.19 sn) mode=compact
+[0887/1054] BASARILI uxm\tests\all_expected_known\1460__s07_STAGE7_bio_v1__uxm_tests_native_test40_4bit_cpu_alu_model__5f02bfa629.uxm (5.64 sn) mode=compact
+[0888/1054] BASARILI uxm\tests\all_expected_known\1461__s07_STAGE7_bio_v1__uxm_tests_native_test41_4_neuron_nn_model__62638c4017.uxm (5.06 sn) mode=compact
+[0889/1054] BASARILI uxm\tests\all_expected_known\1462__s07_STAGE7_bio_v1__uxm_tests_native_test42_error_flag_set_reset__e7a6ab7c15.uxm (4.11 sn) mode=compact
+[0890/1054] BASARILI uxm\tests\all_expected_known\1463__s07_STAGE7_bio_v1__uxm_tests_native_test43_error_macro_helpers__44f46ee474.uxm (5.18 sn) mode=compact
+[0891/1054] BASARILI uxm\tests\all_expected_known\1464__s07_STAGE7_bio_v1__uxm_tests_native_test44_asin__761fbf3b48.uxm (5.26 sn) mode=compact
+[0892/1054] BASARILI uxm\tests\all_expected_known\1465__s07_STAGE7_bio_v1__uxm_tests_native_test44_meta_version_info__91d344a2a1.uxm (5.09 sn) mode=compact
+[0893/1054] BASARILI uxm\tests\all_expected_known\1466__s07_STAGE7_bio_v1__uxm_tests_native_test45_acos__7a833092f2.uxm (5.27 sn) mode=compact
+[0894/1054] BASARILI uxm\tests\all_expected_known\1467__s07_STAGE7_bio_v1__uxm_tests_native_test45_pointer_meta_extended__f9164ccb62.uxm (5.05 sn) mode=compact
+[0895/1054] BASARILI uxm\tests\all_expected_known\1468__s07_STAGE7_bio_v1__uxm_tests_native_test46_fifo_clear__bb536cd199.uxm (4.13 sn) mode=compact
+[0896/1054] BASARILI uxm\tests\all_expected_known\1469__s07_STAGE7_bio_v1__uxm_tests_native_test46_sqrt__1a461459c1.uxm (5.30 sn) mode=compact
+[0897/1054] BASARILI uxm\tests\all_expected_known\1470__s07_STAGE7_bio_v1__uxm_tests_native_test47_sinh__4fb09ec0b9.uxm (5.05 sn) mode=compact
+[0898/1054] BASARILI uxm\tests\all_expected_known\1471__s07_STAGE7_bio_v1__uxm_tests_native_test47_tape_sort_ascending__675684e90f.uxm (5.17 sn) mode=compact
+[0899/1054] BASARILI uxm\tests\all_expected_known\1472__s07_STAGE7_bio_v1__uxm_tests_native_test48_cosh__6488c161bc.uxm (6.30 sn) mode=compact
+[0900/1054] BASARILI uxm\tests\all_expected_known\1473__s07_STAGE7_bio_v1__uxm_tests_native_test48_data_sort_descending__56ee07378b.uxm (5.23 sn) mode=compact
+[0901/1054] BASARILI uxm\tests\all_expected_known\1474__s07_STAGE7_bio_v1__uxm_tests_native_test49_data_linear_search__b008a58f23.uxm (4.33 sn) mode=compact
+[0902/1054] BASARILI uxm\tests\all_expected_known\1475__s07_STAGE7_bio_v1__uxm_tests_native_test49_tanh__ad7cc4dab6.uxm (5.35 sn) mode=compact
+[0903/1054] BASARILI uxm\tests\all_expected_known\1476__s07_STAGE7_bio_v1__uxm_tests_native_test50_tape_block_copy_clear__b11e5f12e7.uxm (4.87 sn) mode=compact
+[0904/1054] BASARILI uxm\tests\all_expected_known\1477__s07_STAGE7_bio_v1__uxm_tests_native_test51_meta_print_stack_pop__bb605e52bd.uxm (5.29 sn) mode=compact
+[0905/1054] BASARILI uxm\tests\all_expected_known\1478__s07_STAGE7_bio_v1__uxm_tests_native_test52_meta_print_hex__45c02b6439.uxm (4.74 sn) mode=compact
+[0906/1054] BASARILI uxm\tests\all_expected_known\1479__s07_STAGE7_bio_v1__uxm_tests_native_test53_meta_print_bin__cd986c2d15.uxm (5.25 sn) mode=compact
+[0907/1054] BASARILI uxm\tests\all_expected_known\1480__s07_STAGE7_bio_v1__uxm_tests_native_test54_meta_print_char_raw__d493d4bbbd.uxm (4.24 sn) mode=compact
+[0908/1054] BASARILI uxm\tests\all_expected_known\1497__s08_STAGE8_statistics_v1__uxm_tests_fp_test_fp01_add_int__18c1725f7c.uxm (5.38 sn) mode=compact
+[0909/1054] BASARILI uxm\tests\all_expected_known\1498__s08_STAGE8_statistics_v1__uxm_tests_fp_test_fp02_sub_int__6ecba5893d.uxm (5.64 sn) mode=compact
+[0910/1054] BASARILI uxm\tests\all_expected_known\1499__s08_STAGE8_statistics_v1__uxm_tests_fp_test_fp03_mul_int__c545076a65.uxm (5.60 sn) mode=compact
+[0911/1054] BASARILI uxm\tests\all_expected_known\1500__s08_STAGE8_statistics_v1__uxm_tests_fp_test_fp04_div_int__d98e9e479e.uxm (5.02 sn) mode=compact
+[0912/1054] BASARILI uxm\tests\all_expected_known\1501__s08_STAGE8_statistics_v1__uxm_tests_fp_test_fp05_from_string__7dcbf9b0c9.uxm (5.13 sn) mode=compact
+[0913/1054] BASARILI uxm\tests\all_expected_known\1502__s08_STAGE8_statistics_v1__uxm_tests_fp_test_fp06_add_dec_string__1caccb2f3c.uxm (4.49 sn) mode=compact
+[0914/1054] BASARILI uxm\tests\all_expected_known\1503__s08_STAGE8_statistics_v1__uxm_tests_fp_test_fp07_int_zero_sign_abs__3a5c5c2bca.uxm (5.31 sn) mode=compact
+[0915/1054] BASARILI uxm\tests\all_expected_known\1504__s08_STAGE8_statistics_v1__uxm_tests_math_test_math01_poly_deriv_arge__dea08874ec.uxm (4.89 sn) mode=compact
+[0916/1054] BASARILI uxm\tests\all_expected_known\1505__s08_STAGE8_statistics_v1__uxm_tests_math_test_math02_poly_integral_arge__f2b514b3e4.uxm (5.80 sn) mode=compact
+[0917/1054] BASARILI uxm\tests\all_expected_known\1506__s08_STAGE8_statistics_v1__uxm_tests_math_test_math03_poly_eval_arge__7f1d2b2783.uxm (5.14 sn) mode=compact
+[0918/1054] BASARILI uxm\tests\all_expected_known\1507__s08_STAGE8_statistics_v1__uxm_tests_math_test_math04_expr_rpn_eval__2f2f641449.uxm (5.10 sn) mode=compact
+[0919/1054] BASARILI uxm\tests\all_expected_known\1508__s08_STAGE8_statistics_v1__uxm_tests_math_test_math05_num_deriv__191a99caff.uxm (4.94 sn) mode=compact
+[0920/1054] BASARILI uxm\tests\all_expected_known\1509__s08_STAGE8_statistics_v1__uxm_tests_math_test_math06_integral_trap__f9df1f263f.uxm (4.78 sn) mode=compact
+[0921/1054] BASARILI uxm\tests\all_expected_known\1510__s08_STAGE8_statistics_v1__uxm_tests_math_test_math07_integral_simpson__7adae488ba.uxm (5.12 sn) mode=compact
+[0922/1054] BASARILI uxm\tests\all_expected_known\1511__s08_STAGE8_statistics_v1__uxm_tests_matrix_tmp_det_debug__0ea11514b5.uxm (5.34 sn) mode=compact
+[0923/1054] BASARILI uxm\tests\all_expected_known\1512__s08_STAGE8_statistics_v1__uxm_tests_matrix_test_matrix01_init_set_print__15a7b101f5.uxm (4.79 sn) mode=compact
+[0924/1054] BASARILI uxm\tests\all_expected_known\1513__s08_STAGE8_statistics_v1__uxm_tests_matrix_test_matrix02_add_2x2__d6ea7d27d1.uxm (4.82 sn) mode=compact
+[0925/1054] BASARILI uxm\tests\all_expected_known\1514__s08_STAGE8_statistics_v1__uxm_tests_matrix_test_matrix03_mul_2x2__41485263d4.uxm (4.41 sn) mode=compact
+[0926/1054] BASARILI uxm\tests\all_expected_known\1515__s08_STAGE8_statistics_v1__uxm_tests_matrix_test_matrix04_identity_trace_det2__dc519cfef9.uxm (4.67 sn) mode=compact
+[0927/1054] BASARILI uxm\tests\all_expected_known\1516__s08_STAGE8_statistics_v1__uxm_tests_native_test01_print_A__b500a9cd9d.uxm (4.80 sn) mode=compact
+[0928/1054] BASARILI uxm\tests\all_expected_known\1520__s08_STAGE8_statistics_v1__uxm_tests_native_test05_meta_add__7f35cb022e.uxm (4.75 sn) mode=compact
+[0929/1054] BASARILI uxm\tests\all_expected_known\1521__s08_STAGE8_statistics_v1__uxm_tests_native_test06_dynamic_meta_mul__29485899d9.uxm (4.71 sn) mode=compact
+[0930/1054] BASARILI uxm\tests\all_expected_known\1524__s08_STAGE8_statistics_v1__uxm_tests_native_test09_div_mod__a7bc2502ca.uxm (4.97 sn) mode=compact
+[0931/1054] BASARILI uxm\tests\all_expected_known\1525__s08_STAGE8_statistics_v1__uxm_tests_native_test10_sin_scaled__ecc0b20106.uxm (3.91 sn) mode=compact
+[0932/1054] BASARILI uxm\tests\all_expected_known\1526__s08_STAGE8_statistics_v1__uxm_tests_native_test11_hypotenuse__a38c889f46.uxm (4.83 sn) mode=compact
+[0933/1054] BASARILI uxm\tests\all_expected_known\1527__s08_STAGE8_statistics_v1__uxm_tests_native_test12_signed_mode__7d57850849.uxm (4.60 sn) mode=compact
+[0934/1054] BASARILI uxm\tests\all_expected_known\1528__s08_STAGE8_statistics_v1__uxm_tests_native_test13_status_div_zero__1517d0d659.uxm (4.80 sn) mode=compact
+[0935/1054] BASARILI uxm\tests\all_expected_known\1529__s08_STAGE8_statistics_v1__uxm_tests_native_test14_branch_current_zero__475660ecab.uxm (4.78 sn) mode=compact
+[0936/1054] BASARILI uxm\tests\all_expected_known\1530__s08_STAGE8_statistics_v1__uxm_tests_native_test15_branch_nonzero__264c6a7d20.uxm (4.64 sn) mode=compact
+[0937/1054] BASARILI uxm\tests\all_expected_known\1531__s08_STAGE8_statistics_v1__uxm_tests_native_test16_data_digit__8156a7eb55.uxm (4.39 sn) mode=compact
+[0938/1054] BASARILI uxm\tests\all_expected_known\1533__s08_STAGE8_statistics_v1__uxm_tests_native_test18_pointer_service__df26f04e62.uxm (4.52 sn) mode=compact
+[0939/1054] BASARILI uxm\tests\all_expected_known\1534__s08_STAGE8_statistics_v1__uxm_tests_native_test20_fifo_char_order__c1764b342c.uxm (4.83 sn) mode=compact
+[0940/1054] BASARILI uxm\tests\all_expected_known\1535__s08_STAGE8_statistics_v1__uxm_tests_native_test21_fifo_count_peek__7cbb128eb0.uxm (4.67 sn) mode=compact
+[0941/1054] BASARILI uxm\tests\all_expected_known\1536__s08_STAGE8_statistics_v1__uxm_tests_native_test22_data_write_read_char__73195918bb.uxm (4.92 sn) mode=compact
+[0942/1054] BASARILI uxm\tests\all_expected_known\1537__s08_STAGE8_statistics_v1__uxm_tests_native_test23_data_digit_ascii_to_number__ce86650ec8.uxm (4.65 sn) mode=compact
+[0943/1054] BASARILI uxm\tests\all_expected_known\1538__s08_STAGE8_statistics_v1__uxm_tests_native_test24_data_block_copy_print__0544393ce5.uxm (4.79 sn) mode=compact
+[0944/1054] BASARILI uxm\tests\all_expected_known\1539__s08_STAGE8_statistics_v1__uxm_tests_native_test25_data_sort_ascending__d04d7a1665.uxm (3.93 sn) mode=compact
+[0945/1054] BASARILI uxm\tests\all_expected_known\1540__s08_STAGE8_statistics_v1__uxm_tests_native_test26_tape_sort_descending_chars__9f54dd8c13.uxm (4.97 sn) mode=compact
+[0946/1054] BASARILI uxm\tests\all_expected_known\1541__s08_STAGE8_statistics_v1__uxm_tests_native_test27_tape_linear_search__2cd880af08.uxm (4.75 sn) mode=compact
+[0947/1054] BASARILI uxm\tests\all_expected_known\1542__s08_STAGE8_statistics_v1__uxm_tests_native_test28_dynamic_meta_fifo__f394e8656d.uxm (4.90 sn) mode=compact
+[0948/1054] BASARILI uxm\tests\all_expected_known\1543__s08_STAGE8_statistics_v1__uxm_tests_native_test29_nested_macro_call__b41ffab903.uxm (5.34 sn) mode=compact
+[0949/1054] BASARILI uxm\tests\all_expected_known\1544__s08_STAGE8_statistics_v1__uxm_tests_native_test30_word_mode_add__e96c724f19.uxm (4.94 sn) mode=compact
+[0950/1054] BASARILI uxm\tests\all_expected_known\1545__s08_STAGE8_statistics_v1__uxm_tests_native_test31_safe_mode_wild_denied__656fd3964f.uxm (4.13 sn) mode=compact
+[0951/1054] BASARILI uxm\tests\all_expected_known\1546__s08_STAGE8_statistics_v1__uxm_tests_native_test32_wild_layout_change__f8cad9d531.uxm (4.57 sn) mode=compact
+[0952/1054] BASARILI uxm\tests\all_expected_known\1547__s08_STAGE8_statistics_v1__uxm_tests_native_test33_bitwise_and_stack__41357a25c4.uxm (5.07 sn) mode=compact
+[0953/1054] BASARILI uxm\tests\all_expected_known\1548__s08_STAGE8_statistics_v1__uxm_tests_native_test34_data_block_clear__6d10b5d36d.uxm (4.67 sn) mode=compact
+[0954/1054] BASARILI uxm\tests\all_expected_known\1549__s08_STAGE8_statistics_v1__uxm_tests_native_test35_optimizer_visible_result__57396ffe1e.uxm (5.20 sn) mode=compact
+[0955/1054] BASARILI uxm\tests\all_expected_known\1550__s08_STAGE8_statistics_v1__uxm_tests_native_test40_4bit_cpu_alu_model__ae78c75f2f.uxm (5.06 sn) mode=compact
+[0956/1054] BASARILI uxm\tests\all_expected_known\1551__s08_STAGE8_statistics_v1__uxm_tests_native_test41_4_neuron_nn_model__7677e9cfea.uxm (4.43 sn) mode=compact
+[0957/1054] BASARILI uxm\tests\all_expected_known\1552__s08_STAGE8_statistics_v1__uxm_tests_native_test42_error_flag_set_reset__ac85ba06fb.uxm (4.68 sn) mode=compact
+[0958/1054] BASARILI uxm\tests\all_expected_known\1553__s08_STAGE8_statistics_v1__uxm_tests_native_test43_error_macro_helpers__8f6f291619.uxm (4.91 sn) mode=compact
+[0959/1054] BASARILI uxm\tests\all_expected_known\1554__s08_STAGE8_statistics_v1__uxm_tests_native_test44_asin__8ccbbd25d1.uxm (4.82 sn) mode=compact
+[0960/1054] BASARILI uxm\tests\all_expected_known\1555__s08_STAGE8_statistics_v1__uxm_tests_native_test44_meta_version_info__df2490ab11.uxm (4.73 sn) mode=compact
+[0961/1054] BASARILI uxm\tests\all_expected_known\1556__s08_STAGE8_statistics_v1__uxm_tests_native_test45_acos__3f525605df.uxm (5.28 sn) mode=compact
+[0962/1054] BASARILI uxm\tests\all_expected_known\1557__s08_STAGE8_statistics_v1__uxm_tests_native_test45_pointer_meta_extended__62f7d0b3ce.uxm (4.75 sn) mode=compact
+[0963/1054] BASARILI uxm\tests\all_expected_known\1558__s08_STAGE8_statistics_v1__uxm_tests_native_test46_fifo_clear__8d1f5ff5ef.uxm (4.28 sn) mode=compact
+[0964/1054] BASARILI uxm\tests\all_expected_known\1559__s08_STAGE8_statistics_v1__uxm_tests_native_test46_sqrt__ba2125299d.uxm (4.62 sn) mode=compact
+[0965/1054] BASARILI uxm\tests\all_expected_known\1560__s08_STAGE8_statistics_v1__uxm_tests_native_test47_sinh__bf870a2c68.uxm (4.87 sn) mode=compact
+[0966/1054] BASARILI uxm\tests\all_expected_known\1561__s08_STAGE8_statistics_v1__uxm_tests_native_test47_tape_sort_ascending__1ef486c6a9.uxm (4.83 sn) mode=compact
+[0967/1054] BASARILI uxm\tests\all_expected_known\1562__s08_STAGE8_statistics_v1__uxm_tests_native_test48_cosh__f8e0aaf176.uxm (4.62 sn) mode=compact
+[0968/1054] BASARILI uxm\tests\all_expected_known\1563__s08_STAGE8_statistics_v1__uxm_tests_native_test48_data_sort_descending__db3356afb6.uxm (5.02 sn) mode=compact
+[0969/1054] BASARILI uxm\tests\all_expected_known\1564__s08_STAGE8_statistics_v1__uxm_tests_native_test49_data_linear_search__962f7b8415.uxm (4.00 sn) mode=compact
+[0970/1054] BASARILI uxm\tests\all_expected_known\1565__s08_STAGE8_statistics_v1__uxm_tests_native_test49_tanh__9f2c8ceeca.uxm (4.90 sn) mode=compact
+[0971/1054] BASARILI uxm\tests\all_expected_known\1566__s08_STAGE8_statistics_v1__uxm_tests_native_test50_tape_block_copy_clear__0ea5b5be81.uxm (4.85 sn) mode=compact
+[0972/1054] BASARILI uxm\tests\all_expected_known\1567__s08_STAGE8_statistics_v1__uxm_tests_native_test51_meta_print_stack_pop__41df904a3e.uxm (4.68 sn) mode=compact
+[0973/1054] BASARILI uxm\tests\all_expected_known\1568__s08_STAGE8_statistics_v1__uxm_tests_native_test52_meta_print_hex__443105bf21.uxm (5.46 sn) mode=compact
+[0974/1054] BASARILI uxm\tests\all_expected_known\1569__s08_STAGE8_statistics_v1__uxm_tests_native_test53_meta_print_bin__746bc9c5a1.uxm (4.65 sn) mode=compact
+[0975/1054] BASARILI uxm\tests\all_expected_known\1570__s08_STAGE8_statistics_v1__uxm_tests_native_test54_meta_print_char_raw__73558fea56.uxm (4.76 sn) mode=compact
+[0976/1054] BASARILI uxm\tests\all_expected_known\1575__s08_STAGE8_statistics_v1__uxm_tests_v33_test_v33_corr_regression__7845beefc2.uxm (4.54 sn) mode=compact
+[0977/1054] BASARILI uxm\tests\all_expected_known\1576__s08_STAGE8_statistics_v1__uxm_tests_v33_test_v33_dynamic_meta_addr__f1e7679b77.uxm (4.68 sn) mode=compact
+[0978/1054] BASARILI uxm\tests\all_expected_known\1582__s08_STAGE8_statistics_v1__uxm_tests_v33_test_v33_stat_median_variance__e6d4a047a9.uxm (4.73 sn) mode=compact
+[0979/1054] BASARILI uxm\tests\all_expected_known\1583__s08_STAGE8_statistics_v1__uxm_tests_v33_test_v33_stat_sum_mean_minmax__282ab4ea3a.uxm (5.03 sn) mode=compact
+[0980/1054] BASARILI uxm\tests\all_expected_known\1590__s09_STAGE9_prob_numeric_complex__uxm_tests_fp_test_fp01_add_int__18c1725f7c.uxm (4.67 sn) mode=compact
+[0981/1054] BASARILI uxm\tests\all_expected_known\1591__s09_STAGE9_prob_numeric_complex__uxm_tests_fp_test_fp02_sub_int__6ecba5893d.uxm (4.44 sn) mode=compact
+[0982/1054] BASARILI uxm\tests\all_expected_known\1592__s09_STAGE9_prob_numeric_complex__uxm_tests_fp_test_fp03_mul_int__c545076a65.uxm (4.13 sn) mode=compact
+[0983/1054] BASARILI uxm\tests\all_expected_known\1593__s09_STAGE9_prob_numeric_complex__uxm_tests_fp_test_fp04_div_int__d98e9e479e.uxm (4.86 sn) mode=compact
+[0984/1054] BASARILI uxm\tests\all_expected_known\1594__s09_STAGE9_prob_numeric_complex__uxm_tests_fp_test_fp05_from_string__7dcbf9b0c9.uxm (4.76 sn) mode=compact
+[0985/1054] BASARILI uxm\tests\all_expected_known\1595__s09_STAGE9_prob_numeric_complex__uxm_tests_fp_test_fp06_add_dec_string__1caccb2f3c.uxm (5.01 sn) mode=compact
+[0986/1054] BASARILI uxm\tests\all_expected_known\1596__s09_STAGE9_prob_numeric_complex__uxm_tests_fp_test_fp07_int_zero_sign_abs__3a5c5c2bca.uxm (4.98 sn) mode=compact
+[0987/1054] BASARILI uxm\tests\all_expected_known\1597__s09_STAGE9_prob_numeric_complex__uxm_tests_math_test_math01_poly_deriv_arge__dea08874ec.uxm (4.73 sn) mode=compact
+[0988/1054] BASARILI uxm\tests\all_expected_known\1598__s09_STAGE9_prob_numeric_complex__uxm_tests_math_test_math02_poly_integral_arge__f2b514b3e4.uxm (4.27 sn) mode=compact
+[0989/1054] BASARILI uxm\tests\all_expected_known\1599__s09_STAGE9_prob_numeric_complex__uxm_tests_math_test_math03_poly_eval_arge__7f1d2b2783.uxm (5.20 sn) mode=compact
+[0990/1054] BASARILI uxm\tests\all_expected_known\1600__s09_STAGE9_prob_numeric_complex__uxm_tests_math_test_math04_expr_rpn_eval__2f2f641449.uxm (4.91 sn) mode=compact
+[0991/1054] BASARILI uxm\tests\all_expected_known\1601__s09_STAGE9_prob_numeric_complex__uxm_tests_math_test_math05_num_deriv__191a99caff.uxm (4.98 sn) mode=compact
+[0992/1054] BASARILI uxm\tests\all_expected_known\1602__s09_STAGE9_prob_numeric_complex__uxm_tests_math_test_math06_integral_trap__f9df1f263f.uxm (4.93 sn) mode=compact
+[0993/1054] BASARILI uxm\tests\all_expected_known\1603__s09_STAGE9_prob_numeric_complex__uxm_tests_math_test_math07_integral_simpson__7adae488ba.uxm (4.67 sn) mode=compact
+[0994/1054] BASARILI uxm\tests\all_expected_known\1604__s09_STAGE9_prob_numeric_complex__uxm_tests_matrix_tmp_det_debug__0ea11514b5.uxm (4.04 sn) mode=compact
+[0995/1054] BASARILI uxm\tests\all_expected_known\1605__s09_STAGE9_prob_numeric_complex__uxm_tests_matrix_test_matrix01_init_set_print__15a7b101f5.uxm (4.43 sn) mode=compact
+[0996/1054] BASARILI uxm\tests\all_expected_known\1606__s09_STAGE9_prob_numeric_complex__uxm_tests_matrix_test_matrix02_add_2x2__d6ea7d27d1.uxm (5.07 sn) mode=compact
+[0997/1054] BASARILI uxm\tests\all_expected_known\1607__s09_STAGE9_prob_numeric_complex__uxm_tests_matrix_test_matrix03_mul_2x2__41485263d4.uxm (5.06 sn) mode=compact
+[0998/1054] BASARILI uxm\tests\all_expected_known\1608__s09_STAGE9_prob_numeric_complex__uxm_tests_matrix_test_matrix04_identity_trace_det2__dc519cfef9.uxm (5.43 sn) mode=compact
+[0999/1054] BASARILI uxm\tests\all_expected_known\1609__s09_STAGE9_prob_numeric_complex__uxm_tests_native_test01_print_A__b500a9cd9d.uxm (5.11 sn) mode=compact
+[1000/1054] BASARILI uxm\tests\all_expected_known\1613__s09_STAGE9_prob_numeric_complex__uxm_tests_native_test05_meta_add__7f35cb022e.uxm (4.61 sn) mode=compact
+[1001/1054] BASARILI uxm\tests\all_expected_known\1614__s09_STAGE9_prob_numeric_complex__uxm_tests_native_test06_dynamic_meta_mul__29485899d9.uxm (4.88 sn) mode=compact
+[1002/1054] BASARILI uxm\tests\all_expected_known\1617__s09_STAGE9_prob_numeric_complex__uxm_tests_native_test09_div_mod__a7bc2502ca.uxm (4.96 sn) mode=compact
+[1003/1054] BASARILI uxm\tests\all_expected_known\1618__s09_STAGE9_prob_numeric_complex__uxm_tests_native_test10_sin_scaled__ecc0b20106.uxm (4.75 sn) mode=compact
+[1004/1054] BASARILI uxm\tests\all_expected_known\1619__s09_STAGE9_prob_numeric_complex__uxm_tests_native_test11_hypotenuse__a38c889f46.uxm (4.86 sn) mode=compact
+[1005/1054] BASARILI uxm\tests\all_expected_known\1620__s09_STAGE9_prob_numeric_complex__uxm_tests_native_test12_signed_mode__7d57850849.uxm (4.89 sn) mode=compact
+[1006/1054] BASARILI uxm\tests\all_expected_known\1621__s09_STAGE9_prob_numeric_complex__uxm_tests_native_test13_status_div_zero__1517d0d659.uxm (4.55 sn) mode=compact
+[1007/1054] BASARILI uxm\tests\all_expected_known\1622__s09_STAGE9_prob_numeric_complex__uxm_tests_native_test14_branch_current_zero__475660ecab.uxm (4.11 sn) mode=compact
+[1008/1054] BASARILI uxm\tests\all_expected_known\1623__s09_STAGE9_prob_numeric_complex__uxm_tests_native_test15_branch_nonzero__264c6a7d20.uxm (5.16 sn) mode=compact
+[1009/1054] BASARILI uxm\tests\all_expected_known\1624__s09_STAGE9_prob_numeric_complex__uxm_tests_native_test16_data_digit__8156a7eb55.uxm (4.77 sn) mode=compact
+[1010/1054] BASARILI uxm\tests\all_expected_known\1626__s09_STAGE9_prob_numeric_complex__uxm_tests_native_test18_pointer_service__df26f04e62.uxm (4.87 sn) mode=compact
+[1011/1054] BASARILI uxm\tests\all_expected_known\1627__s09_STAGE9_prob_numeric_complex__uxm_tests_native_test20_fifo_char_order__c1764b342c.uxm (4.85 sn) mode=compact
+[1012/1054] BASARILI uxm\tests\all_expected_known\1628__s09_STAGE9_prob_numeric_complex__uxm_tests_native_test21_fifo_count_peek__7cbb128eb0.uxm (4.69 sn) mode=compact
+[1013/1054] BASARILI uxm\tests\all_expected_known\1629__s09_STAGE9_prob_numeric_complex__uxm_tests_native_test22_data_write_read_char__73195918bb.uxm (4.20 sn) mode=compact
+[1014/1054] BASARILI uxm\tests\all_expected_known\1630__s09_STAGE9_prob_numeric_complex__uxm_tests_native_test23_data_digit_ascii_to_number__ce86650ec8.uxm (4.64 sn) mode=compact
+[1015/1054] BASARILI uxm\tests\all_expected_known\1631__s09_STAGE9_prob_numeric_complex__uxm_tests_native_test24_data_block_copy_print__0544393ce5.uxm (4.83 sn) mode=compact
+[1016/1054] BASARILI uxm\tests\all_expected_known\1632__s09_STAGE9_prob_numeric_complex__uxm_tests_native_test25_data_sort_ascending__d04d7a1665.uxm (4.68 sn) mode=compact
+[1017/1054] BASARILI uxm\tests\all_expected_known\1633__s09_STAGE9_prob_numeric_complex__uxm_tests_native_test26_tape_sort_descending_chars__9f54dd8c13.uxm (4.74 sn) mode=compact
+[1018/1054] BASARILI uxm\tests\all_expected_known\1634__s09_STAGE9_prob_numeric_complex__uxm_tests_native_test27_tape_linear_search__2cd880af08.uxm (4.86 sn) mode=compact
+[1019/1054] BASARILI uxm\tests\all_expected_known\1635__s09_STAGE9_prob_numeric_complex__uxm_tests_native_test28_dynamic_meta_fifo__f394e8656d.uxm (4.28 sn) mode=compact
+[1020/1054] BASARILI uxm\tests\all_expected_known\1636__s09_STAGE9_prob_numeric_complex__uxm_tests_native_test29_nested_macro_call__b41ffab903.uxm (4.33 sn) mode=compact
+[1021/1054] BASARILI uxm\tests\all_expected_known\1637__s09_STAGE9_prob_numeric_complex__uxm_tests_native_test30_word_mode_add__e96c724f19.uxm (4.66 sn) mode=compact
+[1022/1054] BASARILI uxm\tests\all_expected_known\1638__s09_STAGE9_prob_numeric_complex__uxm_tests_native_test31_safe_mode_wild_denied__656fd3964f.uxm (4.88 sn) mode=compact
+[1023/1054] BASARILI uxm\tests\all_expected_known\1639__s09_STAGE9_prob_numeric_complex__uxm_tests_native_test32_wild_layout_change__f8cad9d531.uxm (4.95 sn) mode=compact
+[1024/1054] BASARILI uxm\tests\all_expected_known\1640__s09_STAGE9_prob_numeric_complex__uxm_tests_native_test33_bitwise_and_stack__41357a25c4.uxm (5.16 sn) mode=compact
+[1025/1054] BASARILI uxm\tests\all_expected_known\1641__s09_STAGE9_prob_numeric_complex__uxm_tests_native_test34_data_block_clear__6d10b5d36d.uxm (5.24 sn) mode=compact
+[1026/1054] BASARILI uxm\tests\all_expected_known\1642__s09_STAGE9_prob_numeric_complex__uxm_tests_native_test35_optimizer_visible_result__57396ffe1e.uxm (4.33 sn) mode=compact
+[1027/1054] BASARILI uxm\tests\all_expected_known\1643__s09_STAGE9_prob_numeric_complex__uxm_tests_native_test40_4bit_cpu_alu_model__ae78c75f2f.uxm (4.86 sn) mode=compact
+[1028/1054] BASARILI uxm\tests\all_expected_known\1644__s09_STAGE9_prob_numeric_complex__uxm_tests_native_test41_4_neuron_nn_model__7677e9cfea.uxm (4.86 sn) mode=compact
+[1029/1054] BASARILI uxm\tests\all_expected_known\1645__s09_STAGE9_prob_numeric_complex__uxm_tests_native_test42_error_flag_set_reset__ac85ba06fb.uxm (4.67 sn) mode=compact
+[1030/1054] BASARILI uxm\tests\all_expected_known\1646__s09_STAGE9_prob_numeric_complex__uxm_tests_native_test43_error_macro_helpers__8f6f291619.uxm (5.07 sn) mode=compact
+[1031/1054] BASARILI uxm\tests\all_expected_known\1647__s09_STAGE9_prob_numeric_complex__uxm_tests_native_test44_asin__8ccbbd25d1.uxm (5.36 sn) mode=compact
+[1032/1054] BASARILI uxm\tests\all_expected_known\1648__s09_STAGE9_prob_numeric_complex__uxm_tests_native_test44_meta_version_info__df2490ab11.uxm (4.53 sn) mode=compact
+[1033/1054] BASARILI uxm\tests\all_expected_known\1649__s09_STAGE9_prob_numeric_complex__uxm_tests_native_test45_acos__3f525605df.uxm (5.05 sn) mode=compact
+[1034/1054] BASARILI uxm\tests\all_expected_known\1650__s09_STAGE9_prob_numeric_complex__uxm_tests_native_test45_pointer_meta_extended__62f7d0b3ce.uxm (5.52 sn) mode=compact
+[1035/1054] BASARILI uxm\tests\all_expected_known\1651__s09_STAGE9_prob_numeric_complex__uxm_tests_native_test46_fifo_clear__8d1f5ff5ef.uxm (4.99 sn) mode=compact
+[1036/1054] BASARILI uxm\tests\all_expected_known\1652__s09_STAGE9_prob_numeric_complex__uxm_tests_native_test46_sqrt__ba2125299d.uxm (4.78 sn) mode=compact
+[1037/1054] BASARILI uxm\tests\all_expected_known\1653__s09_STAGE9_prob_numeric_complex__uxm_tests_native_test47_sinh__bf870a2c68.uxm (5.14 sn) mode=compact
+[1038/1054] BASARILI uxm\tests\all_expected_known\1654__s09_STAGE9_prob_numeric_complex__uxm_tests_native_test47_tape_sort_ascending__1ef486c6a9.uxm (4.12 sn) mode=compact
+[1039/1054] BASARILI uxm\tests\all_expected_known\1655__s09_STAGE9_prob_numeric_complex__uxm_tests_native_test48_cosh__f8e0aaf176.uxm (4.72 sn) mode=compact
+[1040/1054] BASARILI uxm\tests\all_expected_known\1656__s09_STAGE9_prob_numeric_complex__uxm_tests_native_test48_data_sort_descending__db3356afb6.uxm (5.02 sn) mode=compact
+[1041/1054] BASARILI uxm\tests\all_expected_known\1657__s09_STAGE9_prob_numeric_complex__uxm_tests_native_test49_data_linear_search__962f7b8415.uxm (4.85 sn) mode=compact
+[1042/1054] BASARILI uxm\tests\all_expected_known\1658__s09_STAGE9_prob_numeric_complex__uxm_tests_native_test49_tanh__9f2c8ceeca.uxm (4.73 sn) mode=compact
+[1043/1054] BASARILI uxm\tests\all_expected_known\1659__s09_STAGE9_prob_numeric_complex__uxm_tests_native_test50_tape_block_copy_clear__0ea5b5be81.uxm (4.68 sn) mode=compact
+[1044/1054] BASARILI uxm\tests\all_expected_known\1660__s09_STAGE9_prob_numeric_complex__uxm_tests_native_test51_meta_print_stack_pop__41df904a3e.uxm (4.40 sn) mode=compact
+[1045/1054] BASARILI uxm\tests\all_expected_known\1661__s09_STAGE9_prob_numeric_complex__uxm_tests_native_test52_meta_print_hex__443105bf21.uxm (4.99 sn) mode=compact
+[1046/1054] BASARILI uxm\tests\all_expected_known\1662__s09_STAGE9_prob_numeric_complex__uxm_tests_native_test53_meta_print_bin__746bc9c5a1.uxm (4.80 sn) mode=compact
+[1047/1054] BASARILI uxm\tests\all_expected_known\1663__s09_STAGE9_prob_numeric_complex__uxm_tests_native_test54_meta_print_char_raw__73558fea56.uxm (5.20 sn) mode=compact
+[1048/1054] BASARILI uxm\tests\all_expected_known\1668__s09_STAGE9_prob_numeric_complex__uxm_tests_v33_test_v33_complex_basic__0344e7a13a.uxm (5.59 sn) mode=compact
+[1049/1054] BASARILI uxm\tests\all_expected_known\1669__s09_STAGE9_prob_numeric_complex__uxm_tests_v33_test_v33_corr_regression__7845beefc2.uxm (4.95 sn) mode=compact
+[1050/1054] BASARILI uxm\tests\all_expected_known\1670__s09_STAGE9_prob_numeric_complex__uxm_tests_v33_test_v33_dynamic_meta_addr__f1e7679b77.uxm (4.43 sn) mode=compact
+[1051/1054] BASARILI uxm\tests\all_expected_known\1675__s09_STAGE9_prob_numeric_complex__uxm_tests_v33_test_v33_numeric_poly_integral__dad9497505.uxm (4.63 sn) mode=compact
+[1052/1054] BASARILI uxm\tests\all_expected_known\1676__s09_STAGE9_prob_numeric_complex__uxm_tests_v33_test_v33_probability_random__0cedf8d236.uxm (5.08 sn) mode=compact
+[1053/1054] BASARILI uxm\tests\all_expected_known\1678__s09_STAGE9_prob_numeric_complex__uxm_tests_v33_test_v33_stat_median_variance__e6d4a047a9.uxm (4.76 sn) mode=compact
+[1054/1054] BASARILI uxm\tests\all_expected_known\1679__s09_STAGE9_prob_numeric_complex__uxm_tests_v33_test_v33_stat_sum_mean_minmax__282ab4ea3a.uxm (5.06 sn) mode=compact
+BITTI: passed=1017, mismatch=0, buildfail=37, skipped=0
+RAPOR: C:\Users\mete\Downloads\1\UXMv33\expected_results_v2\all_expected_v2_20260510_141605
+PS C:\Users\mete\Downloads\1\UXMv33> 

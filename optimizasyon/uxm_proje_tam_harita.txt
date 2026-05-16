@@ -1,0 +1,587 @@
+UX-MINIMA KAPSAMLI PROJE HARITASI (FULL SCAN)
+Tarih: Cmt 09.05.2026
+====================================================================================================
+
+📂 DOSYA: C:\Users\mete\Downloads\1\UXMv33\uxm\core\compiler\extensions\arge_parse_math_additions.bas
+--------------------------------------------------------------------------------
+
+📂 DOSYA: C:\Users\mete\Downloads\1\UXMv33\uxm\core\compiler\extensions\arge_parse_matrix_additions.bas
+--------------------------------------------------------------------------------
+
+📂 DOSYA: C:\Users\mete\Downloads\1\UXMv33\uxm\core\compiler\native\native_addressing.bas
+--------------------------------------------------------------------------------
+
+📂 DOSYA: C:\Users\mete\Downloads\1\UXMv33\uxm\core\compiler\native\native_asm_emit.bas
+--------------------------------------------------------------------------------
+   L4    | @8   | Açıklama yok
+   L6    | @16  | Açıklama yok
+   L8    | @32  | Açıklama yok
+   L17   | @8   | Açıklama yok
+   L19   | @16  | Açıklama yok
+   L21   | @32  | Açıklama yok
+   L296  | @8   | Açıklama yok
+   L298  | @16  | Açıklama yok
+   L300  | @32  | Açıklama yok
+   L310  | @8   | Açıklama yok
+   L312  | @16  | Açıklama yok
+   L314  | @32  | Açıklama yok
+   L325  | @8   | Açıklama yok
+   L327  | @16  | Açıklama yok
+   L329  | @32  | Açıklama yok
+   L400  | @8   | Açıklama yok
+   L402  | @16  | Açıklama yok
+   L404  | @32  | Açıklama yok
+   L412  | @8   | Açıklama yok
+   L414  | @16  | Açıklama yok
+   L416  | @32  | Açıklama yok
+   L425  | @8   | Açıklama yok
+   L427  | @16  | Açıklama yok
+   L429  | @32  | Açıklama yok
+   L439  | @8   | Açıklama yok
+   L441  | @16  | Açıklama yok
+   L443  | @32  | Açıklama yok
+   L448  | @8   | Açıklama yok
+   L450  | @16  | Açıklama yok
+   L452  | @32  | Açıklama yok
+   L475  | @8   | Açıklama yok
+   L477  | @16  | Açıklama yok
+   L479  | @32  | Açıklama yok
+   L491  | @8   | Açıklama yok
+   L493  | @16  | Açıklama yok
+   L495  | @32  | Açıklama yok
+   L503  | @8   | Açıklama yok
+   L505  | @16  | Açıklama yok
+   L507  | @32  | Açıklama yok
+   L515  | @8   | Açıklama yok
+   L517  | @16  | Açıklama yok
+   L519  | @32  | Açıklama yok
+   L526  | @8   | Açıklama yok
+   L528  | @16  | Açıklama yok
+   L530  | @32  | Açıklama yok
+   L537  | @8   | Açıklama yok
+   L539  | @16  | Açıklama yok
+   L541  | @32  | Açıklama yok
+   L555  | @8   | Açıklama yok
+   L557  | @16  | Açıklama yok
+   L559  | @32  | Açıklama yok
+   L570  | @8   | Açıklama yok
+   L572  | @16  | Açıklama yok
+   L574  | @32  | Açıklama yok
+   L587  | @8   | Açıklama yok
+   L589  | @16  | Açıklama yok
+   L591  | @32  | Açıklama yok
+   L598  | @8   | Açıklama yok
+   L600  | @16  | Açıklama yok
+   L602  | @32  | Açıklama yok
+   L621  | @8   | Açıklama yok
+   L623  | @16  | Açıklama yok
+   L625  | @32  | Açıklama yok
+
+📂 DOSYA: C:\Users\mete\Downloads\1\UXMv33\uxm\core\compiler\native\native_cli.bas
+--------------------------------------------------------------------------------
+
+📂 DOSYA: C:\Users\mete\Downloads\1\UXMv33\uxm\core\compiler\native\native_lexer_parser.bas
+--------------------------------------------------------------------------------
+
+📂 DOSYA: C:\Users\mete\Downloads\1\UXMv33\uxm\core\compiler\native\native_main.bas
+--------------------------------------------------------------------------------
+
+📂 DOSYA: C:\Users\mete\Downloads\1\UXMv33\uxm\core\compiler\native\native_meta_parse.bas
+--------------------------------------------------------------------------------
+
+📂 DOSYA: C:\Users\mete\Downloads\1\UXMv33\uxm\core\compiler\native\native_validation.bas
+--------------------------------------------------------------------------------
+
+📂 DOSYA: C:\Users\mete\Downloads\1\UXMv33\uxm\core\compiler\native\uxm31_compiler_fb.bas
+--------------------------------------------------------------------------------
+
+📂 DOSYA: C:\Users\mete\Downloads\1\UXMv33\uxm\core\hooks\hook_parser_ext.bas
+--------------------------------------------------------------------------------
+
+📂 DOSYA: C:\Users\mete\Downloads\1\UXMv33\uxm\core\runtime\runtime_host.bas
+--------------------------------------------------------------------------------
+
+📂 DOSYA: C:\Users\mete\Downloads\1\UXMv33\uxm\core\runtime\runtime_io.bas
+--------------------------------------------------------------------------------
+   L106  | @0   | Açıklama yok
+   L108  | @5   | Açıklama yok
+   L110  | @10  | Açıklama yok
+   L112  | @11  | Açıklama yok
+   L114  | @12  | Açıklama yok
+   L116  | @13  | Açıklama yok
+   L118  | @14  | Açıklama yok
+   L120  | @15  | Açıklama yok
+   L122  | @16  | Açıklama yok
+   L124  | @23  | Açıklama yok
+   L126  | @24  | Açıklama yok
+   L128  | @26  | Açıklama yok
+   L137  | @8   | Açıklama yok
+   L139  | @16  | Açıklama yok
+   L141  | @32  | Açıklama yok
+
+📂 DOSYA: C:\Users\mete\Downloads\1\UXMv33\uxm\core\runtime\runtime_memory.bas
+--------------------------------------------------------------------------------
+   L20   | @8   | Açıklama yok
+   L22   | @16  | Açıklama yok
+   L24   | @32  | Açıklama yok
+   L33   | @8   | Açıklama yok
+   L35   | @16  | Açıklama yok
+   L37   | @32  | Açıklama yok
+   L46   | @8   | Açıklama yok
+   L48   | @16  | Açıklama yok
+   L50   | @32  | Açıklama yok
+   L59   | @8   | Açıklama yok
+   L61   | @16  | Açıklama yok
+   L63   | @32  | Açıklama yok
+   L72   | @8   | Açıklama yok
+   L74   | @16  | Açıklama yok
+   L76   | @32  | Açıklama yok
+   L85   | @8   | Açıklama yok
+   L87   | @16  | Açıklama yok
+   L89   | @32  | Açıklama yok
+   L99   | @8   | Açıklama yok
+   L101  | @16  | Açıklama yok
+   L103  | @32  | Açıklama yok
+
+📂 DOSYA: C:\Users\mete\Downloads\1\UXMv33\uxm\core\runtime\runtime_meta_dispatch.bas
+--------------------------------------------------------------------------------
+   L53   | @0   | Açıklama yok
+   L55   | @1   | Açıklama yok
+   L58   | @2   | Açıklama yok
+   L61   | @3   | Açıklama yok
+   L65   | @4   | Açıklama yok
+   L69   | @5   | Açıklama yok
+   L72   | @6   | Açıklama yok
+   L75   | @7   | Açıklama yok
+   L79   | @8   | Açıklama yok
+   L83   | @9   | Açıklama yok
+   L86   | @10  | Açıklama yok
+   L88   | @11  | Açıklama yok
+   L90   | @12  | Açıklama yok
+   L92   | @13  | Açıklama yok
+   L94   | @14  | Açıklama yok
+   L96   | @15  | Açıklama yok
+   L119  | @20  | Açıklama yok
+   L125  | @21  | Açıklama yok
+   L130  | @22  | Açıklama yok
+   L136  | @23  | Açıklama yok
+   L161  | @24  | Açıklama yok
+   L186  | @25  | Açıklama yok
+   L191  | @26  | Açıklama yok
+   L196  | @27  | Açıklama yok
+   L207  | @28  | Açıklama yok
+   L213  | @29  | Açıklama yok
+   L224  | @30  | Açıklama yok
+   L234  | @31  | Açıklama yok
+   L237  | @32  | Açıklama yok
+   L241  | @33  | Açıklama yok
+   L243  | @34  | Açıklama yok
+   L245  | @35  | Açıklama yok
+   L247  | @36  | Açıklama yok
+   L261  | @40  | Açıklama yok
+   L265  | @41  | Açıklama yok
+   L269  | @42  | Açıklama yok
+   L279  | @43  | Açıklama yok
+   L283  | @44  | Açıklama yok
+   L288  | @45  | Açıklama yok
+   L293  | @46  | Açıklama yok
+   L297  | @47  | Açıklama yok
+   L301  | @48  | Açıklama yok
+   L305  | @49  | Açıklama yok
+   L309  | @52  | Açıklama yok
+   L314  | @53  | Açıklama yok
+   L324  | @54  | Açıklama yok
+   L334  | @55  | Açıklama yok
+   L343  | @56  | Açıklama yok
+   L347  | @57  | Açıklama yok
+   L351  | @58  | Açıklama yok
+   L355  | @59  | Açıklama yok
+   L366  | @60  | Açıklama yok
+   L369  | @61  | Açıklama yok
+   L372  | @62  | Açıklama yok
+   L374  | @63  | Açıklama yok
+   L378  | @64  | Açıklama yok
+   L381  | @67  | Açıklama yok
+   L384  | @68  | Açıklama yok
+   L387  | @69  | Açıklama yok
+   L399  | @80  | Açıklama yok
+   L407  | @81  | Açıklama yok
+   L415  | @82  | Açıklama yok
+   L419  | @83  | Açıklama yok
+   L423  | @84  | Açıklama yok
+   L427  | @85  | Açıklama yok
+   L431  | @86  | Açıklama yok
+   L435  | @87  | Açıklama yok
+   L439  | @88  | Açıklama yok
+   L443  | @89  | Açıklama yok
+   L460  | @90  | Açıklama yok
+   L462  | @91  | Açıklama yok
+   L465  | @92  | Açıklama yok
+   L468  | @93  | Açıklama yok
+   L472  | @94  | Açıklama yok
+   L474  | @95  | Açıklama yok
+   L477  | @96  | Açıklama yok
+   L480  | @97  | Açıklama yok
+   L490  | @98  | Açıklama yok
+   L492  | @99  | Açıklama yok
+   L494  | @100 | Açıklama yok
+   L496  | @101 | Açıklama yok
+   L498  | @102 | Açıklama yok
+   L500  | @103 | Açıklama yok
+   L502  | @104 | Açıklama yok
+   L507  | @105 | Açıklama yok
+   L512  | @106 | Açıklama yok
+   L514  | @107 | Açıklama yok
+   L516  | @120 | Açıklama yok
+   L519  | @121 | Açıklama yok
+   L522  | @122 | Açıklama yok
+   L526  | @123 | Açıklama yok
+   L529  | @124 | Açıklama yok
+   L532  | @125 | Açıklama yok
+   L536  | @126 | Açıklama yok
+   L540  | @127 | Açıklama yok
+   L554  | @120 | Açıklama yok
+   L557  | @121 | Açıklama yok
+   L560  | @122 | Açıklama yok
+   L564  | @130 | Açıklama yok
+   L569  | @131 | Açıklama yok
+   L574  | @132 | Açıklama yok
+   L579  | @133 | Açıklama yok
+   L584  | @134 | Açıklama yok
+   L589  | @135 | Açıklama yok
+   L594  | @140 | Açıklama yok
+   L598  | @141 | Açıklama yok
+   L601  | @142 | Açıklama yok
+   L604  | @143 | Açıklama yok
+   L608  | @144 | Açıklama yok
+   L611  | @145 | Açıklama yok
+   L614  | @146 | Açıklama yok
+   L618  | @147 | Açıklama yok
+   L622  | @148 | Açıklama yok
+   L625  | @149 | Açıklama yok
+   L629  | @150 | Açıklama yok
+   L632  | @151 | Açıklama yok
+   L635  | @152 | Açıklama yok
+   L639  | @153 | Açıklama yok
+   L648  | @154 | Açıklama yok
+   L657  | @155 | Açıklama yok
+   L670  | @156 | Açıklama yok
+
+📂 DOSYA: C:\Users\mete\Downloads\1\UXMv33\uxm\core\runtime\runtime_status_flags.bas
+--------------------------------------------------------------------------------
+
+📂 DOSYA: C:\Users\mete\Downloads\1\UXMv33\uxm\core\runtime\uxm31_runtime_fb_full.bas
+--------------------------------------------------------------------------------
+
+📂 DOSYA: C:\Users\mete\Downloads\1\UXMv33\uxm\core\runtime\hooks\runtime_hook_dispatch_ext.bas
+--------------------------------------------------------------------------------
+
+📂 DOSYA: C:\Users\mete\Downloads\1\UXMv33\uxm\core\runtime\services\runtime_bio_services.bas
+--------------------------------------------------------------------------------
+   L57   | @0   | Açıklama yok
+   L59   | @1   | Açıklama yok
+   L61   | @2   | Açıklama yok
+   L86   | @0   | Axx
+   L88   | @0   | AAU/AAC Asn, AAA/AAG Lys
+   L90   | @1   | ACx Thr
+   L92   | @2   | AGU/AGC Ser, AGA/AGG Arg
+   L94   | @3   | AUU/AUC/AUA Ile, AUG Met
+   L97   | @1   | Cxx
+   L99   | @0   | CAU/CAC His, CAA/CAG Gln
+   L101  | @1   | CCx Pro
+   L103  | @2   | CGx Arg
+   L105  | @3   | CUx Leu
+   L108  | @2   | Gxx
+   L110  | @0   | GAU/GAC Asp, GAA/GAG Glu
+   L112  | @1   | GCx Ala
+   L114  | @2   | GGx Gly
+   L116  | @3   | GUx Val
+   L119  | @3   | T/Uxx
+   L121  | @0   | UAU/UAC Tyr, UAA/UAG Stop
+   L123  | @1   | UCx Ser
+   L125  | @2   | UGU/UGC Cys, UGA Stop, UGG Trp
+   L129  | @3   | UUU/UUC Phe, UUA/UUG Leu
+   L309  | @480 | Açıklama yok
+   L311  | @481 | Açıklama yok
+   L313  | @482 | Açıklama yok
+   L315  | @483 | Açıklama yok
+   L317  | @484 | Açıklama yok
+   L319  | @485 | Açıklama yok
+   L321  | @486 | Açıklama yok
+   L323  | @487 | Açıklama yok
+   L325  | @511 | Açıklama yok
+
+📂 DOSYA: C:\Users\mete\Downloads\1\UXMv33\uxm\core\runtime\services\runtime_complex_services.bas
+--------------------------------------------------------------------------------
+   L69   | @440 | CPLX_INIT: T-2 out, T-1 real_scaled, T imag_scaled
+   L73   | @441 | CPLX_ADD: T-2 out, T-1 aBase, T bBase
+   L82   | @442 | CPLX_SUB
+   L91   | @443 | CPLX_MUL
+   L100  | @444 | CPLX_DIV
+   L115  | @445 | CPLX_CONJ: T-2 out, T-1 aBase
+   L122  | @446 | CPLX_ABS: T-1 aBase -> T+1 scaled magnitude
+   L128  | @447 | CPLX_ARG: T-1 aBase -> T+1 scaled radians
+   L134  | @448 | CPLX_EXP: T-2 out, T-1 aBase
+   L141  | @449 | CPLX_FROM_POLAR: T-2 out, T-1 radius_scaled, T theta_scaled
+   L145  | @459 | CPLX_STATUS
+
+📂 DOSYA: C:\Users\mete\Downloads\1\UXMv33\uxm\core\runtime\services\runtime_file_services.bas
+--------------------------------------------------------------------------------
+   L388  | @400 | Açıklama yok
+   L390  | @401 | Açıklama yok
+   L392  | @402 | Açıklama yok
+   L394  | @403 | Açıklama yok
+   L396  | @404 | Açıklama yok
+   L398  | @405 | Açıklama yok
+   L400  | @406 | Açıklama yok
+   L402  | @407 | Açıklama yok
+   L404  | @408 | Açıklama yok
+   L406  | @409 | Açıklama yok
+   L408  | @413 | Açıklama yok
+   L410  | @414 | Açıklama yok
+   L412  | @415 | Açıklama yok
+
+📂 DOSYA: C:\Users\mete\Downloads\1\UXMv33\uxm\core\runtime\services\runtime_fp_services.bas
+--------------------------------------------------------------------------------
+   L48   | @200 | Açıklama yok
+   L51   | @201 | Açıklama yok
+   L54   | @202 | Açıklama yok
+   L57   | @203 | Açıklama yok
+   L60   | @204 | Açıklama yok
+   L63   | @205 | Açıklama yok
+   L66   | @206 | Açıklama yok
+   L73   | @207 | Açıklama yok
+   L82   | @208 | Açıklama yok
+   L85   | @209 | Açıklama yok
+   L88   | @210 | Açıklama yok
+   L123  | @211 | Açıklama yok
+   L158  | @212 | Açıklama yok
+   L170  | @213 | Açıklama yok
+   L198  | @214 | Açıklama yok
+   L208  | @215 | Açıklama yok
+   L212  | @216 | Açıklama yok
+   L216  | @217 | Açıklama yok
+   L219  | @218 | Açıklama yok
+   L222  | @219 | Açıklama yok
+   L225  | @220 | Açıklama yok
+   L228  | @221 | Açıklama yok
+   L231  | @222 | Açıklama yok
+   L234  | @223 | Açıklama yok
+   L237  | @224 | Açıklama yok
+   L240  | @230 | Açıklama yok
+
+📂 DOSYA: C:\Users\mete\Downloads\1\UXMv33\uxm\core\runtime\services\runtime_math_services.bas
+--------------------------------------------------------------------------------
+   L39   | @240 | Açıklama yok
+   L42   | @241 | Açıklama yok
+   L45   | @242 | Açıklama yok
+   L49   | @243 | Açıklama yok
+   L52   | @244 | Açıklama yok
+   L170  | @250 | Açıklama yok
+   L176  | @251 | Açıklama yok
+   L183  | @252 | Açıklama yok
+   L191  | @253 | Açıklama yok
+   L199  | @254 | Açıklama yok
+   L241  | @1   | Açıklama yok
+   L244  | @2   | Açıklama yok
+   L246  | @10  | Açıklama yok
+   L248  | @11  | Açıklama yok
+   L250  | @12  | Açıklama yok
+   L252  | @13  | Açıklama yok
+   L255  | @14  | Açıklama yok
+   L262  | @20  | Açıklama yok
+   L264  | @21  | Açıklama yok
+   L266  | @22  | Açıklama yok
+   L268  | @23  | Açıklama yok
+   L270  | @24  | Açıklama yok
+   L272  | @25  | Açıklama yok
+   L274  | @30  | Açıklama yok
+   L276  | @31  | Açıklama yok
+   L279  | @99  | Açıklama yok
+   L347  | @1   | Açıklama yok
+   L350  | @2   | Açıklama yok
+   L351  | @10  | Açıklama yok
+   L352  | @11  | Açıklama yok
+   L353  | @12  | Açıklama yok
+   L354  | @13  | Açıklama yok
+   L355  | @14  | Açıklama yok
+   L356  | @20  | Açıklama yok
+   L357  | @21  | Açıklama yok
+   L358  | @22  | Açıklama yok
+   L359  | @23  | Açıklama yok
+   L360  | @24  | Açıklama yok
+   L361  | @25  | Açıklama yok
+   L362  | @30  | Açıklama yok
+   L363  | @31  | Açıklama yok
+   L364  | @99  | Açıklama yok
+
+📂 DOSYA: C:\Users\mete\Downloads\1\UXMv33\uxm\core\runtime\services\runtime_matrix_advanced_tensor_services.bas
+--------------------------------------------------------------------------------
+   L1119 | @512 | Açıklama yok
+   L1123 | @513 | Açıklama yok
+   L1126 | @514 | Açıklama yok
+   L1130 | @516 | Açıklama yok
+   L1134 | @517 | Açıklama yok
+   L1138 | @518 | Açıklama yok
+   L1141 | @519 | Açıklama yok
+   L1145 | @540 | Açıklama yok
+   L1148 | @541 | Açıklama yok
+   L1151 | @542 | Açıklama yok
+   L1155 | @543 | Açıklama yok
+   L1158 | @544 | Açıklama yok
+   L1162 | @545 | Açıklama yok
+   L1165 | @559 | Açıklama yok
+   L1169 | @560 | Açıklama yok
+   L1172 | @561 | Açıklama yok
+   L1175 | @562 | Açıklama yok
+   L1179 | @563 | Açıklama yok
+   L1182 | @564 | Açıklama yok
+   L1185 | @565 | Açıklama yok
+   L1189 | @566 | Açıklama yok
+   L1199 | @567 | Açıklama yok
+   L1202 | @568 | Açıklama yok
+   L1210 | @570 | Açıklama yok
+   L1213 | @571 | Açıklama yok
+   L1216 | @573 | Açıklama yok
+   L1220 | @574 | Açıklama yok
+   L1223 | @575 | Açıklama yok
+   L1226 | @576 | Açıklama yok
+   L1229 | @577 | Açıklama yok
+   L1232 | @578 | Açıklama yok
+   L1235 | @581 | Açıklama yok
+   L1238 | @582 | Açıklama yok
+   L1241 | @583 | Açıklama yok
+   L1244 | @584 | Açıklama yok
+   L1247 | @599 | Açıklama yok
+
+📂 DOSYA: C:\Users\mete\Downloads\1\UXMv33\uxm\core\runtime\services\runtime_matrix_services.bas
+--------------------------------------------------------------------------------
+   L522  | @160 | Açıklama yok
+   L525  | @161 | Açıklama yok
+   L528  | @162 | Açıklama yok
+   L531  | @163 | Açıklama yok
+   L534  | @164 | Açıklama yok
+   L537  | @165 | Açıklama yok
+   L540  | @166 | Açıklama yok
+   L543  | @167 | Açıklama yok
+   L546  | @168 | Açıklama yok
+   L549  | @169 | Açıklama yok
+   L552  | @170 | Açıklama yok
+   L555  | @171 | Açıklama yok
+   L558  | @172 | Açıklama yok
+   L561  | @173 | Açıklama yok
+   L565  | @174 | Açıklama yok
+   L568  | @175 | Açıklama yok
+   L572  | @176 | Açıklama yok
+
+📂 DOSYA: C:\Users\mete\Downloads\1\UXMv33\uxm\core\runtime\services\runtime_numeric_methods_services.bas
+--------------------------------------------------------------------------------
+   L186  | @420 | NUM_POLY_EVAL: T-2 polyBase, T-1 x_scaled -> T+1 y_scaled
+   L190  | @421 | NUM_NEWTON: T-4 polyBase,T-3 x0_scaled,T-2 maxIter,T-1 eps_scaled -> T+1 root_scaled
+   L194  | @422 | NUM_BISECTION: T-4 polyBase,T-3 a_scaled,T-2 b_scaled,T-1 maxIter -> T+1 root_scaled
+   L198  | @423 | NUM_TRAPEZOID_POLY: T-4 polyBase,T-3 a_scaled,T-2 b_scaled,T-1 n -> area_scaled
+   L202  | @424 | NUM_SIMPSON_POLY
+   L206  | @425 | NUM_INTERP_LINEAR: T-4 xBase,T-3 yBase,T-2 count,T-1 x_raw -> y_raw_scaled
+   L210  | @426 | NUM_BEZIER_QUADRATIC: T-4 p0,T-3 p1,T-2 p2,T-1 t_scaled -> result_scaled
+   L214  | @427 | NUM_RK4_LINEAR: T-4 y0,T-3 a_scaled,T-2 dt_scaled,T-1 steps -> y_scaled
+   L218  | @439 | NUM_STATUS
+
+📂 DOSYA: C:\Users\mete\Downloads\1\UXMv33\uxm\core\runtime\services\runtime_probability_services.bas
+--------------------------------------------------------------------------------
+   L131  | @380 | RAND_SEED: T-1 seed
+   L135  | @381 | RAND_UNIFORM_01: T+1 scaled 0..999999
+   L139  | @382 | RAND_INT_RANGE: T-2 min, T-1 max -> T+1
+   L151  | @383 | RAND_BERNOULLI: T-1 probability_scaled -> T+1 0/1
+   L159  | @384 | RAND_POISSON: T-1 lambda_scaled -> T+1 count
+   L163  | @385 | RAND_BINOMIAL: T-2 n, T-1 p_scaled -> T+1 count
+   L167  | @386 | RAND_WEIGHTED: T-2 data_start, T-1 count -> T+1 index
+   L171  | @387 | RAND_SHUFFLE_DATA: T-2 data_start, T-1 count -> T+1 status
+   L175  | @388 | RAND_NORMAL_SCALED: T-2 mean_scaled, T-1 sd_scaled -> T+1 scaled
+   L179  | @389 | RAND_STATUS
+
+📂 DOSYA: C:\Users\mete\Downloads\1\UXMv33\uxm\core\runtime\services\runtime_sparse_vector_services.bas
+--------------------------------------------------------------------------------
+   L506  | @600 | Açıklama yok
+   L509  | @601 | Açıklama yok
+   L512  | @602 | Açıklama yok
+   L516  | @603 | Açıklama yok
+   L519  | @604 | Açıklama yok
+   L523  | @605 | Açıklama yok
+   L527  | @606 | Açıklama yok
+   L531  | @607 | Açıklama yok
+   L535  | @608 | Açıklama yok
+   L538  | @609 | Açıklama yok
+   L541  | @610 | Açıklama yok
+   L544  | @611 | Açıklama yok
+   L547  | @619 | Açıklama yok
+   L551  | @640 | Açıklama yok
+   L554  | @641 | Açıklama yok
+   L557  | @642 | Açıklama yok
+   L560  | @643 | Açıklama yok
+   L564  | @644 | Açıklama yok
+   L567  | @645 | Açıklama yok
+   L570  | @646 | Açıklama yok
+   L574  | @647 | Açıklama yok
+   L578  | @648 | Açıklama yok
+   L582  | @649 | Açıklama yok
+
+📂 DOSYA: C:\Users\mete\Downloads\1\UXMv33\uxm\core\runtime\services\runtime_statistics_services.bas
+--------------------------------------------------------------------------------
+   L225  | @260 | STAT_COUNT
+   L228  | @261 | STAT_SUM
+   L232  | @262 | STAT_MEAN
+   L236  | @263 | STAT_MIN
+   L240  | @264 | STAT_MAX
+   L244  | @265 | STAT_RANGE
+   L250  | @266 | STAT_VARIANCE
+   L254  | @267 | STAT_STDDEV
+   L258  | @268 | STAT_MEDIAN
+   L262  | @274 | STAT_COVARIANCE
+   L265  | @275 | STAT_ZSCORE
+   L276  | @280 | CORR_PEARSON
+   L279  | @290 | REG_LINEAR
+   L282  | @298 | REG_PREDICT: T-1=x, T=modelStart -> T+1=y_scaled
+   L289  | @299 | REG_R2: T=modelStart -> T+1=r2_scaled
+
+📂 DOSYA: C:\Users\mete\Downloads\1\UXMv33\uxm\core\runtime\services\runtime_string_ext_services.bas
+--------------------------------------------------------------------------------
+   L282  | @340 | Açıklama yok
+   L284  | @341 | Açıklama yok
+   L286  | @342 | Açıklama yok
+   L288  | @346 | Açıklama yok
+   L290  | @347 | Açıklama yok
+   L292  | @348 | Açıklama yok
+   L294  | @354 | Açıklama yok
+   L296  | @355 | Açıklama yok
+   L298  | @356 | Açıklama yok
+   L300  | @357 | Açıklama yok
+   L302  | @358 | Açıklama yok
+   L304  | @359 | Açıklama yok
+   L306  | @370 | Açıklama yok
+   L308  | @371 | Açıklama yok
+   L310  | @372 | Açıklama yok
+   L312  | @373 | Açıklama yok
+   L314  | @379 | Açıklama yok
+
+📂 DOSYA: C:\Users\mete\Downloads\1\UXMv33\uxm\core\runtime\services\runtime_string_services.bas
+--------------------------------------------------------------------------------
+   L507  | @300 | Açıklama yok
+   L509  | @301 | Açıklama yok
+   L511  | @302 | Açıklama yok
+   L513  | @303 | Açıklama yok
+   L515  | @304 | Açıklama yok
+   L517  | @305 | Açıklama yok
+   L519  | @306 | Açıklama yok
+   L521  | @307 | Açıklama yok
+   L523  | @308 | Açıklama yok
+   L525  | @309 | Açıklama yok
+   L527  | @310 | Açıklama yok
+   L529  | @311 | Açıklama yok
+   L531  | @312 | Açıklama yok
+   L533  | @313 | Açıklama yok
+   L535  | @314 | Açıklama yok
+   L537  | @315 | Açıklama yok
+   L539  | @316 | Açıklama yok
+   L541  | @317 | Açıklama yok
+   L543  | @318 | Açıklama yok
+   L545  | @319 | Açıklama yok

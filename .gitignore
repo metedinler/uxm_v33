@@ -1,0 +1,21 @@
+# Ignore retired tools and temporary unpack dirs
+Emekliler/
+tools/tmp_unzip/
+tools/tmp_unzip_root/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# VSCode
+.vscode/
+
+# Build / distribution
+dist/
+build/
+
+# OS files
+.DS_Store
+Thumbs.db

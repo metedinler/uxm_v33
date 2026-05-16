@@ -1,0 +1,23 @@
+# V3.3 Stage-8 STR V2: hex and URL encode
+# Expected output includes: 415A and A%20B
+#memory tape=64,stack=8,data=96,queue=4
+#cell byte
+s1=0,{AZ}
+s2=32,{A B}
+>>>>>>
+0(T-4)+k0
+0(T-3)+k2
+0(T-2)+k16
+0(T-1)+k16
+@370
+0(T-1)+k16
+@313
+@!5
+0(T-4)+k32
+0(T-3)+k3
+0(T-2)+k48
+0(T-1)+k32
+@372
+0(T-1)+k48
+@313
+@!5

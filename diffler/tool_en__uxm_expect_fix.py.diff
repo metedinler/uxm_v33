@@ -1,0 +1,85 @@
+--- onceki/tool_en/uxm_expect_fix.py
++++ v13/tool_en/uxm_expect_fix.py
+@@ -1,47 +1,58 @@
+ # -*- coding: utf-8 -*-
+ from __future__ import annotations
+-import argparse, csv, time
++import argparse, csv, time, re
+ from pathlib import Path
+ import sys
+ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'ortak'))
+-from uxm_arac_cekirdek import read_text, write_text, _is_expect_meta_line
++from uxm_arac_cekirdek import read_text, write_text, _is_expect_meta_line, _strip_inline_expect_prefix
+ 
+-def fix_text(s: str) -> tuple[str,int]:
+-    changed=0; out=[]
++def duzelt_text(s: str) -> tuple[str,int,int]:
++    """.expect dosyasını temizler.
++    - Salt meta satırlarını siler.
++    - #source:embedded_EXPECT_OUTPUT7 gibi satırları 7 yapar.
++    """
++    silinen=0; inline=0; out=[]
+     for line in (s or '').splitlines():
+         if _is_expect_meta_line(line):
+-            changed += 1
++            silinen += 1
+             continue
+-        out.append(line)
++        cleaned, changed = _strip_inline_expect_prefix(line)
++        if changed: inline += 1
++        out.append(cleaned)
+     ns='\n'.join(out).strip('\r\n') + ('\n' if out else '')
+-    return ns, changed
++    return ns, silinen, inline
+ 
+ def main(argv=None):
+     ap=argparse.ArgumentParser(description='UXM .expect metadata cleaner')
+-    ap.add_argument('-p','--project','--root', default='.', help='Project root')
+-    ap.add_argument('-d','--dir', default='uxm/tests/all_expected_known', help='Directory to scan for .expect files')
+-    ap.add_argument('-u','--apply', action='store_true', help='Apply changes')
++    ap.add_argument('-p','--proje','--project','--root', default='.', help='Project root')
++    ap.add_argument('-d','--dizin','--dir', default='uxm/tests/all_expected_known', help='Directory to scan')
++    ap.add_argument('-a','--ara','--contains', default='', help='Only .expect files whose path/text contains this phrase')
++    ap.add_argument('-u','--uygula','--apply', action='store_true', help='Apply changes')
+     ap.add_argument('-r','--recursive', action='store_true', default=True, help='Scan subdirectories')
+-    ap.add_argument('-o','--out', default='expect_fix_reports', help='Report folder')
++    ap.add_argument('-o','--cikti','--out', default='beklenen_duzeltme_raporlari', help='Report folder')
+     args=ap.parse_args(argv)
+-    root=Path(args.project).resolve(); d=root/args.dir
++    root=Path(args.proje).resolve(); d=root/args.dizin
+     files=sorted(d.rglob('*.expect')) if args.recursive else sorted(d.glob('*.expect'))
+-    stamp=time.strftime('%Y%m%d_%H%M%S'); rep=root/args.out/stamp; rep.mkdir(parents=True, exist_ok=True)
+-    rows=[]; total_lines=0; changed_files=0
++    if args.ara:
++        q=args.ara.lower()
++        files=[p for p in files if q in str(p.relative_to(root)).lower() or q in read_text(p).lower()]
++    stamp=time.strftime('%Y%m%d_%H%M%S'); rep=root/args.cikti/stamp; rep.mkdir(parents=True, exist_ok=True)
++    rows=[]; total_del=0; total_inline=0; changed_files=0
+     for p in files:
+-        old=read_text(p); new, cnt=fix_text(old)
+-        if cnt:
+-            changed_files += 1; total_lines += cnt
+-            if args.apply:
+-                backup=rep/'backups'/p.relative_to(root)
++        old=read_text(p); new, silinen, inline=duzelt_text(old)
++        changed=(new != old)
++        if changed:
++            changed_files += 1; total_del += silinen; total_inline += inline
++            if args.uygula:
++                backup=rep/'yedekler'/p.relative_to(root)
+                 write_text(backup, old)
+                 write_text(p, new)
+-        rows.append({'file':str(p.relative_to(root)),'metadata_lines_removed':cnt,'changed':bool(cnt)})
+-    csvp=rep/'expect_fix.csv'
++        rows.append({'dosya':str(p.relative_to(root)),'silinen_meta_satir':silinen,'inline_prefix_duzeltme':inline,'degisti':changed})
++    csvp=rep/'beklenen_duzeltme.csv'
+     with csvp.open('w',encoding='utf-8-sig',newline='') as f:
+-        wr=csv.DictWriter(f,['file','metadata_lines_removed','changed']); wr.writeheader(); wr.writerows(rows)
+-    print(f'[EXPECT_FIX] files={len(files)} changed_files={changed_files} metadata_lines={total_lines} apply={args.apply}')
+-    print(f'[EXPECT_FIX] report={rep}')
++        wr=csv.DictWriter(f,['dosya','silinen_meta_satir','inline_prefix_duzeltme','degisti']); wr.writeheader(); wr.writerows(rows)
++    print(f'[BEKLENEN_DUZELT] dosya={len(files)} degisecek={changed_files} silinecek_meta_satir={total_del} inline_duzeltme={total_inline} uygula={args.uygula}')
++    print(f'[BEKLENEN_DUZELT] rapor={rep}')
+     return 0
+ if __name__ == '__main__':
+     raise SystemExit(main())

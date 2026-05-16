@@ -1,0 +1,11 @@
+# TEST: FIFO push/pop karakter sırası
+# EXPECT_OUTPUT: AB
+>>
+0(T-1)+k65
+@90
+0(T-1)+k66
+@90
+@91
+.(T+1)
+@91
+.(T+1)

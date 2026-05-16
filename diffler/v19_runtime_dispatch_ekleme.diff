@@ -1,0 +1,7 @@
+--- runtime_meta_dispatch.bas
++++ runtime_meta_dispatch.bas
+@@
++ElseIf ((metaId>=274 And metaId<=280) Or (metaId>=283 And metaId<=289)) Then
++MetaStatsNumericV19 metaId
+ Else
+ SetStatus STATUS_INVALID_META

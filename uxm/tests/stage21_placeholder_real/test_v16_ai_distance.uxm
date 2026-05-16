@@ -1,0 +1,20 @@
+# EXPECT_OUTPUT: 42
+#memory tape=128,stack=16,data=512,queue=16
+#cell dword
+#mode normal
+>>>>>
+0(D:0)+k1
+0(D:1)+k2
+0(D:2)+k3
+0(D:10)+k1
+0(D:11)+k2
+0(D:12)+k5
+0(T-4)+k0
+0(T-3)+k10
+0(T-2)+k3
+0(T-1)
+0(T)
+@815
+@61
+@816
+@61

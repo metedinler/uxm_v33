@@ -1,0 +1,44 @@
+#memory tape=128,stack=16,data=4096,queue=16
+#cell dword
+#mode normal
+>>>>>
+# dimsBase=2: 2,2,2,2
+0(T-2)+k2
+0(T-1)+k2
+@96
+0(T-2)+k3
+0(T-1)+k2
+@96
+0(T-2)+k4
+0(T-1)+k2
+@96
+0(T-2)+k5
+0(T-1)+k2
+@96
+# idxBase=10: 1,1,1,1
+0(T-2)+k10
+0(T-1)+k1
+@96
+0(T-2)+k11
+0(T-1)+k1
+@96
+0(T-2)+k12
+0(T-1)+k1
+@96
+0(T-2)+k13
+0(T-1)+k1
+@96
+# init4d dst=500 dimsBase=2
+0(T-4)+k500
+0(T-3)+k2
+@563
+# set4d dst=500 idxBase=10 value=88
+0(T-4)+k500
+0(T-3)+k10
+0(T-2)+k88
+@564
+# get4d dst=500 idxBase=10 -> result
+0(T-4)+k500
+0(T-3)+k10
+@565
+@61

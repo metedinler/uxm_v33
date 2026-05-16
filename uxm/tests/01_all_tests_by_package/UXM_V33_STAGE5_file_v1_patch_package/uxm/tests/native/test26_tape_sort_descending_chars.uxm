@@ -1,0 +1,12 @@
+# TEST: tape sort descending
+# EXPECT_OUTPUT: 321
+0(T:10)+k49
+0(T:11)+k51
+0(T:12)+k50
+>>
+0(T-2)+k10
+0(T-1)+k3
+@101
+.(T:10)
+.(T:11)
+.(T:12)

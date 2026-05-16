@@ -1,0 +1,5 @@
+# mode: compact
+# exit_code: 0
+# source: embedded_EXPECT_OUTPUT
+
+0 + 2x + 2x^2 + 2x^3 + 2x^4

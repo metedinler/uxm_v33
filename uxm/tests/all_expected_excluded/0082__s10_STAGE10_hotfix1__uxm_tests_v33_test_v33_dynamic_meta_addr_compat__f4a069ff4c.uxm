@@ -1,0 +1,8 @@
+# V3.3 dynamic meta compatibility: @# active-cell dynamic call
+# Expected output: A then newline
+#memory tape=16,stack=4,data=4,queue=4
+#cell byte
+0+k5
+@!#
+0+k65.
+@!5

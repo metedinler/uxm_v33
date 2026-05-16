@@ -1,0 +1,21 @@
+{
+  "scopeName": "source.uxm",
+  "patterns": [
+    {
+      "match": "#.*$",
+      "name": "comment.line.number-sign.uxm"
+    },
+    {
+      "match": "@!?\\d+",
+      "name": "entity.name.function.service.uxm"
+    },
+    {
+      "match": "\\b(memory|cell|mode|total|tape|stack|data|fifo|queue|byte|kb|mb|dword|normal)\\b",
+      "name": "keyword.control.uxm"
+    },
+    {
+      "match": "k-?\\d+",
+      "name": "constant.numeric.uxm"
+    }
+  ]
+}

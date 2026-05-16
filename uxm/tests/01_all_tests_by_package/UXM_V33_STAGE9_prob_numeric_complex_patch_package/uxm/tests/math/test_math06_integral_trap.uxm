@@ -1,0 +1,11 @@
+# TEST: trapez integral
+# expression: x, integral 0..10, n=10, result=50
+# EXPECT_OUTPUT: 50
+#expr-rpn 300 = x
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+0(T-4)+k300
+0(T-3)
+0(T-2)+k10
+0(T-1)+k10
+@252
+@61

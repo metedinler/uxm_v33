@@ -1,0 +1,63 @@
+--- onceki_src/stage17_runner_v11/uxm_arac_cekirdek_v11.py
++++ ortak/uxm_arac_cekirdek.py
+@@ -46,6 +46,32 @@
+ def compact(s: str) -> str:
+     return re.sub(r'\s+', '', (s or '').replace('\ufeff','')).strip()
+ 
++def _is_expect_meta_line(line: str) -> bool:
++    """Beklenen çıktı dosyasındaki üretim/metaveri satırlarını ayıklar."""
++    st=(line or '').strip().replace('\ufeff','')
++    low=st.lower().replace(' ', '').replace('\t','')
++    if not low:
++        return False
++    if low.startswith('#source:') or low.startswith('#source='):
++        return True
++    if low.startswith('#expect_source:') or low.startswith('#expectsource:'):
++        return True
++    if low.startswith('#embedded_expect_output') or low.startswith('#embeddedexpectoutput'):
++        return True
++    if low.startswith('#expect_output') or low.startswith('#expectoutput'):
++        return True
++    if low.startswith('#generated_from') or low.startswith('#generatedfrom'):
++        return True
++    return False
++
++def _clean_expect_body(body: str) -> str:
++    lines=[]
++    for line in (body or '').splitlines():
++        if _is_expect_meta_line(line):
++            continue
++        lines.append(line)
++    return '\n'.join(lines).strip('\r\n')
++
+ def read_expect(p: Path):
+     text = read_text(p) if p.exists() else ''
+     mode='compact'; exit_code=0; body=text
+@@ -60,20 +86,23 @@
+                 try: exit_code=int(low.split(':',1)[1].strip())
+                 except Exception: exit_code=0
+     else:
+-        # Allow comment header without ---, but keep deterministic body.
++        # Ayraçsız eski .expect biçimi: mod/exit satırlarını başlık say,
++        # #source gibi üretim metaverilerini çıktıdan ayır.
+         lines=[]
+         for line in text.splitlines():
+             st=line.strip()
+             low=st.lower().replace(' ','')
+-            if low.startswith('#mode:') or low.startswith('mode:'):
++            if low.startswith('#mode:') or low.startswith('mode:') or low.startswith('#kip:') or low.startswith('kip:'):
+                 mode=low.split(':',1)[1].strip() or mode; continue
+-            if low.startswith('#exit_code:') or low.startswith('exit_code:'):
++            if low.startswith('#exit_code:') or low.startswith('exit_code:') or low.startswith('#cikis_kodu:') or low.startswith('cikis_kodu:'):
+                 try: exit_code=int(low.split(':',1)[1].strip())
+                 except Exception: pass
+                 continue
++            if _is_expect_meta_line(line):
++                continue
+             lines.append(line)
+         body='\n'.join(lines)
+-    return mode, exit_code, body.strip('\r\n')
++    return mode, exit_code, _clean_expect_body(body)
+ 
+ NOISE_PREFIXES = (
+     'ASM uretildi:', 'ASM üretildi:', '[V3.3', 'NASM:', 'nasm ', 'FreeBASIC runtime',

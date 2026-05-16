@@ -1,0 +1,20 @@
+# TEST: V19 integration prob numeric
+# EXPECT_OUTPUT: 5000001210
+#cell dword
+#memory data=1mb,tape=64kb,stack=16kb,queue=64kb
+>>
+0(T-2)+k0
+0(T-1)+k0
+0(T)+k1000
+@284
+@61
+0(T-2)+k10
+0(T-1)+k20
+0(T)+k250
+@287
+@61
+0(T-2)+k5
+0(T-1)+k10
+0(T)+k12
+@288
+@61

@@ -1,0 +1,5 @@
+# TEST: META 67 hex print
+# EXPECT_OUTPUT: FF
+>>
+0(T-1)+k255
+@67

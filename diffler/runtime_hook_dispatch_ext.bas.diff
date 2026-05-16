@@ -1,0 +1,88 @@
+--- onceki/runtime_hook_dispatch_ext.bas
++++ guncel/runtime_hook_dispatch_ext.bas
+@@ -290,10 +290,84 @@
+     Return 0
+ End Function
+ 
++
++' UXM V17 AI GERCEK KOD EKLERI - eski AI placeholderlerinin yeni @818..@823 bandı
++Function V17AI2(ByVal metaId As ULongInt) As Long
++    Dim aBase As LongInt = ToSignedValue(ReadTapeRel(-4))
++    Dim bBase As LongInt = ToSignedValue(ReadTapeRel(-3))
++    Dim countValue As LongInt = ToSignedValue(ReadTapeRel(-2))
++    Dim opt As LongInt = ToSignedValue(ReadTapeRel(-1))
++    Dim outBase As LongInt = ToSignedValue(ReadTapeRel(0))
++    Dim i As LongInt, j As LongInt, cls As LongInt, idx As LongInt
++    Dim seed As ULongInt, pick As LongInt, tmp As LongInt
++    Dim bestDist As LongInt, dist As LongInt, bestLabel As LongInt
++    Dim sumVal As LongInt
++    Dim maxLogit As Double, denom As Double, ex As Double
++    Select Case metaId
++    Case 818 ' AI_ONEHOT: labelsBase,count,classes,outBase -> out[count*classes]
++        If countValue<=0 Or opt<=0 Or V16ValidRange(aBase,countValue)=0 Or V16ValidRange(outBase,countValue*opt)=0 Then SetStatus STATUS_DATA_BOUNDS: Return 1
++        For i=0 To countValue*opt-1: WriteData outBase+i,0: Next
++        For i=0 To countValue-1
++            cls=V16ReadSigned(aBase+i)
++            If cls>=0 And cls<opt Then WriteData outBase+i*opt+cls,1
++        Next
++        V16WriteResultRaw outBase: Return 1
++    Case 819 ' AI_TRAIN_TEST_SPLIT: srcBase,count,testCount,outBase -> train sonra test kopyası
++        If countValue<0 Or opt<0 Or opt>countValue Or V16ValidRange(aBase,countValue)=0 Or V16ValidRange(outBase,countValue)=0 Then SetStatus STATUS_DATA_BOUNDS: Return 1
++        For i=0 To countValue-opt-1: WriteData outBase+i, ReadData(aBase+i): Next
++        For i=0 To opt-1: WriteData outBase+(countValue-opt)+i, ReadData(aBase+(countValue-opt)+i): Next
++        V16WriteResultRaw outBase: Return 1
++    Case 820 ' AI_SHUFFLE: srcBase,count,seed,outBase -> deterministik kopya/karıştır
++        If countValue<0 Or V16ValidRange(aBase,countValue)=0 Or V16ValidRange(outBase,countValue)=0 Then SetStatus STATUS_DATA_BOUNDS: Return 1
++        For i=0 To countValue-1: WriteData outBase+i, ReadData(aBase+i): Next
++        seed=CULngInt(opt And &H7FFFFFFF)
++        For i=countValue-1 To 1 Step -1
++            seed = (seed * 1103515245u + 12345u) And &H7FFFFFFFu
++            pick = CLngInt(seed Mod CULngInt(i+1))
++            tmp = CLngInt(ReadData(outBase+i))
++            WriteData outBase+i, ReadData(outBase+pick)
++            WriteData outBase+pick, tmp
++        Next
++        V16WriteResultRaw outBase: Return 1
++    Case 821 ' AI_KNN_BASIC_1D: trainXBase,trainYBase,count,query -> label nearest
++        If countValue<=0 Or V16ValidRange(aBase,countValue)=0 Or V16ValidRange(bBase,countValue)=0 Then SetStatus STATUS_DATA_BOUNDS: Return 1
++        bestDist = 2147483647: bestLabel=0
++        For i=0 To countValue-1
++            dist = V16ReadSigned(aBase+i) - opt
++            If dist<0 Then dist=-dist
++            If dist<bestDist Then bestDist=dist: bestLabel=V16ReadSigned(bBase+i)
++        Next
++        V16WriteResultRaw bestLabel: Return 1
++    Case 822 ' AI_LINEAR_LAYER_1OUT: weightsBase,inputBase,count,bias -> sum
++        If countValue<0 Or V16ValidRange(aBase,countValue)=0 Or V16ValidRange(bBase,countValue)=0 Then SetStatus STATUS_DATA_BOUNDS: Return 1
++        sumVal = opt
++        For i=0 To countValue-1
++            sumVal += V16ReadSigned(aBase+i) * V16ReadSigned(bBase+i)
++        Next
++        V16WriteResultRaw sumVal: Return 1
++    Case 823 ' AI_SOFTMAX: logitsBase,count,outBase -> scaled probabilities
++        If countValue<=0 Or V16ValidRange(aBase,countValue)=0 Or V16ValidRange(outBase,countValue)=0 Then SetStatus STATUS_DATA_BOUNDS: Return 1
++        maxLogit = CDbl(V16ReadSigned(aBase))
++        For i=1 To countValue-1
++            If CDbl(V16ReadSigned(aBase+i))>maxLogit Then maxLogit=CDbl(V16ReadSigned(aBase+i))
++        Next
++        denom=0
++        For i=0 To countValue-1: denom += Exp(CDbl(V16ReadSigned(aBase+i))-maxLogit): Next
++        If denom=0 Then SetStatus STATUS_DIV_ZERO: Return 1
++        For i=0 To countValue-1
++            ex = Exp(CDbl(V16ReadSigned(aBase+i))-maxLogit)/denom
++            WriteData outBase+i, FromSignedValue(CLngInt(ex*UXM_V16_SCALE))
++        Next
++        V16WriteResultRaw outBase: Return 1
++    End Select
++    Return 0
++End Function
++
+ Function RuntimeHookDispatchExt(ByVal metaId As ULongInt) As Long
+     If metaId>=760 And metaId<=789 Then Return V16Hypothesis(metaId)
+     If metaId>=790 And metaId<=809 Then Return V16Posthoc(metaId)
+-    If metaId>=810 And metaId<=839 Then Return V16AI(metaId)
++    If metaId>=810 And metaId<=817 Then Return V16AI(metaId)
++    If metaId>=818 And metaId<=839 Then Return V17AI2(metaId)
+     Return 0
+ End Function
+ #endif

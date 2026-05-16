@@ -1,0 +1,10 @@
+# V3.3: (SP-N) syntax smoke testi
+# stack'e A/B bas, SP ve SP-1 üzerinden oku.
+#memory tape=16,stack=8,data=4
+#cell byte
+#mode normal
+0+k65$
+0+k66$
+.(SP)
+.(SP-1)
+@!5

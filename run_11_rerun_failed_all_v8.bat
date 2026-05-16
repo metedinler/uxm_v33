@@ -1,0 +1,6 @@
+@echo off
+setlocal
+py -3 tools\UXM_FAST_KEY_SCAN_V8.py
+if errorlevel 1 exit /b %ERRORLEVEL%
+py -3 tools\UXM_EXPECT_RUNNER_V5.py --manifest fast_results\latest\failed_all_manifest.csv --stage fast_failed_all_v8 --out-root fast_results\runs %*
+endlocal

@@ -1,0 +1,6 @@
+# TEST: META 62 stack pop decimal print
+# EXPECT_OUTPUT: 42
+>>
+0(T-1)+k42
+$(T-1)
+@62

@@ -1,0 +1,19 @@
+UXM V33 PLACEHOLDER GERCEK KOD V17
+
+V16 üzerine ikinci gerçek kod dalgası.
+
+Önemli dosyalar:
+- uxm/core/runtime/services/runtime_statistics_services.bas
+- uxm/core/runtime/services/runtime_file_services.bas
+- uxm/core/runtime/services/runtime_matrix_services.bas
+- uxm/core/runtime/runtime_meta_dispatch.bas
+- uxm/core/runtime/hooks/runtime_hook_dispatch_ext.bas
+- uxm/tests/stage22_placeholder_real/*.uxm
+- manifests/gerceklesen_servisler_v17.csv
+
+Çalıştır:
+  stage22_placeholder_test.bat -k
+  placeholder_tara.bat
+  placeholder_kapi.bat
+
+Not: FreeBASIC/NASM bu ortamda çalıştırılamadığı için derleme doğrulaması Windows tarafında yapılmalıdır.

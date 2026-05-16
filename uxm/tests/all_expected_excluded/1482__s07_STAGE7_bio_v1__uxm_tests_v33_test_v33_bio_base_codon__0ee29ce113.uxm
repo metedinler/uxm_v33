@@ -1,0 +1,18 @@
+# V3.3 Stage-7 BIO V1: base encode, codon encode, codon->AA
+# Expected output: 0, 14, 77
+# ATG = codon id 14, amino acid M = ASCII 77
+#memory tape=64,stack=8,data=16,queue=4
+#cell byte
+#mode normal
+>>>>>
+0(T-1)+k65
+@480
+@61
+0(T-3)+k65
+0(T-2)+k84
+0(T-1)+k71
+@481
+@61
+0(T-1)+k14
+@482
+@61

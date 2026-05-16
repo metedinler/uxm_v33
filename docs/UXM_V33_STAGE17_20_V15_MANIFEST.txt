@@ -1,0 +1,45 @@
+UXM V33 Stage 17-20 V15 Paketi
+
+Düzeltme: Stage görevleri kullanıcının son tanımına göre yeniden hizalandı.
+
+Ana Türkçe komutlar:
+- stage_gorevleri.bat
+- stage17_tamamla.bat -k
+- stage18_tamamla.bat -k
+- stage19_tamamla.bat -k
+- stage20_tamamla.bat -k
+- stage20_performans.bat
+- stage20_release.bat
+- vscode_kur.bat -u
+
+İngilizce komutlar:
+- tool_en\stage_tasks.bat
+- tool_en\stage17_finish.bat -k
+- tool_en\stage18_finish.bat -k
+- tool_en\stage19_finish.bat -k
+- tool_en\stage20_finish.bat -k
+- tool_en\stage20_performance.bat
+- tool_en\stage20_release.bat
+
+Yeni Python araçları:
+- araclar\uxm_stage_gorevleri.py
+- araclar\uxm_stage18_native_bridge.py
+- araclar\uxm_stage19_vscode_temizle.py
+- araclar\uxm_stage20_performans_release.py
+- tool_en\uxm_stage_tasks.py
+- tool_en\uxm_stage18_native_bridge.py
+- tool_en\uxm_stage19_vscode_cleanup.py
+- tool_en\uxm_stage20_performance_release.py
+
+Yeni/yenilenmiş test klasörleri:
+- uxm\tests\stage17
+- uxm\tests\stage18
+- uxm\tests\stage19
+- uxm\tests\stage20
+
+Belgeler:
+- belgeler\STAGE_GOREVLERI_17_18_19_20_V15.md
+- belgeler\STAGE_TASKS_17_18_19_20_V15.md
+- README_STAGE17_20_V15.md
+
+Not: Python syntax kontrolü yapıldı. FreeBASIC/NASM koşusu kullanıcı Windows ortamında yapılmalıdır.

@@ -1,0 +1,21 @@
+# TEST: V19 MAP_RANGE_DATA @289
+# EXPECT_OUTPUT: 50
+#cell dword
+#memory data=1mb,tape=64kb,stack=16kb,queue=64kb
+>>
+0(T-2)+k200
+0(T-1)+k0
+@96
+0(T-2)+k201
+0(T-1)+k10
+@96
+0(T-2)+k202
+0(T-1)+k0
+@96
+0(T-2)+k203
+0(T-1)+k100
+@96
+0(T-2)+k5
+0(T-1)+k200
+@289
+@61

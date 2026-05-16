@@ -1,0 +1,3 @@
+﻿test_path,expect_path
+uxm\tests\stage20\test_s20_11_exe_only_timing_gate.uxm,uxm\tests\stage20\test_s20_11_exe_only_timing_gate.expect
+uxm\tests\stage20\test_s20_12_service_table_probe.uxm,uxm\tests\stage20\test_s20_12_service_table_probe.expect

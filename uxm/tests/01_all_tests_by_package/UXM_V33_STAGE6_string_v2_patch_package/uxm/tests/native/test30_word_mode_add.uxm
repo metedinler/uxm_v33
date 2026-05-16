@@ -1,0 +1,8 @@
+# TEST: word cell mode toplama
+# EXPECT_OUTPUT: 700
+#cell word
+>>
+0(T-2)+k300
+0(T-1)+k400
+@20
+@61

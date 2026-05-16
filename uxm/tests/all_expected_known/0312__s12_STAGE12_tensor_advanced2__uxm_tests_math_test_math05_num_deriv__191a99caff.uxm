@@ -1,0 +1,10 @@
+# TEST: sayısal türev
+# expression: x^2, x=5, h=1, derivative=10
+# EXPECT_OUTPUT: 10
+#expr-rpn 300 = x 2 pow
+>>
+0(T-2)+k300
+0(T-1)+k5
+0(T)+k1
+@251
+@61

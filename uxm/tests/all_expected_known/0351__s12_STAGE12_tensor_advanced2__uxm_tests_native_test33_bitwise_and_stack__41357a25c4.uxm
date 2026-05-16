@@ -1,0 +1,9 @@
+# TEST: stack üzerinden AND işlemi
+# EXPECT_OUTPUT: 8
+0+k12
+$(T)
+0+k10
+&
+$(T)
+%(T+1)
+@61

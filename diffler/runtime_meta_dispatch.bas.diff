@@ -1,0 +1,11 @@
+--- onceki/runtime_meta_dispatch.bas
++++ guncel/runtime_meta_dispatch.bas
+@@ -28,7 +28,7 @@
+ MetaStringExt metaId
+ ElseIf metaId>=380 And metaId<=389 Then
+ MetaProbability metaId
+-ElseIf metaId>=400 And metaId<=415 Then
++ElseIf metaId>=400 And metaId<=419 Then
+ MetaFile metaId
+ ElseIf metaId>=420 And metaId<=439 Then
+ MetaNumericMethods metaId

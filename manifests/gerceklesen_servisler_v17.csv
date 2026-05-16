@@ -1,0 +1,24 @@
+id,name,family,status,notes
+291,REG_MULTIPLE,statistics,gercek kod,iki değişkenli OLS normal denklem
+292,REG_POLYNOMIAL,statistics,gercek kod,ikinci derece polinom regresyon
+293,REG_LOGISTIC,statistics,gercek kod,tek değişkenli lojistik regresyon
+410,FILE_READ_BLOCK,file,gercek kod,binary block read
+411,FILE_WRITE_BLOCK,file,gercek kod,binary block write
+412,FILE_SEEK,file,gercek kod,1-based seek
+416,FILE_DELETE,file,gercek kod,dosya silme
+417,FILE_RENAME,file,gercek kod,dosya yeniden adlandırma
+418,FILE_MKDIR,file,gercek kod,klasör oluşturma
+419,FILE_EXISTS,file,gercek kod,dosya/klasör var mı
+181,MAT_ND_GET,matrix,gercek kod,row/col data index ile okuma
+182,MAT_ND_SET,matrix,gercek kod,row/col data index ile yazma
+190,MAT_EIG_JACOBI_SYM,matrix,gercek kod,2x2 simetrik özdeğer
+191,MAT_SVD_SYM_HELPER,matrix,gercek kod,2x2 singular value
+193,MAT_SPARSE_CSR_MV,matrix,gercek kod,CSR matvec
+194,MAT_SPARSE_TO_DENSE,matrix,gercek kod,CSR dense matris
+195,MAT_DENSE_TO_SPARSE,matrix,gercek kod,dense CSR
+818,AI_ONEHOT,ai,gercek kod,one-hot encode
+819,AI_TRAIN_TEST_SPLIT,ai,gercek kod,deterministik bölme/kopyalama
+820,AI_SHUFFLE,ai,gercek kod,deterministik shuffle
+821,AI_KNN_BASIC,ai,gercek kod,1D nearest-neighbor
+822,AI_LINEAR_LAYER,ai,gercek kod,tek çıkışlı lineer katman
+823,AI_SOFTMAX,ai,gercek kod,softmax scaled probabilities

@@ -1,0 +1,13 @@
+zip,internal_path,pattern,line,snippet
+"Emekliler\packages\20260510_185908\UXMv33.zip","config/uxm/meta_services.json","CPLX_PRINT","4061","""name"": ""CPLX_PRINT_RESERVED"","
+"Emekliler\packages\20260510_185908\UXMv33.zip","config/uxm/meta_services.json","CPLX_PRINT_RESERVED","4061","""name"": ""CPLX_PRINT_RESERVED"","
+"Emekliler\packages\20260510_185908\UXMv33.zip","config/uxm/meta_services.json","NUM_ODE_INFO","3629","""name"": ""NUM_ODE_INFO"","
+"Emekliler\packages\20260510_185908\UXMv33.zip","config/uxm/meta_services.json","NUM_PDE_RESERVED","3641","""name"": ""NUM_PDE_RESERVED"","
+"Emekliler\packages\20260510_185908\UXMv33.zip","config/uxm/meta_services.json","NUM_ODE","3629","""name"": ""NUM_ODE_INFO"","
+"Emekliler\packages\20260510_185908\UXMv33.zip","config/uxm/meta_services.json","NUM_PDE","3641","""name"": ""NUM_PDE_RESERVED"","
+"Emekliler\packages\20260510_185908\UXMv33.zip","config/uxm/service_registry_merged.csv","CPLX_PRINT","309","450,CPLX_PRINT_RESERVED,complex,MetaComplex,True,extension_requires_meta_id_range_patch,,T+1/status,,service_registry_v35.csv"
+"Emekliler\packages\20260510_185908\UXMv33.zip","config/uxm/service_registry_merged.csv","CPLX_PRINT_RESERVED","309","450,CPLX_PRINT_RESERVED,complex,MetaComplex,True,extension_requires_meta_id_range_patch,,T+1/status,,service_registry_v35.csv"
+"Emekliler\packages\20260510_185908\UXMv33.zip","config/uxm/service_registry_merged.csv","NUM_ODE_INFO","273","398,NUM_ODE_INFO,numeric,MetaNumericMethods,True,extension_requires_meta_id_range_patch,,T+1/status,,service_registry_v35.csv"
+"Emekliler\packages\20260510_185908\UXMv33.zip","config/uxm/service_registry_merged.csv","NUM_PDE_RESERVED","274","399,NUM_PDE_RESERVED,numeric,MetaNumericMethods,True,extension_requires_meta_id_range_patch,,T+1/status,,service_registry_v35.csv"
+"Emekliler\packages\20260510_185908\UXMv33.zip","config/uxm/service_registry_merged.csv","NUM_ODE","273","398,NUM_ODE_INFO,numeric,MetaNumericMethods,True,extension_requires_meta_id_range_patch,,T+1/status,,service_registry_v35.csv"
+"Emekliler\packages\20260510_185908\UXMv33.zip","config/uxm/service_registry_merged.csv","NUM_PDE","274","399,NUM_PDE_RESERVED,numeric,MetaNumericMethods,True,extension_requires_meta_id_range_patch,,T+1/status,,service_registry_v35.csv"

@@ -1,0 +1,9 @@
+# TEST: data linear search
+# EXPECT_OUTPUT: 1
+s1=0,{789}
+>>
+0(T-2)
+0(T-1)+k3
+0(T)+k56
+@105
+@61

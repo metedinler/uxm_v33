@@ -1,0 +1,10 @@
+#memory tape=64,stack=8,data=4096,queue=4
+#cell dword
+#mode normal
+>>>>>
+0(T-2)+k20
+0(T-1)+k1320
+@96
+0(T-1)+k20
+@95
+@61
