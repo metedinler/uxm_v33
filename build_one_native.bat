@@ -25,11 +25,11 @@ echo %* | findstr /I /C:"-link" >nul
 if %errorlevel%==0 set LINK=1
 
 REM Locate FreeBASIC compilers (prefer tools/ copies if present)
-set FBC64=
-set FBC32=
-if exist "tools\FreeBASIC-1.10.1-win64\fbc.exe" set "FBC64=tools\FreeBASIC-1.10.1-win64\fbc.exe"
-if exist "C:\Program Files\FreeBASIC\fbc.exe" set "FBC64=C:\Program Files\FreeBASIC\fbc.exe"
-if exist "C:\Program Files (x86)\FreeBASIC\fbc.exe" set "FBC32=C:\Program Files (x86)\FreeBASIC\fbc.exe"
+if not defined FBC64 set "FBC64="
+if not defined FBC32 set "FBC32="
+if not defined FBC64 if exist "tools\FreeBASIC-1.10.1-win64\fbc.exe" set "FBC64=tools\FreeBASIC-1.10.1-win64\fbc.exe"
+if not defined FBC64 if exist "C:\Program Files\FreeBASIC\fbc.exe" set "FBC64=C:\Program Files\FreeBASIC\fbc.exe"
+if not defined FBC32 if exist "C:\Program Files (x86)\FreeBASIC\fbc.exe" set "FBC32=C:\Program Files (x86)\FreeBASIC\fbc.exe"
 
 if "%ARCH%"=="x64" (
   if defined FBC64 (set "FBC=!FBC64!") else (set "FBC=fbc")
