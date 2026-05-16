@@ -1,5 +1,4 @@
 #Lang "fb"
-Extern "C"
 Declare Sub uxm_entry()
 Declare Sub ux_putc(ByVal ch As ULongInt)
 Declare Function ux_getc() As ULongInt
@@ -19,7 +18,6 @@ Extern ux_data_cells As ULong
 Extern ux_queue_cells As ULong
 Extern ux_stack_offset As ULong
 Extern ux_data_offset As ULong
-End Extern
 Const FLAG_Z As UShort=&H0001
 Const FLAG_C As UShort=&H0002
 Const FLAG_O As UShort=&H0004
@@ -140,6 +138,22 @@ Declare Sub MetaStatistics(ByVal metaId As ULongInt)
 Declare Sub MetaProbability(ByVal metaId As ULongInt)
 Declare Sub MetaNumericMethods(ByVal metaId As ULongInt)
 Declare Sub MetaComplex(ByVal metaId As ULongInt)
+Declare Function FileDataZToString(ByVal startIdx As LongInt) As String
+Declare Function FileReadArgRel(ByVal rel As LongInt) As LongInt
+Declare Sub FileWriteResultRel(ByVal rel As LongInt, ByVal value As ULongInt)
+Declare Sub FileSetStatus(ByVal code As UByte)
+Const UXM_FILE_STATUS_OK As UByte = 0
+Const UXM_FILE_STATUS_BAD_HANDLE As UByte = 24
+Const UXM_FILE_STATUS_IO_ERROR As UByte = 2
+Const UXM_FILE_STATUS_EOF As UByte = 26
+Const UXM_FILE_STATUS_BOUNDS As UByte = 16
+Declare Function V16ValidRange(ByVal baseIndex As LongInt, ByVal countValue As LongInt) As Long
+Declare Function V16Mean(ByVal baseIndex As LongInt, ByVal countValue As LongInt) As Double
+Declare Function V16VarianceSample(ByVal baseIndex As LongInt, ByVal countValue As LongInt) As Double
+Declare Function V16ReadSigned(ByVal idx As LongInt) As LongInt
+Declare Sub V16WriteResultScaled(ByVal value As Double)
+Declare Sub V16WriteResultRaw(ByVal value As LongInt)
+Declare Function V16AI(ByVal code As LongInt) As Long
 Declare Sub MetaMatrixAdvancedTensor(ByVal metaId As ULongInt)
 Declare Sub MetaLinalgAdvanced(ByVal metaId As ULongInt)
 Declare Sub MetaSparseVector(ByVal metaId As ULongInt)
@@ -156,6 +170,7 @@ Declare Function RuntimeHookDispatchExt(ByVal metaId As ULongInt) As Long
 #Include Once "runtime_meta_dispatch.bas"
 #Include Once "runtime_host.bas"
 #Include Once "services/runtime_real_ext_services_v18.bas"
+#Include Once "services/runtime_v16_impl_stubs.bas"
 #Include Once "hooks/runtime_hook_dispatch_ext.bas"
 #Include Once "services/runtime_fp_services.bas"
 #Include Once "services/runtime_matrix_services.bas"
