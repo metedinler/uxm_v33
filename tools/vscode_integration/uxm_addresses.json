@@ -1,6 +1,0 @@
-{
-  "tape": { "address": "0x1000", "desc": "Tape memory / I/O" },
-  "data": { "address": "0x2000", "desc": "Data memory" },
-  "stack": { "address": "0x3000", "desc": "Stack top" },
-  "queue": { "address": "0x4000", "desc": "Queue base" }
-}
