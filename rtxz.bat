@@ -22,6 +22,8 @@ echo. >> "%LOG_FILE%"
 echo [1/2] Derleyici hazirlaniyor...
 echo START_BUILD@%time% >> "%LOG_FILE%"
 
+if not exist "build\logs" mkdir "build\logs"
+
 :: Derleyiciyi build et
 call build_native.bat >> "%LOG_FILE%" 2>&1
 
@@ -49,13 +51,10 @@ for %%D in (%TEST_DIRS%) do (
             REM Her test icin ayri log dosyasi olustur (hata ayiklama icin)
             set "TEST_LOG=build\logs\%%~nF.build_out.txt"
             if exist "!TEST_LOG!" del /f /q "!TEST_LOG!" >nul 2>&1
-            :: Program stdout'u test log dosyasina yazilacak sekilde environment ayarla
-            set "UXM_RUN_LOG=!TEST_LOG!"
             call build_one_native.bat "%%F" > "!TEST_LOG!" 2>&1
-            set "UXM_RUN_LOG="
 
-            :: Güvenilir hata kontrolü: ERRORLEVEL'i call ile yakalayarak runtime'da al
-            call set "BUILD_RC=%%ERRORLEVEL%%"
+            :: Guvenilir hata kontrolu: build_one_native.bat donus kodunu dogrudan al
+            set "BUILD_RC=!ERRORLEVEL!"
 
             :: Kısa debug: BUILD_RC değeri ana loga yazılsın
             echo BUILD_RC=!BUILD_RC! >> "%LOG_FILE%"

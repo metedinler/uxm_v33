@@ -79,15 +79,19 @@ if not exist build\asm mkdir build\asm
 if not exist build\obj mkdir build\obj
 if not exist build\logs mkdir build\logs
 
-if not exist build\exe\uxm_native.exe call build_native.bat
-if errorlevel 1 endlocal & exit /b 1
+set RUNTIME_SRC=uxm\core\runtime\uxm31_runtime_fb_full.bas
+
+if not exist build\exe\uxm_native.exe (
+  call build_native.bat
+  if errorlevel 1 endlocal & exit /b 1
+)
 
 REM Precompile FreeBASIC runtime to object to avoid recompiling it for every test.
 set "RUNTIME_OBJ=build\obj\uxm31_runtime_fb_full.o"
 if not defined UXM_SKIP_RUNTIME_COMPILE (
   if not exist "%RUNTIME_OBJ%" (
-    echo Compiling FreeBASIC runtime to object: "%FBC%" -lang fb -c "%RUNTIME_SRC%" -o "%RUNTIME_OBJ%"
-    "%FBC%" -lang fb -c "%RUNTIME_SRC%" -o "%RUNTIME_OBJ%"
+    echo Compiling FreeBASIC runtime to object: "!FBC!" -lang fb -c "%RUNTIME_SRC%" -o "%RUNTIME_OBJ%"
+    "!FBC!" -lang fb -c "%RUNTIME_SRC%" -o "%RUNTIME_OBJ%"
     if errorlevel 1 (
       echo WARNING: runtime precompile failed; link step will compile from source.
     )
@@ -104,8 +108,6 @@ if /I "%~2"=="-x" (
     set NAME=program
   )
 )
-
-set RUNTIME_SRC=uxm\core\runtime\uxm31_runtime_fb_full.bas
 set ASM_OUT=build\asm\%NAME%.asm
 set OBJ_OUT=build\obj\%NAME%.o
 set EXE_OUT=build\exe\%NAME%.exe
@@ -126,8 +128,8 @@ if "%ARCH%"=="x64" (
 
 if "%LINK%"=="1" (
   echo FreeBASIC runtime kaynak ile link:
-  echo %FBC% "%RUNTIME_SRC%" "%OBJ_OUT%" -x "%EXE_OUT%"
-  "%FBC%" "%RUNTIME_SRC%" "%OBJ_OUT%" -x "%EXE_OUT%"
+  echo "!FBC!" "%RUNTIME_SRC%" "%OBJ_OUT%" -x "%EXE_OUT%"
+  "!FBC!" "%RUNTIME_SRC%" "%OBJ_OUT%" -x "%EXE_OUT%"
   if errorlevel 1 (
     endlocal & exit /b 1
   )
@@ -137,7 +139,7 @@ if "%LINK%"=="1" (
     "%EXE_OUT%"
   )
 ) else (
-  echo Skipping linking step (LINK=%LINK%). ASM and OBJ generated at "%ASM_OUT%" and "%OBJ_OUT%".
+  echo Skipping linking step ^(LINK=%LINK%^). ASM and OBJ generated at "%ASM_OUT%" and "%OBJ_OUT%".
 )
 
 set "RET=%ERRORLEVEL%"
