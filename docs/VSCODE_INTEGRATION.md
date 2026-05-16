@@ -4,10 +4,16 @@ Bu doküman VSCode ile proje geliştirme için kısa kılavuz sağlar.
 
 Özet:
 - `Terminal → Run Task...` ile `Compile UXM` veya `Run UXM Tests` çalıştırılabilir.
-- `Run UXM Control Server` görevi küçük bir HTTP sunucusu başlatır (localhost:8765) — bu sunucu compile/run, alias yönetimi ve trace görüntüleme uç noktaları sağlar.
+- Dosya-tabanlı iletişim: tercih edilen yöntem, uzantının `tools/vscode_integration/comm/` dizinine `command_<id>.json` dosyası yazmasıdır. UXM runtime bu dosyayı işleyip `result_<id>.json` ile yanıtlar.
+- `Run UXM Control Server` görevi küçük bir HTTP sunucusu başlatır (localhost:8765) — bu sunucu fallback ve bazı etkileşim uç noktaları sağlar.
 - `Emekliler/` dizini `.gitignore` içinde saklanır ve explorer'da gizlenir.
 
-Kontrol sunucusu:
+Dosya-tabanlı iletişim (tercih):
+- Uzantı `tools/vscode_integration/comm/` içine `command_<id>.json` yazar.
+- UXM runtime bir dinleyici ile bu dosyayı okuyup `result_<id>.json` yazar.
+- Uzantı ~10s içinde sonucu bekler; bulunmazsa fallback olarak kontrol sunucusuna (http://127.0.0.1:8765) istek atar.
+
+Kontrol sunucusu (fallback):
 - Başlatma: `Python: Run UXM Control Server` veya `Start UXM Control Server` görevi.
 - API örnekleri:
   - `POST /compile` — `build_native.bat` çalıştırır.

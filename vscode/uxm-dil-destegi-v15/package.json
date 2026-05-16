@@ -7,6 +7,14 @@
   "engines": {
     "vscode": "^1.80.0"
   },
+  "main": "./extension.js",
+  "activationEvents": [
+    "onCommand:uxm.openControlPanel",
+    "onCommand:uxm.compile",
+    "onCommand:uxm.runTests",
+    "onCommand:uxm.bellekTest",
+    "onCommand:uxm.hizliTara"
+  ],
   "categories": [
     "Programming Languages"
   ],
