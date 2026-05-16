@@ -114,16 +114,17 @@ if "%LINK%"=="1" (
   echo FreeBASIC runtime kaynak ile link:
   echo %FBC% "%RUNTIME_SRC%" "%OBJ_OUT%" -x "%EXE_OUT%"
   "%FBC%" "%RUNTIME_SRC%" "%OBJ_OUT%" -x "%EXE_OUT%"
-) else (
-  if errorlevel 1 endlocal & exit /b 1
+  if errorlevel 1 (
+    endlocal & exit /b 1
+  )
   if defined UXM_RUN_LOG (
     "%EXE_OUT%" > "%UXM_RUN_LOG%" 2>&1
   ) else (
     "%EXE_OUT%"
   )
-)
 ) else (
   echo Skipping linking step (LINK=%LINK%). ASM and OBJ generated at "%ASM_OUT%" and "%OBJ_OUT%".
 )
+
 set "RET=%ERRORLEVEL%"
 endlocal & exit /b %RET%
