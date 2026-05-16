@@ -19,8 +19,17 @@ function Ensure-Admin {
 function Try-WingetInstall([string]$id, [string]$name) {
     if (Get-Command winget -ErrorAction SilentlyContinue) {
         Write-Host "winget ile $name yükleniyor..."
-        winget install --silent --accept-package-agreements --accept-source-agreements --id $id || return $false
-        return $true
+        try {
+            & winget install --silent --accept-package-agreements --accept-source-agreements --id $id
+            if ($LASTEXITCODE -ne 0) {
+                Write-Host "winget install geri dönüş kodu: $LASTEXITCODE" -ForegroundColor Yellow
+                return $false
+            }
+            return $true
+        } catch {
+            Write-Host "winget install sırasında hata: $_" -ForegroundColor Yellow
+            return $false
+        }
     }
     return $false
 }
