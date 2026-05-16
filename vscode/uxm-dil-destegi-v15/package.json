@@ -46,6 +46,46 @@
     ],
     "commands": [
       {
+        "command": "uxm.openControlPanel",
+        "title": "UXM: Open Control Panel"
+      },
+      {
+        "command": "uxm.compile",
+        "title": "UXM: Compile"
+      },
+      {
+        "command": "uxm.runTests",
+        "title": "UXM: Run Tests"
+      },
+      {
+        "command": "uxm.bellekTest",
+        "title": "UXM: Bellek Test"
+      },
+      {
+        "command": "uxm.hizliTara",
+        "title": "UXM: Hızlı Tara"
+      },
+      {
+        "command": "uxm.hataliTest",
+        "title": "UXM: Hatalı Test"
+      },
+      {
+        "command": "uxm.tumTest",
+        "title": "UXM: Tüm Test"
+      },
+      {
+        "command": "uxm.derleyiciDerle",
+        "title": "UXM: Derleyiciyi Derle"
+      },
+      {
+        "command": "uxm.alanTopla",
+        "title": "UXM: Alan Topla"
+      },
+      {
+        "command": "uxm.raporGoster",
+        "title": "UXM: Rapor Göster"
+      },
+      {
         "command": "uxm.stage17",
         "title": "UXM: Stage-17 Test Altyapısını Kontrol Et / Check Stage-17"
       },
