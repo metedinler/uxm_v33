@@ -3,8 +3,19 @@ const fs = require('fs');
 const path = require('path');
 const http = require('http');
 
+function resolveVsIntegrationBase(root) {
+	const candidates = [
+		path.join(root, 'tools', 'vscode_integration'),
+		path.join(root, 'vscode', 'uxm-dil-destegi-v15', 'src', 'vscode_integration')
+	];
+	for (const candidate of candidates) {
+		if (fs.existsSync(candidate)) return candidate;
+	}
+	return candidates[0];
+}
+
 function ensureCommDir(root) {
-	const comm = path.join(root, 'tools', 'vscode_integration', 'comm');
+	const comm = path.join(resolveVsIntegrationBase(root), 'comm');
 	if (!fs.existsSync(comm)) fs.mkdirSync(comm, { recursive: true });
 	return comm;
 }
@@ -165,7 +176,7 @@ function activate(context) {
 		panel.webview.onDidReceiveMessage(async (msg) => {
 			if (msg.cmd === 'getAddresses') {
 				try {
-					const addrFile = path.join(root, 'tools', 'vscode_integration', 'uxm_addresses.json');
+					const addrFile = path.join(resolveVsIntegrationBase(root), 'uxm_addresses.json');
 					let data = {};
 					if (fs.existsSync(addrFile)) data = JSON.parse(fs.readFileSync(addrFile, 'utf8'));
 					panel.webview.postMessage({ type: 'addresses', data });
