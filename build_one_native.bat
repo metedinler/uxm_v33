@@ -28,6 +28,7 @@ REM Locate FreeBASIC compilers (prefer tools/ copies if present)
 if not defined FBC64 set "FBC64="
 if not defined FBC32 set "FBC32="
 if not defined FBC64 if exist "tools\FreeBASIC-1.10.1-win64\fbc.exe" set "FBC64=tools\FreeBASIC-1.10.1-win64\fbc.exe"
+if not defined FBC64 if exist "C:\Users\mete\Downloads\BasicOyunSource\uXBasic_repo\tools\FreeBASIC-1.10.1-win64\fbc.exe" set "FBC64=C:\Users\mete\Downloads\BasicOyunSource\uXBasic_repo\tools\FreeBASIC-1.10.1-win64\fbc.exe"
 if not defined FBC64 if exist "C:\Program Files\FreeBASIC\fbc.exe" set "FBC64=C:\Program Files\FreeBASIC\fbc.exe"
 if not defined FBC32 if exist "C:\Program Files (x86)\FreeBASIC\fbc.exe" set "FBC32=C:\Program Files (x86)\FreeBASIC\fbc.exe"
 
