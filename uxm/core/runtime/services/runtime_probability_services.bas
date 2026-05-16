@@ -127,10 +127,7 @@ End Sub
 Sub MetaProbability(ByVal metaId As ULongInt)
     Dim aValue As LongInt
     Dim bValue As LongInt
-    Dim localMeta As ULongInt
-    localMeta = metaId
-    If localMeta >= 360 And localMeta <= 369 Then localMeta += 20
-    Select Case localMeta
+    Select Case metaId
     Case 380 ' RAND_SEED: T-1 seed
         ProbSeed CULngInt(ReadTapeRel(-1))
         SetResult 0

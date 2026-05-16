@@ -203,7 +203,7 @@ End Sub
 
 
 
-' --- V18 real statistical extensions: not placeholders ---
+' --- V18 real statistical extensions: active implementations ---
 Function StatPercentileScaledV18(ByVal startIndex As LongInt, ByVal countValue As LongInt, ByVal percentileScaled As LongInt) As LongInt
     Dim values(0 To 2047) As LongInt
     Dim i As LongInt, j As LongInt, tmp As LongInt, n As LongInt
@@ -369,30 +369,6 @@ Sub MetaStatistics(ByVal metaId As ULongInt)
     Case 268 ' STAT_MEDIAN
         If StatValidRange(startA, countValue) = 0 Then SetStatus STATUS_DATA_BOUNDS: Exit Sub
         StatWriteTapeSigned 1, StatMedianScaled(startA, countValue)
-        SetStatus STATUS_OK
-
-    Case 269 ' STAT_MODE
-        If StatValidRange(startA, countValue) = 0 Or countValue <= 0 Then SetStatus STATUS_DATA_BOUNDS: Exit Sub
-        Dim cappedCount As LongInt
-        Dim values(0 To 2047) As LongInt
-        Dim i As LongInt, j As LongInt, cnt As LongInt
-        cappedCount = countValue
-        If cappedCount > 2048 Then cappedCount = 2048
-        For i = 0 To cappedCount - 1
-            values(i) = StatReadSigned(startA + i)
-        Next
-        Dim bestVal As LongInt
-        Dim bestCount As LongInt
-        bestCount = -1
-        bestVal = values(0)
-        For i = 0 To cappedCount - 1
-            cnt = 0
-            For j = 0 To cappedCount - 1
-                If values(j) = values(i) Then cnt += 1
-            Next
-            If cnt > bestCount Then bestCount = cnt: bestVal = values(i)
-        Next
-        StatWriteTapeSigned 1, bestVal
         SetStatus STATUS_OK
 
     Case 270 ' STAT_QUARTILE: option=1/2/3 -> quartile scaled

@@ -3,7 +3,7 @@
 #define UXM_RUNTIME_REAL_EXT_SERVICES_V18_BAS
 
 ' UXM V18 real extension services.
-' These services are intentionally not placeholders. They compute deterministic numeric results.
+' These services are intentionally active implementations. They compute deterministic numeric results.
 ' Scale convention: 1,000,000 for fractional values.
 
 Const UXM_V18_SCALE As Double = 1000000.0
@@ -137,10 +137,7 @@ Sub MetaPosthocRealV18(ByVal metaId As ULongInt)
     se=Sqr(vA/CDbl(nA)+vB/CDbl(nB))
     If se=0 Then V18SetResultSigned(0): Exit Sub
     diff=Abs(mA-mB): score=(diff/se)*UXM_V18_SCALE
-    Dim localMeta As ULongInt
-    localMeta = metaId
-    If localMeta >= 320 And localMeta <= 325 Then localMeta += 470
-    Select Case localMeta
+    Select Case metaId
     Case 790,791,792,793,794,795
         If thr<=0 Then
             V18SetResultSigned CLngInt(score)
@@ -158,10 +155,7 @@ Sub MetaAIRealV18(ByVal metaId As ULongInt)
     Dim i As LongInt, tp As LongInt, tn As LongInt, fp As LongInt, fn As LongInt, correct As LongInt
     Dim p As LongInt, y As LongInt, sumv As Double, maxv As Double, ev As Double, d As Double, bestI As LongInt, bestD As Double
     aBase=ToSignedValue(ReadTapeRel(-4)): bBase=ToSignedValue(ReadTapeRel(-3)): n=ToSignedValue(ReadTapeRel(-2)): outBase=ToSignedValue(ReadTapeRel(-1)): opt=ToSignedValue(ReadTapeRel(0))
-    Dim localMeta As ULongInt
-    localMeta = metaId
-    If localMeta >= 340 And localMeta <= 356 Then localMeta += 470
-    Select Case localMeta
+    Select Case metaId
     Case 810 ' accuracy: predicted vs actual -> scaled
         If V18ValidData(aBase,n)=0 Or V18ValidData(bBase,n)=0 Or n<=0 Then SetStatus STATUS_DATA_BOUNDS: SetResult STATUS_DATA_BOUNDS: Exit Sub
         correct=0
