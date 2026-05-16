@@ -6,8 +6,6 @@
 ' These services are intentionally active implementations. They compute deterministic numeric results.
 ' Scale convention: 1,000,000 for fractional values.
 
-Declare Function FileDataZToString(ByVal startIdx As LongInt) As String
-
 Const UXM_V18_SCALE As Double = 1000000.0
 Const UXM_V18_SCALE_I As LongInt = 1000000
 

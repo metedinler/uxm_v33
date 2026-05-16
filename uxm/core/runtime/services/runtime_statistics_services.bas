@@ -207,7 +207,7 @@ End Sub
 Function StatPercentileScaledV18(ByVal startIndex As LongInt, ByVal countValue As LongInt, ByVal percentileScaled As LongInt) As LongInt
     Dim values(0 To 2047) As LongInt
     Dim i As LongInt, j As LongInt, tmp As LongInt, n As LongInt
-    Dim pos As Double, lo As LongInt, hi As LongInt, frac As Double, val As Double
+    Dim pPos As Double, pLo As LongInt, pHi As LongInt, pFrac As Double, pVal As Double
     If countValue <= 0 Then Return 0
     n=countValue: If n>2048 Then n=2048
     For i=0 To n-1: values(i)=StatReadSigned(startIndex+i): Next
@@ -219,11 +219,13 @@ Function StatPercentileScaledV18(ByVal startIndex As LongInt, ByVal countValue A
     If percentileScaled<0 Then percentileScaled=0
     If percentileScaled>1000000 Then percentileScaled=1000000
     If n=1 Then Return CLngInt(CDbl(values(0))*UXM_STAT_SCALE)
-    pos=(CDbl(percentileScaled)/1000000.0)*CDbl(n-1)
-    lo=CLngInt(Int(pos)): hi=lo+1: If hi>=n Then hi=n-1
-    frac=pos-CDbl(lo)
-    val=CDbl(values(lo))*(1.0-frac)+CDbl(values(hi))*frac
-    Return CLngInt(val*UXM_STAT_SCALE)
+    pPos = (CDbl(percentileScaled) / 1000000.0) * CDbl(n - 1)
+    pLo = CLngInt(Int(pPos))
+    pHi = pLo + 1
+    If pHi >= n Then pHi = n - 1
+    pFrac = pPos - CDbl(pLo)
+    pVal = CDbl(values(pLo)) * (1.0 - pFrac) + CDbl(values(pHi)) * pFrac
+    Return CLngInt(pVal * UXM_STAT_SCALE)
 End Function
 
 Function StatSkewnessScaledV18(ByVal startIndex As LongInt, ByVal countValue As LongInt) As LongInt
@@ -278,9 +280,13 @@ Function StatKendallScaledV18(ByVal xStart As LongInt, ByVal yStart As LongInt, 
     concord=0:discord=0
     For i=0 To countValue-2
         For j=i+1 To countValue-1
-            dx=StatReadSigned(xStart+i)-StatReadSigned(xStart+j)
-            dy=StatReadSigned(yStart+i)-StatReadSigned(yStart+j)
-            If dx*dy>0 Then concord+=1 ElseIf dx*dy<0 Then discord+=1
+            dx = StatReadSigned(xStart + i) - StatReadSigned(xStart + j)
+            dy = StatReadSigned(yStart + i) - StatReadSigned(yStart + j)
+            If dx * dy > 0 Then
+                concord += 1
+            ElseIf dx * dy < 0 Then
+                discord += 1
+            End If
         Next
     Next
     pairs=countValue*(countValue-1)\2

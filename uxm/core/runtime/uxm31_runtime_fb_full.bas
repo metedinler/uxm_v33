@@ -147,6 +147,7 @@ Const UXM_FILE_STATUS_BAD_HANDLE As UByte = 24
 Const UXM_FILE_STATUS_IO_ERROR As UByte = 2
 Const UXM_FILE_STATUS_EOF As UByte = 26
 Const UXM_FILE_STATUS_BOUNDS As UByte = 16
+Dim Shared ux_file_last_status As UByte = UXM_FILE_STATUS_OK
 Declare Function V16ValidRange(ByVal baseIndex As LongInt, ByVal countValue As LongInt) As Long
 Declare Function V16Mean(ByVal baseIndex As LongInt, ByVal countValue As LongInt) As Double
 Declare Function V16VarianceSample(ByVal baseIndex As LongInt, ByVal countValue As LongInt) As Double
@@ -162,6 +163,10 @@ Declare Sub MetaHypothesisRealV18(ByVal metaId As ULongInt)
 Declare Sub MetaPosthocRealV18(ByVal metaId As ULongInt)
 Declare Sub MetaAIRealV18(ByVal metaId As ULongInt)
 Declare Sub MetaFileExtRealV18(ByVal metaId As ULongInt)
+Declare Function StatReadSigned(ByVal dataIndex As LongInt) As LongInt
+Declare Function StatValidRange(ByVal startIndex As LongInt, ByVal countValue As LongInt) As Long
+Declare Function StatMeanScaled(ByVal startIndex As LongInt, ByVal countValue As LongInt) As LongInt
+Declare Function StatVarianceScaled(ByVal startIndex As LongInt, ByVal countValue As LongInt) As LongInt
 Declare Function RuntimeHookDispatchExt(ByVal metaId As ULongInt) As Long
 
 #Include Once "runtime_memory.bas"

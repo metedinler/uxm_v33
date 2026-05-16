@@ -24,7 +24,6 @@ Const UXM_FILE_STATUS_BOUNDS As UByte = 16
 
 Dim Shared ux_file_num(1 To UXM_FILE_MAX_HANDLES) As Integer
 Dim Shared ux_file_open(1 To UXM_FILE_MAX_HANDLES) As Integer
-Dim Shared ux_file_last_status As UByte = UXM_FILE_STATUS_OK
 
 Sub FileSetStatus(ByVal code As UByte)
     ux_file_last_status = code
