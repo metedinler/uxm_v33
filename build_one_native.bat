@@ -31,10 +31,24 @@ if not defined FBC64 if exist "tools\FreeBASIC-1.10.1-win64\fbc.exe" set "FBC64=
 if not defined FBC64 if exist "C:\Program Files\FreeBASIC\fbc.exe" set "FBC64=C:\Program Files\FreeBASIC\fbc.exe"
 if not defined FBC32 if exist "C:\Program Files (x86)\FreeBASIC\fbc.exe" set "FBC32=C:\Program Files (x86)\FreeBASIC\fbc.exe"
 
+REM Enforce using 64-bit FreeBASIC for x64 builds — fail fast if missing
 if "%ARCH%"=="x64" (
-  if defined FBC64 (set "FBC=!FBC64!") else (set "FBC=fbc")
+  if defined FBC64 (
+    set "FBC=!FBC64!"
+  ) else (
+    echo ERROR: 64-bit FreeBASIC (fbc.exe) not found. Set FBC64 env var or install to tools\FreeBASIC-1.10.1-win64\ or C:\Program Files\FreeBASIC.
+    exit /b 1
+  )
 ) else (
-  if defined FBC32 (set "FBC=!FBC32!") else if defined FBC64 (set "FBC=!FBC64!") else (set "FBC=fbc")
+  REM For x86 builds prefer FBC32, fall back to FBC64 if explicitly available; otherwise fail.
+  if defined FBC32 (
+    set "FBC=!FBC32!"
+  ) else if defined FBC64 (
+    set "FBC=!FBC64!"
+  ) else (
+    echo ERROR: No FreeBASIC compiler found for x86 build. Set FBC32 or FBC64 env var.
+    exit /b 1
+  )
 )
 
 if not exist build\exe mkdir build\exe
