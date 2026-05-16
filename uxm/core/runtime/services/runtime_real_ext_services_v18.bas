@@ -6,6 +6,8 @@
 ' These services are intentionally active implementations. They compute deterministic numeric results.
 ' Scale convention: 1,000,000 for fractional values.
 
+Declare Function FileDataZToString(ByVal startIdx As LongInt) As String
+
 Const UXM_V18_SCALE As Double = 1000000.0
 Const UXM_V18_SCALE_I As LongInt = 1000000
 
@@ -166,28 +168,60 @@ Sub MetaAIRealV18(ByVal metaId As ULongInt)
         If V18ValidData(aBase,n)=0 Or V18ValidData(bBase,n)=0 Or V18ValidData(outBase,4)=0 Then SetStatus STATUS_DATA_BOUNDS: SetResult STATUS_DATA_BOUNDS: Exit Sub
         tp=0:tn=0:fp=0:fn=0
         For i=0 To n-1
-            p=V18S(aBase+i): y=V18S(bBase+i)
-            If p<>0 And y<>0 Then tp+=1 ElseIf p=0 And y=0 Then tn+=1 ElseIf p<>0 And y=0 Then fp+=1 Else fn+=1
+            p = V18S(aBase+i)
+            y = V18S(bBase+i)
+            If p<>0 And y<>0 Then
+                tp += 1
+            ElseIf p=0 And y=0 Then
+                tn += 1
+            ElseIf p<>0 And y=0 Then
+                fp += 1
+            Else
+                fn += 1
+            End If
         Next
         WriteData outBase,FromSignedValue(tp): WriteData outBase+1,FromSignedValue(tn): WriteData outBase+2,FromSignedValue(fp): WriteData outBase+3,FromSignedValue(fn)
         V18SetResultSigned tp+tn+fp+fn
     Case 812 ' precision scaled
         If V18ValidData(aBase,n)=0 Or V18ValidData(bBase,n)=0 Or n<=0 Then SetStatus STATUS_DATA_BOUNDS: SetResult STATUS_DATA_BOUNDS: Exit Sub
         tp=0:fp=0
-        For i=0 To n-1: p=V18S(aBase+i): y=V18S(bBase+i): If p<>0 And y<>0 Then tp+=1 ElseIf p<>0 And y=0 Then fp+=1
+        For i=0 To n-1
+            p = V18S(aBase+i)
+            y = V18S(bBase+i)
+            If p<>0 And y<>0 Then
+                tp += 1
+            ElseIf p<>0 And y=0 Then
+                fp += 1
+            End If
         Next
         If tp+fp=0 Then V18SetResultSigned(0) Else V18SetResultSigned CLngInt((CDbl(tp)/CDbl(tp+fp))*UXM_V18_SCALE)
     Case 813 ' recall scaled
         If V18ValidData(aBase,n)=0 Or V18ValidData(bBase,n)=0 Or n<=0 Then SetStatus STATUS_DATA_BOUNDS: SetResult STATUS_DATA_BOUNDS: Exit Sub
         tp=0:fn=0
-        For i=0 To n-1: p=V18S(aBase+i): y=V18S(bBase+i): If p<>0 And y<>0 Then tp+=1 ElseIf p=0 And y<>0 Then fn+=1
+        For i=0 To n-1
+            p = V18S(aBase+i)
+            y = V18S(bBase+i)
+            If p<>0 And y<>0 Then
+                tp += 1
+            ElseIf p=0 And y<>0 Then
+                fn += 1
+            End If
         Next
         If tp+fn=0 Then V18SetResultSigned(0) Else V18SetResultSigned CLngInt((CDbl(tp)/CDbl(tp+fn))*UXM_V18_SCALE)
     Case 814 ' F1 scaled
         Dim pr As Double, rc As Double
         tp=0:fp=0:fn=0
         If V18ValidData(aBase,n)=0 Or V18ValidData(bBase,n)=0 Or n<=0 Then SetStatus STATUS_DATA_BOUNDS: SetResult STATUS_DATA_BOUNDS: Exit Sub
-        For i=0 To n-1: p=V18S(aBase+i): y=V18S(bBase+i): If p<>0 And y<>0 Then tp+=1 ElseIf p<>0 And y=0 Then fp+=1 ElseIf p=0 And y<>0 Then fn+=1
+        For i=0 To n-1
+            p = V18S(aBase+i)
+            y = V18S(bBase+i)
+            If p<>0 And y<>0 Then
+                tp += 1
+            ElseIf p<>0 And y=0 Then
+                fp += 1
+            ElseIf p=0 And y<>0 Then
+                fn += 1
+            End If
         Next
         If tp+fp=0 Or tp+fn=0 Then V18SetResultSigned(0): Exit Sub
         pr=CDbl(tp)/CDbl(tp+fp): rc=CDbl(tp)/CDbl(tp+fn)
@@ -250,21 +284,56 @@ Sub MetaFileExtRealV18(ByVal metaId As ULongInt)
     Dim p1 As String, p2 As String
     Select Case metaId
     Case 416 ' delete: T-1 pathZ -> T+1 1/0
-        p1=FileDataZToString(FileReadArgRel(-1))
-        If ux_file_last_status<>UXM_FILE_STATUS_OK Then FileWriteResultRel 1,0: Exit Sub
-        If Kill(p1)<>0 Then FileWriteResultRel 1,0: FileSetStatus UXM_FILE_STATUS_IO_ERROR Else FileWriteResultRel 1,1: FileSetStatus UXM_FILE_STATUS_OK
+        p1 = FileDataZToString(FileReadArgRel(-1))
+        If ux_file_last_status<>UXM_FILE_STATUS_OK Then
+            FileWriteResultRel 1,0
+            Exit Sub
+        End If
+        If Kill(p1)<>0 Then
+            FileWriteResultRel 1,0
+            FileSetStatus UXM_FILE_STATUS_IO_ERROR
+        Else
+            FileWriteResultRel 1,1
+            FileSetStatus UXM_FILE_STATUS_OK
+        End If
     Case 417 ' rename: T-2 oldPathZ, T-1 newPathZ
-        p1=FileDataZToString(FileReadArgRel(-2)): p2=FileDataZToString(FileReadArgRel(-1))
-        If ux_file_last_status<>UXM_FILE_STATUS_OK Then FileWriteResultRel 1,0: Exit Sub
-        If Name(p1,p2)<>0 Then FileWriteResultRel 1,0: FileSetStatus UXM_FILE_STATUS_IO_ERROR Else FileWriteResultRel 1,1: FileSetStatus UXM_FILE_STATUS_OK
+        p1 = FileDataZToString(FileReadArgRel(-2))
+        p2 = FileDataZToString(FileReadArgRel(-1))
+        If ux_file_last_status<>UXM_FILE_STATUS_OK Then
+            FileWriteResultRel 1,0
+            Exit Sub
+        End If
+        If Name(p1,p2)<>0 Then
+            FileWriteResultRel 1,0
+            FileSetStatus UXM_FILE_STATUS_IO_ERROR
+        Else
+            FileWriteResultRel 1,1
+            FileSetStatus UXM_FILE_STATUS_OK
+        End If
     Case 418 ' mkdir: T-1 pathZ
-        p1=FileDataZToString(FileReadArgRel(-1))
-        If ux_file_last_status<>UXM_FILE_STATUS_OK Then FileWriteResultRel 1,0: Exit Sub
-        If MkDir(p1)<>0 Then FileWriteResultRel 1,0: FileSetStatus UXM_FILE_STATUS_IO_ERROR Else FileWriteResultRel 1,1: FileSetStatus UXM_FILE_STATUS_OK
+        p1 = FileDataZToString(FileReadArgRel(-1))
+        If ux_file_last_status<>UXM_FILE_STATUS_OK Then
+            FileWriteResultRel 1,0
+            Exit Sub
+        End If
+        If MkDir(p1)<>0 Then
+            FileWriteResultRel 1,0
+            FileSetStatus UXM_FILE_STATUS_IO_ERROR
+        Else
+            FileWriteResultRel 1,1
+            FileSetStatus UXM_FILE_STATUS_OK
+        End If
     Case 419 ' exists: T-1 pathZ -> 1/0
-        p1=FileDataZToString(FileReadArgRel(-1))
-        If ux_file_last_status<>UXM_FILE_STATUS_OK Then FileWriteResultRel 1,0: Exit Sub
-        If Len(Dir(p1))>0 Then FileWriteResultRel 1,1 Else FileWriteResultRel 1,0
+        p1 = FileDataZToString(FileReadArgRel(-1))
+        If ux_file_last_status<>UXM_FILE_STATUS_OK Then
+            FileWriteResultRel 1,0
+            Exit Sub
+        End If
+        If Len(Dir(p1))>0 Then
+            FileWriteResultRel 1,1
+        Else
+            FileWriteResultRel 1,0
+        End If
         FileSetStatus UXM_FILE_STATUS_OK
     Case Else
         SetStatus STATUS_INVALID_META
