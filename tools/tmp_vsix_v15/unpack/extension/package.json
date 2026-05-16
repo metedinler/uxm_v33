@@ -1,7 +1,7 @@
 {
   "name": "uxm-dil-destegi-v15",
   "displayName": "UXM Dil Desteği / UXM Language Support",
-  "description": "UXM icin tek sayfa kontrol merkezi, trace izleme ve not yonetimi.",
+  "description": "UXM Türkçe ana dil, English command aliases, snippets and diagnostics task hooks.",
   "version": "0.16.0",
   "publisher": "mete",
   "engines": {
@@ -9,22 +9,12 @@
   },
   "main": "./extension.js",
   "activationEvents": [
-    "onLanguage:uxm",
     "onCommand:uxm.controlCenter",
     "onCommand:uxm.openControlPanel",
     "onCommand:uxm.compile",
     "onCommand:uxm.runTests",
     "onCommand:uxm.bellekTest",
-    "onCommand:uxm.hizliTara",
-    "onCommand:uxm.hataliTest",
-    "onCommand:uxm.tumTest",
-    "onCommand:uxm.derleyiciDerle",
-    "onCommand:uxm.alanTopla",
-    "onCommand:uxm.raporGoster",
-    "onCommand:uxm.stage17",
-    "onCommand:uxm.stage18",
-    "onCommand:uxm.stage19",
-    "onCommand:uxm.stage20"
+    "onCommand:uxm.hizliTara"
   ],
   "categories": [
     "Programming Languages"
@@ -58,11 +48,11 @@
     "commands": [
       {
         "command": "uxm.controlCenter",
-        "title": "UXM:Kontrol Merkezi"
+        "title": "UXM: Kontrol Merkezi"
       },
       {
         "command": "uxm.openControlPanel",
-        "title": "UXM:Kontrol Merkezi(U)"
+        "title": "UXM: Open Control Panel"
       },
       {
         "command": "uxm.compile",
@@ -102,19 +92,19 @@
       },
       {
         "command": "uxm.stage17",
-        "title": "UXM: Stage-17 Kontrol"
+        "title": "UXM: Stage-17 Test Altyapısını Kontrol Et / Check Stage-17"
       },
       {
         "command": "uxm.stage18",
-        "title": "UXM: Stage-18 Rapor"
+        "title": "UXM: Stage-18 Native Bridge Raporu / Native Bridge Report"
       },
       {
         "command": "uxm.stage19",
-        "title": "UXM: Stage-19 Temizlik"
+        "title": "UXM: Stage-19 VSCode Temizliği / VSCode Cleanup"
       },
       {
         "command": "uxm.stage20",
-        "title": "UXM: Stage-20 Release"
+        "title": "UXM: Stage-20 Release Raporu / Release Report"
       }
     ]
   }

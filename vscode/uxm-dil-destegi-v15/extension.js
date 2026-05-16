@@ -1225,6 +1225,56 @@ function activate(context) {
 		}));
 	}
 
+	// Hover provider: komutlar, pragma ve adresleme icin bilgilendirme kutucuklari
+	{
+		const HOVER_MAP = new Map();
+		for (const it of COMMAND_DOCS) HOVER_MAP.set(it.token, it.desc);
+		for (const it of ADDRESSING_DOCS) HOVER_MAP.set(it.mode, it.desc);
+		HOVER_MAP.set('@ID', 'Meta servis çağırır. Örn: @20');
+		HOVER_MAP.set('@#', 'Dinamik meta çağrısı.');
+		HOVER_MAP.set('@(addr)', 'Adresten dinamik meta çağrısı.');
+		HOVER_MAP.set(':', 'Branch/label komutu (örn :loop).');
+		HOVER_MAP.set('#mode', 'Pragma: çalışma modu. #mode safe|normal|wild');
+		HOVER_MAP.set('#cell', 'Pragma: hücre tipi. #cell byte|word|dword');
+
+		context.subscriptions.push(vscode.languages.registerHoverProvider('uxm', {
+			provideHover(document, position) {
+				const tokenRegex = /\([^)\s]+\)|@\([^)\s]+\)|@[!#]?\d+|:\w[\w\-]*|s\d+|p\d+|m\d+|#[A-Za-z0-9_\-]+|[><+\-0\.,\[\]\$%\?;!&\|\^~\{\}e]/;
+				const range = document.getWordRangeAtPosition(position, tokenRegex);
+				if (!range) return null;
+				let word = document.getText(range);
+				// Normalize numeric parts in parentheses to match addressing patterns
+				if (word.startsWith('(') && word.endsWith(')')) {
+					const normalized = word.replace(/\d+/g, 'N');
+					for (const [k, v] of HOVER_MAP.entries()) {
+						if (k === normalized || (k.indexOf(normalized) !== -1)) {
+							return new vscode.Hover(v);
+						}
+					}
+					// Fallback: show short addressing summary
+					return new vscode.Hover(ADDRESSING_DOCS.map(x => `${x.mode} — ${x.desc}`).join('\n'));
+				}
+				if (HOVER_MAP.has(word)) return new vscode.Hover(HOVER_MAP.get(word));
+				if (/^s\d+/.test(word)) return new vscode.Hover('String tanımlama: sN=start,{text}');
+				if (/^p\d+/.test(word)) return new vscode.Hover('Önceden tanımlı string çağırma: pN');
+				if (/^m\d+/.test(word)) return new vscode.Hover('Macro tanımlama: mN={...} (N:128..255)');
+				if (/^@[!#]?\d+$/.test(word)) return new vscode.Hover('Meta servis çağırma. Registry: config/uxm/service_registry_merged.csv');
+				if (/^#/.test(word)) {
+					const key = word.split(/[\s=]/)[0];
+					switch (key) {
+						case '#mode': return new vscode.Hover('Pragma: #mode safe|normal|wild');
+						case '#cell': return new vscode.Hover('Pragma: #cell byte|word|dword');
+						case '#bounds': return new vscode.Hover('Pragma: #bounds on|off');
+						case '#overflow': return new vscode.Hover('Pragma: #overflow check|wrap');
+						case '#endian': return new vscode.Hover('Pragma: #endian big|little');
+						default: return new vscode.Hover('Pragma: detay için PCK.md veya docs referansına bakın.');
+					}
+				}
+				return null;
+			}
+		}));
+	}
+
 	context.subscriptions.push(vscode.commands.registerCommand('uxm.compile', async () => {
 		const root = getWorkspaceRoot();
 		if (!root) {

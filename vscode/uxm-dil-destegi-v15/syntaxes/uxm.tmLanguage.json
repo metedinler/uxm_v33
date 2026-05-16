@@ -2,12 +2,40 @@
   "scopeName": "source.uxm",
   "patterns": [
     {
+      "match": "^#(mode|cell|bounds|overflow|compare|endian|memory|seed|arge|poly|expr-rpn|matrix|identity|zeros|ones)\\b.*$",
+      "name": "keyword.directive.uxm"
+    },
+    {
       "match": "#.*$",
       "name": "comment.line.number-sign.uxm"
     },
     {
-      "match": "@!?\\d+",
+      "match": "\\([TSDPFE][^\\)]*\\)",
+      "name": "constant.other.addressing.uxm"
+    },
+    {
+      "match": "@\\([^\\)]+\\)|@[!#]?\\d+",
       "name": "entity.name.function.service.uxm"
+    },
+    {
+      "match": ":\\w[\\w\\-]*",
+      "name": "entity.name.label.uxm"
+    },
+    {
+      "match": "\\bp\\d+\\b",
+      "name": "variable.other.stringref.uxm"
+    },
+    {
+      "match": "\\bs\\d+\\b",
+      "name": "variable.other.stringdef.uxm"
+    },
+    {
+      "match": "\\bm\\d+\\b",
+      "name": "variable.other.macro.uxm"
+    },
+    {
+      "match": "[><+\\-0\\.,\\[\\]\\$%\\?;!&\\|\\^~\\{\\}e]",
+      "name": "keyword.operator.uxm"
     },
     {
       "match": "\\b(memory|cell|mode|total|tape|stack|data|fifo|queue|byte|kb|mb|dword|normal)\\b",

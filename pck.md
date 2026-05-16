@@ -99,6 +99,15 @@ Ek komutlar:
 - `@(addr)` adresten dinamik meta
 - `:...` branch komut ailesi
 
+## Bilgilendirme Kutucuğu (Hızlı Referans)
+
+- Hızlı komut özet: `> < + - 0 . , [ ] $ % ? ! ; & | ^ ~ { } e`
+- String/macro: `pN` (çağır), `sN=start,{text}` (tanımla), `mN={...}` (macro, N:128..255)
+- Meta çağrılar: `@ID`, `@#` (dinamik), `@(addr)` (adres tabanlı dinamik)
+- Pragma örnekleri: `#mode`, `#cell`, `#bounds`, `#overflow`, `#endian`, `#memory`, `#arge`
+- Adresleme kısa: `(T) (T+N) (T:N) (D:N) (SP) (SP+N) (P) (*T) (D@T)`
+- VSCode: Eklenti hover desteği ile bu sembollere gelince kısa açıklama gösterilir.
+
 ## 4) Adresleme Modlari
 
 Kaynak: `uxm/core/compiler/native/native_addressing.bas`
