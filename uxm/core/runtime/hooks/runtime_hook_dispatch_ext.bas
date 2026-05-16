@@ -3,6 +3,22 @@
 #define UXM_RUNTIME_HOOK_DISPATCH_EXT_BAS
 ' V18 hook: real extension services. Returns non-zero when handled.
 Function RuntimeHookDispatchExt(ByVal metaId As ULongInt) As Long
+    Dim se As Double
+    Dim m1 As Double, m2 As Double, v1 As Double, v2 As Double
+    Dim xBase As LongInt = ToSignedValue(ReadTapeRel(-4))
+    Dim yBase As LongInt = ToSignedValue(ReadTapeRel(-3))
+    Dim n1 As LongInt = ToSignedValue(ReadTapeRel(-2))
+    Dim n2orParam As LongInt = ToSignedValue(ReadTapeRel(-1))
+    Dim outBase As LongInt = ToSignedValue(ReadTapeRel(0))
+    Dim aBase As LongInt = ToSignedValue(ReadTapeRel(-4))
+    Dim bBase As LongInt = ToSignedValue(ReadTapeRel(-3))
+    Dim countValue As LongInt = ToSignedValue(ReadTapeRel(-2))
+    Dim opt As LongInt = ToSignedValue(ReadTapeRel(-1))
+    Dim i As LongInt
+    Dim d As Double
+    Dim acc As Double
+    Dim tp As LongInt, tn As LongInt, fp As LongInt, fn As LongInt
+    Dim dot As Double, sumA As Double, sumB As Double
     Select Case metaId
     Case 416,417,418,419
         MetaFileExtRealV18 metaId
@@ -19,8 +35,10 @@ Function RuntimeHookDispatchExt(ByVal metaId As ULongInt) As Long
 
     Case 761 ' HYP_TTEST_INDEPENDENT: T-4=xBase,T-3=yBase,T-2=n1,T-1=n2 -> t*1e6
         If V16ValidRange(xBase,n1)=0 Or V16ValidRange(yBase,n2orParam)=0 Or n1<=1 Or n2orParam<=1 Then SetStatus STATUS_DATA_BOUNDS: Return 1
-        m1 = V16Mean(xBase,n1): m2 = V16Mean(yBase,n2orParam)
-        v1 = V16VarianceSample(xBase,n1): v2 = V16VarianceSample(yBase,n2orParam)
+        m1 = V16Mean(xBase,n1)
+        m2 = V16Mean(yBase,n2orParam)
+        v1 = V16VarianceSample(xBase,n1)
+        v2 = V16VarianceSample(yBase,n2orParam)
         se = Sqr(v1/CDbl(n1) + v2/CDbl(n2orParam))
         If se = 0 Then SetStatus STATUS_DIV_ZERO: Return 1
         V16WriteResultScaled ((m1-m2)/se)
@@ -47,8 +65,10 @@ Function RuntimeHookDispatchExt(ByVal metaId As ULongInt) As Long
 
     Case 764 ' HYP_ZTEST_TWO_APPROX: independent z using sample variances -> z*1e6
         If V16ValidRange(xBase,n1)=0 Or V16ValidRange(yBase,n2orParam)=0 Or n1<=1 Or n2orParam<=1 Then SetStatus STATUS_DATA_BOUNDS: Return 1
-        m1 = V16Mean(xBase,n1): m2 = V16Mean(yBase,n2orParam)
-        v1 = V16VarianceSample(xBase,n1): v2 = V16VarianceSample(yBase,n2orParam)
+        m1 = V16Mean(xBase,n1)
+        m2 = V16Mean(yBase,n2orParam)
+        v1 = V16VarianceSample(xBase,n1)
+        v2 = V16VarianceSample(yBase,n2orParam)
         se = Sqr(v1/CDbl(n1) + v2/CDbl(n2orParam))
         If se = 0 Then SetStatus STATUS_DIV_ZERO: Return 1
         V16WriteResultScaled ((m1-m2)/se)
@@ -56,14 +76,16 @@ Function RuntimeHookDispatchExt(ByVal metaId As ULongInt) As Long
 
     Case 765 ' HYP_FTEST_VARIANCE: ratio v1/v2 * 1e6
         If V16ValidRange(xBase,n1)=0 Or V16ValidRange(yBase,n2orParam)=0 Or n1<=1 Or n2orParam<=1 Then SetStatus STATUS_DATA_BOUNDS: Return 1
-        v1 = V16VarianceSample(xBase,n1): v2 = V16VarianceSample(yBase,n2orParam)
+        v1 = V16VarianceSample(xBase,n1)
+        v2 = V16VarianceSample(yBase,n2orParam)
         If v2 = 0 Then SetStatus STATUS_DIV_ZERO: Return 1
         V16WriteResultScaled (v1/v2)
         Return 1
 
     Case 766 ' HYP_ANOVA_ONEWAY_SIMPLE: DATA groups: [value...], group starts xBase/yBase, n1/n2 -> F*1e6 for two groups
         If V16ValidRange(xBase,n1)=0 Or V16ValidRange(yBase,n2orParam)=0 Or n1<=1 Or n2orParam<=1 Then SetStatus STATUS_DATA_BOUNDS: Return 1
-        m1 = V16Mean(xBase,n1): m2 = V16Mean(yBase,n2orParam)
+        m1 = V16Mean(xBase,n1)
+        m2 = V16Mean(yBase,n2orParam)
         Dim grand As Double = (m1*CDbl(n1)+m2*CDbl(n2orParam))/CDbl(n1+n2orParam)
         Dim ssb As Double = CDbl(n1)*(m1-grand)*(m1-grand)+CDbl(n2orParam)*(m2-grand)*(m2-grand)
         Dim ssw As Double = V16VarianceSample(xBase,n1)*CDbl(n1-1)+V16VarianceSample(yBase,n2orParam)*CDbl(n2orParam-1)
@@ -166,11 +188,11 @@ Function RuntimeHookDispatchExt(ByVal metaId As ULongInt) As Long
         If V16ValidRange(aBase,countValue)=0 Or V16ValidRange(bBase,countValue)=0 Then SetStatus STATUS_DATA_BOUNDS: Return 1
         For i=0 To countValue-1
             dot += CDbl(V16ReadSigned(aBase+i))*CDbl(V16ReadSigned(bBase+i))
-            n1 += CDbl(V16ReadSigned(aBase+i))*CDbl(V16ReadSigned(aBase+i))
-            n2 += CDbl(V16ReadSigned(bBase+i))*CDbl(V16ReadSigned(bBase+i))
+            sumA += CDbl(V16ReadSigned(aBase+i))*CDbl(V16ReadSigned(aBase+i))
+            sumB += CDbl(V16ReadSigned(bBase+i))*CDbl(V16ReadSigned(bBase+i))
         Next
-        If n1=0 Or n2=0 Then SetStatus STATUS_DIV_ZERO: Return 1
-        V16WriteResultScaled (1.0 - dot/Sqr(n1*n2))
+        If sumA=0 Or sumB=0 Then SetStatus STATUS_DIV_ZERO: Return 1
+        V16WriteResultScaled (1.0 - dot/Sqr(sumA*sumB))
         Return 1
     Case Else
         Return 0
