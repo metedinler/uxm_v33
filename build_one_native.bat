@@ -2,7 +2,7 @@
 setlocal EnableExtensions EnableDelayedExpansion
 if "%~1"=="" (
   echo Kullanim: build_one_native.bat kaynak.uxm [-x]
-  exit /b 1
+  endlocal & exit /b 1
 )
 
 REM Usage: build_one_native.bat kaynak.uxm [-x86|-x64] [-link]
@@ -27,30 +27,52 @@ if %errorlevel%==0 set LINK=1
 REM Locate FreeBASIC compilers (prefer tools/ copies if present)
 if not defined FBC64 set "FBC64="
 if not defined FBC32 set "FBC32="
-if not defined FBC64 if exist "tools\FreeBASIC-1.10.1-win64\fbc.exe" set "FBC64=tools\FreeBASIC-1.10.1-win64\fbc.exe"
-if not defined FBC64 if exist "C:\Users\mete\Downloads\BasicOyunSource\uXBasic_repo\tools\FreeBASIC-1.10.1-win64\fbc.exe" set "FBC64=C:\Users\mete\Downloads\BasicOyunSource\uXBasic_repo\tools\FreeBASIC-1.10.1-win64\fbc.exe"
-if not defined FBC64 if exist "C:\Program Files\FreeBASIC\fbc.exe" set "FBC64=C:\Program Files\FreeBASIC\fbc.exe"
-if not defined FBC32 if exist "C:\Program Files (x86)\FreeBASIC\fbc.exe" set "FBC32=C:\Program Files (x86)\FreeBASIC\fbc.exe"
 
-REM Enforce using 64-bit FreeBASIC for x64 builds — fail fast if missing
-if "%ARCH%"=="x64" (
-  if defined FBC64 (
-    set "FBC=!FBC64!"
-  ) else (
-    echo ERROR: 64-bit FreeBASIC (fbc.exe) not found. Set FBC64 env var or install to tools\FreeBASIC-1.10.1-win64\ or C:\Program Files\FreeBASIC.
-    exit /b 1
-  )
-) else (
-  REM For x86 builds prefer FBC32, fall back to FBC64 if explicitly available; otherwise fail.
-  if defined FBC32 (
-    set "FBC=!FBC32!"
-  ) else if defined FBC64 (
-    set "FBC=!FBC64!"
-  ) else (
-    echo ERROR: No FreeBASIC compiler found for x86 build. Set FBC32 or FBC64 env var.
-    exit /b 1
-  )
+if defined FBC64 goto :fbc_detect_done
+if exist "tools\FreeBASIC-1.10.1-win64\fbc.exe" (
+  set "FBC64=tools\FreeBASIC-1.10.1-win64\fbc.exe"
+  goto :fbc_detect_done
 )
+if exist "C:\Users\mete\Downloads\BasicOyunSource\uXBasic_repo\tools\FreeBASIC-1.10.1-win64\fbc.exe" (
+    set "FBC64=C:\Users\mete\Downloads\BasicOyunSource\uXBasic_repo\tools\FreeBASIC-1.10.1-win64\fbc.exe"
+    goto :fbc_detect_done
+)
+if exist "C:\Program Files\FreeBASIC\fbc.exe" (
+  set "FBC64=C:\Program Files\FreeBASIC\fbc.exe"
+  goto :fbc_detect_done
+)
+:fbc_detect_done
+
+if defined FBC32 goto :fbc32_detect_done
+if exist "C:\Program Files (x86)\FreeBASIC\fbc.exe" (
+  set "FBC32=C:\Program Files (x86)\FreeBASIC\fbc.exe"
+)
+:fbc32_detect_done
+
+REM Choose compiler according to requested ARCH. Use goto-based flow to avoid nested IF parentheses parsing issues.
+if /I "%ARCH%"=="x64" goto :use_fbc64
+
+REM x86 path: prefer FBC32, else fallback to FBC64
+if defined FBC32 (
+  set "FBC=%FBC32%"
+  goto :after_fbc_select
+)
+if defined FBC64 (
+  set "FBC=%FBC64%"
+  goto :after_fbc_select
+)
+echo ERROR: No FreeBASIC compiler found for x86 build. Set FBC32 or FBC64 environment variable.
+endlocal & exit /b 1
+
+:use_fbc64
+if defined FBC64 (
+  set "FBC=%FBC64%"
+  goto :after_fbc_select
+)
+echo ERROR: 64-bit FreeBASIC (fbc.exe) not found. Set FBC64 env var or install to tools\FreeBASIC-1.10.1-win64\ or C:\Program Files\FreeBASIC.
+endlocal & exit /b 1
+
+:after_fbc_select
 
 if not exist build\exe mkdir build\exe
 if not exist build\asm mkdir build\asm
@@ -58,7 +80,7 @@ if not exist build\obj mkdir build\obj
 if not exist build\logs mkdir build\logs
 
 if not exist build\exe\uxm_native.exe call build_native.bat
-if errorlevel 1 exit /b 1
+if errorlevel 1 endlocal & exit /b 1
 
 set NAME=%~n1
 if /I "%~2"=="-x" (
@@ -81,7 +103,7 @@ echo NASM:
 if "%ARCH%"=="x64" (
   echo %NASM% -f win64 "%ASM_OUT%" -o "%OBJ_OUT%"
   %NASM% -f win64 "%ASM_OUT%" -o "%OBJ_OUT%"
-  if errorlevel 1 exit /b 1
+  if errorlevel 1 endlocal & exit /b 1
 ) else (
   echo %NASM% -f win32 "%ASM_OUT%" -o "%OBJ_OUT%"
   %NASM% -f win32 "%ASM_OUT%" -o "%OBJ_OUT%"
@@ -92,9 +114,16 @@ if "%LINK%"=="1" (
   echo FreeBASIC runtime kaynak ile link:
   echo %FBC% "%RUNTIME_SRC%" "%OBJ_OUT%" -x "%EXE_OUT%"
   "%FBC%" "%RUNTIME_SRC%" "%OBJ_OUT%" -x "%EXE_OUT%"
-  if errorlevel 1 exit /b 1
-  "%EXE_OUT%"
+) else (
+  if errorlevel 1 endlocal & exit /b 1
+  if defined UXM_RUN_LOG (
+    "%EXE_OUT%" > "%UXM_RUN_LOG%" 2>&1
+  ) else (
+    "%EXE_OUT%"
+  )
+)
 ) else (
   echo Skipping linking step (LINK=%LINK%). ASM and OBJ generated at "%ASM_OUT%" and "%OBJ_OUT%".
 )
-endlocal
+set "RET=%ERRORLEVEL%"
+endlocal & exit /b %RET%

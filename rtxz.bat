@@ -46,16 +46,32 @@ for %%D in (%TEST_DIRS%) do (
             echo DATA_START@%%F@!time! >> "%LOG_FILE%"
             
             :: Derleme ve Linkleme işlemi (-x parametresi eklendi)
-            call build_one_native.bat "%%F"  >> "%LOG_FILE%" 2>&1
-            
-            :: Hata kontrolü (Ünlemler kaldırıldı, sadece düz metin)
-            if errorlevel 1 (
+            REM Her test icin ayri log dosyasi olustur (hata ayiklama icin)
+            set "TEST_LOG=build\logs\%%~nF.build_out.txt"
+            if exist "!TEST_LOG!" del /f /q "!TEST_LOG!" >nul 2>&1
+            :: Program stdout'u test log dosyasina yazilacak sekilde environment ayarla
+            set "UXM_RUN_LOG=!TEST_LOG!"
+            call build_one_native.bat "%%F" > "!TEST_LOG!" 2>&1
+            set "UXM_RUN_LOG="
+
+            :: Güvenilir hata kontrolü: ERRORLEVEL'i call ile yakalayarak runtime'da al
+            call set "BUILD_RC=%%ERRORLEVEL%%"
+
+            :: Kısa debug: BUILD_RC değeri ana loga yazılsın
+            echo BUILD_RC=!BUILD_RC! >> "%LOG_FILE%"
+
+            :: Testin ayrintili ciktisini ana loga ekle (ozellikle hata varsa)
+            echo === TEST LOG: %%F >> "%LOG_FILE%"
+            type "!TEST_LOG!" >> "%LOG_FILE%" 2>&1
+            echo === END TEST LOG >> "%LOG_FILE%"
+
+            if not "!BUILD_RC!"=="0" (
                 echo Calistirildi: [BASARISIZ] %%F
                 echo RESULT@[BASARISIZ]@%%F >> "%LOG_FILE%"
             ) else (
                 echo Calistirildi: [BASARILI] %%F
                 echo RESULT@[BASARILI]@%%F >> "%LOG_FILE%"
-            ) 
+            )
             
             echo DATA_END@%%F@!time! >> "%LOG_FILE%"
             echo ....................................... >> "%LOG_FILE%"
