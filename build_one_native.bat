@@ -82,6 +82,20 @@ if not exist build\logs mkdir build\logs
 if not exist build\exe\uxm_native.exe call build_native.bat
 if errorlevel 1 endlocal & exit /b 1
 
+REM Precompile FreeBASIC runtime to object to avoid recompiling it for every test.
+set "RUNTIME_OBJ=build\obj\uxm31_runtime_fb_full.o"
+if not defined UXM_SKIP_RUNTIME_COMPILE (
+  if not exist "%RUNTIME_OBJ%" (
+    echo Compiling FreeBASIC runtime to object: "%FBC%" -lang fb -c "%RUNTIME_SRC%" -o "%RUNTIME_OBJ%"
+    "%FBC%" -lang fb -c "%RUNTIME_SRC%" -o "%RUNTIME_OBJ%"
+    if errorlevel 1 (
+      echo WARNING: runtime precompile failed; link step will compile from source.
+    )
+  )
+) else (
+  echo Skipping runtime precompile because UXM_SKIP_RUNTIME_COMPILE is set
+)
+
 set NAME=%~n1
 if /I "%~2"=="-x" (
   if not "%UXM_BUILD_ID%"=="" (
