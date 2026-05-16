@@ -96,9 +96,6 @@ set ASM_OUT=build\asm\%NAME%.asm
 set OBJ_OUT=build\obj\%NAME%.o
 set EXE_OUT=build\exe\%NAME%.exe
 
-echo DEBUG: build_one_native start for "%~1"
-echo DEBUG: ARCH=%ARCH% LINK=%LINK% NASM=%NASM% FBC64=%FBC64% FBC32=%FBC32%
-
 build\exe\uxm_native.exe "%~1" "%ASM_OUT%"
 if errorlevel 1 exit /b 1
 REM Generate assembly (uxm_native) already created ASM_OUT above
@@ -120,7 +117,6 @@ if "%LINK%"=="1" (
   if errorlevel 1 (
     endlocal & exit /b 1
   )
-  echo DEBUG: after fbc link, ERRORLEVEL=%ERRORLEVEL%
   if defined UXM_RUN_LOG (
     "%EXE_OUT%" > "%UXM_RUN_LOG%" 2>&1
   ) else (
