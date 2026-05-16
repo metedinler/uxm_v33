@@ -8,6 +8,24 @@
     "vscode": "^1.80.0"
   },
   "main": "./extension.js",
+  "activationEvents": [
+    "onLanguage:uxm",
+    "onCommand:uxm.controlCenter",
+    "onCommand:uxm.openControlPanel",
+    "onCommand:uxm.compile",
+    "onCommand:uxm.runTests",
+    "onCommand:uxm.bellekTest",
+    "onCommand:uxm.hizliTara",
+    "onCommand:uxm.hataliTest",
+    "onCommand:uxm.tumTest",
+    "onCommand:uxm.derleyiciDerle",
+    "onCommand:uxm.alanTopla",
+    "onCommand:uxm.raporGoster",
+    "onCommand:uxm.stage17",
+    "onCommand:uxm.stage18",
+    "onCommand:uxm.stage19",
+    "onCommand:uxm.stage20"
+  ],
   "categories": [
     "Programming Languages"
   ],

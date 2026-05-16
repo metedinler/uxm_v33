@@ -1213,6 +1213,18 @@ function activate(context) {
 
 	registerLegacyCommands(context);
 
+	// Compatibility aliases for legacy/legacy-case command names from uxminima
+	const ALIAS_COMMANDS = {
+		'uxm.opencontrolpanel': 'uxm.openControlPanel',
+		'uxm.controlcenter': 'uxm.controlCenter',
+		'uxm.opencontrolcenter': 'uxm.controlCenter'
+	};
+	for (const [alias, target] of Object.entries(ALIAS_COMMANDS)) {
+		context.subscriptions.push(vscode.commands.registerCommand(alias, (...args) => {
+			return vscode.commands.executeCommand(target, ...args);
+		}));
+	}
+
 	context.subscriptions.push(vscode.commands.registerCommand('uxm.compile', async () => {
 		const root = getWorkspaceRoot();
 		if (!root) {
