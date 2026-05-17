@@ -1,0 +1,116 @@
+{
+  "Print A": {
+    "prefix": "printA",
+    "body": ["0+k65."],
+    "description": "Prints A character"
+  },
+  "ARGE header": {
+    "prefix": "arge",
+    "body": [
+      "#arge version",
+      "#arge json on",
+      "#arge trace on",
+      "#arge watch tape=0:32",
+      "#arge watch data=0:32",
+      ""
+    ],
+    "description": "Final ARGE compiler JSON/trace/watch header"
+  },
+  "String definition": {
+    "prefix": "str",
+    "body": [
+      "s${1:1}=${2:0},{${3:Merhaba\\n}}",
+      "p${1:1}"
+    ],
+    "description": "Define sN string and print with pN"
+  },
+  "Meta add frame": {
+    "prefix": "add",
+    "body": [
+      ">>",
+      "0(T-2)+k${1:10}",
+      "0(T-1)+k${2:20}",
+      "@20",
+      "@61"
+    ],
+    "description": "@20 addition frame"
+  },
+  "Host meta forced": {
+    "prefix": "hostmeta",
+    "body": ["@!${1:210}"],
+    "description": "Bypass macro lookup and force host meta"
+  },
+  "Dynamic data address": {
+    "prefix": "datt",
+    "body": [
+      "0(T-2)+k${1:100}",
+      "0(D@(T-2)+${2:8})+k${3:65}",
+      ".(D@(T-2)+${2:8})"
+    ],
+    "description": "(D@(T-2)+N) dynamic data address example"
+  },
+  "FIFO push pop": {
+    "prefix": "fifo",
+    "body": [
+      ">>",
+      "0(T-1)+k${1:65}",
+      "@90",
+      "@91",
+      ".(T+1)"
+    ],
+    "description": "FIFO push/pop template"
+  },
+  "Data write read": {
+    "prefix": "datawr",
+    "body": [
+      ">>",
+      "0(T-2)+k${1:5}",
+      "0(T-1)+k${2:88}",
+      "@96",
+      "0(T-1)+k${1:5}",
+      "@95",
+      ".(T+1)"
+    ],
+    "description": "Data write/read template"
+  },
+  "FP add macro frame": {
+    "prefix": "fpadd",
+    "body": [
+      "# UX-FP frame",
+      ">>",
+      "0(T-2)+k${1:100}",
+      "@200",
+      "0(T-2)+k${2:140}",
+      "@200",
+      "0(T-2)+k${3:180}",
+      "@200",
+      "0(T-2)+k${1:100}",
+      "0(T-1)+k${4:12}",
+      "@220",
+      "0(T-2)+k${2:140}",
+      "0(T-1)+k${5:34}",
+      "@220",
+      "0(T-2)+k${3:180}",
+      "0(T-1)+k${1:100}",
+      "0(T)+k${2:140}",
+      "@210",
+      "0(T-1)+k${3:180}",
+      "@223"
+    ],
+    "description": "UX-FP V1 ADD example"
+  },
+  "Wild layout": {
+    "prefix": "wildlayout",
+    "body": [
+      "#mode wild",
+      ">>",
+      "0(T-2)+k48",
+      "0(T-1)+k4",
+      "0(T)+k12",
+      "@127",
+      "@84",
+      "@61"
+    ],
+    "description": "Wild mode layout change template"
+  }
+}

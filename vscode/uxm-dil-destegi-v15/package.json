@@ -1,15 +1,16 @@
 {
   "name": "uxm-dil-destegi-v15",
-  "displayName": "UXM Dil Desteği / UXM Language Support",
-  "description": "UXM icin tek sayfa kontrol merkezi, trace izleme ve not yonetimi.",
-  "version": "0.16.0",
+  "displayName": "UXM Dil Destegi / UXM Language Support",
+  "description": "UXM ve UX-MINIMA icin birlesik kontrol merkezi, trace, derleme ve test araclari.",
+  "version": "0.17.0",
   "publisher": "mete",
   "engines": {
-    "vscode": "^1.80.0"
+    "vscode": "^1.90.0"
   },
   "main": "./extension.js",
   "activationEvents": [
     "onLanguage:uxm",
+    "onLanguage:uxminima",
     "onCommand:uxm.controlCenter",
     "onCommand:uxm.openControlPanel",
     "onCommand:uxm.compile",
@@ -24,10 +25,28 @@
     "onCommand:uxm.stage17",
     "onCommand:uxm.stage18",
     "onCommand:uxm.stage19",
-    "onCommand:uxm.stage20"
+    "onCommand:uxm.stage20",
+    "onCommand:uxminima.runTrace",
+    "onCommand:uxminima.internalTrace",
+    "onCommand:uxminima.exportUIR",
+    "onCommand:uxminima.exportOPT",
+    "onCommand:uxminima.buildNative",
+    "onCommand:uxminima.openMemoryWatch",
+    "onCommand:uxminima.validateFile",
+    "onCommand:uxminima.openMetaHelp",
+    "onCommand:uxminima.finalBuildCompiler",
+    "onCommand:uxminima.finalRunAll",
+    "onCommand:uxminima.finalRunTrace",
+    "onCommand:uxminima.finalRunStep",
+    "onCommand:uxminima.finalCompileAsm",
+    "onCommand:uxminima.finalExportUIR",
+    "onCommand:uxminima.finalExportDiagnostics",
+    "onCommand:uxminima.finalExportOPT",
+    "onCommand:uxminima.openFinalDocs"
   ],
   "categories": [
-    "Programming Languages"
+    "Programming Languages",
+    "Other"
   ],
   "contributes": {
     "languages": [
@@ -35,11 +54,13 @@
         "id": "uxm",
         "aliases": [
           "UXM",
+          "UX-MINIMA",
           "uXBasic Mini"
         ],
         "extensions": [
           ".uxm"
-        ]
+        ],
+        "configuration": "./language-configuration.json"
       }
     ],
     "grammars": [
@@ -53,16 +74,20 @@
       {
         "language": "uxm",
         "path": "./snippets/uxm.json"
+      },
+      {
+        "language": "uxm",
+        "path": "./snippets/uxminima.json"
       }
     ],
     "commands": [
       {
         "command": "uxm.controlCenter",
-        "title": "UXM:Kontrol Merkezi"
+        "title": "UXM: Kontrol Merkezi"
       },
       {
         "command": "uxm.openControlPanel",
-        "title": "UXM:Kontrol Merkezi(U)"
+        "title": "UXM: Kontrol Merkezi (Uyumlu)"
       },
       {
         "command": "uxm.compile",
@@ -78,15 +103,15 @@
       },
       {
         "command": "uxm.hizliTara",
-        "title": "UXM: Hızlı Tara"
+        "title": "UXM: Hizli Tara"
       },
       {
         "command": "uxm.hataliTest",
-        "title": "UXM: Hatalı Test"
+        "title": "UXM: Hatali Test"
       },
       {
         "command": "uxm.tumTest",
-        "title": "UXM: Tüm Test"
+        "title": "UXM: Tum Test"
       },
       {
         "command": "uxm.derleyiciDerle",
@@ -98,7 +123,7 @@
       },
       {
         "command": "uxm.raporGoster",
-        "title": "UXM: Rapor Göster"
+        "title": "UXM: Rapor Goster"
       },
       {
         "command": "uxm.stage17",
@@ -115,7 +140,176 @@
       {
         "command": "uxm.stage20",
         "title": "UXM: Stage-20 Release"
+      },
+      {
+        "command": "uxminima.runTrace",
+        "title": "UX-MINIMA: Run Trace with Toolchain"
+      },
+      {
+        "command": "uxminima.internalTrace",
+        "title": "UX-MINIMA: Internal Trace and Memory Watch"
+      },
+      {
+        "command": "uxminima.exportUIR",
+        "title": "UX-MINIMA: Export UIR"
+      },
+      {
+        "command": "uxminima.exportOPT",
+        "title": "UX-MINIMA: Export Optimizer Report"
+      },
+      {
+        "command": "uxminima.buildNative",
+        "title": "UX-MINIMA: Build Native EXE"
+      },
+      {
+        "command": "uxminima.openMemoryWatch",
+        "title": "UX-MINIMA: Open Memory Watch"
+      },
+      {
+        "command": "uxminima.validateFile",
+        "title": "UX-MINIMA: Validate Current File"
+      },
+      {
+        "command": "uxminima.openMetaHelp",
+        "title": "UX-MINIMA: Open Meta Service Help"
+      },
+      {
+        "command": "uxminima.finalBuildCompiler",
+        "title": "UX-MINIMA: Build Final ARGE Compiler"
+      },
+      {
+        "command": "uxminima.finalRunAll",
+        "title": "UX-MINIMA: Final Compiler Run ALL"
+      },
+      {
+        "command": "uxminima.finalRunTrace",
+        "title": "UX-MINIMA: Final Compiler Interpret Trace"
+      },
+      {
+        "command": "uxminima.finalRunStep",
+        "title": "UX-MINIMA: Final Compiler Step Mode"
+      },
+      {
+        "command": "uxminima.finalCompileAsm",
+        "title": "UX-MINIMA: Final Compiler Compile ASM"
+      },
+      {
+        "command": "uxminima.finalExportUIR",
+        "title": "UX-MINIMA: Final Compiler Export UIR"
+      },
+      {
+        "command": "uxminima.finalExportDiagnostics",
+        "title": "UX-MINIMA: Final Compiler Export Diagnostics"
+      },
+      {
+        "command": "uxminima.finalExportOPT",
+        "title": "UX-MINIMA: Final Compiler Export Optimizer Report"
+      },
+      {
+        "command": "uxminima.openFinalDocs",
+        "title": "UX-MINIMA: Open Final ARGE Compiler Docs"
       }
-    ]
+    ],
+    "configuration": {
+      "title": "UXM / UX-MINIMA",
+      "properties": {
+        "uxminima.fullToolPath": {
+          "type": "string",
+          "default": "uxm31_full_tool.exe",
+          "description": "Path to uxm31_full_tool.exe for run/uir/opt trace commands."
+        },
+        "uxminima.compilerPath": {
+          "type": "string",
+          "default": "uxm31_compiler_full.exe",
+          "description": "Path to native UX-MINIMA compiler executable."
+        },
+        "uxminima.runtimePath": {
+          "type": "string",
+          "default": "uxm31_runtime_fb_full.bas",
+          "description": "Path to FreeBASIC runtime source."
+        },
+        "uxminima.nasmPath": {
+          "type": "string",
+          "default": "nasm",
+          "description": "Path to NASM executable."
+        },
+        "uxminima.fbcPath": {
+          "type": "string",
+          "default": "fbc",
+          "description": "Path to FreeBASIC compiler."
+        },
+        "uxminima.buildDirectory": {
+          "type": "string",
+          "default": "build",
+          "description": "Build output directory relative to workspace root."
+        },
+        "uxminima.finalCompilerPath": {
+          "type": "string",
+          "default": "uxm31_compiler_final.exe",
+          "description": "Path to compiled final ARGE compiler executable."
+        },
+        "uxminima.finalCompilerSourcePath": {
+          "type": "string",
+          "default": "uxm31_compiler_final.bas",
+          "description": "Path to final ARGE compiler FreeBASIC source."
+        },
+        "uxminima.autoBuildFinalCompiler": {
+          "type": "boolean",
+          "default": true,
+          "description": "Build final compiler from BAS automatically when EXE is missing or older than source."
+        },
+        "uxminima.maxSteps": {
+          "type": "number",
+          "default": 1000,
+          "description": "Maximum steps for Final Compiler Step Mode."
+        }
+      }
+    },
+    "menus": {
+      "editor/title": [
+        {
+          "command": "uxminima.internalTrace",
+          "when": "resourceExtname == .uxm",
+          "group": "navigation"
+        },
+        {
+          "command": "uxminima.buildNative",
+          "when": "resourceExtname == .uxm",
+          "group": "navigation"
+        },
+        {
+          "command": "uxminima.finalRunStep",
+          "when": "resourceExtname == .uxm",
+          "group": "navigation"
+        },
+        {
+          "command": "uxminima.finalRunAll",
+          "when": "resourceExtname == .uxm",
+          "group": "navigation"
+        }
+      ],
+      "editor/context": [
+        {
+          "command": "uxminima.validateFile",
+          "when": "resourceExtname == .uxm",
+          "group": "uxminima"
+        },
+        {
+          "command": "uxminima.openMetaHelp",
+          "when": "resourceExtname == .uxm",
+          "group": "uxminima"
+        },
+        {
+          "command": "uxminima.finalExportDiagnostics",
+          "when": "resourceExtname == .uxm",
+          "group": "uxminima"
+        },
+        {
+          "command": "uxminima.openFinalDocs",
+          "when": "resourceExtname == .uxm",
+          "group": "uxminima"
+        }
+      ]
+    }
   }
 }

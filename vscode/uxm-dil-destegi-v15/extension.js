@@ -2,10 +2,19 @@ const vscode = require('vscode');
 const fs = require('fs');
 const path = require('path');
 const http = require('http');
+const { UxmDiagnostics } = require('./src/uxminima/diagnostics');
+const { UxmToolchain } = require('./src/uxminima/toolchain');
+const { readTraceFile } = require('./src/uxminima/traceReader');
+const { MemoryViewPanel } = require('./src/uxminima/views/memoryView');
+const { UxmInterpreter } = require('./src/uxminima/uxmInterpreter');
+const { META_SERVICES, metaMarkdown } = require('./src/uxminima/metaServices');
 
 let activePanel = null;
 let activePanelState = null;
 let traceDecoration = null;
+let uxminimaLastTrace = undefined;
+let uxminimaDiagnostics = null;
+let uxminimaToolchain = null;
 
 const KNOWN_TOOL_INFO = {
 	'build_native.bat': {
@@ -1184,6 +1193,80 @@ function getControlCenterHtml() {
 </html>`;
 }
 
+function registerCommandWithGuard(context, output, existingSet, commandId, handler) {
+	if (existingSet.has(commandId)) {
+		if (output) output.appendLine('[cmd] skip ' + commandId + ' (already registered)');
+		return;
+	}
+	context.subscriptions.push(vscode.commands.registerCommand(commandId, handler));
+	existingSet.add(commandId);
+}
+
+function activeUxmDocument() {
+	const editor = vscode.window.activeTextEditor;
+	if (!editor) {
+		vscode.window.showWarningMessage('Aktif editor yok.');
+		return undefined;
+	}
+	const languageId = editor.document.languageId;
+	const isUxm = languageId === 'uxm' || languageId === 'uxminima';
+	const isUxmExt = path.extname(editor.document.fileName).toLowerCase() === '.uxm';
+	if (!isUxm && !isUxmExt) {
+		vscode.window.showWarningMessage('Aktif dosya .uxm degil.');
+		return undefined;
+	}
+	return editor.document;
+}
+
+async function openIfExists(filePath, viewColumn) {
+	if (!fs.existsSync(filePath)) {
+		vscode.window.showWarningMessage('Dosya bulunamadi: ' + filePath);
+		return;
+	}
+	const uri = vscode.Uri.file(filePath);
+	await vscode.window.showTextDocument(uri, { preview: false, viewColumn });
+}
+
+function metaHelpMarkdown() {
+	const rows = Object.values(META_SERVICES)
+		.sort((a, b) => a.id - b.id)
+		.map((m) => '| @' + m.id + ' | ' + m.name + ' | `' + m.frame + '` | ' + m.description + ' |')
+		.join('\n');
+	return '# UX-MINIMA Meta Servisleri\n\n'
+		+ '| Meta | Ad | Frame | Aciklama |\n'
+		+ '|---|---|---|---|\n'
+		+ rows + '\n\n'
+		+ '## Host meta zorlamasi\n\n'
+		+ '`@!N` macro aramasini bypass ederek dogrudan host/runtime servisini cagirir.\n\n'
+		+ '## Kullanici macro alani\n\n'
+		+ '@128..@255 kullanici macro alanidir.\n';
+}
+
+async function runFinalAndOpen(context, output, mode) {
+	const doc = activeUxmDocument();
+	if (!doc || !uxminimaToolchain) return;
+	await doc.save();
+	try {
+		const art = mode === 'all'
+			? await uxminimaToolchain.finalRunAll(doc.fileName)
+			: mode === 'step'
+				? await uxminimaToolchain.finalRunStep(doc.fileName)
+				: await uxminimaToolchain.finalRunTrace(doc.fileName);
+		uxminimaLastTrace = fs.existsSync(art.trace) ? readTraceFile(art.trace) : undefined;
+		if (uxminimaLastTrace) {
+			MemoryViewPanel.show(context, uxminimaLastTrace);
+		}
+		output.appendLine('\n[Final ' + mode + '] ' + doc.fileName);
+		if (uxminimaLastTrace && uxminimaLastTrace.end && uxminimaLastTrace.end.output) {
+			output.appendLine(uxminimaLastTrace.end.output);
+		}
+		output.show(true);
+		vscode.window.showInformationMessage('Final ' + mode + ' tamamlandi: ' + art.trace);
+	} catch (err) {
+		vscode.window.showErrorMessage(String(err));
+	}
+}
+
 async function registerLegacyCommands(context, output) {
 	const map = {
  		'uxm.bellekTest': 'bellek_test.bat',
@@ -1224,6 +1307,21 @@ async function activate(context) {
 	output.appendLine('UXM extension active');
 	ensureTraceDecoration(context);
 
+	uxminimaDiagnostics = new UxmDiagnostics(context);
+	uxminimaToolchain = new UxmToolchain(output, context);
+	for (const doc of vscode.workspace.textDocuments) {
+		uxminimaDiagnostics.validate(doc);
+	}
+	context.subscriptions.push(vscode.workspace.onDidOpenTextDocument((doc) => {
+		if (uxminimaDiagnostics) uxminimaDiagnostics.validate(doc);
+	}));
+	context.subscriptions.push(vscode.workspace.onDidChangeTextDocument((e) => {
+		if (uxminimaDiagnostics) uxminimaDiagnostics.validate(e.document);
+	}));
+	context.subscriptions.push(vscode.workspace.onDidCloseTextDocument((doc) => {
+		if (uxminimaDiagnostics) uxminimaDiagnostics.clear(doc.uri);
+	}));
+
 	await registerLegacyCommands(context, output);
 
 	// Compatibility aliases for legacy/legacy-case command names from uxminima
@@ -1234,11 +1332,11 @@ async function activate(context) {
 	};
 	let existing = [];
 	try { existing = await vscode.commands.getCommands(true); } catch (_) { existing = []; }
+	const existingSet = new Set(existing);
 	for (const [alias, target] of Object.entries(ALIAS_COMMANDS)) {
-		if (existing.includes(alias)) { output.appendLine(`[alias] skip ${alias} (already exists)`); continue; }
-		context.subscriptions.push(vscode.commands.registerCommand(alias, (...args) => {
+		registerCommandWithGuard(context, output, existingSet, alias, (...args) => {
 			return vscode.commands.executeCommand(target, ...args);
-		}));
+		});
 	}
 
 	// Hover provider: komutlar, pragma ve adresleme icin bilgilendirme kutucuklari
@@ -1253,8 +1351,9 @@ async function activate(context) {
 		HOVER_MAP.set('#mode', 'Pragma: çalışma modu. #mode safe|normal|wild');
 		HOVER_MAP.set('#cell', 'Pragma: hücre tipi. #cell byte|word|dword');
 
-		context.subscriptions.push(vscode.languages.registerHoverProvider('uxm', {
-			provideHover(document, position) {
+		for (const hoverLang of ['uxm', 'uxminima']) {
+			context.subscriptions.push(vscode.languages.registerHoverProvider(hoverLang, {
+				provideHover(document, position) {
 				const tokenRegex = /\([^)\s]+\)|@\([^)\s]+\)|@[!#]?\d+|:\w[\w\-]*|s\d+|p\d+|m\d+|#[A-Za-z0-9_\-]+|[><+\-0\.,\[\]\$%\?;!&\|\^~\{\}e]/;
 				const range = document.getWordRangeAtPosition(position, tokenRegex);
 				if (!range) return null;
@@ -1268,13 +1367,18 @@ async function activate(context) {
 						}
 					}
 					// Fallback: show short addressing summary
-					return new vscode.Hover(ADDRESSING_DOCS.map(x => `${x.mode} — ${x.desc}`).join('\n'));
+					return new vscode.Hover(ADDRESSING_DOCS.map((x) => x.mode + ' - ' + x.desc).join('\n'));
 				}
 				if (HOVER_MAP.has(word)) return new vscode.Hover(HOVER_MAP.get(word));
 				if (/^s\d+/.test(word)) return new vscode.Hover('String tanımlama: sN=start,{text}');
 				if (/^p\d+/.test(word)) return new vscode.Hover('Önceden tanımlı string çağırma: pN');
 				if (/^m\d+/.test(word)) return new vscode.Hover('Macro tanımlama: mN={...} (N:128..255)');
-				if (/^@[!#]?\d+$/.test(word)) return new vscode.Hover('Meta servis çağırma. Registry: config/uxm/service_registry_merged.csv');
+				if (/^@[!#]?\d+$/.test(word)) {
+					const raw = word.replace(/^@!/, '@').replace(/^@#/, '@0');
+					const id = Number(raw.slice(1));
+					if (!Number.isNaN(id)) return new vscode.Hover(metaMarkdown(id));
+					return new vscode.Hover('Meta servis çağırma. Registry: config/uxm/service_registry_merged.csv');
+				}
 				if (/^#/.test(word)) {
 					const key = word.split(/[\s=]/)[0];
 					switch (key) {
@@ -1287,11 +1391,12 @@ async function activate(context) {
 					}
 				}
 				return null;
-			}
-		}));
+				}
+			}));
+		}
 	}
 
-	context.subscriptions.push(vscode.commands.registerCommand('uxm.compile', async () => {
+	registerCommandWithGuard(context, output, existingSet, 'uxm.compile', async () => {
 		const root = getWorkspaceRoot();
 		if (!root) {
 			vscode.window.showErrorMessage('UXM workspace acik degil.');
@@ -1303,9 +1408,9 @@ async function activate(context) {
 		output.show();
 		output.appendLine('[compile] ' + JSON.stringify(result));
 		if (activePanel) postPanel(activePanel, 'actionResult', result);
-	}));
+	});
 
-	context.subscriptions.push(vscode.commands.registerCommand('uxm.runTests', async () => {
+	registerCommandWithGuard(context, output, existingSet, 'uxm.runTests', async () => {
 		const root = getWorkspaceRoot();
 		if (!root) {
 			vscode.window.showErrorMessage('UXM workspace acik degil.');
@@ -1317,10 +1422,187 @@ async function activate(context) {
 		output.show();
 		output.appendLine('[runTests] ' + JSON.stringify(result));
 		if (activePanel) postPanel(activePanel, 'actionResult', result);
-	}));
+	});
 
-	context.subscriptions.push(vscode.commands.registerCommand('uxm.controlCenter', () => openControlCenter(context, output)));
-	context.subscriptions.push(vscode.commands.registerCommand('uxm.openControlPanel', () => openControlCenter(context, output)));
+	registerCommandWithGuard(context, output, existingSet, 'uxm.controlCenter', () => openControlCenter(context, output));
+	registerCommandWithGuard(context, output, existingSet, 'uxm.openControlPanel', () => openControlCenter(context, output));
+
+	registerCommandWithGuard(context, output, existingSet, 'uxminima.validateFile', () => {
+		const doc = activeUxmDocument();
+		if (!doc || !uxminimaDiagnostics) return;
+		uxminimaDiagnostics.validate(doc);
+		vscode.window.showInformationMessage('UX-MINIMA dosyasi dogrulandi.');
+	});
+
+	registerCommandWithGuard(context, output, existingSet, 'uxminima.internalTrace', async () => {
+		const doc = activeUxmDocument();
+		if (!doc || !uxminimaToolchain) return;
+		await doc.save();
+		const interpreter = new UxmInterpreter();
+		const result = interpreter.run(doc.getText());
+		uxminimaLastTrace = {
+			snapshot: {
+				type: 'snapshot',
+				source: doc.fileName,
+				engine: 'internal-vscode',
+				events: result.events.length
+			},
+			events: result.events
+		};
+		const art = uxminimaToolchain.artifactsFor(doc.fileName);
+		fs.writeFileSync(art.trace, result.events.map((e) => JSON.stringify(e)).join('\n'), 'utf8');
+		output.appendLine('\n[Internal Trace] ' + doc.fileName);
+		if (result.output) output.appendLine(result.output);
+		if (result.diagnostics && result.diagnostics.length) {
+			output.appendLine('Diagnostics:');
+			for (const d of result.diagnostics) output.appendLine('- ' + d);
+		}
+		output.show(true);
+		MemoryViewPanel.show(context, uxminimaLastTrace);
+	});
+
+	registerCommandWithGuard(context, output, existingSet, 'uxminima.finalBuildCompiler', async () => {
+		if (!uxminimaToolchain) return;
+		try {
+			const exe = await uxminimaToolchain.buildFinalCompiler();
+			vscode.window.showInformationMessage('Final ARGE compiler uretildi: ' + exe);
+		} catch (err) {
+			vscode.window.showErrorMessage(String(err));
+		}
+	});
+
+	registerCommandWithGuard(context, output, existingSet, 'uxminima.finalRunAll', async () => {
+		await runFinalAndOpen(context, output, 'all');
+	});
+
+	registerCommandWithGuard(context, output, existingSet, 'uxminima.finalRunTrace', async () => {
+		await runFinalAndOpen(context, output, 'trace');
+	});
+
+	registerCommandWithGuard(context, output, existingSet, 'uxminima.finalRunStep', async () => {
+		await runFinalAndOpen(context, output, 'step');
+	});
+
+	registerCommandWithGuard(context, output, existingSet, 'uxminima.finalCompileAsm', async () => {
+		const doc = activeUxmDocument();
+		if (!doc || !uxminimaToolchain) return;
+		await doc.save();
+		try {
+			const art = await uxminimaToolchain.finalCompileAsm(doc.fileName);
+			await openIfExists(art.asm, vscode.ViewColumn.Beside);
+			vscode.window.showInformationMessage('ASM uretildi: ' + art.asm);
+		} catch (err) {
+			vscode.window.showErrorMessage(String(err));
+		}
+	});
+
+	registerCommandWithGuard(context, output, existingSet, 'uxminima.finalExportUIR', async () => {
+		const doc = activeUxmDocument();
+		if (!doc || !uxminimaToolchain) return;
+		await doc.save();
+		try {
+			const art = await uxminimaToolchain.finalExportUIR(doc.fileName);
+			await openIfExists(art.uir, vscode.ViewColumn.Beside);
+		} catch (err) {
+			vscode.window.showErrorMessage(String(err));
+		}
+	});
+
+	registerCommandWithGuard(context, output, existingSet, 'uxminima.finalExportDiagnostics', async () => {
+		const doc = activeUxmDocument();
+		if (!doc || !uxminimaToolchain) return;
+		await doc.save();
+		try {
+			const art = await uxminimaToolchain.finalExportDiagnostics(doc.fileName);
+			await openIfExists(art.diag, vscode.ViewColumn.Beside);
+		} catch (err) {
+			vscode.window.showErrorMessage(String(err));
+		}
+	});
+
+	registerCommandWithGuard(context, output, existingSet, 'uxminima.finalExportOPT', async () => {
+		const doc = activeUxmDocument();
+		if (!doc || !uxminimaToolchain) return;
+		await doc.save();
+		try {
+			const art = await uxminimaToolchain.finalExportOPT(doc.fileName);
+			await openIfExists(art.opt, vscode.ViewColumn.Beside);
+		} catch (err) {
+			vscode.window.showErrorMessage(String(err));
+		}
+	});
+
+	registerCommandWithGuard(context, output, existingSet, 'uxminima.runTrace', async () => {
+		const doc = activeUxmDocument();
+		if (!doc || !uxminimaToolchain) return;
+		await doc.save();
+		try {
+			const art = await uxminimaToolchain.runTrace(doc.fileName);
+			uxminimaLastTrace = readTraceFile(art.trace);
+			MemoryViewPanel.show(context, uxminimaLastTrace);
+			vscode.window.showInformationMessage('Trace uretildi: ' + art.trace);
+		} catch (err) {
+			vscode.window.showErrorMessage(String(err));
+		}
+	});
+
+	registerCommandWithGuard(context, output, existingSet, 'uxminima.exportUIR', async () => {
+		const doc = activeUxmDocument();
+		if (!doc || !uxminimaToolchain) return;
+		await doc.save();
+		try {
+			const art = await uxminimaToolchain.exportUIR(doc.fileName);
+			await openIfExists(art.uir, vscode.ViewColumn.Beside);
+		} catch (err) {
+			vscode.window.showErrorMessage(String(err));
+		}
+	});
+
+	registerCommandWithGuard(context, output, existingSet, 'uxminima.exportOPT', async () => {
+		const doc = activeUxmDocument();
+		if (!doc || !uxminimaToolchain) return;
+		await doc.save();
+		try {
+			const art = await uxminimaToolchain.exportOPT(doc.fileName);
+			await openIfExists(art.opt, vscode.ViewColumn.Beside);
+		} catch (err) {
+			vscode.window.showErrorMessage(String(err));
+		}
+	});
+
+	registerCommandWithGuard(context, output, existingSet, 'uxminima.buildNative', async () => {
+		const doc = activeUxmDocument();
+		if (!doc || !uxminimaToolchain) return;
+		await doc.save();
+		try {
+			const art = await uxminimaToolchain.buildNative(doc.fileName);
+			vscode.window.showInformationMessage('Native EXE uretildi: ' + art.exe);
+		} catch (err) {
+			vscode.window.showErrorMessage(String(err));
+		}
+	});
+
+	registerCommandWithGuard(context, output, existingSet, 'uxminima.openMemoryWatch', () => {
+		MemoryViewPanel.show(context, uxminimaLastTrace || { events: [] });
+	});
+
+	registerCommandWithGuard(context, output, existingSet, 'uxminima.openMetaHelp', async () => {
+		const doc = await vscode.workspace.openTextDocument({ language: 'markdown', content: metaHelpMarkdown() });
+		await vscode.window.showTextDocument(doc, { preview: false, viewColumn: vscode.ViewColumn.Beside });
+	});
+
+	registerCommandWithGuard(context, output, existingSet, 'uxminima.openFinalDocs', async () => {
+		const root = getWorkspaceRoot();
+		const candidates = [path.join(context.extensionPath, 'docs', 'UXM31_FINAL_ARGE_COMPILER.md')];
+		if (root) candidates.push(path.join(root, 'docs', 'UXM31_FINAL_ARGE_COMPILER.md'));
+		const found = candidates.find((x) => fs.existsSync(x));
+		if (!found) {
+			vscode.window.showWarningMessage('Final ARGE dokumani bulunamadi.');
+			return;
+		}
+		await openIfExists(found, vscode.ViewColumn.Beside);
+	});
+
 }
 
 function deactivate() {
