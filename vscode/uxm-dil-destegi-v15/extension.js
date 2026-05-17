@@ -1184,17 +1184,29 @@ function getControlCenterHtml() {
 </html>`;
 }
 
-function registerLegacyCommands(context) {
+async function registerLegacyCommands(context, output) {
 	const map = {
-		'uxm.bellekTest': 'bellek_test.bat',
-		'uxm.hizliTara': 'hizli_tara.bat',
-		'uxm.hataliTest': 'hatali_test.bat -k -D',
-		'uxm.tumTest': 'tum_test.bat -k',
-		'uxm.derleyiciDerle': 'derleyici_derle.bat',
-		'uxm.alanTopla': 'alan_topla.bat',
-		'uxm.raporGoster': 'rapor_goster.bat'
-	};
+ 		'uxm.bellekTest': 'bellek_test.bat',
+ 		'uxm.hizliTara': 'hizli_tara.bat',
+ 		'uxm.hataliTest': 'hatali_test.bat -k -D',
+ 		'uxm.tumTest': 'tum_test.bat -k',
+ 		'uxm.derleyiciDerle': 'derleyici_derle.bat',
+ 		'uxm.alanTopla': 'alan_topla.bat',
+ 		'uxm.raporGoster': 'rapor_goster.bat'
+ 	};
+
+	let existing = [];
+	try {
+		existing = await vscode.commands.getCommands(true);
+	} catch (e) {
+		if (output) output.appendLine('[legacy] getCommands failed: ' + String(e));
+	}
+
 	for (const [cmd, bat] of Object.entries(map)) {
+		if (existing.includes(cmd)) {
+			if (output) output.appendLine(`[legacy] skip registering ${cmd} (already registered)`);
+			continue;
+		}
 		context.subscriptions.push(vscode.commands.registerCommand(cmd, () => {
 			const root = getWorkspaceRoot();
 			if (!root) {
@@ -1206,12 +1218,13 @@ function registerLegacyCommands(context) {
 	}
 }
 
-function activate(context) {
+
+async function activate(context) {
 	const output = vscode.window.createOutputChannel('UXM');
 	output.appendLine('UXM extension active');
 	ensureTraceDecoration(context);
 
-	registerLegacyCommands(context);
+	await registerLegacyCommands(context, output);
 
 	// Compatibility aliases for legacy/legacy-case command names from uxminima
 	const ALIAS_COMMANDS = {
@@ -1219,7 +1232,10 @@ function activate(context) {
 		'uxm.controlcenter': 'uxm.controlCenter',
 		'uxm.opencontrolcenter': 'uxm.controlCenter'
 	};
+	let existing = [];
+	try { existing = await vscode.commands.getCommands(true); } catch (_) { existing = []; }
 	for (const [alias, target] of Object.entries(ALIAS_COMMANDS)) {
+		if (existing.includes(alias)) { output.appendLine(`[alias] skip ${alias} (already exists)`); continue; }
 		context.subscriptions.push(vscode.commands.registerCommand(alias, (...args) => {
 			return vscode.commands.executeCommand(target, ...args);
 		}));

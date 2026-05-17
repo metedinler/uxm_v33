@@ -75,7 +75,7 @@ function runTerminalCommand(folder, cmd) {
 	terminal.sendText(`cd /d "${folder.uri.fsPath}" && ${cmd}`);
 }
 
-function activate(context) {
+async function activate(context) {
 	const output = vscode.window.createOutputChannel('UXM');
 	output.appendLine('UXM v15 extension active');
 
@@ -90,7 +90,10 @@ function activate(context) {
 		'uxm.alanTopla':'alan_topla.bat',
 		'uxm.raporGoster':'rapor_goster.bat'
 	};
+	let existing = [];
+	try { existing = await vscode.commands.getCommands(true); } catch (_) { existing = []; }
 	for (const [cmd, bat] of Object.entries(cmds)) {
+		if (existing.includes(cmd)) { output.appendLine(`[legacy] skip registering ${cmd}`); continue; }
 		context.subscriptions.push(vscode.commands.registerCommand(cmd, () => {
 			const f = vscode.workspace.workspaceFolders && vscode.workspace.workspaceFolders[0];
 			if (!f) { vscode.window.showErrorMessage('UXM çalışma klasörü açık değil'); return; }
