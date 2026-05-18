@@ -3,7 +3,7 @@ Const UXM_VERSION As String="3.3-stage15-16-ml-data-mem16m"
 Const MAX_SRC As Long=2000000
 Const MAX_INSTR As Long=200000
 Const MAX_STRINGS As Long=1024
-Const MAX_MACROS As Long=128
+Const MAX_MACROS As Long=65536
 Const MAX_LOOP As Long=8192
 Const MAX_LABELS As Long=200000
 Const UXM_DEFAULT_TAPE_KB As Long=32
@@ -77,6 +77,7 @@ Const MODE_WILD As Long=2
 Declare Sub Main()
 Declare Sub InitDefaults()
 Declare Sub ReadFileToSrc(ByVal fileName As String)
+Declare Sub PreprocessSource(ByVal sourceFile As String)
 Declare Sub FirstPassDefinitions()
 Declare Sub ParsePragmas()
 Declare Sub ApplyMemoryModel()
@@ -133,6 +134,11 @@ Declare Function NewAsmId() As Long
 Declare Function LowerNoSpace(ByVal s As String) As String
 Declare Function GetPragmaValue(ByVal lineText As String, ByVal keyName As String) As String
 Declare Function ParseSizeKB(ByVal s As String, ByVal defaultKB As Long) As Long
+Declare Function GetDirName(ByVal fileName As String) As String
+Declare Function ParseQuotedValue(ByVal s As String) As String
+Declare Function EvalPreprocExpr(ByVal expr As String) As Long
+Declare Function PreprocessExpand(ByVal text As String, ByVal currentDir As String, ByVal depth As Long) As String
+Declare Function PreprocIsActive(ByVal ifSp As Long, ByVal ifTake As Long Ptr) As Long
 Dim Shared Src As String
 Dim Shared InFile As String
 Dim Shared OutAsm As String
@@ -160,6 +166,7 @@ Dim Shared StrText(1 To MAX_STRINGS) As String
 Dim Shared MacroCount As Long
 Dim Shared MacroId(1 To MAX_MACROS) As Long
 Dim Shared MacroText(1 To MAX_MACROS) As String
+Dim Shared MacroDefined(1 To MAX_MACROS) As Long
 Dim Shared LoopStack(1 To MAX_LOOP) As Long
 Dim Shared LoopSP As Long
 Dim Shared LoopId(1 To MAX_INSTR) As Long
@@ -193,6 +200,10 @@ Dim Shared PragmaArgeInterpreter As Long
 Dim Shared PragmaArgeStep As Long
 Dim Shared PragmaArgeTrace As Long
 Dim Shared PragmaArgeWatch As Long
+Dim Shared PragmaNoZeroVars As Long
+Dim Shared PragmaSecStack As Long
+Dim Shared PreprocPlatform As String
+Dim Shared PreprocDestOS As String
 Dim Shared OutFF As Long
 Dim Shared EmitLabelCounter As Long
 #Include Once "../extensions/arge_parse_math_additions.bas"

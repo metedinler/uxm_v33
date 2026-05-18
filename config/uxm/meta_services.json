@@ -15,7 +15,7 @@
   ],
   "compiler_limits_current": {
     "meta_id_max": "65535 in V3.3 native parser",
-    "user_macro_range": "128..255",
+    "user_macro_range": "0..65535",
     "host_service_shadowing": "If mN exists and @N is used, macro expands unless @!N force-host is used.",
     "extended_services_need": "@700..@719 ML Basic and @730..@759 AI/Data Pipeline are active in Stage-15/16."
   },
@@ -57,10 +57,10 @@
       "status": "current"
     },
     {
-      "range": "128-149",
-      "family": "user_macro_safe_zone_or_flags_compare_bug",
-      "handler": "macro/MetaFlagsEndian",
-      "status": "conflict_design_decision"
+      "range": "130-149",
+      "family": "flags_compare_endian",
+      "handler": "MetaFlagsEndian",
+      "status": "current"
     },
     {
       "range": "150-159",

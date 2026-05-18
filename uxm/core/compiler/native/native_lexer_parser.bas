@@ -10,6 +10,14 @@ Sub ParseProgram(ByRef code As String, ByVal depth As Long)
     Do While p<=Len(code) And HadError=0
         If IsSpaceChar(Mid(code,p,1)) Then
             p=p+1
+        ElseIf Mid(code,p,1)="%" And p+1<=Len(code) And Mid(code,p,2)="%%" Then
+            SkipLine(code,p)
+        ElseIf (Mid(code,p,1)="i" Or Mid(code,p,1)="I") And p+6<=Len(code) And LCase(Mid(code,p,7))="include" Then
+            If p+7>Len(code) Or IsSpaceChar(Mid(code,p+7,1)) Then
+                SkipLine(code,p)
+            Else
+                ParseOneInstruction(code,p,depth)
+            End If
         ElseIf Mid(code,p,1)="#" Then
             SkipLine(code,p)
         ElseIf (Mid(code,p,1)="r" Or Mid(code,p,1)="R") And p+2<=Len(code) And LCase(Mid(code,p,3))="rem" Then
@@ -177,7 +185,7 @@ Sub ParseMacroDef(ByRef code As String, ByRef p As Long)
     Loop
     id=ParseUnsignedLong(code,p,ok)
     If ok=0 Then SyntaxError("mN taniminda N bekleniyor",p):Exit Sub
-    If id<128 Or id>255 Then SyntaxError("mN kullanici macro id 128..255 araliginda olmali",p):Exit Sub
+    If id<0 Or id>65535 Then SyntaxError("mN macro id 0..65535 araliginda olmali",p):Exit Sub
     Do While p<=Len(code) And IsSpaceChar(Mid(code,p,1))
         p=p+1
     Loop

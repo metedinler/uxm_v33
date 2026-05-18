@@ -6,12 +6,16 @@
   "generated_for": "VSCode syntax/autocomplete/lint and compiler registry alignment",
   "parser_current_limits": {
     "meta_id_max_current_native": 65535,
-    "user_macro_range_current": "128..255",
+    "user_macro_range_current": "0..65535",
     "pointer_repeat_aliases": ">kN, <kN",
     "important": "UXM-A standart meta formlari: @N, @!N, @#, @!#, @(ADDR), @!(ADDR)."
   },
   "deprecated_meta_forms": [
     "@#N",
+    "@!#N",
+    "@#(ADDR)",
+    "@!#(ADDR)",
+    "@#*",
     "@@N",
     "@*"
   ],
@@ -97,7 +101,7 @@
       "kind": "macro",
       "syntax": "mN={ ux-code }",
       "example": "m128={+k1.}",
-      "notes": "Current parser requires N in 128..255. Host service shadowing is possible; use @!N to force host when macro id conflicts."
+      "notes": "Current parser allows N in 0..65535. Host service shadowing is possible for any same id; use @!N to force host dispatch."
     }
   ],
   "primitive_commands": [
@@ -481,12 +485,12 @@
     {
       "id": "UXM002",
       "severity": "error",
-      "message": "Meta servis id 0..65535 araliginda olmali; UXM-A disi formlar (@#N, @@N, @*) gecersizdir."
+      "message": "Meta servis id 0..65535 araliginda olmali; UXM-A disi formlar (@#N, @!#N, @#(ADDR), @!#(ADDR), @#*, @@N, @*) gecersizdir."
     },
     {
       "id": "UXM003",
       "severity": "warning",
-      "message": "m150..m254 can shadow host services. Use @!N to force host, or keep user macros in m128..m149 only."
+      "message": "mN can shadow host services for any same id in 0..65535. Use @!N when host dispatch is required."
     },
     {
       "id": "UXM004",

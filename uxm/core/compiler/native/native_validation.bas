@@ -59,17 +59,16 @@ Sub AddStringDef(ByVal id As Long, ByVal startCell As Long, ByVal txt As String)
 End Sub
 
 Sub AddMacroDef(ByVal id As Long, ByVal txt As String)
-    Dim i As Long
-    For i=1 To MacroCount
-        If MacroId(i)=id Then
-            MacroText(i)=txt
-            Exit Sub
-        End If
-    Next i
-    If MacroCount>=MAX_MACROS Then HadError=1:ErrMsg="HATA: macro tablosu doldu.":Exit Sub
-    MacroCount=MacroCount+1
-    MacroId(MacroCount)=id
-    MacroText(MacroCount)=txt
+    Dim idx As Long
+    If id<0 Or id>65535 Then HadError=1:ErrMsg="HATA: macro id 0..65535 araliginda olmali.":Exit Sub
+    idx=id+1
+    If MacroDefined(idx)=0 Then
+        If MacroCount>=MAX_MACROS Then HadError=1:ErrMsg="HATA: macro tablosu doldu.":Exit Sub
+        MacroDefined(idx)=1
+        MacroCount=MacroCount+1
+    End If
+    MacroId(idx)=id
+    MacroText(idx)=txt
 End Sub
 
 Function FindStringIndex(ByVal id As Long) As Long
@@ -81,11 +80,14 @@ Function FindStringIndex(ByVal id As Long) As Long
 End Function
 
 Function FindMacroIndex(ByVal id As Long) As Long
-    Dim i As Long
-    For i=1 To MacroCount
-        If MacroId(i)=id Then FindMacroIndex=i:Exit Function
-    Next i
-    FindMacroIndex=0
+    Dim idx As Long
+    If id<0 Or id>65535 Then FindMacroIndex=0:Exit Function
+    idx=id+1
+    If MacroDefined(idx)<>0 Then
+        FindMacroIndex=idx
+    Else
+        FindMacroIndex=0
+    End If
 End Function
 
 Sub SyntaxError(ByVal msg As String, ByVal p As Long)

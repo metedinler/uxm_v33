@@ -18,8 +18,24 @@ Sub ParseMeta(ByRef code As String, ByRef p As Long, ByVal depth As Long)
         End If
     End If
     If p>Len(code) Then SyntaxError("@ sonrasi meta id, # veya adresleme bekleniyor",p):Exit Sub
+    If Mid(code,p,1)="@" Then SyntaxError("@@N UXM-A standardinda yok. @N veya @!N kullan.",p):Exit Sub
+    If Mid(code,p,1)="*" Then SyntaxError("@* UXM-A standardinda yok. @# veya @(ADDR) kullan.",p):Exit Sub
     If Mid(code,p,1)="#" Then
         p=p+1
+        If p<=Len(code) Then
+            If IsDigitChar(Mid(code,p,1))<>0 Then
+                SyntaxError("@#N / @!#N UXM-A standardinda yok. @# veya @!# kullan.",p)
+                Exit Sub
+            End If
+            If Mid(code,p,1)="(" Then
+                SyntaxError("@#(ADDR) / @!#(ADDR) UXM-A standardinda yok. @(ADDR) veya @!(ADDR) kullan.",p)
+                Exit Sub
+            End If
+            If Mid(code,p,1)="*" Then
+                SyntaxError("@#* UXM-A standardinda yok. @# veya @(ADDR) kullan.",p)
+                Exit Sub
+            End If
+        End If
         If forceHost Then
             AddMetaAddrInstr(-1,1,forceHost,"@!#",ADDR_T,0,0)
         Else

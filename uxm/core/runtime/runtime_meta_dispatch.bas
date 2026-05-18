@@ -1,6 +1,9 @@
 ' Auto-split by V3 modularization
 Declare Sub MetaStatsNumericV19(ByVal metaId As ULongInt)
 Sub ux_meta_call_ex(ByVal metaId As ULongInt, ByVal memPtr As UByte Ptr) Export
+If (metaId And Cast(ULongInt,&H80000000))<>0 Then
+metaId = (metaId And Cast(ULongInt,&H7FFFFFFF))
+End If
 If metaId<20 Then
 MetaCore metaId
 ElseIf metaId<40 Then

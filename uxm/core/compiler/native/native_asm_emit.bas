@@ -637,9 +637,15 @@ Sub EmitMetaCall(ByVal metaId As Long, ByVal dynamicFlag As Long, ByVal forceHos
     EmitLine("    mov qword [ux_sp], r14")
     If dynamicFlag Then
         EmitAddrLoad(addrKind,addrVal,addrVal2,"rax")
+        If forceHost<>0 Then
+            EmitLine("    or eax, 80000000h")
+        End If
         EmitLine("    mov ecx, eax")
     Else
         EmitLine("    mov ecx, "+LTrim(Str(metaId)))
+        If forceHost<>0 Then
+            EmitLine("    or ecx, 80000000h")
+        End If
     End If
     EmitLine("    lea rdx, [ux_mem]")
     EmitLine("    call ux_meta_call_ex")
