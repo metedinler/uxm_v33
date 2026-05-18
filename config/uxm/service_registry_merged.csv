@@ -134,26 +134,26 @@ id,name,family,handler,enabled,status,frame,result,notes,source
 174,MAT_SHAPE,matrix,MetaMatrix,True,current,"T-4=dst, T-3=a, T-2=b, T-1=p1, T=p2",T+1=result/status,,runtime_matrix_services.bas
 175,MAT_DET2,matrix,MetaMatrix,True,current,"T-4=dst, T-3=a, T-2=b, T-1=p1, T=p2",T+1=result/status,,runtime_matrix_services.bas
 176,MAT_PRINT_RAW,matrix,MetaMatrix,True,current,"T-4=dst, T-3=a, T-2=b, T-1=p1, T=p2",T+1=result/status,,runtime_matrix_services.bas
-180,MAT_ND_INIT,matrix_adv,UXMMatAdvancedDispatch,True,extension_patch_available,"T-4 rows, T-3 cols, T-2 outbase",T+1/status,Within matrix dispatcher range; add cases to MetaMatrix or subdispatch.,service_registry_matrix_v34.csv
-181,MAT_ND_GET,matrix_adv,UXMMatAdvancedDispatch,True,extension_patch_available,reserved,T+1/status,Within matrix dispatcher range; add cases to MetaMatrix or subdispatch.,service_registry_matrix_v34.csv
-182,MAT_ND_SET,matrix_adv,UXMMatAdvancedDispatch,True,extension_patch_available,reserved,T+1/status,Within matrix dispatcher range; add cases to MetaMatrix or subdispatch.,service_registry_matrix_v34.csv
-183,MAT_DET,matrix_adv,UXMMatAdvancedDispatch,True,extension_patch_available,"T-4 A, T+1 determinant",T+1/status,Within matrix dispatcher range; add cases to MetaMatrix or subdispatch.,service_registry_matrix_v34.csv
-184,MAT_INVERSE,matrix_adv,UXMMatAdvancedDispatch,True,extension_patch_available,"T-4 A, T-2 OUT",T+1/status,Within matrix dispatcher range; add cases to MetaMatrix or subdispatch.,service_registry_matrix_v34.csv
-185,MAT_LU,matrix_adv,UXMMatAdvancedDispatch,True,extension_patch_available,"T-4 A, T-2 L, T-3 U",T+1/status,Within matrix dispatcher range; add cases to MetaMatrix or subdispatch.,service_registry_matrix_v34.csv
-186,MAT_QR,matrix_adv,UXMMatAdvancedDispatch,True,extension_patch_available,"T-4 A, T-2 Q, T-3 R",T+1/status,Within matrix dispatcher range; add cases to MetaMatrix or subdispatch.,service_registry_matrix_v34.csv
-187,MAT_RANK,matrix_adv,UXMMatAdvancedDispatch,True,extension_patch_available,"T-4 A, T+1 rank",T+1/status,Within matrix dispatcher range; add cases to MetaMatrix or subdispatch.,service_registry_matrix_v34.csv
-188,MAT_COND_EST,matrix_adv,UXMMatAdvancedDispatch,True,extension_patch_available,"T-4 A, T-2 temp inverse, T+1 cond",T+1/status,Within matrix dispatcher range; add cases to MetaMatrix or subdispatch.,service_registry_matrix_v34.csv
-189,MAT_EIG_POWER,matrix_adv,UXMMatAdvancedDispatch,True,extension_patch_available,"T-4 A, T-2 vector out, T-1 iterations, T+1 lambda",T+1/status,Within matrix dispatcher range; add cases to MetaMatrix or subdispatch.,service_registry_matrix_v34.csv
-190,MAT_EIG_JACOBI_SYM,matrix_adv,UXMMatAdvancedDispatch,True,extension_patch_available,planned,T+1/status,Within matrix dispatcher range; add cases to MetaMatrix or subdispatch.,service_registry_matrix_v34.csv
-191,MAT_SVD_SYM_HELPER,matrix_adv,UXMMatAdvancedDispatch,True,extension_patch_available,planned,T+1/status,Within matrix dispatcher range; add cases to MetaMatrix or subdispatch.,service_registry_matrix_v34.csv
-192,MAT_SPARSE_CSR_INIT,matrix_adv,UXMMatAdvancedDispatch,True,extension_patch_available,"T-4 rows, T-3 cols, T-1 nnz, T-2 outbase",T+1/status,Within matrix dispatcher range; add cases to MetaMatrix or subdispatch.,service_registry_matrix_v34.csv
-193,MAT_SPARSE_CSR_MV,matrix_adv,UXMMatAdvancedDispatch,True,extension_patch_available,planned,T+1/status,Within matrix dispatcher range; add cases to MetaMatrix or subdispatch.,service_registry_matrix_v34.csv
-194,MAT_SPARSE_TO_DENSE,matrix_adv,UXMMatAdvancedDispatch,True,extension_patch_available,planned,T+1/status,Within matrix dispatcher range; add cases to MetaMatrix or subdispatch.,service_registry_matrix_v34.csv
-195,MAT_DENSE_TO_SPARSE,matrix_adv,UXMMatAdvancedDispatch,True,extension_patch_available,planned,T+1/status,Within matrix dispatcher range; add cases to MetaMatrix or subdispatch.,service_registry_matrix_v34.csv
-196,MAT_TRACE,matrix_adv,UXMMatAdvancedDispatch,True,extension_patch_available,"T-4 A, T+1 trace",T+1/status,Within matrix dispatcher range; add cases to MetaMatrix or subdispatch.,service_registry_matrix_v34.csv
-197,MAT_FROBENIUS,matrix_adv,UXMMatAdvancedDispatch,True,extension_patch_available,"T-4 A, T+1 norm",T+1/status,Within matrix dispatcher range; add cases to MetaMatrix or subdispatch.,service_registry_matrix_v34.csv
-198,MAT_NORM_INF,matrix_adv,UXMMatAdvancedDispatch,True,extension_patch_available,"T-4 A, T+1 norm",T+1/status,Within matrix dispatcher range; add cases to MetaMatrix or subdispatch.,service_registry_matrix_v34.csv
-199,MAT_ADV_INFO,matrix_adv,UXMMatAdvancedDispatch,True,extension_patch_available,prints info,T+1/status,Within matrix dispatcher range; add cases to MetaMatrix or subdispatch.,service_registry_matrix_v34.csv
+180,MAT_ND_INIT,matrix_adv,MetaMatrix,True,current,"T-4=outbase, T-3=rows, T-2=cols",T+1=status,2D ND init active,runtime_matrix_services.bas
+181,MAT_ND_GET,matrix_adv,MetaMatrix,True,current,"T-4=base, T-3=idxBase, T-2=dims",T+1=value,ND get active,runtime_matrix_services.bas
+182,MAT_ND_SET,matrix_adv,MetaMatrix,True,current,"T-4=base, T-3=idxBase, T-2=dims, T-1=value",T+1=status,ND set active,runtime_matrix_services.bas
+183,MAT_DET,matrix_adv,MetaMatrix,True,current,"T-3=A",T+1=determinant,Delegates to advanced determinant,runtime_matrix_services.bas
+184,MAT_INVERSE,matrix_adv,MetaMatrix,True,current,"T-4=out, T-3=A",T+1=status,2x2 inverse active,runtime_matrix_services.bas
+185,MAT_LU,matrix_adv,MetaMatrix,True,current,"T-4=L, T-3=A, T-2=U",T+1=status,LU bridge active,runtime_matrix_services.bas
+186,MAT_QR,matrix_adv,MetaMatrix,True,current,"T-4=Q, T-3=A, T-2=R",T+1=status,2x2 QR active,runtime_matrix_services.bas
+187,MAT_RANK,matrix_adv,MetaMatrix,True,current,"T-3=A",T+1=rank,Rank bridge active,runtime_matrix_services.bas
+188,MAT_COND_EST,matrix_adv,MetaMatrix,True,current,"T-3=A",T+1=condition_est,2x2 condition estimate active,runtime_matrix_services.bas
+189,MAT_EIG_POWER,matrix_adv,MetaMatrix,True,current,"T-3=A, T-1=iterations",T+1=lambda,Power iteration active,runtime_matrix_services.bas
+190,MAT_EIG_JACOBI_SYM,matrix_adv,MetaMatrix,True,current,"T-3=A, T-1=which",T+1=eigenvalue,Symmetric eig helper active,runtime_matrix_services.bas
+191,MAT_SVD_SYM_HELPER,matrix_adv,MetaMatrix,True,current,"T-3=A, T-1=which",T+1=sv_helper,SVD helper active,runtime_matrix_services.bas
+192,MAT_SPARSE_CSR_INIT,matrix_adv,MetaMatrix,True,current,"T-4=outSparse, T-3=rows, T-2=cols, T-1=capacity",T+1=status,Sparse CSR init active,runtime_matrix_services.bas
+193,MAT_SPARSE_CSR_MV,matrix_adv,MetaMatrix,True,current,"T-4=dstVec, T-3=sparse, T-2=srcVec",T+1=status,Sparse mat-vec active,runtime_matrix_services.bas
+194,MAT_SPARSE_TO_DENSE,matrix_adv,MetaMatrix,True,current,"T-4=dstMat, T-3=sparse",T+1=status,Sparse to dense active,runtime_matrix_services.bas
+195,MAT_DENSE_TO_SPARSE,matrix_adv,MetaMatrix,True,current,"T-4=dstSparse, T-3=srcMat, T-1=capacity",T+1=status,Dense to sparse active,runtime_matrix_services.bas
+196,MAT_TRACE,matrix_adv,MetaMatrix,True,current,"T-3=A",T+1=trace,Advanced trace active,runtime_matrix_services.bas
+197,MAT_FROBENIUS,matrix_adv,MetaMatrix,True,current,"T-3=A",T+1=frobenius_sq,Frobenius sum-of-squares active,runtime_matrix_services.bas
+198,MAT_NORM_INF,matrix_adv,MetaMatrix,True,current,"T-3=A",T+1=norm_inf,Infinity norm active,runtime_matrix_services.bas
+199,MAT_ADV_INFO,matrix_adv,MetaMatrix,True,current,none,T+1=status,Matrix advanced info active,runtime_matrix_services.bas
 200,FP_INIT16,floating_point,MetaFloatingPoint,True,current,"T-2=rBase, T-1=aBase, T=bBase pattern",T+1/status,,runtime_fp_services.bas
 201,FP_INIT32,floating_point,MetaFloatingPoint,True,current,"T-2=rBase, T-1=aBase, T=bBase pattern",T+1/status,,runtime_fp_services.bas
 202,FP_ZERO,floating_point,MetaFloatingPoint,True,current,"T-2=rBase, T-1=aBase, T=bBase pattern",T+1/status,,runtime_fp_services.bas
@@ -226,7 +226,7 @@ id,name,family,handler,enabled,status,frame,result,notes,source
 304,ZTEST_TWO,hypothesis,MetaHypothesis,True,extension_requires_meta_id_range_patch,,T+1/status,two sample z placeholder,service_registry_v33.csv
 305,FTEST_VARIANCE,hypothesis,MetaHypothesis,True,extension_requires_meta_id_range_patch,,T+1/status,f variance placeholder,service_registry_v33.csv
 306,ANOVA_ONEWAY,hypothesis,MetaHypothesis,True,extension_requires_meta_id_range_patch,,T+1/status,oneway anova placeholder,service_registry_v33.csv
-307,ANOVA_TWOWAY,hypothesis,MetaHypothesis,retired,id_conflict_emekli,,T+1/status,ID 307 runtime'da STR_COUNT_CHAR olarak aktif; ANOVA hatti @760..@769 kullanir,service_registry_merged.csv
+307,STR_COUNT_CHAR,string,MetaString,True,current,"T-3=start, T-2=len, T-1=char",T+1=count,Canonical string count-char service,runtime_string_services.bas
 308,CHI_SQUARE,hypothesis,MetaHypothesis,True,extension_requires_meta_id_range_patch,,T+1/status,chi square placeholder,service_registry_v33.csv
 309,CHI_GOODNESS,hypothesis,MetaHypothesis,True,extension_requires_meta_id_range_patch,,T+1/status,goodness placeholder,service_registry_v33.csv
 320,POSTHOC_TUKEY,posthoc,MetaPosthoc,True,extension_requires_meta_id_range_patch,,T+1/status,tukey placeholder,service_registry_v33.csv
@@ -237,7 +237,7 @@ id,name,family,handler,enabled,status,frame,result,notes,source
 325,POSTHOC_LSD,posthoc,MetaPosthoc,True,extension_requires_meta_id_range_patch,,T+1/status,lsd placeholder,service_registry_v33.csv
 340,AI_NORMALIZE_MINMAX,ai,MetaAI,True,extension_requires_meta_id_range_patch,,T+1/status,minmax normalize,service_registry_v33.csv
 341,AI_NORMALIZE_ZSCORE,ai,MetaAI,True,extension_requires_meta_id_range_patch,,T+1/status,zscore normalize,service_registry_v33.csv
-342,AI_ONEHOT,ai,MetaAI,retired,id_conflict_emekli,,T+1/status,ID 342 MetaStringExt REPLACE_CHAR ile kullaniliyor; onehot icin @818 kullan,service_registry_merged.csv
+342,STR_REPLACE_CHAR,string_ext,MetaStringExt,True,current,"T-6=src, T-5=len, T-4=old, T-3=new, T-2=dst, T-1=dstMax",T+1=replaced_count,Canonical replace-char service,runtime_string_ext_services.bas
 343,AI_TRAIN_TEST_SPLIT,ai,MetaStringExt,True,current,"T-4=a,T-3=b,T-2=count,T-1=out,T=opt",T+1=status,Legacy alias to MetaAIRealV18(819),runtime_string_ext_services.bas
 344,AI_SHUFFLE,ai,MetaStringExt,True,current,"T-4=a,T-3=b,T-2=count,T-1=out,T=opt",T+1=status,Legacy alias to MetaAIRealV18(820),runtime_string_ext_services.bas
 345,AI_CONFUSION_MATRIX,ai,MetaAI,True,extension_requires_meta_id_range_patch,,T+1/status,confusion matrix placeholder,service_registry_v33.csv
@@ -251,7 +251,7 @@ id,name,family,handler,enabled,status,frame,result,notes,source
 353,AI_LINEAR_LAYER,ai,MetaStringExt,True,current,"T-4=a,T-3=b,T-2=count,T-1=out,T=bias",T+1=status,Legacy alias to MetaAIRealV18(822),runtime_string_ext_services.bas
 354,AI_SIGMOID,ai,MetaAI,True,extension_requires_meta_id_range_patch,,T+1/status,sigmoid scaled,service_registry_v33.csv
 355,AI_RELU,ai,MetaAI,True,extension_requires_meta_id_range_patch,,T+1/status,relu,service_registry_v33.csv
-356,AI_SOFTMAX,ai,MetaAI,retired,id_conflict_emekli,,T+1/status,ID 356 runtime'da STR_PARSE_DECIMAL olarak aktif; softmax icin @823 kullan,service_registry_merged.csv
+356,STR_PARSE_DECIMAL,string_ext,MetaStringExt,True,current,"T-2=src, T-1=len",T+1=value,Canonical parse-decimal service,runtime_string_ext_services.bas
 360,RAND_SEED,probability,MetaProbability,True,extension_requires_meta_id_range_patch,,T+1/status,,service_registry_v35.csv
 361,RAND_UNIFORM_01,probability,MetaProbability,True,extension_requires_meta_id_range_patch,,T+1/status,,service_registry_v35.csv
 362,RAND_INT_RANGE,probability,MetaProbability,True,extension_requires_meta_id_range_patch,,T+1/status,,service_registry_v35.csv
@@ -262,16 +262,16 @@ id,name,family,handler,enabled,status,frame,result,notes,source
 367,RAND_SECURE_BYTE,probability,MetaProbability,True,extension_requires_meta_id_range_patch,,T+1/status,,service_registry_v35.csv
 368,RAND_BERNOULLI,probability,MetaProbability,True,extension_requires_meta_id_range_patch,,T+1/status,,service_registry_v35.csv
 369,RAND_SHUFFLE_DATA,probability,MetaProbability,True,extension_requires_meta_id_range_patch,,T+1/status,,service_registry_v35.csv
-390,NUM_NEWTON_RAPHSON,numeric,MetaNumericMethods,True,extension_requires_meta_id_range_patch,,T+1/status,,service_registry_v35.csv
-391,NUM_BISECTION,numeric,MetaNumericMethods,True,extension_requires_meta_id_range_patch,,T+1/status,,service_registry_v35.csv
-392,NUM_SECANT,numeric,MetaNumericMethods,True,extension_requires_meta_id_range_patch,,T+1/status,,service_registry_v35.csv
-393,NUM_INTEGRAL_TRAPEZOID,numeric,MetaNumericMethods,True,extension_requires_meta_id_range_patch,,T+1/status,,service_registry_v35.csv
-394,NUM_INTEGRAL_SIMPSON,numeric,MetaNumericMethods,True,extension_requires_meta_id_range_patch,,T+1/status,,service_registry_v35.csv
-395,NUM_INTERPOLATE_LINEAR,numeric,MetaNumericMethods,True,extension_requires_meta_id_range_patch,,T+1/status,,service_registry_v35.csv
-396,NUM_BEZIER_QUADRATIC,numeric,MetaNumericMethods,True,extension_requires_meta_id_range_patch,,T+1/status,,service_registry_v35.csv
-397,NUM_RUNGE_KUTTA4_LINEAR,numeric,MetaNumericMethods,True,extension_requires_meta_id_range_patch,,T+1/status,,service_registry_v35.csv
-398,NUM_ODE_INFO,numeric,MetaNumericMethods,True,extension_requires_meta_id_range_patch,,T+1/status,,service_registry_v35.csv
-399,NUM_PDE_RESERVED,numeric,MetaNumericMethods,True,extension_requires_meta_id_range_patch,,T+1/status,,service_registry_v35.csv
+390,NUM_NEWTON_RAPHSON,numeric,MetaNumericMethods,True,current,"T-4=polyBase, T-3=x0_scaled, T-2=maxIter, T-1=eps_scaled",T+1=root_scaled,Newton-Raphson active,runtime_numeric_methods_services.bas
+391,NUM_BISECTION,numeric,MetaNumericMethods,True,current,"T-4=polyBase, T-3=a_scaled, T-2=b_scaled, T-1=maxIter",T+1=root_scaled,Bisection active,runtime_numeric_methods_services.bas
+392,NUM_SECANT,numeric,MetaNumericMethods,True,current,"T-4=polyBase, T-3=x0_scaled, T-2=x1_scaled, T-1=maxIter",T+1=root_scaled,Secant active,runtime_numeric_methods_services.bas
+393,NUM_INTEGRAL_TRAPEZOID,numeric,MetaNumericMethods,True,current,"T-4=polyBase, T-3=a_scaled, T-2=b_scaled, T-1=n",T+1=area_scaled,Trapezoid active,runtime_numeric_methods_services.bas
+394,NUM_INTEGRAL_SIMPSON,numeric,MetaNumericMethods,True,current,"T-4=polyBase, T-3=a_scaled, T-2=b_scaled, T-1=n",T+1=area_scaled,Simpson active,runtime_numeric_methods_services.bas
+395,NUM_INTERPOLATE_LINEAR,numeric,MetaNumericMethods,True,current,"T-4=xBase, T-3=yBase, T-2=count, T-1=x_raw",T+1=y_scaled,Linear interpolation active,runtime_numeric_methods_services.bas
+396,NUM_BEZIER_QUADRATIC,numeric,MetaNumericMethods,True,current,"T-4=p0, T-3=p1, T-2=p2, T-1=t_scaled",T+1=value_scaled,Quadratic bezier active,runtime_numeric_methods_services.bas
+397,NUM_RUNGE_KUTTA4_LINEAR,numeric,MetaNumericMethods,True,current,"T-4=y0, T-3=a_scaled, T-2=dt_scaled, T-1=steps",T+1=y_scaled,RK4 linear active,runtime_numeric_methods_services.bas
+398,NUM_ODE_INFO,numeric,MetaNumericMethods,True,current,none,T+1=status,ODE info service active,runtime_numeric_methods_services.bas
+399,NUM_PDE_RESERVED,numeric,MetaNumericMethods,True,current,none,T+1=code,PDE placeholder stabilized,runtime_numeric_methods_services.bas
 400,FILE_OPEN_READ_TEXT,file_io,MetaFileServices,True,extension_requires_meta_id_range_patch,"T-3=name_start, T-2=name_len, T-1=reserved",T+1=handle,Full UXM_FILE_V1 file service set. Smaller v32 file patch also uses @400..@406 with different frame; use this full version as canonical.,UXM_FILE_IO_SERVICES.md
 400,NUM_SPLINE_RESERVED,numeric,MetaNumericMethods,True,extension_requires_meta_id_range_patch,,T+1/status,,service_registry_v35.csv
 401,FILE_OPEN_WRITE_TEXT,file_io,MetaFileServices,True,extension_requires_meta_id_range_patch,"T-3=name_start, T-2=name_len, T-1=reserved",T+1=handle,Full UXM_FILE_V1 file service set. Smaller v32 file patch also uses @400..@406 with different frame; use this full version as canonical.,UXM_FILE_IO_SERVICES.md
@@ -306,7 +306,7 @@ id,name,family,handler,enabled,status,frame,result,notes,source
 447,CPLX_ARG,complex,MetaComplex,True,extension_requires_meta_id_range_patch,,T+1/status,,service_registry_v35.csv
 448,CPLX_EXP,complex,MetaComplex,True,extension_requires_meta_id_range_patch,,T+1/status,,service_registry_v35.csv
 449,CPLX_FROM_POLAR,complex,MetaComplex,True,extension_requires_meta_id_range_patch,,T+1/status,,service_registry_v35.csv
-450,CPLX_PRINT_RESERVED,complex,MetaComplex,True,extension_requires_meta_id_range_patch,,T+1/status,,service_registry_v35.csv
+450,CPLX_PRINT,complex,MetaComplex,True,current,"T-1=aBase",printed+status,Complex print service active,runtime_complex_services.bas
 357,STR_FORMAT_INT,string_ext,MetaStringExt,stage9,Format integer to data string,,,,
 358,STR_HASH8,string_ext,MetaStringExt,stage9,8-bit additive hash,,,,
 359,STR_HASH32,string_ext,MetaStringExt,stage9,FNV-1a 32-bit hash masked to cell,,,,

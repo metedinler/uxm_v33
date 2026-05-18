@@ -2,7 +2,7 @@
 #define UXM_RUNTIME_NUMERIC_METHODS_SERVICES_BAS
 
 ' UXM V3.3 Stage-9 Numerical Methods V1
-' Service range: @420..@439
+' Service range: @390..@399 and @420..@439
 ' Polynomial coefficients are stored in data[] as signed integers:
 '   data[base+0]=degree, data[base+1+i]=coefficient for x^i
 ' Decimal inputs/outputs are scaled by 1,000,000.
@@ -102,6 +102,27 @@ Function NumBisection(ByVal baseIndex As LongInt, ByVal aValue As Double, ByVal 
     Return (loValue + hiValue) / 2.0
 End Function
 
+Function NumSecant(ByVal baseIndex As LongInt, ByVal x0 As Double, ByVal x1 As Double, ByVal maxIter As LongInt, ByVal epsValue As Double, ByRef statusOut As ULongInt) As Double
+    Dim f0 As Double
+    Dim f1 As Double
+    Dim x2 As Double
+    Dim loopIndex As LongInt
+    If maxIter <= 0 Then maxIter = 30
+    If epsValue <= 0 Then epsValue = 0.000001
+    statusOut = 0
+    For loopIndex = 1 To maxIter
+        f0 = NumPolyEval(baseIndex, x0)
+        f1 = NumPolyEval(baseIndex, x1)
+        If Abs(f1 - f0) < epsValue Then statusOut = 28: Return x1
+        x2 = x1 - f1 * (x1 - x0) / (f1 - f0)
+        If Abs(x2 - x1) < epsValue Then Return x2
+        x0 = x1
+        x1 = x2
+    Next
+    statusOut = 28
+    Return x1
+End Function
+
 Function NumTrapezoid(ByVal baseIndex As LongInt, ByVal aValue As Double, ByVal bValue As Double, ByVal nValue As LongInt) As Double
     Dim hValue As Double
     Dim sumValue As Double
@@ -183,6 +204,46 @@ End Function
 Sub MetaNumericMethods(ByVal metaId As ULongInt)
     Dim statusValue As ULongInt
     Select Case metaId
+    Case 390 ' NUM_NEWTON_RAPHSON
+        SetResult FromSignedValue(CLngInt(NumNewton(ToSignedValue(ReadTapeRel(-4)), CDbl(ToSignedValue(ReadTapeRel(-3))) / UXM_NUM_SCALE, ToSignedValue(ReadTapeRel(-2)), CDbl(ToSignedValue(ReadTapeRel(-1))) / UXM_NUM_SCALE, statusValue) * UXM_NUM_SCALE))
+        SetLogicFlags ResultValue()
+        NumSetLocalStatus statusValue
+    Case 391 ' NUM_BISECTION
+        SetResult FromSignedValue(CLngInt(NumBisection(ToSignedValue(ReadTapeRel(-4)), CDbl(ToSignedValue(ReadTapeRel(-3))) / UXM_NUM_SCALE, CDbl(ToSignedValue(ReadTapeRel(-2))) / UXM_NUM_SCALE, ToSignedValue(ReadTapeRel(-1)), 0.000001, statusValue) * UXM_NUM_SCALE))
+        SetLogicFlags ResultValue()
+        NumSetLocalStatus statusValue
+    Case 392 ' NUM_SECANT
+        SetResult FromSignedValue(CLngInt(NumSecant(ToSignedValue(ReadTapeRel(-4)), CDbl(ToSignedValue(ReadTapeRel(-3))) / UXM_NUM_SCALE, CDbl(ToSignedValue(ReadTapeRel(-2))) / UXM_NUM_SCALE, ToSignedValue(ReadTapeRel(-1)), 0.000001, statusValue) * UXM_NUM_SCALE))
+        SetLogicFlags ResultValue()
+        NumSetLocalStatus statusValue
+    Case 393 ' NUM_INTEGRAL_TRAPEZOID
+        SetResult FromSignedValue(CLngInt(NumTrapezoid(ToSignedValue(ReadTapeRel(-4)), CDbl(ToSignedValue(ReadTapeRel(-3))) / UXM_NUM_SCALE, CDbl(ToSignedValue(ReadTapeRel(-2))) / UXM_NUM_SCALE, ToSignedValue(ReadTapeRel(-1))) * UXM_NUM_SCALE))
+        SetLogicFlags ResultValue()
+        NumSetLocalStatus 0
+    Case 394 ' NUM_INTEGRAL_SIMPSON
+        SetResult FromSignedValue(CLngInt(NumSimpson(ToSignedValue(ReadTapeRel(-4)), CDbl(ToSignedValue(ReadTapeRel(-3))) / UXM_NUM_SCALE, CDbl(ToSignedValue(ReadTapeRel(-2))) / UXM_NUM_SCALE, ToSignedValue(ReadTapeRel(-1))) * UXM_NUM_SCALE))
+        SetLogicFlags ResultValue()
+        NumSetLocalStatus 0
+    Case 395 ' NUM_INTERPOLATE_LINEAR
+        SetResult FromSignedValue(CLngInt(NumLinearInterp(ToSignedValue(ReadTapeRel(-4)), ToSignedValue(ReadTapeRel(-3)), ToSignedValue(ReadTapeRel(-2)), CDbl(ToSignedValue(ReadTapeRel(-1))), statusValue) * UXM_NUM_SCALE))
+        SetLogicFlags ResultValue()
+        NumSetLocalStatus statusValue
+    Case 396 ' NUM_BEZIER_QUADRATIC
+        SetResult FromSignedValue(CLngInt(NumBezierQuadratic(CDbl(ToSignedValue(ReadTapeRel(-4))), CDbl(ToSignedValue(ReadTapeRel(-3))), CDbl(ToSignedValue(ReadTapeRel(-2))), CDbl(ToSignedValue(ReadTapeRel(-1))) / UXM_NUM_SCALE) * UXM_NUM_SCALE))
+        SetLogicFlags ResultValue()
+        NumSetLocalStatus 0
+    Case 397 ' NUM_RUNGE_KUTTA4_LINEAR
+        SetResult FromSignedValue(CLngInt(NumRK4Linear(CDbl(ToSignedValue(ReadTapeRel(-4))), CDbl(ToSignedValue(ReadTapeRel(-3))) / UXM_NUM_SCALE, CDbl(ToSignedValue(ReadTapeRel(-2))) / UXM_NUM_SCALE, ToSignedValue(ReadTapeRel(-1))) * UXM_NUM_SCALE))
+        SetLogicFlags ResultValue()
+        NumSetLocalStatus 0
+    Case 398 ' NUM_ODE_INFO
+        Print "[UXM NUM] @390 newton, @391 bisection, @392 secant, @393 trapezoid, @394 simpson, @395 interp, @396 bezier, @397 rk4"
+        SetResult STATUS_OK
+        SetStatus STATUS_OK
+    Case 399 ' NUM_PDE_RESERVED
+        SetResult 399000
+        SetLogicFlags ResultValue()
+        SetStatus STATUS_OK
     Case 420 ' NUM_POLY_EVAL: T-2 polyBase, T-1 x_scaled -> T+1 y_scaled
         SetResult FromSignedValue(CLngInt(NumPolyEval(ToSignedValue(ReadTapeRel(-2)), CDbl(ToSignedValue(ReadTapeRel(-1))) / UXM_NUM_SCALE) * UXM_NUM_SCALE))
         SetLogicFlags ResultValue()

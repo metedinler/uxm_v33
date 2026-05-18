@@ -142,6 +142,12 @@ Sub MetaComplex(ByVal metaId As ULongInt)
         CplxStore ToSignedValue(ReadTapeRel(-2)), CDbl(ToSignedValue(ReadTapeRel(-1))) / UXM_CPLX_SCALE * Cos(CDbl(ToSignedValue(ReadTapeRel(0))) / UXM_CPLX_SCALE), CDbl(ToSignedValue(ReadTapeRel(-1))) / UXM_CPLX_SCALE * Sin(CDbl(ToSignedValue(ReadTapeRel(0))) / UXM_CPLX_SCALE)
         SetResult ux_cplx_status
         CplxSetLocalStatus ux_cplx_status
+    Case 450 ' CPLX_PRINT_RESERVED -> active print
+        aBase = ToSignedValue(ReadTapeRel(-1))
+        CplxGet aBase, ar, ai
+        Print "[UXM CPLX r="; ar; " i="; ai; "]";
+        SetResult ux_cplx_status
+        CplxSetLocalStatus ux_cplx_status
     Case 459 ' CPLX_STATUS
         SetResult ux_cplx_status
         SetLogicFlags ResultValue()

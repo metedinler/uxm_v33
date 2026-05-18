@@ -28,6 +28,14 @@ Declare Sub MatIdentity(ByVal baseAddr As LongInt, ByVal sizeN As LongInt, ByVal
 Declare Function MatTrace(ByVal baseAddr As LongInt) As LongInt
 Declare Function MatDet2(ByVal baseAddr As LongInt) As LongInt
 Declare Sub MatShape(ByVal baseAddr As LongInt)
+#ifndef UXM_SPARSE_PROTO_DECLARED
+#define UXM_SPARSE_PROTO_DECLARED
+Declare Sub SparseInit(ByVal baseAddr As LongInt, ByVal rows As LongInt, ByVal cols As LongInt, ByVal capacity As LongInt)
+Declare Sub SparseMatVec(ByVal dstVec As LongInt, ByVal spBase As LongInt, ByVal xVec As LongInt)
+Declare Sub SparseToDense(ByVal dstMat As LongInt, ByVal spBase As LongInt)
+Declare Sub SparseSetNNZ(ByVal baseAddr As LongInt, ByVal nnz As LongInt)
+Declare Sub SparseSetEntry(ByVal baseAddr As LongInt, ByVal k As LongInt, ByVal r As LongInt, ByVal c As LongInt, ByVal value As LongInt)
+#endif
 
 Function MatPow10(ByVal n As LongInt) As LongInt
     Dim i As LongInt
@@ -547,6 +555,151 @@ Function MatEig2SymV18(ByVal baseAddr As LongInt, ByVal which As LongInt) As Lon
     If which=2 Then Return CLngInt(l2) Else Return CLngInt(l1)
 End Function
 
+Function MatNormInfV18(ByVal baseAddr As LongInt) As LongInt
+    Dim rr As LongInt, cc As LongInt, i As LongInt, j As LongInt
+    Dim rowSum As LongInt, best As LongInt, v As LongInt
+    If MatIsValid(baseAddr)=0 Then SetStatus STATUS_DATA_BOUNDS: Return 0
+    rr=MatRows(baseAddr): cc=MatCols(baseAddr)
+    If rr<=0 Or cc<=0 Then SetStatus STATUS_DATA_BOUNDS: Return 0
+    best=0
+    For i=0 To rr-1
+        rowSum=0
+        For j=0 To cc-1
+            v=MatGet(baseAddr,i,j)
+            If v<0 Then v=-v
+            rowSum += v
+        Next
+        If rowSum>best Then best=rowSum
+    Next
+    SetStatus STATUS_OK
+    Return best
+End Function
+
+Function MatFrobenius2V18(ByVal baseAddr As LongInt) As LongInt
+    Dim rr As LongInt, cc As LongInt, i As LongInt, j As LongInt
+    Dim acc As Double, v As Double
+    If MatIsValid(baseAddr)=0 Then SetStatus STATUS_DATA_BOUNDS: Return 0
+    rr=MatRows(baseAddr): cc=MatCols(baseAddr)
+    If rr<=0 Or cc<=0 Then SetStatus STATUS_DATA_BOUNDS: Return 0
+    acc=0
+    For i=0 To rr-1
+        For j=0 To cc-1
+            v=CDbl(MatGet(baseAddr,i,j))
+            acc += v*v
+        Next
+    Next
+    SetStatus STATUS_OK
+    Return CLngInt(acc)
+End Function
+
+Function MatCondEst2V18(ByVal baseAddr As LongInt) As LongInt
+    Dim a As Double,b As Double,c As Double,d As Double
+    Dim det As Double, nA As Double, nInv As Double
+    If MatIsValid(baseAddr)=0 Then SetStatus STATUS_DATA_BOUNDS: Return 0
+    If MatRows(baseAddr)<>2 Or MatCols(baseAddr)<>2 Then SetStatus STATUS_DATA_BOUNDS: Return 0
+    a=CDbl(MatGet(baseAddr,0,0)): b=CDbl(MatGet(baseAddr,0,1))
+    c=CDbl(MatGet(baseAddr,1,0)): d=CDbl(MatGet(baseAddr,1,1))
+    det=a*d-b*c
+    If Abs(det)<0.000000000001 Then SetStatus STATUS_DIV_ZERO: Return 0
+    nA = Abs(a)+Abs(b)
+    If Abs(c)+Abs(d)>nA Then nA = Abs(c)+Abs(d)
+    nInv = (Abs(d)+Abs(b))/Abs(det)
+    If (Abs(c)+Abs(a))/Abs(det)>nInv Then nInv = (Abs(c)+Abs(a))/Abs(det)
+    SetStatus STATUS_OK
+    Return CLngInt(nA*nInv)
+End Function
+
+Function MatPowerEigenV18(ByVal baseAddr As LongInt, ByVal iterations As LongInt) As LongInt
+    Dim n As LongInt, i As LongInt, j As LongInt, it As LongInt
+    Dim v(0 To 15) As Double, w(0 To 15) As Double
+    Dim acc As Double, maxAbs As Double, num As Double, den As Double
+    If MatIsValid(baseAddr)=0 Then SetStatus STATUS_DATA_BOUNDS: Return 0
+    n=MatRows(baseAddr)
+    If n<=0 Or n<>MatCols(baseAddr) Or n>16 Then SetStatus STATUS_DATA_BOUNDS: Return 0
+    If iterations<=0 Then iterations=16
+    For i=0 To n-1: v(i)=1.0: Next
+    For it=1 To iterations
+        maxAbs=0
+        For i=0 To n-1
+            acc=0
+            For j=0 To n-1
+                acc += CDbl(MatGet(baseAddr,i,j))*v(j)
+            Next
+            w(i)=acc
+            If Abs(acc)>maxAbs Then maxAbs=Abs(acc)
+        Next
+        If maxAbs=0 Then SetStatus STATUS_OK: Return 0
+        For i=0 To n-1: v(i)=w(i)/maxAbs: Next
+    Next
+    num=0: den=0
+    For i=0 To n-1
+        acc=0
+        For j=0 To n-1
+            acc += CDbl(MatGet(baseAddr,i,j))*v(j)
+        Next
+        num += v(i)*acc
+        den += v(i)*v(i)
+    Next
+    If den=0 Then SetStatus STATUS_DIV_ZERO: Return 0
+    SetStatus STATUS_OK
+    Return CLngInt(num/den)
+End Function
+
+Sub MatQR2V18(ByVal qBase As LongInt, ByVal rBase As LongInt, ByVal aBase As LongInt)
+    Dim a11 As Double, a12 As Double, a21 As Double, a22 As Double
+    Dim v10 As Double, v11 As Double, v20 As Double, v21 As Double
+    Dim q10 As Double, q11 As Double, q20 As Double, q21 As Double
+    Dim r11 As Double, r12 As Double, r22 As Double
+    If MatIsValid(aBase)=0 Or MatIsValid(qBase)=0 Or MatIsValid(rBase)=0 Then SetStatus STATUS_DATA_BOUNDS: Exit Sub
+    If MatRows(aBase)<>2 Or MatCols(aBase)<>2 Or MatRows(qBase)<>2 Or MatCols(qBase)<>2 Or MatRows(rBase)<>2 Or MatCols(rBase)<>2 Then SetStatus STATUS_DATA_BOUNDS: Exit Sub
+    a11=CDbl(MatGet(aBase,0,0)): a12=CDbl(MatGet(aBase,0,1))
+    a21=CDbl(MatGet(aBase,1,0)): a22=CDbl(MatGet(aBase,1,1))
+    v10=a11: v11=a21
+    r11=Sqr(v10*v10+v11*v11)
+    If r11=0 Then SetStatus STATUS_DIV_ZERO: Exit Sub
+    q10=v10/r11: q11=v11/r11
+    r12=q10*a12+q11*a22
+    v20=a12-r12*q10
+    v21=a22-r12*q11
+    r22=Sqr(v20*v20+v21*v21)
+    If r22=0 Then
+        q20=0: q21=0
+    Else
+        q20=v20/r22: q21=v21/r22
+    End If
+    MatSet qBase,0,0,CLngInt(q10): MatSet qBase,1,0,CLngInt(q11)
+    MatSet qBase,0,1,CLngInt(q20): MatSet qBase,1,1,CLngInt(q21)
+    MatSet rBase,0,0,CLngInt(r11): MatSet rBase,0,1,CLngInt(r12)
+    MatSet rBase,1,0,0: MatSet rBase,1,1,CLngInt(r22)
+    SetStatus STATUS_OK
+End Sub
+
+Sub MatDenseToSparseV18(ByVal spBase As LongInt, ByVal matBase As LongInt, ByVal capacity As LongInt)
+    Dim rr As LongInt, cc As LongInt, i As LongInt, j As LongInt
+    Dim nnz As LongInt, cap As LongInt, v As LongInt
+    If MatIsValid(matBase)=0 Then SetStatus STATUS_DATA_BOUNDS: Exit Sub
+    rr=MatRows(matBase): cc=MatCols(matBase)
+    If rr<=0 Or cc<=0 Then SetStatus STATUS_DATA_BOUNDS: Exit Sub
+    cap=capacity
+    If cap<=0 Then cap=rr*cc
+    SparseInit spBase,rr,cc,cap
+    If ux_status<>STATUS_OK Then Exit Sub
+    nnz=0
+    For i=0 To rr-1
+        For j=0 To cc-1
+            v=MatGet(matBase,i,j)
+            If v<>0 Then
+                If nnz>=cap Then Exit For
+                SparseSetEntry spBase,nnz,i,j,v
+                nnz+=1
+            End If
+        Next
+        If nnz>=cap Then Exit For
+    Next
+    SparseSetNNZ spBase,nnz
+    SetStatus STATUS_OK
+End Sub
+
 Sub MetaMatrix(ByVal metaId As ULongInt)
     Dim dst As LongInt
     Dim a As LongInt
@@ -615,26 +768,64 @@ Sub MetaMatrix(ByVal metaId As ULongInt)
     Case 176
         MatPrintRaw a
         SetResult ux_status
+    Case 180
+        MatInit dst,a,b,0,0
+        SetResult ux_status
     Case 181
         MatNDGetV18 dst,a,b
     Case 182
         MatNDSetV18 dst,a,b,p1
+    Case 183
+        MetaMatrixAdvancedTensor 512
+    Case 184
+        MetaMatrixAdvancedTensor 513
+    Case 185
+        ' Frame: T-4=L, T-3=A, T-2=U
+        MetaMatrixAdvancedTensor 518
+    Case 186
+        ' Frame: T-4=Q, T-3=A, T-2=R
+        MatQR2V18 dst,b,a
+        SetResult ux_status
+    Case 187
+        MetaMatrixAdvancedTensor 514
+    Case 188
+        SetResult ClampToCell(MatCondEst2V18(a))
+        SetLogicFlags ResultValue()
+    Case 189
+        SetResult ClampToCell(MatPowerEigenV18(a,p1))
+        SetLogicFlags ResultValue()
     Case 190
         SetResult ClampToCell(MatEig2SymV18(a,p1))
         SetLogicFlags ResultValue()
     Case 191
         SetResult ClampToCell(Abs(MatEig2SymV18(a,p1)))
         SetLogicFlags ResultValue()
+    Case 192
+        If p1<=0 Then p1=a*b
+        SparseInit dst,a,b,p1
+        SetResult ux_status
     Case 193
-        ' Sparse CSR MV bu dosyada uygulanmadi; sparse gercek servisleri @600+ bandindadir.
-        SetStatus STATUS_INVALID_META
-        SetResult STATUS_INVALID_META
+        SparseMatVec dst,a,b
+        SetResult ux_status
     Case 194
-        SetStatus STATUS_INVALID_META
-        SetResult STATUS_INVALID_META
+        SparseToDense dst,a
+        SetResult ux_status
     Case 195
-        SetStatus STATUS_INVALID_META
-        SetResult STATUS_INVALID_META
+        MatDenseToSparseV18 dst,a,p1
+        SetResult ux_status
+    Case 196
+        SetResult ClampToCell(MatTrace(a))
+        SetLogicFlags ResultValue()
+    Case 197
+        SetResult ClampToCell(MatFrobenius2V18(a))
+        SetLogicFlags ResultValue()
+    Case 198
+        SetResult ClampToCell(MatNormInfV18(a))
+        SetLogicFlags ResultValue()
+    Case 199
+        Print "[UXM MATADV] @180..@199 active: nd/mat-adv/sparse bridge"
+        SetStatus STATUS_OK
+        SetResult STATUS_OK
     Case Else
         SetStatus STATUS_INVALID_META
         SetResult STATUS_INVALID_META

@@ -50,12 +50,15 @@ Declare Function SparseCols(ByVal baseAddr As LongInt) As LongInt
 Declare Function SparseNNZ(ByVal baseAddr As LongInt) As LongInt
 Declare Function SparseCapacity(ByVal baseAddr As LongInt) As LongInt
 Declare Function SparseTripleIndex(ByVal baseAddr As LongInt, ByVal k As LongInt, ByRef ok As Long) As LongInt
+#ifndef UXM_SPARSE_PROTO_DECLARED
+#define UXM_SPARSE_PROTO_DECLARED
 Declare Sub SparseInit(ByVal baseAddr As LongInt, ByVal rows As LongInt, ByVal cols As LongInt, ByVal capacity As LongInt)
 Declare Sub SparseSetNNZ(ByVal baseAddr As LongInt, ByVal nnz As LongInt)
 Declare Sub SparseSetEntry(ByVal baseAddr As LongInt, ByVal k As LongInt, ByVal r As LongInt, ByVal c As LongInt, ByVal value As LongInt)
 Declare Function SparseGetEntryValue(ByVal baseAddr As LongInt, ByVal k As LongInt) As LongInt
 Declare Sub SparseMatVec(ByVal dstVec As LongInt, ByVal spBase As LongInt, ByVal xVec As LongInt)
 Declare Sub SparseToDense(ByVal dstMat As LongInt, ByVal spBase As LongInt)
+#endif
 Declare Function SparseSumValues(ByVal baseAddr As LongInt) As LongInt
 Declare Function SparseTrace(ByVal baseAddr As LongInt) As LongInt
 Function UxAbsLI(ByVal x As LongInt) As LongInt
