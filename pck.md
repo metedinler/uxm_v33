@@ -67,10 +67,14 @@ Kaynak: `uxm/core/compiler/native/native_lexer_parser.bas`
 
 Temel komutlar:
 
-- `>` pointer saga
-- `<` pointer sola
+- `>` pointer saga 1 adim
+- `<` pointer sola 1 adim
+- `>kN` pointer saga N adim
+- `<kN` pointer sola N adim
 - `+` hucre arttir
 - `-` hucre azalt
+- `+kN` hucreyi N kez arttir
+- `-kN` hucreyi N kez azalt
 - `0` hucre sifirla
 - `.` putc/print char
 - `,` getc/read char
@@ -94,19 +98,10 @@ Ek komutlar:
 - `pN` tanimli string yazdir
 - `sN=start,{text}` string tanimla
 - `mN={...}` macro tanimla (N: 128..255)
-- `@ID` meta servis cagir
+- `@ID` meta servis cagir (ID araligi: 0..65535)
 - `@#` dinamik meta
 - `@(addr)` adresten dinamik meta
 - `:...` branch komut ailesi
-
-## Bilgilendirme Kutucuğu (Hızlı Referans)
-
-- Hızlı komut özet: `> < + - 0 . , [ ] $ % ? ! ; & | ^ ~ { } e`
-- String/macro: `pN` (çağır), `sN=start,{text}` (tanımla), `mN={...}` (macro, N:128..255)
-- Meta çağrılar: `@ID`, `@#` (dinamik), `@(addr)` (adres tabanlı dinamik)
-- Pragma örnekleri: `#mode`, `#cell`, `#bounds`, `#overflow`, `#endian`, `#memory`, `#arge`
-- Adresleme kısa: `(T) (T+N) (T:N) (D:N) (SP) (SP+N) (P) (*T) (D@T)`
-- VSCode: Eklenti hover desteği ile bu sembollere gelince kısa açıklama gösterilir.
 
 ## 4) Adresleme Modlari
 
@@ -161,6 +156,9 @@ Kaynaklar:
 
 Ana ID araliklari:
 
+- Genel servis id araligi: `0..65535`
+- `128..255` araligi kullanici macro/cakisma bolgesidir (host servis cagrisinda dikkat).
+
 - `0..19` core
 - `20..39` arithmetic
 - `40..59` math
@@ -180,6 +178,11 @@ Ana ID araliklari:
 - `512..599` tensor/matrix advanced
 - `600..679` sparse vector
 - `700..759` ml data pipeline
+
+Bellek notu:
+
+- Varsayilan model: `tape=32KB, stack=4KB, data=16KB, queue=4KB`
+- Toplam ust sinir: `16384KB` (16MB)
 
 Ornek:
 
@@ -337,3 +340,11 @@ Expected test odakli akis:
 ```bat
 build_native.bat && run_all_expected_tests_no_build.bat --limit 200
 ```
+## Bilgilendirme Kutucuğu (Hızlı Referans)
+
+- Hızlı komut özet: `> < + - 0 . , [ ] $ % ? ! ; & | ^ ~ { } e`
+- String/macro: `pN` (çağır), `sN=start,{text}` (tanımla), `mN={...}` (macro, N:128..255)
+- Meta çağrılar: `@ID`, `@#` (dinamik), `@(addr)` (adres tabanlı dinamik)
+- Pragma örnekleri: `#mode`, `#cell`, `#bounds`, `#overflow`, `#endian`, `#memory`, `#arge`
+- Adresleme kısa: `(T) (T+N) (T:N) (D:N) (SP) (SP+N) (P) (*T) (D@T)`
+- VSCode: Eklenti hover desteği ile bu sembollere gelince kısa açıklama gösterilir.

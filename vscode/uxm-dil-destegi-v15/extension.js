@@ -50,21 +50,24 @@ const KNOWN_TOOL_INFO = {
 };
 
 const COMMAND_DOCS = [
-	{ token: '>', desc: 'Pointer saga gider.' },
-	{ token: '<', desc: 'Pointer sola gider.' },
+	{ token: '>', desc: 'Pointer saga 1 adim gider.' },
+	{ token: '<', desc: 'Pointer sola 1 adim gider.' },
+	{ token: '>kN / <kN', desc: 'Pointeri N adim saga/sola kaydirir.' },
 	{ token: '+', desc: 'Hucreyi artirir.' },
 	{ token: '-', desc: 'Hucreyi azaltir.' },
+	{ token: '+kN / -kN', desc: 'Hedef hucreyi N kez artirir/azaltir.' },
 	{ token: '0', desc: 'Hucreyi sifirlar.' },
+	{ token: 'kN', desc: 'Tek basina tekrar belirteci; komutla birlikte kullanilir.' },
 	{ token: '.', desc: 'Karakter yazdirir.' },
 	{ token: ',', desc: 'Karakter okur.' },
-	{ token: '[ ]', desc: 'Loop baslatir/bitirir.' },
+	{ token: '[ ]', desc: 'Aktif hucre sifir olana kadar loop calistirir.' },
 	{ token: '$ / %', desc: 'Stack push/pop.' },
 	{ token: '? ! ;', desc: 'Karsilastirma operasyonlari.' },
 	{ token: '& | ^ ~', desc: 'Bit operasyonlari.' },
 	{ token: '{ }', desc: 'Shift operasyonlari.' },
 	{ token: 'e', desc: 'Status okur/isler.' },
-	{ token: '@ID', desc: 'Meta servis cagirir.' },
-	{ token: ':', desc: 'Branch ailesi.' },
+	{ token: '@ID', desc: 'Meta servis cagirir (ID araligi 0..65535).' },
+	{ token: ':', desc: 'Branch ailesi. Kosul ve offset ile atlama yapar.' },
 	{ token: 'sN / pN / mN', desc: 'String yazdirma ve macro tanimlari.' }
 ];
 
@@ -80,6 +83,31 @@ const ADDRESSING_DOCS = [
 	{ mode: '(D:N+P), (T:N+P)', desc: 'Base+P adresleme.' },
 	{ mode: '(D@D:N), (T@D:N)', desc: 'Cift dolayli adresleme.' }
 ];
+
+const LOOP_TEMPLATE_DOCS = [
+	{ token: '[->+<]', desc: 'Degeri sagdaki hucreye tasir, mevcut hucreyi sifirlar.' },
+	{ token: '[<+>-]', desc: 'Degeri soldaki hucreye tasir, mevcut hucreyi sifirlar.' },
+	{ token: '[>+>+<<-]', desc: 'Degeri iki hucreye kopyalama kalibi (dagitma).' },
+	{ token: '[<+>]', desc: 'Iki hucre arasinda transfer/denge kalibi.' },
+	{ token: '{<+>-}', desc: 'Shift komutu ile birlikte kullanimlar icin ornek blok kalibi.' },
+	{ token: '::+N / ::-N', desc: 'Kosulsuz branch ile instruction offset kadar atlar.' },
+	{ token: ':0+N / :+N / :-N', desc: 'Aktif hucreye gore kosullu branch kaliplari.' },
+	{ token: ':z :Z :c :C :o :O :s :S', desc: 'Flag tabanli branch kosullari.' }
+];
+
+const MEMORY_MODEL_DOC = {
+	title: 'UXM Ana Bellek Modeli',
+	defaults: {
+		tapeKb: 32,
+		stackKb: 4,
+		dataKb: 16,
+		queueKb: 4
+	},
+	maxTotalKb: 16384,
+	desc: 'Toplam bellek modeli 16 MB siniri ile calisir. Tape/Data/Stack/Queue dagilimi #memory ile ayarlanir.'
+};
+
+const SERVICE_DOC_CACHE = new Map();
 
 function getWorkspaceRoot() {
 	const folder = vscode.workspace.workspaceFolders && vscode.workspace.workspaceFolders[0];
@@ -265,7 +293,66 @@ function parseCsvLine(line) {
 	return out;
 }
 
-function loadServiceDocs(root, limit = 300) {
+function csvEscape(v) {
+	const text = String(v == null ? '' : v);
+	if (!/[",\r\n]/.test(text)) return text;
+	return '"' + text.replace(/"/g, '""') + '"';
+}
+
+function toTurkishServiceNote(note) {
+	if (!note) return '';
+	let out = String(note);
+	out = out.replace(/\bargument\b/gi, 'arguman');
+	out = out.replace(/\breturns?\b/gi, 'donus');
+	out = out.replace(/\bhandler\b/gi, 'isleyici');
+	out = out.replace(/\bdeprecated\b/gi, 'kullanimi azalan');
+	out = out.replace(/\breserved\b/gi, 'ayrilmis');
+	out = out.replace(/\bdisabled\b/gi, 'kapali');
+	out = out.replace(/\bhook\b/gi, 'kanca');
+	out = out.replace(/\bdispatch\b/gi, 'yonlendirme');
+	return out;
+}
+
+function writeServiceCacheCsv(root, rows) {
+	const baseDir = path.join(root, '.uxm', 'vscode');
+	fs.mkdirSync(baseDir, { recursive: true });
+	const outFile = path.join(baseDir, 'service_docs_cache.csv');
+	const header = [
+		'id',
+		'name',
+		'family',
+		'handler',
+		'status',
+		'enabled',
+		'frame',
+		'result',
+		'notes_tr',
+		'source'
+	];
+	const lines = [header.join(',')];
+	for (const r of rows) {
+		lines.push([
+			csvEscape(r.id),
+			csvEscape(r.name),
+			csvEscape(r.family),
+			csvEscape(r.handler),
+			csvEscape(r.status),
+			csvEscape(r.enabled),
+			csvEscape(r.frame),
+			csvEscape(r.result),
+			csvEscape(r.notesTr),
+			csvEscape(r.source)
+		].join(','));
+	}
+	fs.writeFileSync(outFile, lines.join('\n'), 'utf8');
+}
+
+function loadServiceDocs(root, limit = 50000) {
+	const maxRows = limit > 0 ? limit : Number.MAX_SAFE_INTEGER;
+	if (SERVICE_DOC_CACHE.has(root)) {
+		const cached = SERVICE_DOC_CACHE.get(root);
+		return cached.slice(0, maxRows);
+	}
 	const file = path.join(root, 'config', 'uxm', 'service_registry_merged.csv');
 	if (!fs.existsSync(file)) return [];
 	const lines = readTextSafe(file).split(/\r?\n/).filter((x) => x.trim() !== '');
@@ -274,16 +361,43 @@ function loadServiceDocs(root, limit = 300) {
 	const idIdx = header.indexOf('id');
 	const nameIdx = header.indexOf('name');
 	const familyIdx = header.indexOf('family');
+	const handlerIdx = header.indexOf('handler');
+	const enabledIdx = header.indexOf('enabled');
+	const statusIdx = header.indexOf('status');
+	const frameIdx = header.indexOf('frame');
+	const resultIdx = header.indexOf('result');
+	const sourceIdx = header.indexOf('source');
 	const notesIdx = header.indexOf('notes');
 	const rows = [];
-	for (let i = 1; i < lines.length && rows.length < limit; i += 1) {
+	for (let i = 1; i < lines.length && rows.length < maxRows; i += 1) {
 		const cols = parseCsvLine(lines[i]);
+		const idText = idIdx >= 0 ? cols[idIdx] : cols[0];
+		const idNum = Number(idText);
+		const notes = notesIdx >= 0 ? cols[notesIdx] : '';
 		rows.push({
-			id: idIdx >= 0 ? cols[idIdx] : cols[0],
+			id: idText,
+			idNum: Number.isFinite(idNum) ? idNum : -1,
 			name: nameIdx >= 0 ? cols[nameIdx] : '',
 			family: familyIdx >= 0 ? cols[familyIdx] : '',
-			notes: notesIdx >= 0 ? cols[notesIdx] : ''
+			handler: handlerIdx >= 0 ? cols[handlerIdx] : '',
+			enabled: enabledIdx >= 0 ? cols[enabledIdx] : '',
+			status: statusIdx >= 0 ? cols[statusIdx] : '',
+			frame: frameIdx >= 0 ? cols[frameIdx] : '',
+			result: resultIdx >= 0 ? cols[resultIdx] : '',
+			notes,
+			notesTr: toTurkishServiceNote(notes),
+			source: sourceIdx >= 0 ? cols[sourceIdx] : ''
 		});
+	}
+	rows.sort((a, b) => {
+		if (a.idNum >= 0 && b.idNum >= 0) return a.idNum - b.idNum;
+		return String(a.id).localeCompare(String(b.id));
+	});
+	SERVICE_DOC_CACHE.set(root, rows);
+	try {
+		writeServiceCacheCsv(root, rows);
+	} catch (_) {
+		// Cache dosyasi yazilamazsa panel calismaya devam etsin.
 	}
 	return rows;
 }
@@ -310,24 +424,49 @@ function loadHelpDocs(root) {
 	return docs;
 }
 
-function loadToolCatalog(root) {
-	const toolsDir = path.join(root, 'tools');
-	const out = [];
-	if (fs.existsSync(toolsDir)) {
-		for (const entry of fs.readdirSync(toolsDir)) {
-			if (!/\.(bat|py)$/i.test(entry)) continue;
-			const abs = path.join(toolsDir, entry);
-			const rel = path.relative(root, abs).replace(/\\/g, '/');
-			const known = KNOWN_TOOL_INFO[entry.toLowerCase()] || {};
-			out.push({
-				id: rel,
-				path: rel,
-				name: known.name || entry,
-				purpose: known.purpose || 'Araci calistirir.',
-				input: known.input || 'Araca gore degisir.',
-				output: known.output || 'Araca gore degisir.'
-			});
+function collectScriptTools(root, absDir, out, seen, depth, maxDepth) {
+	if (!fs.existsSync(absDir)) return;
+	if (depth > maxDepth) return;
+	let entries = [];
+	try {
+		entries = fs.readdirSync(absDir, { withFileTypes: true });
+	} catch (_) {
+		return;
+	}
+	for (const entry of entries) {
+		const abs = path.join(absDir, entry.name);
+		if (entry.isDirectory()) {
+			collectScriptTools(root, abs, out, seen, depth + 1, maxDepth);
+			continue;
 		}
+		if (!/\.(bat|py)$/i.test(entry.name)) continue;
+		const rel = path.relative(root, abs).replace(/\\/g, '/');
+		if (!rel || rel.startsWith('..') || seen.has(rel.toLowerCase())) continue;
+		seen.add(rel.toLowerCase());
+		const known = KNOWN_TOOL_INFO[entry.name.toLowerCase()] || {};
+		out.push({
+			id: rel,
+			path: rel,
+			name: known.name || entry.name,
+			purpose: known.purpose || 'Araci calistirir.',
+			input: known.input || 'Araca gore degisir.',
+			output: known.output || 'Araca gore degisir.'
+		});
+	}
+}
+
+function loadToolCatalog(root) {
+	const out = [];
+	const seen = new Set();
+	const candidates = [
+		{ rel: '.', depth: 0 },
+		{ rel: 'tools', depth: 2 },
+		{ rel: 'araclar', depth: 2 },
+		{ rel: 'tools_y', depth: 2 },
+		{ rel: 'tool_en', depth: 2 }
+	];
+	for (const c of candidates) {
+		collectScriptTools(root, path.resolve(root, c.rel), out, seen, 0, c.depth);
 	}
 	out.sort((a, b) => a.path.localeCompare(b.path));
 	return out;
@@ -545,10 +684,11 @@ function buildPanelState(root) {
 		activeProgramRel: programRel,
 		addresses,
 		tools: loadToolCatalog(root),
-		commandDocs: COMMAND_DOCS,
+		commandDocs: COMMAND_DOCS.concat(LOOP_TEMPLATE_DOCS),
 		addressingDocs: ADDRESSING_DOCS,
 		serviceDocs: loadServiceDocs(root),
 		helpDocs: loadHelpDocs(root),
+		memoryModel: MEMORY_MODEL_DOC,
 		notes
 	};
 }
@@ -572,7 +712,7 @@ async function openControlCenter(context, output) {
 	}
 
 	if (activePanel) {
-		activePanel.reveal(vscode.ViewColumn.One, false);
+		activePanel.reveal(vscode.ViewColumn.Beside, false);
 		postPanel(activePanel, 'state', buildPanelState(root));
 		return;
 	}
@@ -580,7 +720,7 @@ async function openControlCenter(context, output) {
 	activePanel = vscode.window.createWebviewPanel(
 		'uxmControlCenter',
 		'UXM Kontrol Merkezi',
-		vscode.ViewColumn.One,
+		vscode.ViewColumn.Beside,
 		{
 			enableScripts: true,
 			retainContextWhenHidden: true
@@ -606,6 +746,10 @@ async function openControlCenter(context, output) {
 		const currentRoot = activePanelState ? activePanelState.root : root;
 		try {
 			switch (msg.cmd) {
+				case 'uiReady': {
+					postPanel(activePanel, 'state', buildPanelState(currentRoot));
+					break;
+				}
 				case 'requestState': {
 					postPanel(activePanel, 'state', buildPanelState(currentRoot));
 					break;
@@ -764,6 +908,12 @@ async function openControlCenter(context, output) {
 	});
 
 	postPanel(activePanel, 'state', buildPanelState(root));
+	setTimeout(() => {
+		if (activePanel) postPanel(activePanel, 'state', buildPanelState(root));
+	}, 250);
+	setTimeout(() => {
+		if (activePanel) postPanel(activePanel, 'state', buildPanelState(root));
+	}, 1000);
 }
 
 function getControlCenterHtml() {
@@ -802,6 +952,7 @@ function getControlCenterHtml() {
 <body>
   <h2>UXM Kontrol Merkezi</h2>
   <div id="summary" class="muted">Yukleniyor...</div>
+	<div id="statusLine" class="tiny">Durum: baglanti bekleniyor...</div>
 
   <div class="toolbar">
     <button id="btnRefresh">Yenile</button>
@@ -809,6 +960,7 @@ function getControlCenterHtml() {
     <button id="btnRunInterpreter">Interpreter Calistir</button>
     <button id="btnRunTests">Toplu Test</button>
     <button id="btnClearTrace">Trace Isareti Temizle</button>
+		<button id="btnJumpPlan">Bellek Plani</button>
   </div>
 
   <div class="grid">
@@ -854,11 +1006,13 @@ function getControlCenterHtml() {
       <h3>Komut + Adresleme Rehberi</h3>
       <input id="cmdSearch" placeholder="Komut ara..." />
       <div id="cmdList" class="list tiny"></div>
+			<div id="cmdDetail" class="mono tiny" style="margin-top:6px"></div>
     </div>
     <div class="card">
       <h3>Servis Rehberi</h3>
       <input id="svcSearch" placeholder="Servis ara (id/family/name)..." />
       <div id="svcList" class="list tiny"></div>
+			<div id="svcDetail" class="mono tiny" style="margin-top:6px"></div>
     </div>
   </div>
 
@@ -885,6 +1039,17 @@ function getControlCenterHtml() {
     <div id="notesList" class="list tiny" style="margin-top:6px"></div>
   </div>
 
+	<div class="card" id="planCard" style="margin-top: 10px;">
+		<h3>Bellek Plani (Tablo)</h3>
+		<div class="tiny">Segment, hucre, amac ve notlar tek tabloda listelenir. Trace secimi ile satira donulebilir.</div>
+		<div id="memoryModelInfo" class="tiny" style="margin-top:6px"></div>
+		<div class="toolbar">
+			<button id="btnPlanTop">Tabloya Git</button>
+			<button id="btnPlanRefresh">Tablo Yenile</button>
+		</div>
+		<div id="memoryPlanTable" class="list tiny"></div>
+	</div>
+
   <script>
     const vscode = acquireVsCodeApi();
 
@@ -897,6 +1062,7 @@ function getControlCenterHtml() {
       addressingDocs: [],
       serviceDocs: [],
       helpDocs: [],
+			memoryModel: null,
       notes: { notes: { tape: [], data: [], stack: [], queue: [] } }
     };
 
@@ -909,9 +1075,17 @@ function getControlCenterHtml() {
     }
 
     function setSummary() {
-      const txt = 'Root: ' + (state.root || '-') + ' | Aktif Program: ' + (state.activeProgramRel || 'YOK');
+			const program = state.activeProgramRel || 'YOK';
+			const activeName = program === 'YOK' ? 'YOK' : program.split('/').pop();
+			const txt = 'Root: ' + (state.root || '-') + ' | Aktif Program: ' + program + ' | Dosya: ' + activeName;
       document.getElementById('summary').textContent = txt;
     }
+
+		function setStatus(text, ok) {
+			const el = document.getElementById('statusLine');
+			el.textContent = 'Durum: ' + text;
+			el.className = 'tiny ' + (ok === false ? 'status-err' : 'status-ok');
+		}
 
     function setJsonOut(obj, ok) {
       const el = document.getElementById('jsonOut');
@@ -926,6 +1100,14 @@ function getControlCenterHtml() {
     function renderTools() {
       const sel = document.getElementById('toolSelect');
       sel.innerHTML = '';
+			if (!state.tools || state.tools.length === 0) {
+				const op = document.createElement('option');
+				op.value = '';
+				op.textContent = 'Arac bulunamadi';
+				sel.appendChild(op);
+				renderToolInfo();
+				return;
+			}
       for (const t of state.tools || []) {
         const op = document.createElement('option');
         op.value = t.path;
@@ -953,32 +1135,77 @@ function getControlCenterHtml() {
     function renderCommandDocs() {
       const q = (document.getElementById('cmdSearch').value || '').toLowerCase();
       const list = document.getElementById('cmdList');
+			const detail = document.getElementById('cmdDetail');
       list.innerHTML = '';
+			detail.textContent = '';
       const all = (state.commandDocs || []).map(x => ({ k: x.token, d: x.desc, type: 'komut' }))
         .concat((state.addressingDocs || []).map(x => ({ k: x.mode, d: x.desc, type: 'adresleme' })));
+			let first = null;
       for (const row of all) {
         const text = (row.k + ' ' + row.d + ' ' + row.type).toLowerCase();
         if (q && !text.includes(q)) continue;
+				if (!first) first = row;
         const div = document.createElement('div');
         div.className = 'item';
         div.innerHTML = '<b>[' + esc(row.type) + ']</b> ' + esc(row.k) + ' - ' + esc(row.d);
+				div.addEventListener('click', () => {
+					detail.textContent = '[' + row.type + '] ' + row.k + '\n' + row.d;
+				});
         list.appendChild(div);
       }
+			if (!first) {
+				detail.textContent = 'Eslesen komut yok.';
+			} else if (!detail.textContent) {
+				detail.textContent = '[' + first.type + '] ' + first.k + '\n' + first.d;
+			}
     }
 
     function renderServiceDocs() {
       const q = (document.getElementById('svcSearch').value || '').toLowerCase();
       const list = document.getElementById('svcList');
+			const detail = document.getElementById('svcDetail');
       list.innerHTML = '';
+			detail.textContent = '';
+			let first = null;
       for (const s of state.serviceDocs || []) {
-        const text = (String(s.id) + ' ' + String(s.name) + ' ' + String(s.family) + ' ' + String(s.notes)).toLowerCase();
+				const text = (
+					String(s.id) + ' '
+					+ String(s.name) + ' '
+					+ String(s.family) + ' '
+					+ String(s.handler) + ' '
+					+ String(s.frame) + ' '
+					+ String(s.result) + ' '
+					+ String(s.status) + ' '
+					+ String(s.notesTr || s.notes)
+				).toLowerCase();
         if (q && !text.includes(q)) continue;
+				if (!first) first = s;
         const div = document.createElement('div');
         div.className = 'item';
-        div.innerHTML = '<b>@' + esc(s.id) + '</b> [' + esc(s.family || '-') + '] ' + esc(s.name || '-')
-          + '<div class="tiny">' + esc(s.notes || '') + '</div>';
+				div.innerHTML = '<b>@' + esc(s.id) + '</b> [' + esc(s.family || '-') + '] ' + esc(s.name || '-')
+					+ '<div class="tiny">frame=' + esc(s.frame || '-') + ' | result=' + esc(s.result || '-') + '</div>'
+					+ '<div class="tiny">status=' + esc(s.status || '-') + ' | handler=' + esc(s.handler || '-') + '</div>';
+				div.addEventListener('click', () => {
+					detail.textContent = [
+						'id: ' + (s.id || '-'),
+						'ad: ' + (s.name || '-'),
+						'aile: ' + (s.family || '-'),
+						'frame: ' + (s.frame || '-'),
+						'result: ' + (s.result || '-'),
+						'status: ' + (s.status || '-'),
+						'enabled: ' + (s.enabled || '-'),
+						'handler: ' + (s.handler || '-'),
+						'source: ' + (s.source || '-'),
+						'aciklama: ' + (s.notesTr || s.notes || '-')
+					].join('\n');
+				});
         list.appendChild(div);
       }
+			if (!first) {
+				detail.textContent = 'Eslesen servis yok. ID, aile, ad veya frame bilgisi ile arayabilirsiniz.';
+			} else if (!detail.textContent) {
+				detail.textContent = 'id: ' + (first.id || '-') + '\naciklama: ' + (first.notesTr || first.notes || '-');
+			}
     }
 
     function currentHelpDoc() {
@@ -1034,8 +1261,7 @@ function getControlCenterHtml() {
         const del = document.createElement('button');
         del.textContent = 'Sil';
         del.addEventListener('click', () => {
-          vscode.postMessage({
-            cmd: 'deleteNote',
+					sendCmd('deleteNote', {
             programRel: state.activeProgramRel,
             segment: seg,
             id: r.id
@@ -1048,6 +1274,59 @@ function getControlCenterHtml() {
         wrap.textContent = 'Bu segmentte not yok.';
       }
     }
+
+		function renderMemoryModel() {
+			const box = document.getElementById('memoryModelInfo');
+			const m = state.memoryModel;
+			if (!m || !m.defaults) {
+				box.textContent = 'Bellek modeli bilgisi yuklenemedi.';
+				return;
+			}
+			box.textContent = (
+				(m.title || 'Bellek modeli') + ' | '
+				+ 'Varsayilan: tape=' + m.defaults.tapeKb + 'KB, '
+				+ 'data=' + m.defaults.dataKb + 'KB, '
+				+ 'stack=' + m.defaults.stackKb + 'KB, '
+				+ 'queue=' + m.defaults.queueKb + 'KB | '
+				+ 'Toplam ust sinir=' + (m.maxTotalKb || '-') + 'KB'
+			);
+		}
+
+		function renderMemoryPlan() {
+			const box = document.getElementById('memoryPlanTable');
+			const notes = state.notes && state.notes.notes ? state.notes.notes : { tape: [], data: [], stack: [], queue: [] };
+			const segs = ['tape', 'data', 'stack', 'queue'];
+			const rows = [];
+			for (const seg of segs) {
+				for (const item of (notes[seg] || [])) {
+					rows.push({
+						segment: seg,
+						cell: item.cell || '-',
+						purpose: item.purpose || '-',
+						note: item.note || '-',
+						createdAt: item.createdAt || '-',
+						id: item.id || ''
+					});
+				}
+			}
+			rows.sort((a, b) => String(a.segment).localeCompare(String(b.segment)) || String(a.cell).localeCompare(String(b.cell)));
+			if (rows.length === 0) {
+				box.textContent = 'Bellek plani bos. Not ekledikce tablo dolar.';
+				return;
+			}
+			let html = '';
+			html += '<div class="item"><b>segment</b> | <b>hucre</b> | <b>amac</b> | <b>not</b> | <b>tarih</b></div>';
+			for (const r of rows) {
+				html += '<div class="item" data-note-id="' + esc(r.id) + '">'
+					+ esc(r.segment) + ' | '
+					+ esc(r.cell) + ' | '
+					+ esc(r.purpose) + ' | '
+					+ esc(r.note) + ' | '
+					+ esc(r.createdAt)
+					+ '</div>';
+			}
+			box.innerHTML = html;
+		}
 
     function renderTraceList() {
       const list = document.getElementById('traceList');
@@ -1065,6 +1344,7 @@ function getControlCenterHtml() {
         list.appendChild(div);
       }
       updateTraceCurrent();
+			renderMemoryPlan();
     }
 
     function updateTraceCurrent() {
@@ -1085,6 +1365,7 @@ function getControlCenterHtml() {
       if (e && e.lineNumber) {
         vscode.postMessage({ cmd: 'traceStep', programRel: state.activeProgramRel, lineNumber: e.lineNumber });
       }
+			renderMemoryPlan();
     }
 
     function startPlay() {
@@ -1115,17 +1396,37 @@ function getControlCenterHtml() {
       renderServiceDocs();
       renderHelpDocs();
       renderNotes();
+			renderMemoryModel();
+			renderMemoryPlan();
     }
 
-    document.getElementById('btnRefresh').addEventListener('click', () => vscode.postMessage({ cmd: 'requestState' }));
-    document.getElementById('btnCompile').addEventListener('click', () => vscode.postMessage({ cmd: 'compile' }));
-    document.getElementById('btnRunTests').addEventListener('click', () => vscode.postMessage({ cmd: 'runTests' }));
-    document.getElementById('btnRunInterpreter').addEventListener('click', () => vscode.postMessage({ cmd: 'runInterpreter' }));
-    document.getElementById('btnClearTrace').addEventListener('click', () => vscode.postMessage({ cmd: 'traceClear' }));
+		function sendCmd(cmd, payload) {
+			setStatus('istek gonderildi: ' + cmd, true);
+			vscode.postMessage(Object.assign({ cmd }, payload || {}));
+		}
+
+		document.getElementById('btnRefresh').addEventListener('click', () => sendCmd('requestState'));
+		document.getElementById('btnCompile').addEventListener('click', () => sendCmd('compile'));
+		document.getElementById('btnRunTests').addEventListener('click', () => sendCmd('runTests'));
+		document.getElementById('btnRunInterpreter').addEventListener('click', () => sendCmd('runInterpreter'));
+		document.getElementById('btnClearTrace').addEventListener('click', () => sendCmd('traceClear'));
     document.getElementById('btnTraceLoad').addEventListener('click', () => {
       const file = document.getElementById('traceFile').value || 'build/logs/uxm_runtime_trace.log';
-      vscode.postMessage({ cmd: 'traceFetch', file });
+			sendCmd('traceFetch', { file });
     });
+		document.getElementById('btnJumpPlan').addEventListener('click', () => {
+			const card = document.getElementById('planCard');
+			if (card) card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+		});
+		document.getElementById('btnPlanTop').addEventListener('click', () => {
+			const box = document.getElementById('memoryPlanTable');
+			if (box) box.scrollIntoView({ behavior: 'smooth', block: 'start' });
+		});
+		document.getElementById('btnPlanRefresh').addEventListener('click', () => {
+			renderMemoryPlan();
+			setStatus('bellek plani yenilendi', true);
+		});
+
     document.getElementById('btnPrev').addEventListener('click', () => moveTrace(traceIndex - 1));
     document.getElementById('btnNext').addEventListener('click', () => moveTrace(traceIndex + 1));
     document.getElementById('btnPlay').addEventListener('click', () => {
@@ -1136,11 +1437,23 @@ function getControlCenterHtml() {
     document.getElementById('toolSelect').addEventListener('change', renderToolInfo);
     document.getElementById('btnRunTool').addEventListener('click', () => {
       const toolPath = document.getElementById('toolSelect').value;
-      vscode.postMessage({ cmd: 'runTool', toolPath });
+			sendCmd('runTool', { toolPath });
     });
 
     document.getElementById('cmdSearch').addEventListener('input', renderCommandDocs);
     document.getElementById('svcSearch').addEventListener('input', renderServiceDocs);
+		document.getElementById('cmdSearch').addEventListener('keydown', (ev) => {
+			if (ev.key !== 'Enter') return;
+			renderCommandDocs();
+			const first = document.querySelector('#cmdList .item');
+			if (first) first.click();
+		});
+		document.getElementById('svcSearch').addEventListener('keydown', (ev) => {
+			if (ev.key !== 'Enter') return;
+			renderServiceDocs();
+			const first = document.querySelector('#svcList .item');
+			if (first) first.click();
+		});
     document.getElementById('helpSelect').addEventListener('change', renderHelpContent);
     document.getElementById('helpSearch').addEventListener('input', renderHelpContent);
     document.getElementById('btnOpenHelp').addEventListener('click', () => {
@@ -1151,8 +1464,7 @@ function getControlCenterHtml() {
 
     document.getElementById('noteSegment').addEventListener('change', renderNotes);
     document.getElementById('btnSaveNote').addEventListener('click', () => {
-      vscode.postMessage({
-        cmd: 'saveNote',
+			sendCmd('saveNote', {
         programRel: state.activeProgramRel,
         segment: document.getElementById('noteSegment').value,
         cell: document.getElementById('noteCell').value,
@@ -1166,10 +1478,12 @@ function getControlCenterHtml() {
       const msg = event.data || {};
       if (msg.type === 'state') {
         state = msg.payload || state;
+				setStatus('hazir', true);
         renderAll();
       } else if (msg.type === 'traceData') {
         traceEntries = (msg.payload && msg.payload.entries) ? msg.payload.entries : [];
         traceIndex = traceEntries.length > 0 ? 0 : -1;
+				setStatus('trace yuklendi (' + traceEntries.length + ' satir)', true);
         renderTraceList();
         if (traceEntries.length > 0) {
           const e = traceEntries[traceIndex];
@@ -1179,15 +1493,20 @@ function getControlCenterHtml() {
         }
       } else if (msg.type === 'notesUpdated') {
         if (state) state.notes = msg.payload;
+				setStatus('notlar guncellendi', true);
         renderNotes();
+				renderMemoryPlan();
       } else if (msg.type === 'actionResult') {
+				setStatus((msg.payload && msg.payload.ok) ? 'islem tamamlandi' : 'islem hata verdi', !!(msg.payload && msg.payload.ok));
         setJsonOut(msg.payload, msg.payload && msg.payload.ok);
       } else if (msg.type === 'error') {
+				setStatus(msg.payload && msg.payload.message ? msg.payload.message : 'Bilinmeyen hata', false);
         setJsonOut({ error: msg.payload && msg.payload.message ? msg.payload.message : 'Bilinmeyen hata' }, false);
       }
     });
 
-    vscode.postMessage({ cmd: 'requestState' });
+		vscode.postMessage({ cmd: 'uiReady' });
+		vscode.postMessage({ cmd: 'requestState' });
   </script>
 </body>
 </html>`;
@@ -1218,6 +1537,13 @@ function activeUxmDocument() {
 	return editor.document;
 }
 
+function isUxmLikeDocument(document) {
+	if (!document) return false;
+	if (document.languageId === 'uxm' || document.languageId === 'uxminima') return true;
+	const fileName = String(document.fileName || '').toLowerCase();
+	return fileName.endsWith('.uxm');
+}
+
 async function openIfExists(filePath, viewColumn) {
 	if (!fs.existsSync(filePath)) {
 		vscode.window.showWarningMessage('Dosya bulunamadi: ' + filePath);
@@ -1227,7 +1553,54 @@ async function openIfExists(filePath, viewColumn) {
 	await vscode.window.showTextDocument(uri, { preview: false, viewColumn });
 }
 
-function metaHelpMarkdown() {
+function findServiceDoc(root, id) {
+	if (!root) return null;
+	const rows = loadServiceDocs(root, 0);
+	for (const row of rows) {
+		if (row.idNum === id) return row;
+		if (Number(row.id) === id) return row;
+	}
+	return null;
+}
+
+function buildServiceHoverText(row) {
+	if (!row) return 'Servis kaydi bulunamadi. Ayrintilar: config/uxm/service_registry_merged.csv';
+	const lines = [];
+	lines.push('Servis @' + row.id + ' - ' + (row.name || '-'));
+	lines.push('Aile: ' + (row.family || '-'));
+	lines.push('Frame: ' + (row.frame || '-'));
+	lines.push('Result: ' + (row.result || '-'));
+	lines.push('Status: ' + (row.status || '-'));
+	lines.push('Enabled: ' + (row.enabled || '-'));
+	lines.push('Handler: ' + (row.handler || '-'));
+	if (row.notesTr || row.notes) lines.push('Aciklama: ' + (row.notesTr || row.notes));
+	if (row.source) lines.push('Kaynak: ' + row.source);
+	return lines.join('\n');
+}
+
+function metaHelpMarkdown(root) {
+	const docs = root ? loadServiceDocs(root, 600) : [];
+	if (docs.length > 0) {
+		const rows = docs.map((m) => (
+			'| @' + m.id + ' | '
+			+ (m.name || '-') + ' | '
+			+ '`' + (m.frame || '-') + '` | '
+			+ '`' + (m.result || '-') + '` | '
+			+ (m.status || '-') + ' | '
+			+ (m.notesTr || m.notes || '-') + ' |'
+		)).join('\n');
+		return '# UXM Meta Servisleri (Birlesik Registry)\n\n'
+			+ 'Servis ID araligi bu surumde **0..65535** olarak ele alinmalidir.\n\n'
+			+ '| Meta | Ad | Frame | Result | Durum | Aciklama |\n'
+			+ '|---|---|---|---|---|---|\n'
+			+ rows + '\n\n'
+			+ 'Tam registry: `config/uxm/service_registry_merged.csv`\n\n'
+			+ 'VSCode cache: `.uxm/vscode/service_docs_cache.csv`\n\n'
+			+ '## Host meta zorlamasi\n\n'
+			+ '`@!N` macro aramasini bypass ederek dogrudan host/runtime servisini cagirir.\n\n'
+			+ '## Kullanici macro alani\n\n'
+			+ '@128..@255 kullanici macro alanidir.\n';
+	}
 	const rows = Object.values(META_SERVICES)
 		.sort((a, b) => a.id - b.id)
 		.map((m) => '| @' + m.id + ' | ' + m.name + ' | `' + m.frame + '` | ' + m.description + ' |')
@@ -1236,10 +1609,7 @@ function metaHelpMarkdown() {
 		+ '| Meta | Ad | Frame | Aciklama |\n'
 		+ '|---|---|---|---|\n'
 		+ rows + '\n\n'
-		+ '## Host meta zorlamasi\n\n'
-		+ '`@!N` macro aramasini bypass ederek dogrudan host/runtime servisini cagirir.\n\n'
-		+ '## Kullanici macro alani\n\n'
-		+ '@128..@255 kullanici macro alanidir.\n';
+		+ 'Servis ID araligi: 0..65535 (registry tabanli).\n';
 }
 
 async function runFinalAndOpen(context, output, mode) {
@@ -1339,60 +1709,114 @@ async function activate(context) {
 		});
 	}
 
-	// Hover provider: komutlar, pragma ve adresleme icin bilgilendirme kutucuklari
+	// Hover provider: komut, pragma, servis ve adresleme bilgileri
 	{
 		const HOVER_MAP = new Map();
 		for (const it of COMMAND_DOCS) HOVER_MAP.set(it.token, it.desc);
 		for (const it of ADDRESSING_DOCS) HOVER_MAP.set(it.mode, it.desc);
-		HOVER_MAP.set('@ID', 'Meta servis çağırır. Örn: @20');
-		HOVER_MAP.set('@#', 'Dinamik meta çağrısı.');
-		HOVER_MAP.set('@(addr)', 'Adresten dinamik meta çağrısı.');
-		HOVER_MAP.set(':', 'Branch/label komutu (örn :loop).');
-		HOVER_MAP.set('#mode', 'Pragma: çalışma modu. #mode safe|normal|wild');
-		HOVER_MAP.set('#cell', 'Pragma: hücre tipi. #cell byte|word|dword');
+		for (const it of LOOP_TEMPLATE_DOCS) HOVER_MAP.set(it.token, it.desc);
+		HOVER_MAP.set('@ID', 'Meta servis cagirir. Ornek: @20');
+		HOVER_MAP.set('@#', 'Dinamik meta cagrisi.');
+		HOVER_MAP.set('@(addr)', 'Adresten dinamik meta cagrisi.');
+		HOVER_MAP.set(':', 'Branch ailesi (ornek: :0+3, ::-2, :z+1).');
+		HOVER_MAP.set('#mode', 'Pragma: #mode safe|normal|wild');
+		HOVER_MAP.set('#cell', 'Pragma: #cell byte|word|dword');
+		HOVER_MAP.set('#memory', 'Pragma: #memory tape=<KB> data=<KB> stack=<KB> queue=<KB>');
 
 		for (const hoverLang of ['uxm', 'uxminima']) {
 			context.subscriptions.push(vscode.languages.registerHoverProvider(hoverLang, {
 				provideHover(document, position) {
-				const tokenRegex = /\([^)\s]+\)|@\([^)\s]+\)|@[!#]?\d+|:\w[\w\-]*|s\d+|p\d+|m\d+|#[A-Za-z0-9_\-]+|[><+\-0\.,\[\]\$%\?;!&\|\^~\{\}e]/;
-				const range = document.getWordRangeAtPosition(position, tokenRegex);
-				if (!range) return null;
-				let word = document.getText(range);
-				// Normalize numeric parts in parentheses to match addressing patterns
-				if (word.startsWith('(') && word.endsWith(')')) {
-					const normalized = word.replace(/\d+/g, 'N');
-					for (const [k, v] of HOVER_MAP.entries()) {
-						if (k === normalized || (k.indexOf(normalized) !== -1)) {
-							return new vscode.Hover(v);
+					const tokenRegex = /\([^\)\s]+\)|@\([^\)\s]+\)|@[!#]?\d+|:\w[\w\-]*|[><+\-]k\d+|k\d+|s\d+|p\d+|m\d+|#[A-Za-z0-9_\-]+|[><+\-0\.,\[\]\$%\?;!&\|\^~\{\}e]/;
+					const range = document.getWordRangeAtPosition(position, tokenRegex);
+					if (!range) return null;
+					const word = document.getText(range);
+
+					if (word.startsWith('(') && word.endsWith(')')) {
+						const normalized = word.replace(/\d+/g, 'N');
+						for (const [k, v] of HOVER_MAP.entries()) {
+							if (k === normalized || k.indexOf(normalized) !== -1) {
+								return new vscode.Hover(v);
+							}
+						}
+						return new vscode.Hover(ADDRESSING_DOCS.map((x) => x.mode + ' - ' + x.desc).join('\n'));
+					}
+
+					if (HOVER_MAP.has(word)) return new vscode.Hover(HOVER_MAP.get(word));
+
+					const repeatMatch = /^([><+\-])k(\d+)$/.exec(word);
+					if (repeatMatch) {
+						const op = repeatMatch[1];
+						const n = Number(repeatMatch[2]);
+						if (op === '>') return new vscode.Hover('`>k' + n + '` pointeri saga ' + n + ' adim tasir.');
+						if (op === '<') return new vscode.Hover('`<k' + n + '` pointeri sola ' + n + ' adim tasir.');
+						if (op === '+') return new vscode.Hover('`+k' + n + '` hedef hucreyi ' + n + ' kez artirir.');
+						if (op === '-') return new vscode.Hover('`-k' + n + '` hedef hucreyi ' + n + ' kez azaltir.');
+					}
+
+					if (/^k\d+$/.test(word)) {
+						return new vscode.Hover('Tekrar belirteci. `kN`, onundeki komutun N kez uygulanacagini belirtir.');
+					}
+
+					if (/^s\d+/.test(word)) return new vscode.Hover('String tanimlama: sN=start,{text}');
+					if (/^p\d+/.test(word)) return new vscode.Hover('Onceden tanimli string cagrisi: pN');
+					if (/^m\d+/.test(word)) return new vscode.Hover('Macro tanimlama: mN={...} (N:128..255)');
+
+					if (/^@[!#]?\d+$/.test(word)) {
+						const raw = word.replace(/^@!/, '@').replace(/^@#/, '@0');
+						const id = Number(raw.slice(1));
+						if (!Number.isNaN(id)) {
+							if (id < 0 || id > 65535) {
+								return new vscode.Hover('Gecersiz servis ID: ' + id + '. Gecerli aralik 0..65535.');
+							}
+							const root = getWorkspaceRoot();
+							const row = findServiceDoc(root, id);
+							if (row) return new vscode.Hover(buildServiceHoverText(row));
+							return new vscode.Hover(metaMarkdown(id) + '\n\nRegistry: config/uxm/service_registry_merged.csv');
+						}
+						return new vscode.Hover('Meta servis cagrisi. Registry: config/uxm/service_registry_merged.csv');
+					}
+
+					if (/^#/.test(word)) {
+						const key = word.split(/[\s=]/)[0];
+						switch (key) {
+							case '#mode': return new vscode.Hover('Pragma: #mode safe|normal|wild');
+							case '#cell': return new vscode.Hover('Pragma: #cell byte|word|dword');
+							case '#bounds': return new vscode.Hover('Pragma: #bounds on|off');
+							case '#overflow': return new vscode.Hover('Pragma: #overflow check|wrap');
+							case '#endian': return new vscode.Hover('Pragma: #endian big|little');
+							case '#memory': {
+								const d = MEMORY_MODEL_DOC.defaults;
+								return new vscode.Hover(
+									'Memory modeli: tape=' + d.tapeKb + 'KB, data=' + d.dataKb + 'KB, stack=' + d.stackKb + 'KB, queue=' + d.queueKb + 'KB. '
+									+ 'Toplam ust sinir: ' + MEMORY_MODEL_DOC.maxTotalKb + 'KB.'
+								);
+							}
+							default: return new vscode.Hover('Pragma detayi icin PCK.md ve UXM kilavuzlarina bakin.');
 						}
 					}
-					// Fallback: show short addressing summary
-					return new vscode.Hover(ADDRESSING_DOCS.map((x) => x.mode + ' - ' + x.desc).join('\n'));
-				}
-				if (HOVER_MAP.has(word)) return new vscode.Hover(HOVER_MAP.get(word));
-				if (/^s\d+/.test(word)) return new vscode.Hover('String tanımlama: sN=start,{text}');
-				if (/^p\d+/.test(word)) return new vscode.Hover('Önceden tanımlı string çağırma: pN');
-				if (/^m\d+/.test(word)) return new vscode.Hover('Macro tanımlama: mN={...} (N:128..255)');
-				if (/^@[!#]?\d+$/.test(word)) {
-					const raw = word.replace(/^@!/, '@').replace(/^@#/, '@0');
-					const id = Number(raw.slice(1));
-					if (!Number.isNaN(id)) return new vscode.Hover(metaMarkdown(id));
-					return new vscode.Hover('Meta servis çağırma. Registry: config/uxm/service_registry_merged.csv');
-				}
-				if (/^#/.test(word)) {
-					const key = word.split(/[\s=]/)[0];
-					switch (key) {
-						case '#mode': return new vscode.Hover('Pragma: #mode safe|normal|wild');
-						case '#cell': return new vscode.Hover('Pragma: #cell byte|word|dword');
-						case '#bounds': return new vscode.Hover('Pragma: #bounds on|off');
-						case '#overflow': return new vscode.Hover('Pragma: #overflow check|wrap');
-						case '#endian': return new vscode.Hover('Pragma: #endian big|little');
-						default: return new vscode.Hover('Pragma: detay için PCK.md veya docs referansına bakın.');
-					}
-				}
-				return null;
+					return null;
 				}
 			}));
+		}
+
+		for (const lang of ['uxm', 'uxminima']) {
+			context.subscriptions.push(vscode.languages.registerCompletionItemProvider(lang, {
+				provideCompletionItems() {
+					const items = [];
+					for (const tpl of LOOP_TEMPLATE_DOCS) {
+						const ci = new vscode.CompletionItem(tpl.token, vscode.CompletionItemKind.Snippet);
+						ci.detail = 'UXM loop/branch kalibi';
+						ci.documentation = tpl.desc;
+						items.push(ci);
+					}
+					for (const t of ['+kN', '-kN', '>kN', '<kN', ':0+N', ':0-N', '::+N', '::-N']) {
+						const ci = new vscode.CompletionItem(t, vscode.CompletionItemKind.Keyword);
+						ci.detail = 'UXM hizli kalip';
+						items.push(ci);
+					}
+					return items;
+				}
+			}, '[', ':', '@', 'k'));
 		}
 	}
 
@@ -1426,6 +1850,35 @@ async function activate(context) {
 
 	registerCommandWithGuard(context, output, existingSet, 'uxm.controlCenter', () => openControlCenter(context, output));
 	registerCommandWithGuard(context, output, existingSet, 'uxm.openControlPanel', () => openControlCenter(context, output));
+
+	let autoOpenBusy = false;
+	const maybeAutoOpenControlCenter = async (editor) => {
+		if (autoOpenBusy) return;
+		if (!editor || !isUxmLikeDocument(editor.document)) return;
+		if (!getWorkspaceRoot()) return;
+
+		if (activePanel) {
+			if (activePanelState && activePanelState.root) {
+				postPanel(activePanel, 'state', buildPanelState(activePanelState.root));
+			}
+			return;
+		}
+
+		autoOpenBusy = true;
+		try {
+			await openControlCenter(context, output);
+		} catch (e) {
+			output.appendLine('[auto-open] ' + String(e));
+		} finally {
+			autoOpenBusy = false;
+		}
+	};
+
+	context.subscriptions.push(vscode.window.onDidChangeActiveTextEditor((editor) => {
+		void maybeAutoOpenControlCenter(editor);
+	}));
+
+	void maybeAutoOpenControlCenter(vscode.window.activeTextEditor);
 
 	registerCommandWithGuard(context, output, existingSet, 'uxminima.validateFile', () => {
 		const doc = activeUxmDocument();
@@ -1587,7 +2040,10 @@ async function activate(context) {
 	});
 
 	registerCommandWithGuard(context, output, existingSet, 'uxminima.openMetaHelp', async () => {
-		const doc = await vscode.workspace.openTextDocument({ language: 'markdown', content: metaHelpMarkdown() });
+		const doc = await vscode.workspace.openTextDocument({
+			language: 'markdown',
+			content: metaHelpMarkdown(getWorkspaceRoot())
+		});
 		await vscode.window.showTextDocument(doc, { preview: false, viewColumn: vscode.ViewColumn.Beside });
 	});
 

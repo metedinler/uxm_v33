@@ -64,7 +64,7 @@ Sub ParseOneInstruction(ByRef code As String, ByRef p As Long, ByVal depth As Lo
     addrVal=0
     addrVal2=0
     amt=1
-    If c="+" Or c="-" Then
+    If c="+" Or c="-" Or c=">" Or c="<" Then
         If p<=Len(code) Then
             If Mid(code,p,1)="k" Or Mid(code,p,1)="K" Then
                 p=p+1

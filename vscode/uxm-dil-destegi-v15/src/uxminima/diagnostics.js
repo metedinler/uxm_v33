@@ -86,9 +86,9 @@ class UxmDiagnostics {
         }
         for (const match of line.matchAll(metaPattern)) {
             const id = Number(match[1]);
-            if (!Number.isInteger(id) || id < 0 || id > 255) {
+            if (!Number.isInteger(id) || id < 0 || id > 65535) {
                 const start = match.index ?? 0;
-                diagnostics.push(new vscode.Diagnostic(new vscode.Range(lineIndex, start, lineIndex, start + match[0].length), "Meta servis id 0..255 aralığında olmalı.", vscode.DiagnosticSeverity.Error));
+                diagnostics.push(new vscode.Diagnostic(new vscode.Range(lineIndex, start, lineIndex, start + match[0].length), "Meta servis id 0..65535 aralığında olmalı.", vscode.DiagnosticSeverity.Error));
             }
         }
         for (const match of line.matchAll(macroPattern)) {
@@ -137,8 +137,28 @@ class UxmDiagnostics {
         const tape = getVal("tape");
         const stack = getVal("stack");
         const data = getVal("data");
-        if (tape !== undefined && stack !== undefined && data !== undefined && tape + stack + data !== 64) {
-            diagnostics.push(new vscode.Diagnostic(new vscode.Range(lineIndex, 0, lineIndex, line.length), `#memory toplamı 64 KB olmalı. Şu an: ${tape + stack + data} KB`, vscode.DiagnosticSeverity.Error));
+        const queue = getVal("queue") ?? getVal("fifo");
+        const values = [
+            ["tape", tape],
+            ["stack", stack],
+            ["data", data],
+            ["queue", queue]
+        ];
+        for (const [name, val] of values) {
+            if (val !== undefined && (!Number.isFinite(val) || val < 0)) {
+                diagnostics.push(new vscode.Diagnostic(new vscode.Range(lineIndex, 0, lineIndex, line.length), `#memory ${name} degeri gecersiz.`, vscode.DiagnosticSeverity.Error));
+                return;
+            }
+            if (val !== undefined && val > 16384) {
+                diagnostics.push(new vscode.Diagnostic(new vscode.Range(lineIndex, 0, lineIndex, line.length), `#memory ${name} 16384 KB ustune cikamaz.`, vscode.DiagnosticSeverity.Error));
+            }
+        }
+        const provided = [tape, stack, data, queue].filter((x) => x !== undefined);
+        if (provided.length >= 2) {
+            const total = provided.reduce((a, b) => a + Number(b), 0);
+            if (total > 16384) {
+                diagnostics.push(new vscode.Diagnostic(new vscode.Range(lineIndex, 0, lineIndex, line.length), `#memory toplamı 16384 KB ustune cikamaz. Su an: ${total} KB`, vscode.DiagnosticSeverity.Error));
+            }
         }
     }
 }

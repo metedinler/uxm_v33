@@ -11,8 +11,8 @@
   "directives": [
     {
       "name": "#memory",
-      "syntax": "#memory tape=<KB>,stack=<KB>,data=<KB>",
-      "example": "#memory tape=96,stack=32,data=256",
+      "syntax": "#memory tape=<KB>,stack=<KB>,data=<KB>,queue=<KB>,total=<KB>",
+      "example": "#memory tape=128,stack=16,data=4096,queue=16,total=16384",
       "status": "current"
     },
     {

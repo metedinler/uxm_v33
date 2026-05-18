@@ -34,6 +34,10 @@
       "name": "variable.other.macro.uxm"
     },
     {
+      "match": "(?<!\\w)[><+\\-]k\\d+\\b",
+      "name": "keyword.operator.repeat.uxm"
+    },
+    {
       "match": "[><+\\-0\\.,\\[\\]\\$%\\?;!&\\|\\^~\\{\\}e]",
       "name": "keyword.operator.uxm"
     },
@@ -42,8 +46,8 @@
       "name": "keyword.control.uxm"
     },
     {
-      "match": "k-?\\d+",
-      "name": "constant.numeric.uxm"
+      "match": "\\bk\\d+\\b",
+      "name": "constant.numeric.repeat.uxm"
     }
   ]
 }

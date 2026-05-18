@@ -18,8 +18,11 @@ class UxmInterpreter {
         this.flags = 128;
         this.cellBits = 8;
         this.tapeKB = 32;
-        this.stackKB = 8;
-        this.dataKB = 24;
+        this.stackKB = 4;
+        this.dataKB = 16;
+        this.queueKB = 4;
+        this.totalKB = 16384;
+        this.fifoLimit = 0;
         this.output = "";
         this.step = 0;
     }
@@ -45,8 +48,11 @@ class UxmInterpreter {
         this.flags = 128;
         this.cellBits = 8;
         this.tapeKB = 32;
-        this.stackKB = 8;
-        this.dataKB = 24;
+        this.stackKB = 4;
+        this.dataKB = 16;
+        this.queueKB = 4;
+        this.totalKB = 16384;
+        this.fifoLimit = 0;
         this.output = "";
         this.step = 0;
         this.fifo = [];
@@ -69,13 +75,28 @@ class UxmInterpreter {
                 }
             }
             else if (line.startsWith("#memory")) {
+                const parseKB = (raw, unit) => {
+                    const n = Number(raw);
+                    if (!Number.isFinite(n) || n < 0) {
+                        return undefined;
+                    }
+                    if (unit === "mb") {
+                        return n * 1024;
+                    }
+                    if (unit === "b") {
+                        return Math.floor(n / 1024);
+                    }
+                    return n;
+                };
                 const get = (name) => {
-                    const m = new RegExp(`${name}=([0-9]+)`).exec(line);
-                    return m ? Number(m[1]) : undefined;
+                    const m = new RegExp(`${name}=([0-9]+)(mb|kb|b)?`).exec(line);
+                    return m ? parseKB(m[1], m[2] || "kb") : undefined;
                 };
                 this.tapeKB = get("tape") ?? this.tapeKB;
                 this.stackKB = get("stack") ?? this.stackKB;
                 this.dataKB = get("data") ?? this.dataKB;
+                this.queueKB = get("queue") ?? get("fifo") ?? this.queueKB;
+                this.totalKB = get("total") ?? this.totalKB;
             }
             else if (line.startsWith("#compare")) {
                 if (line.includes("signed")) {
@@ -99,13 +120,21 @@ class UxmInterpreter {
         }
     }
     applyMemory() {
-        if (this.tapeKB + this.stackKB + this.dataKB !== 64) {
-            this.diagnostics.push(`#memory toplamı 64 KB değil: ${this.tapeKB + this.stackKB + this.dataKB}`);
+        const total = this.tapeKB + this.stackKB + this.dataKB + this.queueKB;
+        const hardLimit = 16384;
+        const userLimit = this.totalKB > 0 ? this.totalKB : hardLimit;
+        if (total > hardLimit) {
+            this.diagnostics.push(`#memory toplamı 16384 KB ustune cikti: ${total} KB`);
+        }
+        if (total > userLimit) {
+            this.diagnostics.push(`#memory toplamı tanimli total sinirini asti: ${total} KB > ${userLimit} KB`);
         }
         const bytes = this.cellBits / 8;
         this.tape = new Array(Math.floor((this.tapeKB * 1024) / bytes)).fill(0);
         this.stack = new Array(Math.floor((this.stackKB * 1024) / bytes)).fill(0);
         this.data = new Array(Math.floor((this.dataKB * 1024) / bytes)).fill(0);
+        this.fifoLimit = Math.max(1, Math.floor((this.queueKB * 1024) / bytes));
+        this.fifo = [];
     }
     firstPass(source) {
         const sRe = /\bs([0-9]+)\s*=\s*([0-9]+)\s*,\s*\{([\s\S]*?)\}/g;
@@ -187,7 +216,7 @@ class UxmInterpreter {
                 const start = p;
                 p++;
                 let amount = 1;
-                if ((c === "+" || c === "-") && code[p]?.toLowerCase() === "k") {
+                if ((c === "+" || c === "-" || c === ">" || c === "<") && code[p]?.toLowerCase() === "k") {
                     const m = /^k([0-9]+)/i.exec(code.slice(p));
                     if (m) {
                         amount = Number(m[1]);
@@ -445,6 +474,10 @@ class UxmInterpreter {
         }
     }
     meta(id) {
+        if (!Number.isInteger(id) || id < 0 || id > 65535) {
+            this.setStatus(5);
+            return;
+        }
         if (id >= 128 && id <= 255) {
             this.setStatus(5);
             return;
@@ -542,8 +575,13 @@ class UxmInterpreter {
                 this.output += `LAYOUT tape=${this.tape.length} stack=${this.stack.length} data=${this.data.length}`;
                 break;
             case 90:
-                this.fifo.push(arg2 & this.mask());
-                this.setStatus(0);
+                if (this.fifo.length >= this.fifoLimit) {
+                    this.setStatus(13);
+                }
+                else {
+                    this.fifo.push(arg2 & this.mask());
+                    this.setStatus(0);
+                }
                 break;
             case 91:
                 result = this.fifo.shift() ?? 0;
@@ -658,7 +696,8 @@ class UxmInterpreter {
             this.setStatus(23);
             return;
         }
-        if (tapeKB + stackKB + dataKB !== 64) {
+        const requestedTotal = tapeKB + stackKB + dataKB + this.queueKB;
+        if (requestedTotal > 16384) {
             this.setStatus(16);
             return;
         }
