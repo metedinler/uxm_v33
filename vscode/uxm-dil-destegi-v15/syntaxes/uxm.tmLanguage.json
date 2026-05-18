@@ -2,20 +2,24 @@
   "scopeName": "source.uxm",
   "patterns": [
     {
-      "match": "^%%(if|else|endif|include|platform|destos|nozerovars|secstack|endcomp|errorendcomp)\\b.*$",
+      "match": "(?i)^%%(if|else|endif|include|platform|destos|nozerovars|secstack|endcomp|errorendcomp)\\b.*$",
       "name": "keyword.directive.preproc.uxm"
     },
     {
-      "match": "^include\\b.*$",
+      "match": "(?i)^include\\b.*$",
       "name": "keyword.directive.include.uxm"
     },
     {
-      "match": "^#(mode|cell|bounds|overflow|compare|endian|memory|seed|arge|poly|expr-rpn|matrix|identity|zeros|ones)\\b.*$",
+      "match": "(?i)^#(mode|cell|bounds|overflow|compare|endian|memory|seed|arge|poly|expr-rpn|matrix|identity|zeros|ones)\\b.*$",
       "name": "keyword.directive.uxm"
     },
     {
       "match": "#.*$",
       "name": "comment.line.number-sign.uxm"
+    },
+    {
+      "match": "\\(\\*T\\)|\\(\\*\\(T[+-][0-9]+\\)\\)",
+      "name": "constant.other.addressing.uxm"
     },
     {
       "match": "\\([TSDPFE][^\\)]*\\)",

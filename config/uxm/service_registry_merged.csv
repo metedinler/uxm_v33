@@ -94,22 +94,22 @@ id,name,family,handler,enabled,status,frame,result,notes,source
 125,ENDIAN_GET_BIG,fifo_data_sort_wild,MetaFifoDataSortWild,True,current,Arg0/Arg1/Arg2 depending service,T+1/status,,runtime_meta_dispatch.bas
 126,FLAGS_GET,fifo_data_sort_wild,MetaFifoDataSortWild,True,current,Arg0/Arg1/Arg2 depending service,T+1/status,,runtime_meta_dispatch.bas
 127,WILD_LAYOUT_CHANGE,fifo_data_sort_wild,MetaFifoDataSortWild,True,current,Arg0/Arg1/Arg2 depending service,T+1/status,,runtime_meta_dispatch.bas
-130,CMP_EQ_UNSIGNED,flags_compare,MetaFlagsEndian,True,unreachable_current_bug,,T+1/status,Case exists in MetaFlagsEndian but dispatcher only sends 150..159 there; @130..149 currently invalid unless dispatch is fixed.,runtime_meta_dispatch.bas
-131,CMP_GT_UNSIGNED,flags_compare,MetaFlagsEndian,True,unreachable_current_bug,,T+1/status,Case exists in MetaFlagsEndian but dispatcher only sends 150..159 there; @130..149 currently invalid unless dispatch is fixed.,runtime_meta_dispatch.bas
-132,CMP_LT_UNSIGNED,flags_compare,MetaFlagsEndian,True,unreachable_current_bug,,T+1/status,Case exists in MetaFlagsEndian but dispatcher only sends 150..159 there; @130..149 currently invalid unless dispatch is fixed.,runtime_meta_dispatch.bas
-133,CMP_EQ_SIGNED,flags_compare,MetaFlagsEndian,True,unreachable_current_bug,,T+1/status,Case exists in MetaFlagsEndian but dispatcher only sends 150..159 there; @130..149 currently invalid unless dispatch is fixed.,runtime_meta_dispatch.bas
-134,CMP_GT_SIGNED,flags_compare,MetaFlagsEndian,True,unreachable_current_bug,,T+1/status,Case exists in MetaFlagsEndian but dispatcher only sends 150..159 there; @130..149 currently invalid unless dispatch is fixed.,runtime_meta_dispatch.bas
-135,CMP_LT_SIGNED,flags_compare,MetaFlagsEndian,True,unreachable_current_bug,,T+1/status,Case exists in MetaFlagsEndian but dispatcher only sends 150..159 there; @130..149 currently invalid unless dispatch is fixed.,runtime_meta_dispatch.bas
-140,GET_CARRY_FLAG,flags_compare,MetaFlagsEndian,True,unreachable_current_bug,,T+1/status,Case exists in MetaFlagsEndian but dispatcher only sends 150..159 there; @130..149 currently invalid unless dispatch is fixed.,runtime_meta_dispatch.bas
-141,SET_CARRY_FLAG,flags_compare,MetaFlagsEndian,True,unreachable_current_bug,,T+1/status,Case exists in MetaFlagsEndian but dispatcher only sends 150..159 there; @130..149 currently invalid unless dispatch is fixed.,runtime_meta_dispatch.bas
-142,CLEAR_CARRY_FLAG,flags_compare,MetaFlagsEndian,True,unreachable_current_bug,,T+1/status,Case exists in MetaFlagsEndian but dispatcher only sends 150..159 there; @130..149 currently invalid unless dispatch is fixed.,runtime_meta_dispatch.bas
-143,GET_OVERFLOW_FLAG,flags_compare,MetaFlagsEndian,True,unreachable_current_bug,,T+1/status,Case exists in MetaFlagsEndian but dispatcher only sends 150..159 there; @130..149 currently invalid unless dispatch is fixed.,runtime_meta_dispatch.bas
-144,SET_OVERFLOW_FLAG,flags_compare,MetaFlagsEndian,True,unreachable_current_bug,,T+1/status,Case exists in MetaFlagsEndian but dispatcher only sends 150..159 there; @130..149 currently invalid unless dispatch is fixed.,runtime_meta_dispatch.bas
-145,CLEAR_OVERFLOW_FLAG,flags_compare,MetaFlagsEndian,True,unreachable_current_bug,,T+1/status,Case exists in MetaFlagsEndian but dispatcher only sends 150..159 there; @130..149 currently invalid unless dispatch is fixed.,runtime_meta_dispatch.bas
-146,GET_ZERO_FLAG,flags_compare,MetaFlagsEndian,True,unreachable_current_bug,,T+1/status,Case exists in MetaFlagsEndian but dispatcher only sends 150..159 there; @130..149 currently invalid unless dispatch is fixed.,runtime_meta_dispatch.bas
-147,GET_SIGN_FLAG,flags_compare,MetaFlagsEndian,True,unreachable_current_bug,,T+1/status,Case exists in MetaFlagsEndian but dispatcher only sends 150..159 there; @130..149 currently invalid unless dispatch is fixed.,runtime_meta_dispatch.bas
-148,CLEAR_ZCOS_FLAGS,flags_compare,MetaFlagsEndian,True,unreachable_current_bug,,T+1/status,Case exists in MetaFlagsEndian but dispatcher only sends 150..159 there; @130..149 currently invalid unless dispatch is fixed.,runtime_meta_dispatch.bas
-149,FLAGS_GET_ALIAS,flags_compare,MetaFlagsEndian,True,unreachable_current_bug,,T+1/status,Case exists in MetaFlagsEndian but dispatcher only sends 150..159 there; @130..149 currently invalid unless dispatch is fixed.,runtime_meta_dispatch.bas
+130,CMP_EQ_UNSIGNED,flags_compare,MetaFlagsEndian,True,current,,T+1/status,,runtime_meta_dispatch.bas
+131,CMP_GT_UNSIGNED,flags_compare,MetaFlagsEndian,True,current,,T+1/status,,runtime_meta_dispatch.bas
+132,CMP_LT_UNSIGNED,flags_compare,MetaFlagsEndian,True,current,,T+1/status,,runtime_meta_dispatch.bas
+133,CMP_EQ_SIGNED,flags_compare,MetaFlagsEndian,True,current,,T+1/status,,runtime_meta_dispatch.bas
+134,CMP_GT_SIGNED,flags_compare,MetaFlagsEndian,True,current,,T+1/status,,runtime_meta_dispatch.bas
+135,CMP_LT_SIGNED,flags_compare,MetaFlagsEndian,True,current,,T+1/status,,runtime_meta_dispatch.bas
+140,GET_CARRY_FLAG,flags_compare,MetaFlagsEndian,True,current,,T+1/status,,runtime_meta_dispatch.bas
+141,SET_CARRY_FLAG,flags_compare,MetaFlagsEndian,True,current,,T+1/status,,runtime_meta_dispatch.bas
+142,CLEAR_CARRY_FLAG,flags_compare,MetaFlagsEndian,True,current,,T+1/status,,runtime_meta_dispatch.bas
+143,GET_OVERFLOW_FLAG,flags_compare,MetaFlagsEndian,True,current,,T+1/status,,runtime_meta_dispatch.bas
+144,SET_OVERFLOW_FLAG,flags_compare,MetaFlagsEndian,True,current,,T+1/status,,runtime_meta_dispatch.bas
+145,CLEAR_OVERFLOW_FLAG,flags_compare,MetaFlagsEndian,True,current,,T+1/status,,runtime_meta_dispatch.bas
+146,GET_ZERO_FLAG,flags_compare,MetaFlagsEndian,True,current,,T+1/status,,runtime_meta_dispatch.bas
+147,GET_SIGN_FLAG,flags_compare,MetaFlagsEndian,True,current,,T+1/status,,runtime_meta_dispatch.bas
+148,CLEAR_ZCOS_FLAGS,flags_compare,MetaFlagsEndian,True,current,,T+1/status,,runtime_meta_dispatch.bas
+149,FLAGS_GET_ALIAS,flags_compare,MetaFlagsEndian,True,current,,T+1/status,,runtime_meta_dispatch.bas
 150,ENDIAN_LITTLE_ALIAS,flags_endian,MetaFlagsEndian,True,current,T-1/relative tape cells depending service,T+1/status,,runtime_meta_dispatch.bas
 151,ENDIAN_BIG_ALIAS,flags_endian,MetaFlagsEndian,True,current,T-1/relative tape cells depending service,T+1/status,,runtime_meta_dispatch.bas
 152,ENDIAN_GET_BIG_ALIAS,flags_endian,MetaFlagsEndian,True,current,T-1/relative tape cells depending service,T+1/status,,runtime_meta_dispatch.bas

@@ -13,7 +13,7 @@ ElseIf metaId<90 Then
 MetaPointerMemory metaId
 ElseIf metaId<128 Then
 MetaFifoDataSortWild metaId
-ElseIf metaId>=150 And metaId<=159 Then
+ElseIf metaId>=130 And metaId<=159 Then
 	MetaFlagsEndian metaId
 ElseIf metaId>=160 And metaId<=199 Then
 MetaMatrix metaId

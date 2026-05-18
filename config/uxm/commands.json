@@ -7,6 +7,7 @@
   "parser_current_limits": {
     "meta_id_max_current_native": 65535,
     "user_macro_range_current": "128..255",
+    "pointer_repeat_aliases": ">kN, <kN",
     "important": "UXM-A standart meta formlari: @N, @!N, @#, @!#, @(ADDR), @!(ADDR)."
   },
   "deprecated_meta_forms": [
@@ -111,6 +112,18 @@
       "name": "PTR_LEFT",
       "addressing_allowed": false,
       "amount": "repeat count, default 1"
+    },
+    {
+      "token": ">kN",
+      "name": "PTR_RIGHT_IMMEDIATE",
+      "addressing_allowed": false,
+      "amount": "pointer move count"
+    },
+    {
+      "token": "<kN",
+      "name": "PTR_LEFT_IMMEDIATE",
+      "addressing_allowed": false,
+      "amount": "pointer move count"
     },
     {
       "token": "+",
@@ -337,6 +350,16 @@
       "meaning": "stack pointer cell"
     },
     {
+      "syntax": "(SP+N)",
+      "kind": "ADDR_SP_REL",
+      "meaning": "stack pointer positive offset"
+    },
+    {
+      "syntax": "(SP-N)",
+      "kind": "ADDR_SP_REL",
+      "meaning": "stack pointer negative offset"
+    },
+    {
       "syntax": "(P)",
       "kind": "ADDR_P",
       "meaning": "program/runtime pointer pseudo-cell"
@@ -390,6 +413,26 @@
       "syntax": "(D@(T-K)+N)",
       "kind": "ADDR_D_AT_TBASE_REL",
       "meaning": "data[tape[T-K]+N]"
+    },
+    {
+      "syntax": "(D:BASE+P)",
+      "kind": "ADDR_D_BASE_P",
+      "meaning": "data[BASE + pointer]"
+    },
+    {
+      "syntax": "(T:BASE+P)",
+      "kind": "ADDR_T_BASE_P",
+      "meaning": "tape[BASE + pointer]"
+    },
+    {
+      "syntax": "(D@D:N)",
+      "kind": "ADDR_D_AT_D_ABS",
+      "meaning": "data[data[N]]"
+    },
+    {
+      "syntax": "(T@D:N)",
+      "kind": "ADDR_T_AT_D_ABS",
+      "meaning": "tape[data[N]]"
     }
   ],
   "address_modes_proposed_v32": [
@@ -453,8 +496,13 @@
     {
       "id": "UXM005",
       "severity": "warning",
-      "message": "@130..@149 cases exist in one source but are unreachable unless dispatcher is fixed."
+      "message": "Servis dispatch araliklari runtime ve service_registry ile birebir uyumlu olmali."
+    },
+    {
+      "id": "UXM006",
+      "severity": "error",
+      "message": "Branch mesafesi 1 veya daha buyuk olmali ve hedef instruction siniri disina cikmamali."
     }
   ],
-  "target": "uxm v3.3-stage10"
+  "target": "uxm v3.3-stage15-16"
 }

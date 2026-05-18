@@ -65,7 +65,10 @@ const COMMAND_DOCS = [
 	{ token: '& | ^ ~', desc: 'Bit operasyonlari.' },
 	{ token: '{ }', desc: 'Shift operasyonlari.' },
 	{ token: 'e', desc: 'Status okur/isler.' },
-	{ token: '@ID', desc: 'Meta servis cagirir (ID araligi 0..65535).' },
+	{ token: '@N', desc: 'Normal dispatch: mN varsa macro, yoksa host servis cagrisi.' },
+	{ token: '@!N', desc: 'Forced host dispatch: dogrudan host servis cagrisi.' },
+	{ token: '@# / @!#', desc: 'Dinamik dispatch: servis id aktif hucreden okunur.' },
+	{ token: '@(ADDR) / @!(ADDR)', desc: 'Dinamik dispatch: servis id verilen adresten okunur.' },
 	{ token: ':', desc: 'Branch ailesi. Kosul ve offset ile atlama yapar.' },
 	{ token: 'sN / pN / mN', desc: 'String yazdirma ve macro tanimlari.' }
 ];
@@ -75,11 +78,13 @@ const ADDRESSING_DOCS = [
 	{ mode: '(T+N)/(T-N)', desc: 'Tape goreli adresleme.' },
 	{ mode: '(T:N)', desc: 'Tape mutlak adresleme.' },
 	{ mode: '(D:N)', desc: 'Data segment mutlak adresleme.' },
+	{ mode: '(S:N)', desc: 'Stack segment mutlak adresleme.' },
 	{ mode: '(SP)/(SP+N)/(SP-N)', desc: 'Stack pointer adresleme.' },
-	{ mode: '(P)/(E)/(F)', desc: 'Pointer/endian/flag register adresleme.' },
-	{ mode: '(*T), (*(T+N))', desc: 'Dolayli tape adresleme.' },
-	{ mode: '(D@T), (D@T+N)', desc: 'Data indeksleme (tape bazli).' },
-	{ mode: '(D:N+P), (T:N+P)', desc: 'Base+P adresleme.' },
+	{ mode: '(P)/(E)/(F)', desc: 'Pointer/status/flag register adresleme.' },
+	{ mode: '(*T), (*(T+N)), (*(T-N))', desc: 'Dolayli tape adresleme.' },
+	{ mode: '(D@T), (D@T+N), (D@T-N)', desc: 'Data indeksleme (tape bazli).' },
+	{ mode: '(D@(T+K)+N), (D@(T-K)+N)', desc: 'Goreli tape tabanindan data adresleme.' },
+	{ mode: '(D:BASE+P), (T:BASE+P)', desc: 'Base+P adresleme.' },
 	{ mode: '(D@D:N), (T@D:N)', desc: 'Cift dolayli adresleme.' }
 ];
 
@@ -1720,7 +1725,8 @@ async function activate(context) {
 		for (const it of COMMAND_DOCS) HOVER_MAP.set(it.token, it.desc);
 		for (const it of ADDRESSING_DOCS) HOVER_MAP.set(it.mode, it.desc);
 		for (const it of LOOP_TEMPLATE_DOCS) HOVER_MAP.set(it.token, it.desc);
-		HOVER_MAP.set('@ID', 'Meta servis cagirir. Ornek: @20');
+		HOVER_MAP.set('@N', 'Meta servis cagirir. Ornek: @20');
+		HOVER_MAP.set('@!N', 'Host zorlamali meta servis cagirir. Ornek: @!20');
 		HOVER_MAP.set('@#', 'Dinamik meta cagrisi.');
 		HOVER_MAP.set('@!#', 'Host zorlamali dinamik meta cagrisi (T hucresindeki id).');
 		HOVER_MAP.set('@(addr)', 'Adresten dinamik meta cagrisi.');
@@ -1832,7 +1838,7 @@ async function activate(context) {
 						ci.documentation = tpl.desc;
 						items.push(ci);
 					}
-					for (const t of ['+kN', '-kN', '>kN', '<kN', ':0+N', ':0-N', '::+N', '::-N']) {
+					for (const t of ['+kN', '-kN', '>kN', '<kN', ':0+N', ':0-N', ':+N', ':-N', '::+N', '::-N', ':z+N', ':z-N', ':Z+N', ':Z-N', ':c+N', ':c-N', ':C+N', ':C-N', ':o+N', ':o-N', ':O+N', ':O-N', ':s+N', ':s-N', ':S+N', ':S-N']) {
 						const ci = new vscode.CompletionItem(t, vscode.CompletionItemKind.Keyword);
 						ci.detail = 'UXM hizli kalip';
 						items.push(ci);
