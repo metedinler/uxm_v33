@@ -179,11 +179,11 @@ id,name,handler,enabled,status,source,notes,frame
 222,FP_TO_DEC_STRING,MetaFloatingPoint,True,current,runtime_fp_services.bas,,"T-2=rBase, T-1=aBase, T=bBase pattern"
 223,FP_PRINT_DECIMAL,MetaFloatingPoint,True,current,runtime_fp_services.bas,,"T-2=rBase, T-1=aBase, T=bBase pattern"
 224,FP_SCALE10,MetaFloatingPoint,True,current,runtime_fp_services.bas,,"T-2=rBase, T-1=aBase, T=bBase pattern"
-230,FP_RESERVED_230,MetaFloatingPoint,False,reserved,runtime_fp_services.bas,Reserved/invalid in current source.,
-231,FP_RESERVED_231,MetaFloatingPoint,False,reserved,runtime_fp_services.bas,Reserved/invalid in current source.,
-232,FP_RESERVED_232,MetaFloatingPoint,False,reserved,runtime_fp_services.bas,Reserved/invalid in current source.,
-233,FP_RESERVED_233,MetaFloatingPoint,False,reserved,runtime_fp_services.bas,Reserved/invalid in current source.,
-234,FP_RESERVED_234,MetaFloatingPoint,False,reserved,runtime_fp_services.bas,Reserved/invalid in current source.,
+230,FP_COMPARE_ABS,MetaFloatingPoint,True,current,runtime_fp_services.bas,Abs compare returns -1/0/1 in result,"T-2=rBase, T-1=aBase, T=bBase pattern"
+231,FP_MIN,MetaFloatingPoint,True,current,runtime_fp_services.bas,rBase=min(a,b),"T-2=rBase, T-1=aBase, T=bBase pattern"
+232,FP_MAX,MetaFloatingPoint,True,current,runtime_fp_services.bas,rBase=max(a,b),"T-2=rBase, T-1=aBase, T=bBase pattern"
+233,FP_SIGNUM,MetaFloatingPoint,True,current,runtime_fp_services.bas,Signum of aBase as -1/0/1 in result,"T-2=rBase, T-1=aBase, T=bBase pattern"
+234,FP_GE,MetaFloatingPoint,True,current,runtime_fp_services.bas,Boolean result 1 when aBase>=bBase else 0,"T-2=rBase, T-1=aBase, T=bBase pattern"
 240,POLY_DERIVATIVE,MetaMathExtra,True,current,runtime_math_services.bas,,T-frame/data object depending service
 241,POLY_INTEGRAL,MetaMathExtra,True,current,runtime_math_services.bas,,T-frame/data object depending service
 242,POLY_EVAL,MetaMathExtra,True,current,runtime_math_services.bas,,T-frame/data object depending service
@@ -214,9 +214,9 @@ id,name,handler,enabled,status,source,notes,frame
 281,CORR_SPEARMAN,MetaStatistics,True,extension_requires_meta_id_range_patch,service_registry_v33.csv,spearman placeholder,
 282,CORR_KENDALL,MetaStatistics,True,extension_requires_meta_id_range_patch,service_registry_v33.csv,kendall placeholder,
 290,REG_LINEAR,MetaRegression,True,extension_requires_meta_id_range_patch,service_registry_v33.csv,simple linear regression,
-291,REG_MULTIPLE,MetaRegression,False,extension_requires_meta_id_range_patch,service_registry_v33.csv,reserved,
-292,REG_POLYNOMIAL,MetaRegression,False,extension_requires_meta_id_range_patch,service_registry_v33.csv,reserved,
-293,REG_LOGISTIC,MetaRegression,False,extension_requires_meta_id_range_patch,service_registry_v33.csv,reserved,
+291,REG_MULTIPLE,MetaStatistics,True,current,runtime_statistics_services.bas,Two-predictor least-squares regression active,"T-4=x,T-3=z,T-2=y,T-1=count,T=out"
+292,REG_POLYNOMIAL,MetaStatistics,True,current,runtime_statistics_services.bas,Quadratic fallback writes b0/b1/b2 active,"T-4=x,T-3=y,T-2=count,T=out"
+293,REG_LOGISTIC,MetaStatistics,True,current,runtime_statistics_services.bas,Sigmoid of linear predictor active,"T-4=x,T-3=y,T-2=count,T=out"
 298,REG_PREDICT,MetaRegression,True,extension_requires_meta_id_range_patch,service_registry_v33.csv,predict y,
 299,REG_R2,MetaRegression,True,extension_requires_meta_id_range_patch,service_registry_v33.csv,r squared,
 300,TTEST_ONE,MetaHypothesis,True,extension_requires_meta_id_range_patch,service_registry_v33.csv,one sample t placeholder,
@@ -226,7 +226,7 @@ id,name,handler,enabled,status,source,notes,frame
 304,ZTEST_TWO,MetaHypothesis,True,extension_requires_meta_id_range_patch,service_registry_v33.csv,two sample z placeholder,
 305,FTEST_VARIANCE,MetaHypothesis,True,extension_requires_meta_id_range_patch,service_registry_v33.csv,f variance placeholder,
 306,ANOVA_ONEWAY,MetaHypothesis,True,extension_requires_meta_id_range_patch,service_registry_v33.csv,oneway anova placeholder,
-307,ANOVA_TWOWAY,MetaHypothesis,False,extension_requires_meta_id_range_patch,service_registry_v33.csv,reserved,
+307,ANOVA_TWOWAY,MetaHypothesis,retired,id_conflict_emekli,service_registry_merged.csv,ID 307 runtime STR_COUNT_CHAR ile cakisiyor; ANOVA icin @760..@769,
 308,CHI_SQUARE,MetaHypothesis,True,extension_requires_meta_id_range_patch,service_registry_v33.csv,chi square placeholder,
 309,CHI_GOODNESS,MetaHypothesis,True,extension_requires_meta_id_range_patch,service_registry_v33.csv,goodness placeholder,
 310,STR_TRIM_SPACES,MetaString,,current_v33_stage4,,,
@@ -247,9 +247,9 @@ id,name,handler,enabled,status,source,notes,frame
 325,POSTHOC_LSD,MetaPosthoc,True,extension_requires_meta_id_range_patch,service_registry_v33.csv,lsd placeholder,
 340,AI_NORMALIZE_MINMAX,MetaAI,True,extension_requires_meta_id_range_patch,service_registry_v33.csv,minmax normalize,
 341,AI_NORMALIZE_ZSCORE,MetaAI,True,extension_requires_meta_id_range_patch,service_registry_v33.csv,zscore normalize,
-342,AI_ONEHOT,MetaAI,False,extension_requires_meta_id_range_patch,service_registry_v33.csv,reserved,
-343,AI_TRAIN_TEST_SPLIT,MetaAI,False,extension_requires_meta_id_range_patch,service_registry_v33.csv,reserved,
-344,AI_SHUFFLE,MetaAI,False,extension_requires_meta_id_range_patch,service_registry_v33.csv,reserved,
+342,AI_ONEHOT,MetaAI,retired,id_conflict_emekli,service_registry_merged.csv,ID 342 MetaStringExt REPLACE_CHAR olarak aktif; onehot icin @818,
+343,AI_TRAIN_TEST_SPLIT,MetaStringExt,True,current,runtime_string_ext_services.bas,Legacy alias to MetaAIRealV18(819),"T-4=a,T-3=b,T-2=count,T-1=out,T=opt"
+344,AI_SHUFFLE,MetaStringExt,True,current,runtime_string_ext_services.bas,Legacy alias to MetaAIRealV18(820),"T-4=a,T-3=b,T-2=count,T-1=out,T=opt"
 345,AI_CONFUSION_MATRIX,MetaAI,True,extension_requires_meta_id_range_patch,service_registry_v33.csv,confusion matrix placeholder,
 346,AI_ACCURACY,MetaAI,True,extension_requires_meta_id_range_patch,service_registry_v33.csv,accuracy,
 347,AI_PRECISION,MetaAI,True,extension_requires_meta_id_range_patch,service_registry_v33.csv,precision,
@@ -257,11 +257,11 @@ id,name,handler,enabled,status,source,notes,frame
 349,AI_F1,MetaAI,True,extension_requires_meta_id_range_patch,service_registry_v33.csv,f1 score,
 350,AI_DISTANCE_EUCLIDEAN,MetaAI,True,extension_requires_meta_id_range_patch,service_registry_v33.csv,euclidean distance,
 351,AI_DISTANCE_COSINE,MetaAI,True,extension_requires_meta_id_range_patch,service_registry_v33.csv,cosine distance placeholder,
-352,AI_KNN_BASIC,MetaAI,False,extension_requires_meta_id_range_patch,service_registry_v33.csv,reserved,
-353,AI_LINEAR_LAYER,MetaAI,False,extension_requires_meta_id_range_patch,service_registry_v33.csv,reserved,
+352,AI_KNN_BASIC,MetaStringExt,True,current,runtime_string_ext_services.bas,Legacy alias to MetaAIRealV18(821),"T-4=a,T-3=b,T-2=count,T-1=out,T=query"
+353,AI_LINEAR_LAYER,MetaStringExt,True,current,runtime_string_ext_services.bas,Legacy alias to MetaAIRealV18(822),"T-4=a,T-3=b,T-2=count,T-1=out,T=bias"
 354,AI_SIGMOID,MetaAI,True,extension_requires_meta_id_range_patch,service_registry_v33.csv,sigmoid scaled,
 355,AI_RELU,MetaAI,True,extension_requires_meta_id_range_patch,service_registry_v33.csv,relu,
-356,AI_SOFTMAX,MetaAI,False,extension_requires_meta_id_range_patch,service_registry_v33.csv,reserved,
+356,AI_SOFTMAX,MetaAI,retired,id_conflict_emekli,service_registry_merged.csv,ID 356 runtime STR_PARSE_DECIMAL olarak aktif; softmax icin @823,
 357,STR_FORMAT_INT,MetaStringExt,True,stage9,runtime_string_ext_services.bas,Format integer to data string,uses T-relative argument frame
 358,STR_HASH8,MetaStringExt,True,stage9,runtime_string_ext_services.bas,8-bit additive hash,uses T-relative argument frame
 359,STR_HASH32,MetaStringExt,True,stage9,runtime_string_ext_services.bas,FNV-1a 32-bit hash masked to cell,uses T-relative argument frame

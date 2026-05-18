@@ -237,9 +237,52 @@ Sub MetaFloatingPoint(ByVal metaId As ULongInt)
     Case 224
         FPStoreMantExp rBase,ReadData(rBase+2),FPMantissaString(rBase),FPSignedExp(rBase)+aBase
         SetResult 0
-    Case 230,231,232,233,234
-        SetStatus STATUS_INVALID_META
-        SetResult STATUS_INVALID_META
+    Case 230
+        cmp=FPCompareAbs(aBase,bBase)
+        If cmp=0 Then
+            SetResult 0
+        ElseIf cmp>0 Then
+            SetResult 1
+        Else
+            SetResult CellMask()
+        End If
+        SetLogicFlags ResultValue()
+        SetStatus STATUS_OK
+    Case 231
+        cmp=FPCompare(aBase,bBase)
+        If cmp<=0 Then
+            FPCopy rBase,aBase
+        Else
+            FPCopy rBase,bBase
+        End If
+        SetResult 0
+    Case 232
+        cmp=FPCompare(aBase,bBase)
+        If cmp>=0 Then
+            FPCopy rBase,aBase
+        Else
+            FPCopy rBase,bBase
+        End If
+        SetResult 0
+    Case 233
+        If FPMantissaString(aBase)="0" Then
+            SetResult 0
+        ElseIf ReadData(aBase+2)<>0 Then
+            SetResult CellMask()
+        Else
+            SetResult 1
+        End If
+        SetLogicFlags ResultValue()
+        SetStatus STATUS_OK
+    Case 234
+        cmp=FPCompare(aBase,bBase)
+        If cmp>=0 Then
+            SetResult 1
+        Else
+            SetResult 0
+        End If
+        SetLogicFlags ResultValue()
+        SetStatus STATUS_OK
     Case Else
         SetStatus STATUS_INVALID_META
         SetResult STATUS_INVALID_META

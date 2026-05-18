@@ -170,6 +170,26 @@ Sub UX_STR_PARSE_DECIMAL()
     UX_STR_TO_INT()
 End Sub
 
+Sub UX_AI_TRAIN_TEST_SPLIT_COMPAT()
+    ' Legacy @343 alias to active AI train/test split implementation.
+    MetaAIRealV18 819
+End Sub
+
+Sub UX_AI_SHUFFLE_COMPAT()
+    ' Legacy @344 alias to active AI shuffle implementation.
+    MetaAIRealV18 820
+End Sub
+
+Sub UX_AI_KNN_BASIC_COMPAT()
+    ' Legacy @352 alias to active AI nearest-neighbor implementation.
+    MetaAIRealV18 821
+End Sub
+
+Sub UX_AI_LINEAR_LAYER_COMPAT()
+    ' Legacy @353 alias to active AI linear-layer implementation.
+    MetaAIRealV18 822
+End Sub
+
 Sub UX_STR_FORMAT_INT()
     UX_STR_FROM_INT()
 End Sub
@@ -285,12 +305,20 @@ Sub MetaStringExt(ByVal metaId As ULongInt)
         UX_STR_COUNT_TEXT()
     Case 342
         UX_STR_REPLACE_CHAR()
+    Case 343
+        UX_AI_TRAIN_TEST_SPLIT_COMPAT()
+    Case 344
+        UX_AI_SHUFFLE_COMPAT()
     Case 346
         UX_STR_STARTS_WITH()
     Case 347
         UX_STR_ENDS_WITH()
     Case 348
         UX_STR_CONTAINS()
+    Case 352
+        UX_AI_KNN_BASIC_COMPAT()
+    Case 353
+        UX_AI_LINEAR_LAYER_COMPAT()
     Case 354
         UX_STR_NORMALIZE_SPACES()
     Case 355
