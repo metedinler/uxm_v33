@@ -15,14 +15,6 @@ Paket gerçekliği özetle şöyledir:
 * VSCode tarafı `vscode` altında ayrı tutulmuştur.
 * Servis kayıtları `config/uxm/service_registry_merged.csv` altında bulunur.
 
-## Guncel Not (V33 Runtime + VSCode)
-
-* Meta servis ID araligi `0..65535` olarak ele alinmalidir.
-* `128..255` bandi user macro/cakisma bolgesi oldugu icin host servis cagrilarinda `@!N` tercih edilebilir.
-* Varsayilan bellek modeli: `tape=32KB, stack=4KB, data=16KB, queue=4KB`.
-* `#memory` toplam ust siniri `16384KB` (16MB) kabul edilmelidir.
-* Tekrar semantigi: `+kN/-kN` hucre degerini N kez degistirir, `>kN/<kN` pointeri N adim hareket ettirir.
-
 Bu belge dört büyük bölüm halinde ilerleyecek şekilde planlanmıştır.
 
 ---
@@ -1374,7 +1366,7 @@ Aşağıdaki tablo parser ve compiler kaynakları incelenerek oluşturulmuştur.
 | `-kN` | fast decrement    | N kadar azalt                   |            |
 | `?`   | compare/test      | Flag/condition işlemleri için   |            |
 | `&`   | and               | Bitwise AND                     |            |
-| `|`   | or                | Bitwise OR                      |            |
+| `     | `                 | or                              | Bitwise OR |
 | `^`   | xor               | Bitwise XOR                     |            |
 | `~`   | not               | Bitwise NOT                     |            |
 | `$`   | stack op          | Stack ilişkili işlemler         |            |

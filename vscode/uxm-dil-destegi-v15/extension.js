@@ -6,7 +6,6 @@ const { UxmDiagnostics } = require('./src/uxminima/diagnostics');
 const { UxmToolchain } = require('./src/uxminima/toolchain');
 const { readTraceFile } = require('./src/uxminima/traceReader');
 const { MemoryViewPanel } = require('./src/uxminima/views/memoryView');
-const { UxmInterpreter } = require('./src/uxminima/uxmInterpreter');
 const { META_SERVICES, metaMarkdown } = require('./src/uxminima/metaServices');
 
 let activePanel = null;
@@ -770,6 +769,7 @@ async function openControlCenter(context, output) {
 					postPanel(activePanel, 'actionResult', result);
 					break;
 				}
+				case 'runRuntime':
 				case 'runInterpreter': {
 					const state = buildPanelState(currentRoot);
 					if (!state.activeProgramRel) {
@@ -782,8 +782,8 @@ async function openControlCenter(context, output) {
 					if (!result.ok) {
 						runTerminalCommand(currentRoot, 'call build_one_native.bat "' + state.activeProgramRel + '" -x');
 					}
-					appendJsonl(currentRoot, 'run_interpreter', result);
-					output.appendLine('[runInterpreter] ' + JSON.stringify(result));
+					appendJsonl(currentRoot, 'run_runtime', result);
+					output.appendLine('[runRuntime] ' + JSON.stringify(result));
 					postPanel(activePanel, 'actionResult', result);
 					break;
 				}
@@ -957,7 +957,7 @@ function getControlCenterHtml() {
   <div class="toolbar">
     <button id="btnRefresh">Yenile</button>
     <button id="btnCompile">Compile</button>
-    <button id="btnRunInterpreter">Interpreter Calistir</button>
+		<button id="btnRunRuntime">UXM Runtime Calistir (JSON)</button>
     <button id="btnRunTests">Toplu Test</button>
     <button id="btnClearTrace">Trace Isareti Temizle</button>
 		<button id="btnJumpPlan">Bellek Plani</button>
@@ -1408,7 +1408,7 @@ function getControlCenterHtml() {
 		document.getElementById('btnRefresh').addEventListener('click', () => sendCmd('requestState'));
 		document.getElementById('btnCompile').addEventListener('click', () => sendCmd('compile'));
 		document.getElementById('btnRunTests').addEventListener('click', () => sendCmd('runTests'));
-		document.getElementById('btnRunInterpreter').addEventListener('click', () => sendCmd('runInterpreter'));
+		document.getElementById('btnRunRuntime').addEventListener('click', () => sendCmd('runRuntime'));
 		document.getElementById('btnClearTrace').addEventListener('click', () => sendCmd('traceClear'));
     document.getElementById('btnTraceLoad').addEventListener('click', () => {
       const file = document.getElementById('traceFile').value || 'build/logs/uxm_runtime_trace.log';
@@ -1598,6 +1598,9 @@ function metaHelpMarkdown(root) {
 			+ 'VSCode cache: `.uxm/vscode/service_docs_cache.csv`\n\n'
 			+ '## Host meta zorlamasi\n\n'
 			+ '`@!N` macro aramasini bypass ederek dogrudan host/runtime servisini cagirir.\n\n'
+			+ '## UXM-A standart meta formlari\n\n'
+			+ '`@N`, `@!N`, `@#`, `@!#`, `@(ADDR)`, `@!(ADDR)`\n\n'
+			+ '`@#N`, `@@N`, `@*` formlari kullanilmaz.\n\n'
 			+ '## Kullanici macro alani\n\n'
 			+ '@128..@255 kullanici macro alanidir.\n';
 	}
@@ -1609,7 +1612,9 @@ function metaHelpMarkdown(root) {
 		+ '| Meta | Ad | Frame | Aciklama |\n'
 		+ '|---|---|---|---|\n'
 		+ rows + '\n\n'
-		+ 'Servis ID araligi: 0..65535 (registry tabanli).\n';
+		+ 'Servis ID araligi: 0..65535 (registry tabanli).\n\n'
+		+ 'UXM-A standart meta formlari: `@N`, `@!N`, `@#`, `@!#`, `@(ADDR)`, `@!(ADDR)`.\n'
+		+ '`@#N`, `@@N`, `@*` kullanilmaz.\n';
 }
 
 async function runFinalAndOpen(context, output, mode) {
@@ -1717,7 +1722,9 @@ async function activate(context) {
 		for (const it of LOOP_TEMPLATE_DOCS) HOVER_MAP.set(it.token, it.desc);
 		HOVER_MAP.set('@ID', 'Meta servis cagirir. Ornek: @20');
 		HOVER_MAP.set('@#', 'Dinamik meta cagrisi.');
+		HOVER_MAP.set('@!#', 'Host zorlamali dinamik meta cagrisi (T hucresindeki id).');
 		HOVER_MAP.set('@(addr)', 'Adresten dinamik meta cagrisi.');
+		HOVER_MAP.set('@!(addr)', 'Host zorlamali, adresten dinamik meta cagrisi.');
 		HOVER_MAP.set(':', 'Branch ailesi (ornek: :0+3, ::-2, :z+1).');
 		HOVER_MAP.set('#mode', 'Pragma: #mode safe|normal|wild');
 		HOVER_MAP.set('#cell', 'Pragma: #cell byte|word|dword');
@@ -1726,7 +1733,7 @@ async function activate(context) {
 		for (const hoverLang of ['uxm', 'uxminima']) {
 			context.subscriptions.push(vscode.languages.registerHoverProvider(hoverLang, {
 				provideHover(document, position) {
-					const tokenRegex = /\([^\)\s]+\)|@\([^\)\s]+\)|@[!#]?\d+|:\w[\w\-]*|[><+\-]k\d+|k\d+|s\d+|p\d+|m\d+|#[A-Za-z0-9_\-]+|[><+\-0\.,\[\]\$%\?;!&\|\^~\{\}e]/;
+					const tokenRegex = /\([^\)\s]+\)|@!?\([^\)\s]+\)|@!?#|@!?\d+|@!?#\d+|@@\d+|@\*|:\w[\w\-]*|[><+\-]k\d+|k\d+|s\d+|p\d+|m\d+|#[A-Za-z0-9_\-]+|[><+\-0\.,\[\]\$%\?;!&\|\^~\{\}eE]/;
 					const range = document.getWordRangeAtPosition(position, tokenRegex);
 					if (!range) return null;
 					const word = document.getText(range);
@@ -1761,8 +1768,24 @@ async function activate(context) {
 					if (/^p\d+/.test(word)) return new vscode.Hover('Onceden tanimli string cagrisi: pN');
 					if (/^m\d+/.test(word)) return new vscode.Hover('Macro tanimlama: mN={...} (N:128..255)');
 
-					if (/^@[!#]?\d+$/.test(word)) {
-						const raw = word.replace(/^@!/, '@').replace(/^@#/, '@0');
+					if (/^@!?#\d+$/.test(word)) {
+						return new vscode.Hover('Gecersiz UXM-A formu: ' + word + '. Dogrusu: @# veya @!# (N olmadan).');
+					}
+					if (/^@@\d+$/.test(word)) {
+						return new vscode.Hover('Gecersiz UXM-A formu: @@N. Dogrusu: @N veya @!N.');
+					}
+					if (word === '@*') {
+						return new vscode.Hover('Gecersiz UXM-A formu: @*. Dogrusu: @#, @!#, @(ADDR) veya @!(ADDR).');
+					}
+					if (word === '@#' || word === '@!#') {
+						return new vscode.Hover('Dinamik meta cagrisi. Servis id T hucresinden okunur' + (word.startsWith('@!') ? ' ve host zorlamasi uygulanir.' : '.'));
+					}
+					if (/^@!?\([^\)]+\)$/.test(word)) {
+						return new vscode.Hover('Dinamik meta cagrisi. Servis id verilen adresten okunur' + (word.startsWith('@!') ? ' ve host zorlamasi uygulanir.' : '.') + '');
+					}
+
+					if (/^@!?\d+$/.test(word)) {
+						const raw = word.replace(/^@!/, '@');
 						const id = Number(raw.slice(1));
 						if (!Number.isNaN(id)) {
 							if (id < 0 || id > 65535) {
@@ -1812,6 +1835,11 @@ async function activate(context) {
 					for (const t of ['+kN', '-kN', '>kN', '<kN', ':0+N', ':0-N', '::+N', '::-N']) {
 						const ci = new vscode.CompletionItem(t, vscode.CompletionItemKind.Keyword);
 						ci.detail = 'UXM hizli kalip';
+						items.push(ci);
+					}
+					for (const t of ['@N', '@!N', '@#', '@!#', '@(ADDR)', '@!(ADDR)']) {
+						const ci = new vscode.CompletionItem(t, vscode.CompletionItemKind.Function);
+						ci.detail = 'UXM-A meta kalibi';
 						items.push(ci);
 					}
 					return items;
@@ -1887,32 +1915,25 @@ async function activate(context) {
 		vscode.window.showInformationMessage('UX-MINIMA dosyasi dogrulandi.');
 	});
 
-	registerCommandWithGuard(context, output, existingSet, 'uxminima.internalTrace', async () => {
+	const runRuntimeJsonTrace = async () => {
 		const doc = activeUxmDocument();
 		if (!doc || !uxminimaToolchain) return;
 		await doc.save();
-		const interpreter = new UxmInterpreter();
-		const result = interpreter.run(doc.getText());
-		uxminimaLastTrace = {
-			snapshot: {
-				type: 'snapshot',
-				source: doc.fileName,
-				engine: 'internal-vscode',
-				events: result.events.length
-			},
-			events: result.events
-		};
-		const art = uxminimaToolchain.artifactsFor(doc.fileName);
-		fs.writeFileSync(art.trace, result.events.map((e) => JSON.stringify(e)).join('\n'), 'utf8');
-		output.appendLine('\n[Internal Trace] ' + doc.fileName);
-		if (result.output) output.appendLine(result.output);
-		if (result.diagnostics && result.diagnostics.length) {
-			output.appendLine('Diagnostics:');
-			for (const d of result.diagnostics) output.appendLine('- ' + d);
+		try {
+			const art = await uxminimaToolchain.finalRunTrace(doc.fileName);
+			uxminimaLastTrace = readTraceFile(art.trace);
+			MemoryViewPanel.show(context, uxminimaLastTrace);
+			output.appendLine('\n[Runtime JSON Trace] ' + doc.fileName);
+			output.appendLine('Kaynak: ' + art.trace);
+			output.show(true);
+			vscode.window.showInformationMessage('VSCode local interpreter kapali. Runtime JSON trace acildi: ' + art.trace);
+		} catch (err) {
+			vscode.window.showErrorMessage(String(err));
 		}
-		output.show(true);
-		MemoryViewPanel.show(context, uxminimaLastTrace);
-	});
+	};
+
+	registerCommandWithGuard(context, output, existingSet, 'uxminima.runtimeJsonTrace', runRuntimeJsonTrace);
+	registerCommandWithGuard(context, output, existingSet, 'uxminima.internalTrace', runRuntimeJsonTrace);
 
 	registerCommandWithGuard(context, output, existingSet, 'uxminima.finalBuildCompiler', async () => {
 		if (!uxminimaToolchain) return;

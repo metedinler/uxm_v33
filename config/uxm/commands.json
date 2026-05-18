@@ -1,13 +1,19 @@
 {
   "schema_version": "1.0",
   "language": "ux-minima",
+  "canonical_profile": "uxm-a=uxmv33=uxm",
   "version_target": "v3.1/v3.2/v3.5 consolidated",
   "generated_for": "VSCode syntax/autocomplete/lint and compiler registry alignment",
   "parser_current_limits": {
-    "meta_id_max_current_native": 255,
+    "meta_id_max_current_native": 65535,
     "user_macro_range_current": "128..255",
-    "important": "@260+/@400+ extension services require parser and dispatch meta-id range patch."
+    "important": "UXM-A standart meta formlari: @N, @!N, @#, @!#, @(ADDR), @!(ADDR)."
   },
+  "deprecated_meta_forms": [
+    "@#N",
+    "@@N",
+    "@*"
+  ],
   "directives": [
     {
       "name": "#memory",
@@ -228,6 +234,24 @@
       "name": "DYNAMIC_META_CALL",
       "addressing_allowed": false,
       "example": "0(T)+k20 @#"
+    },
+    {
+      "token": "@!#",
+      "name": "FORCE_HOST_DYNAMIC_META_CALL",
+      "addressing_allowed": false,
+      "example": "@!#"
+    },
+    {
+      "token": "@(ADDR)",
+      "name": "DYNAMIC_META_FROM_ADDRESS",
+      "addressing_allowed": false,
+      "example": "@(D:200)"
+    },
+    {
+      "token": "@!(ADDR)",
+      "name": "FORCE_HOST_DYNAMIC_META_FROM_ADDRESS",
+      "addressing_allowed": false,
+      "example": "@!(D:200)"
     }
   ],
   "branch_commands": [
@@ -371,27 +395,27 @@
   "address_modes_proposed_v32": [
     {
       "syntax": "(SP+N)/(SP-N)",
-      "status": "patch_candidate",
+      "status": "current",
       "meaning": "stack[SP-1+N]"
     },
     {
       "syntax": "(D:BASE+P)",
-      "status": "patch_candidate",
+      "status": "current",
       "meaning": "data[BASE + pointer]"
     },
     {
       "syntax": "(T:BASE+P)",
-      "status": "patch_candidate",
+      "status": "current",
       "meaning": "tape[BASE + pointer]"
     },
     {
       "syntax": "(D@D:N)",
-      "status": "patch_candidate",
+      "status": "current",
       "meaning": "data[data[N]]"
     },
     {
       "syntax": "(T@D:N)",
-      "status": "patch_candidate",
+      "status": "current",
       "meaning": "tape[data[N]]"
     },
     {
@@ -414,7 +438,7 @@
     {
       "id": "UXM002",
       "severity": "error",
-      "message": "@260+/@400+ requires extended meta-id parser; current native parser rejects >255."
+      "message": "Meta servis id 0..65535 araliginda olmali; UXM-A disi formlar (@#N, @@N, @*) gecersizdir."
     },
     {
       "id": "UXM003",

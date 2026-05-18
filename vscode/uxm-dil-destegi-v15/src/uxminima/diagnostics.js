@@ -38,6 +38,11 @@ const vscode = __importStar(require("vscode"));
 const commandBeforeAddress = /([><+\-0\.,\[\]\$%\?!;&\|\^~\{\}eE])\s+\(/g;
 const addressWithSpace = /\([^\)]*\s+[^\)]*\)/g;
 const metaPattern = /@!?([0-9]+)/g;
+const invalidMetaHashWithNumber = /@!?#([0-9]+)/g;
+const invalidMetaDoubleAt = /@@([0-9]+)/g;
+const invalidMetaStar = /@\*/g;
+const branchPattern = /:(:|0|z|Z|c|C|o|O|s|S)?([+-])([0-9]+)/g;
+const validPreprocDirective = /^\s*%%(?:if\b.+|else\b|endif\b|include\b.+|platform\b.+|destos\b.+|nozerovars\b.*|secstack\b.*|endcomp\b|errorendcomp\b.*)\s*$/i;
 const macroPattern = /\bm([0-9]+)\s*=\s*\{/g;
 const memoryPattern = /^\s*#memory\s+(.+)$/i;
 class UxmDiagnostics {
@@ -69,6 +74,25 @@ class UxmDiagnostics {
             }
             return;
         }
+        if (trimmed.startsWith("%%")) {
+            if (!validPreprocDirective.test(trimmed)) {
+                diagnostics.push(new vscode.Diagnostic(new vscode.Range(lineIndex, 0, lineIndex, line.length), "Gecersiz %% direktifi. Desteklenenler: %%IF/%%ELSE/%%ENDIF, %%INCLUDE, %%PLATFORM, %%DESTOS, %%NOZEROVARS, %%SECSTACK, %%ENDCOMP, %%ERRORENDCOMP.", vscode.DiagnosticSeverity.Error));
+                return;
+            }
+            if (/^\s*%%include\b/i.test(trimmed) && !/"[^"]+"/.test(trimmed)) {
+                diagnostics.push(new vscode.Diagnostic(new vscode.Range(lineIndex, 0, lineIndex, line.length), "%%INCLUDE icin quoted dosya yolu gerekli.", vscode.DiagnosticSeverity.Error));
+            }
+            if (/^\s*%%if\b/i.test(trimmed) && /^\s*%%if\s*$/i.test(trimmed)) {
+                diagnostics.push(new vscode.Diagnostic(new vscode.Range(lineIndex, 0, lineIndex, line.length), "%%IF sonrasi ifade gerekli (ornek: %%IF platform==x64).", vscode.DiagnosticSeverity.Error));
+            }
+            return;
+        }
+        if (/^\s*include\b/i.test(trimmed)) {
+            if (!/"[^"]+"/.test(trimmed)) {
+                diagnostics.push(new vscode.Diagnostic(new vscode.Range(lineIndex, 0, lineIndex, line.length), "INCLUDE icin quoted dosya yolu gerekli.", vscode.DiagnosticSeverity.Error));
+            }
+            return;
+        }
         for (const match of line.matchAll(commandBeforeAddress)) {
             const start = match.index ?? 0;
             const range = new vscode.Range(lineIndex, start, lineIndex, Math.min(line.length, start + match[0].length));
@@ -83,6 +107,25 @@ class UxmDiagnostics {
         for (const match of line.matchAll(dynamicDataAddress)) {
             // Geçerli yeni adresleme modu. Regex burada özellikle bırakıldı ki ileride hover/semantic info eklenebilsin.
             void match;
+        }
+        for (const match of line.matchAll(invalidMetaHashWithNumber)) {
+            const start = match.index ?? 0;
+            diagnostics.push(new vscode.Diagnostic(new vscode.Range(lineIndex, start, lineIndex, start + match[0].length), "@#N / @!#N UXM-A standardinda yok. @# veya @!# kullan.", vscode.DiagnosticSeverity.Error));
+        }
+        for (const match of line.matchAll(invalidMetaDoubleAt)) {
+            const start = match.index ?? 0;
+            diagnostics.push(new vscode.Diagnostic(new vscode.Range(lineIndex, start, lineIndex, start + match[0].length), "@@N UXM-A standardinda yok. @N veya @!N kullan.", vscode.DiagnosticSeverity.Error));
+        }
+        for (const match of line.matchAll(invalidMetaStar)) {
+            const start = match.index ?? 0;
+            diagnostics.push(new vscode.Diagnostic(new vscode.Range(lineIndex, start, lineIndex, start + match[0].length), "@* UXM-A standardinda yok. @# / @!# veya @(ADDR) / @!(ADDR) kullan.", vscode.DiagnosticSeverity.Error));
+        }
+        for (const match of line.matchAll(branchPattern)) {
+            const dist = Number(match[3]);
+            if (!Number.isInteger(dist) || dist <= 0) {
+                const start = match.index ?? 0;
+                diagnostics.push(new vscode.Diagnostic(new vscode.Range(lineIndex, start, lineIndex, start + match[0].length), "Branch mesafesi 1 veya daha buyuk olmali.", vscode.DiagnosticSeverity.Error));
+            }
         }
         for (const match of line.matchAll(metaPattern)) {
             const id = Number(match[1]);

@@ -99,7 +99,7 @@ class MemoryViewPanel {
     <input id="slider" type="range" min="0" max="${Math.max(0, events.length - 1)}" value="0" />
     <span id="stepLabel">0 / ${events.length}</span>
   </div>
-  <div id="empty" ${first ? "style='display:none'" : ""}>Trace yok. Önce <b>UX-MINIMA: Internal Trace & Memory Watch</b> veya <b>Run Trace with Toolchain</b> çalıştır.</div>
+  <div id="empty" ${first ? "style='display:none'" : ""}>Trace yok. Önce <b>UX-MINIMA: Runtime JSON Trace and Memory Watch</b> veya <b>Run Trace with Toolchain</b> çalıştır.</div>
   <div class="grid" id="content" ${first ? "" : "style='display:none'"}>
     <div class="card"><h3>Current Step</h3><div id="current" class="mono"></div></div>
     <div class="card"><h3>Flags / Status</h3><div id="flags" class="mono"></div></div>

@@ -1,4 +1,5 @@
 ' Auto-split by V3 modularization
+Declare Sub MetaStatsNumericV19(ByVal metaId As ULongInt)
 Sub ux_meta_call_ex(ByVal metaId As ULongInt, ByVal memPtr As UByte Ptr) Export
 If metaId<20 Then
 MetaCore metaId
@@ -22,17 +23,13 @@ ElseIf metaId>=240 And metaId<=254 Then
 MetaMathExtra metaId
 ElseIf ((metaId>=274 And metaId<=280) Or (metaId>=283 And metaId<=289)) Then
 	MetaStatsNumericV19 metaId
-ElseIf RuntimeHookDispatchExt(metaId)<>0 Then
-	' Extension hook handled
 ElseIf metaId>=260 And metaId<=299 Then
 	MetaStatistics metaId
 ElseIf metaId>=300 And metaId<=319 Then
 	MetaString metaId
-ElseIf metaId>=360 And metaId<=369 Then
-	MetaProbability metaId
-ElseIf metaId>=340 And metaId<=379 Then
+ElseIf metaId>=340 And metaId<=359 Then
 	MetaStringExt metaId
-ElseIf metaId>=380 And metaId<=389 Then
+ElseIf metaId>=360 And metaId<=389 Then
 	MetaProbability metaId
 ElseIf metaId>=390 And metaId<=399 Then
 	MetaNumericMethods metaId

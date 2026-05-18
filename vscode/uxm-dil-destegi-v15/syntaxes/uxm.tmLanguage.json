@@ -2,6 +2,14 @@
   "scopeName": "source.uxm",
   "patterns": [
     {
+      "match": "^%%(if|else|endif|include|platform|destos|nozerovars|secstack|endcomp|errorendcomp)\\b.*$",
+      "name": "keyword.directive.preproc.uxm"
+    },
+    {
+      "match": "^include\\b.*$",
+      "name": "keyword.directive.include.uxm"
+    },
+    {
       "match": "^#(mode|cell|bounds|overflow|compare|endian|memory|seed|arge|poly|expr-rpn|matrix|identity|zeros|ones)\\b.*$",
       "name": "keyword.directive.uxm"
     },
@@ -14,7 +22,11 @@
       "name": "constant.other.addressing.uxm"
     },
     {
-      "match": "@\\([^\\)]+\\)|@[!#]?\\d+",
+      "match": "@!?#\\d+|@@\\d+|@\\*",
+      "name": "invalid.illegal.meta.uxm"
+    },
+    {
+      "match": "@!?#|@!?\\([^\\)]+\\)|@!?\\d+",
       "name": "entity.name.function.service.uxm"
     },
     {
@@ -38,7 +50,7 @@
       "name": "keyword.operator.repeat.uxm"
     },
     {
-      "match": "[><+\\-0\\.,\\[\\]\\$%\\?;!&\\|\\^~\\{\\}e]",
+      "match": "[><+\\-0\\.,\\[\\]\\$%\\?;!&\\|\\^~\\{\\}eE]",
       "name": "keyword.operator.uxm"
     },
     {

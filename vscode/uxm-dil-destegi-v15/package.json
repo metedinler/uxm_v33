@@ -27,6 +27,7 @@
     "onCommand:uxm.stage19",
     "onCommand:uxm.stage20",
     "onCommand:uxminima.runTrace",
+    "onCommand:uxminima.runtimeJsonTrace",
     "onCommand:uxminima.internalTrace",
     "onCommand:uxminima.exportUIR",
     "onCommand:uxminima.exportOPT",
@@ -146,8 +147,12 @@
         "title": "UX-MINIMA: Run Trace with Toolchain"
       },
       {
+        "command": "uxminima.runtimeJsonTrace",
+        "title": "UX-MINIMA: Runtime JSON Trace and Memory Watch"
+      },
+      {
         "command": "uxminima.internalTrace",
-        "title": "UX-MINIMA: Internal Trace and Memory Watch"
+        "title": "UX-MINIMA: Runtime JSON Trace and Memory Watch (Legacy Alias)"
       },
       {
         "command": "uxminima.exportUIR",
@@ -268,7 +273,7 @@
     "menus": {
       "editor/title": [
         {
-          "command": "uxminima.internalTrace",
+          "command": "uxminima.runtimeJsonTrace",
           "when": "resourceExtname == .uxm",
           "group": "navigation"
         },

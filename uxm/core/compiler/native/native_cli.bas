@@ -1,4 +1,9 @@
 ' Auto-split by V3 modularization
+Dim Shared PreprocIncludeCount As Long
+Dim Shared PreprocIncludeSeen(1 To 4096) As String
+Dim Shared PreprocIncludeActiveSp As Long
+Dim Shared PreprocIncludeActive(1 To 128) As String
+
 Sub InitDefaults()
     CellBits=8
     TapeKB=UXM_DEFAULT_TAPE_KB
@@ -19,6 +24,12 @@ Sub InitDefaults()
     PragmaArgeStep=0
     PragmaArgeTrace=0
     PragmaArgeWatch=0
+    PragmaNoZeroVars=0
+    PragmaSecStack=0
+    PreprocPlatform="x64"
+    PreprocDestOS="windows"
+    PreprocIncludeCount=0
+    PreprocIncludeActiveSp=0
     ApplyMemoryModel()
 End Sub
 
@@ -116,6 +127,439 @@ Function RemoveBOM(ByVal s As String) As String
     End If
     RemoveBOM=s
 End Function
+
+Function GetDirName(ByVal fileName As String) As String
+    Dim i As Long
+    Dim c As String
+    For i=Len(fileName) To 1 Step -1
+        c=Mid(fileName,i,1)
+        If c="\" Or c="/" Then
+            GetDirName=Left(fileName,i-1)
+            Exit Function
+        End If
+    Next i
+    GetDirName=CurDir
+End Function
+
+Function ParseQuotedValue(ByVal s As String) As String
+    Dim i As Long
+    Dim j As Long
+    i=InStr(s,Chr(34))
+    If i=0 Then ParseQuotedValue="":Exit Function
+    j=InStr(i+1,s,Chr(34))
+    If j=0 Then ParseQuotedValue="":Exit Function
+    ParseQuotedValue=Mid(s,i+1,j-i-1)
+End Function
+
+Function EvalPreprocExpr(ByVal expr As String) As Long
+    Dim e As String
+    Dim v As String
+    e=LowerNoSpace(expr)
+    If e="" Then EvalPreprocExpr=0:Exit Function
+    If e="1" Or e="true" Then EvalPreprocExpr=-1:Exit Function
+    If e="0" Or e="false" Then EvalPreprocExpr=0:Exit Function
+
+    If Left(e,10)="platform==" Then
+        v=Mid(e,11)
+        If Left(v,1)=Chr(34) And Right(v,1)=Chr(34) And Len(v)>=2 Then v=Mid(v,2,Len(v)-2)
+        EvalPreprocExpr=IIf(v=LCase(PreprocPlatform),-1,0)
+        Exit Function
+    End If
+    If Left(e,9)="platform=" Then
+        v=Mid(e,10)
+        If Left(v,1)=Chr(34) And Right(v,1)=Chr(34) And Len(v)>=2 Then v=Mid(v,2,Len(v)-2)
+        EvalPreprocExpr=IIf(v=LCase(PreprocPlatform),-1,0)
+        Exit Function
+    End If
+    If Left(e,8)="destos==" Then
+        v=Mid(e,9)
+        If Left(v,1)=Chr(34) And Right(v,1)=Chr(34) And Len(v)>=2 Then v=Mid(v,2,Len(v)-2)
+        EvalPreprocExpr=IIf(v=LCase(PreprocDestOS),-1,0)
+        Exit Function
+    End If
+    If Left(e,7)="destos=" Then
+        v=Mid(e,8)
+        If Left(v,1)=Chr(34) And Right(v,1)=Chr(34) And Len(v)>=2 Then v=Mid(v,2,Len(v)-2)
+        EvalPreprocExpr=IIf(v=LCase(PreprocDestOS),-1,0)
+        Exit Function
+    End If
+
+    EvalPreprocExpr=0
+End Function
+
+Function PreprocIsActive(ByVal ifSp As Long, ByVal ifTake As Long Ptr) As Long
+    Dim i As Long
+    For i=0 To ifSp-1
+        If ifTake[i]=0 Then PreprocIsActive=0:Exit Function
+    Next i
+    PreprocIsActive=-1
+End Function
+
+Function NormalizePathLower(ByVal fileName As String) As String
+    Dim t As String
+    Dim i As Long
+    Dim c As String
+    t=LCase(TrimAll(fileName))
+    For i=1 To Len(t)
+        c=Mid(t,i,1)
+        If c="/" Then Mid(t,i,1)="\\"
+    Next i
+    NormalizePathLower=t
+End Function
+
+Function PreprocSeenInclude(ByVal normalizedFile As String) As Long
+    Dim i As Long
+    If normalizedFile="" Then PreprocSeenInclude=0:Exit Function
+    For i=1 To PreprocIncludeCount
+        If PreprocIncludeSeen(i)=normalizedFile Then
+            PreprocSeenInclude=-1
+            Exit Function
+        End If
+    Next i
+    PreprocSeenInclude=0
+End Function
+
+Sub PreprocMarkInclude(ByVal normalizedFile As String)
+    If normalizedFile="" Then Exit Sub
+    If PreprocSeenInclude(normalizedFile)<>0 Then Exit Sub
+    If PreprocIncludeCount<UBound(PreprocIncludeSeen) Then
+        PreprocIncludeCount=PreprocIncludeCount+1
+        PreprocIncludeSeen(PreprocIncludeCount)=normalizedFile
+    End If
+End Sub
+
+Function PreprocIsActiveInclude(ByVal normalizedFile As String) As Long
+    Dim i As Long
+    If normalizedFile="" Then PreprocIsActiveInclude=0:Exit Function
+    For i=1 To PreprocIncludeActiveSp
+        If PreprocIncludeActive(i)=normalizedFile Then
+            PreprocIsActiveInclude=-1
+            Exit Function
+        End If
+    Next i
+    PreprocIsActiveInclude=0
+End Function
+
+Sub PreprocPushActive(ByVal normalizedFile As String)
+    If normalizedFile="" Then Exit Sub
+    If PreprocIncludeActiveSp<UBound(PreprocIncludeActive) Then
+        PreprocIncludeActiveSp=PreprocIncludeActiveSp+1
+        PreprocIncludeActive(PreprocIncludeActiveSp)=normalizedFile
+    End If
+End Sub
+
+Sub PreprocPopActive()
+    If PreprocIncludeActiveSp>0 Then
+        PreprocIncludeActive(PreprocIncludeActiveSp)=""
+        PreprocIncludeActiveSp=PreprocIncludeActiveSp-1
+    End If
+End Sub
+
+Function PreprocessExpand(ByVal text As String, ByVal currentDir As String, ByVal depth As Long) As String
+    Dim p As Long
+    Dim startP As Long
+    Dim lineText As String
+    Dim trimmed As String
+    Dim low As String
+    Dim outText As String
+    Dim ifTake(1 To 64) As Long
+    Dim ifParent(1 To 64) As Long
+    Dim ifElseSeen(1 To 64) As Long
+    Dim ifSp As Long
+    Dim active As Long
+    Dim parentActive As Long
+    Dim expr As String
+    Dim cond As Long
+    Dim includeRel As String
+    Dim includeAbs As String
+    Dim includeNorm As String
+    Dim includeText As String
+    Dim ff As Integer
+    Dim sz As Long
+    Dim valText As String
+    Dim msgText As String
+
+    If depth>16 Then
+        HadError=1
+        ErrMsg="HATA: %%INCLUDE derinligi 16 seviyesini asti."
+        PreprocessExpand=""
+        Exit Function
+    End If
+
+    outText=""
+    ifSp=0
+    p=1
+    Do While p<=Len(text)
+        startP=p
+        Do While p<=Len(text)
+            If Mid(text,p,1)=Chr(10) Then Exit Do
+            p=p+1
+        Loop
+        lineText=Mid(text,startP,p-startP)
+        trimmed=TrimAll(lineText)
+        low=LowerNoSpace(trimmed)
+
+        If Left(low,4)="%%if" Then
+            expr=TrimAll(Mid(trimmed,5))
+            cond=EvalPreprocExpr(expr)
+            parentActive=PreprocIsActive(ifSp,@ifTake(1))
+            ifSp=ifSp+1
+            If ifSp>64 Then
+                HadError=1
+                ErrMsg="HATA: %%IF nesting 64 seviyeyi asti."
+                PreprocessExpand=""
+                Exit Function
+            End If
+            ifParent(ifSp)=parentActive
+            ifElseSeen(ifSp)=0
+            If parentActive<>0 And cond<>0 Then ifTake(ifSp)=-1 Else ifTake(ifSp)=0
+            p=p+1
+            Continue Do
+        End If
+
+        If low="%%else" Then
+            If ifSp<=0 Then
+                HadError=1
+                ErrMsg="HATA: %%ELSE icin acik %%IF bulunamadi."
+                PreprocessExpand=""
+                Exit Function
+            End If
+            If ifElseSeen(ifSp)<>0 Then
+                HadError=1
+                ErrMsg="HATA: Ayni %%IF blogunda birden fazla %%ELSE kullanildi."
+                PreprocessExpand=""
+                Exit Function
+            End If
+            ifElseSeen(ifSp)=-1
+            If ifParent(ifSp)=0 Then
+                ifTake(ifSp)=0
+            Else
+                If ifTake(ifSp)=0 Then ifTake(ifSp)=-1 Else ifTake(ifSp)=0
+            End If
+            p=p+1
+            Continue Do
+        End If
+
+        If low="%%endif" Then
+            If ifSp<=0 Then
+                HadError=1
+                ErrMsg="HATA: %%ENDIF icin acik %%IF bulunamadi."
+                PreprocessExpand=""
+                Exit Function
+            End If
+            ifSp=ifSp-1
+            p=p+1
+            Continue Do
+        End If
+
+        active=PreprocIsActive(ifSp,@ifTake(1))
+        If active=0 Then
+            p=p+1
+            Continue Do
+        End If
+
+        If Left(low,9)="%%include" Then
+            includeRel=ParseQuotedValue(trimmed)
+            If includeRel="" Then
+                HadError=1
+                ErrMsg="HATA: %%INCLUDE icin ""dosya"" bekleniyor."
+                PreprocessExpand=""
+                Exit Function
+            End If
+            If (Len(includeRel)>=2 And Mid(includeRel,2,1)=":") Or Left(includeRel,2)="\\" Then
+                includeAbs=includeRel
+            ElseIf currentDir<>"" Then
+                includeAbs=currentDir+"\"+includeRel
+            Else
+                includeAbs=includeRel
+            End If
+            includeNorm=NormalizePathLower(includeAbs)
+            If PreprocIsActiveInclude(includeNorm)<>0 Then
+                HadError=1
+                ErrMsg="HATA: %%INCLUDE dongusu algilandi: "+includeAbs
+                PreprocessExpand=""
+                Exit Function
+            End If
+            If PreprocSeenInclude(includeNorm)<>0 Then
+                p=p+1
+                Continue Do
+            End If
+            PreprocMarkInclude(includeNorm)
+            PreprocPushActive(includeNorm)
+            If Len(Dir(includeAbs))=0 Then
+                HadError=1
+                ErrMsg="HATA: %%INCLUDE dosyasi bulunamadi: "+includeAbs
+                PreprocessExpand=""
+                Exit Function
+            End If
+            ff=FreeFile
+            Open includeAbs For Binary Access Read As #ff
+            sz=Lof(ff)
+            If sz>MAX_SRC Then
+                Close #ff
+                HadError=1
+                ErrMsg="HATA: %%INCLUDE dosyasi cok buyuk: "+includeAbs
+                PreprocessExpand=""
+                Exit Function
+            End If
+            If sz>0 Then
+                includeText=Space(sz)
+                Get #ff,,includeText
+            Else
+                includeText=""
+            End If
+            Close #ff
+            includeText=RemoveBOM(includeText)
+            includeText=PreprocessExpand(includeText,GetDirName(includeAbs),depth+1)
+            PreprocPopActive()
+            If HadError Then PreprocessExpand="":Exit Function
+            outText=outText+includeText+Chr(10)
+            p=p+1
+            Continue Do
+        End If
+
+        If Left(LCase(trimmed),7)="include" Then
+            If Len(trimmed)=7 Or IsSpaceChar(Mid(trimmed,8,1))<>0 Then
+                includeRel=ParseQuotedValue(trimmed)
+                If includeRel="" Then
+                    HadError=1
+                    ErrMsg="HATA: INCLUDE icin ""dosya"" bekleniyor."
+                    PreprocessExpand=""
+                    Exit Function
+                End If
+                If (Len(includeRel)>=2 And Mid(includeRel,2,1)=":") Or Left(includeRel,2)="\\" Then
+                    includeAbs=includeRel
+                ElseIf currentDir<>"" Then
+                    includeAbs=currentDir+"\"+includeRel
+                Else
+                    includeAbs=includeRel
+                End If
+                includeNorm=NormalizePathLower(includeAbs)
+                If PreprocIsActiveInclude(includeNorm)<>0 Then
+                    HadError=1
+                    ErrMsg="HATA: INCLUDE dongusu algilandi: "+includeAbs
+                    PreprocessExpand=""
+                    Exit Function
+                End If
+                If PreprocSeenInclude(includeNorm)<>0 Then
+                    p=p+1
+                    Continue Do
+                End If
+                PreprocMarkInclude(includeNorm)
+                PreprocPushActive(includeNorm)
+                If Len(Dir(includeAbs))=0 Then
+                    HadError=1
+                    ErrMsg="HATA: INCLUDE dosyasi bulunamadi: "+includeAbs
+                    PreprocessExpand=""
+                    Exit Function
+                End If
+                ff=FreeFile
+                Open includeAbs For Binary Access Read As #ff
+                sz=Lof(ff)
+                If sz>MAX_SRC Then
+                    Close #ff
+                    HadError=1
+                    ErrMsg="HATA: INCLUDE dosyasi cok buyuk: "+includeAbs
+                    PreprocessExpand=""
+                    Exit Function
+                End If
+                If sz>0 Then
+                    includeText=Space(sz)
+                    Get #ff,,includeText
+                Else
+                    includeText=""
+                End If
+                Close #ff
+                includeText=RemoveBOM(includeText)
+                includeText=PreprocessExpand(includeText,GetDirName(includeAbs),depth+1)
+                PreprocPopActive()
+                If HadError Then PreprocessExpand="":Exit Function
+                outText=outText+includeText+Chr(10)
+                p=p+1
+                Continue Do
+            End If
+        End If
+
+        If Left(low,10)="%%platform" Then
+            valText=TrimAll(Mid(trimmed,11))
+            If valText<>"" Then PreprocPlatform=LCase(valText)
+            p=p+1
+            Continue Do
+        End If
+
+        If Left(low,8)="%%destos" Then
+            valText=TrimAll(Mid(trimmed,9))
+            If valText<>"" Then PreprocDestOS=LCase(valText)
+            p=p+1
+            Continue Do
+        End If
+
+        If Left(low,12)="%%nozerovars" Then
+            If InStr(low,"on")>0 Then PragmaNoZeroVars=1
+            If InStr(low,"off")>0 Then PragmaNoZeroVars=0
+            p=p+1
+            Continue Do
+        End If
+
+        If Left(low,10)="%%secstack" Then
+            If InStr(low,"on")>0 Then PragmaSecStack=1
+            If InStr(low,"off")>0 Then PragmaSecStack=0
+            p=p+1
+            Continue Do
+        End If
+
+        If low="%%endcomp" Then
+            Exit Do
+        End If
+
+        If Left(low,14)="%%errorendcomp" Then
+            msgText=ParseQuotedValue(trimmed)
+            If msgText="" Then msgText="%%ERRORENDCOMP tetiklendi."
+            HadError=1
+            ErrMsg="HATA: "+msgText
+            PreprocessExpand=""
+            Exit Function
+        End If
+
+        If Left(low,2)="%%" Then
+            p=p+1
+            Continue Do
+        End If
+
+        outText=outText+lineText+Chr(10)
+        If Len(outText)>MAX_SRC Then
+            HadError=1
+            ErrMsg="HATA: preprocessor sonrasi kaynak boyutu limiti asti."
+            PreprocessExpand=""
+            Exit Function
+        End If
+
+        p=p+1
+    Loop
+
+    If ifSp<>0 Then
+        HadError=1
+        ErrMsg="HATA: kapanmamis %%IF blogu var."
+        PreprocessExpand=""
+        Exit Function
+    End If
+
+    PreprocessExpand=outText
+End Function
+
+Sub PreprocessSource(ByVal sourceFile As String)
+    Dim rootNorm As String
+    If HadError Then Exit Sub
+    PreprocIncludeCount=0
+    PreprocIncludeActiveSp=0
+    rootNorm=NormalizePathLower(sourceFile)
+    If rootNorm<>"" Then
+        PreprocMarkInclude(rootNorm)
+        PreprocPushActive(rootNorm)
+    End If
+    Src=PreprocessExpand(Src,GetDirName(sourceFile),0)
+    If rootNorm<>"" Then PreprocPopActive()
+End Sub
 
 Sub ParsePragmas()
     Dim p As Long
