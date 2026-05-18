@@ -84,7 +84,7 @@ Function ParseAddressBody(ByVal body As String, ByRef kind As Long, ByRef addrVa
         ParseAddressBody=1
         Exit Function
     End If
-    If Left(b,4)="D@(" Then
+    If Left(b,3)="D@(" Then
         posx=InStr(4,b,")")
         If posx=0 Then ParseAddressBody=0:Exit Function
         inner=Mid(b,4,posx-4)
